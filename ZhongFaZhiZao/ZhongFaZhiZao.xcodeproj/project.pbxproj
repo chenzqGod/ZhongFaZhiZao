@@ -252,8 +252,8 @@
 		561AC0391DED7B0F009C8EC3 /* guid04.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = guid04.jpg; sourceTree = "<group>"; };
 		561AC03E1DED7D17009C8EC3 /* LaunchIntroductionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchIntroductionView.h; sourceTree = "<group>"; };
 		561AC03F1DED7D17009C8EC3 /* LaunchIntroductionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchIntroductionView.m; sourceTree = "<group>"; };
-		561AC0411DEEDF95009C8EC3 /* MainWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWebViewController.h; sourceTree = "<group>"; };
-		561AC0421DEEDF95009C8EC3 /* MainWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWebViewController.m; sourceTree = "<group>"; };
+		561AC0411DEEDF95009C8EC3 /* MainWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainWebViewController.h; path = "自定义/MainWebViewController.h"; sourceTree = "<group>"; };
+		561AC0421DEEDF95009C8EC3 /* MainWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainWebViewController.m; path = "自定义/MainWebViewController.m"; sourceTree = "<group>"; };
 		56541C041DD2B73D00E9225E /* ZFZZViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFZZViewController.h; sourceTree = "<group>"; };
 		56541C051DD2B73D00E9225E /* ZFZZViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFZZViewController.m; sourceTree = "<group>"; };
 		567B610F1DCADFF9004D1CFE /* ZhongFaZhiZao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZhongFaZhiZao.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -667,6 +667,8 @@
 				56541C051DD2B73D00E9225E /* ZFZZViewController.m */,
 				567B61461DCAE1EF004D1CFE /* ZFZZTabBarController.h */,
 				567B61471DCAE1EF004D1CFE /* ZFZZTabBarController.m */,
+				561AC0411DEEDF95009C8EC3 /* MainWebViewController.h */,
+				561AC0421DEEDF95009C8EC3 /* MainWebViewController.m */,
 				56B770811DD2CF4B00BA1D2B /* ZhongFa.pch */,
 				567B611B1DCADFF9004D1CFE /* Main.storyboard */,
 				567B611E1DCADFF9004D1CFE /* Assets.xcassets */,
@@ -1139,8 +1141,6 @@
 				567B62991DD1A4A3004D1CFE /* ABWebViewViewController.m */,
 				561AC0151DE6B832009C8EC3 /* WKWebViewViewController.h */,
 				561AC0161DE6B832009C8EC3 /* WKWebViewViewController.m */,
-				561AC0411DEEDF95009C8EC3 /* MainWebViewController.h */,
-				561AC0421DEEDF95009C8EC3 /* MainWebViewController.m */,
 				561AC0181DE812F1009C8EC3 /* StartDiagmView.h */,
 				561AC0191DE812F1009C8EC3 /* StartDiagmView.m */,
 			);

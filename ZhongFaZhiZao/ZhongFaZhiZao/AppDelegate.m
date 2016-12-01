@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "ZFZZTabBarController.h"
 #import "ZFZZViewController.h"
+#import "MainWebViewController.h"
 
 #import <AlipaySDK/AlipaySDK.h>
 
@@ -39,7 +40,7 @@
     
     
 
-    [NSThread sleepForTimeInterval:0.6];//设置启动页面时间
+    [NSThread sleepForTimeInterval:1.0];//设置启动页面时间
     
     //  修改状态栏颜色
 //     [[UIApplication sharedApplication]setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
@@ -55,10 +56,13 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
 
-    ZFZZViewController *rootVC = [[ZFZZViewController alloc]init];
+//    ZFZZViewController *rootVC = [[ZFZZViewController alloc]init];
     
     
 //    ZFZZTabBarController *rootVC = [[ZFZZTabBarController alloc]init];
+    
+    
+    MainWebViewController *rootVC = [[MainWebViewController alloc]init];
     
     UINavigationController *rootNav = [[UINavigationController alloc]initWithRootViewController:rootVC];
 
