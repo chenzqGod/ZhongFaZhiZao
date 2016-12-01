@@ -39,7 +39,7 @@
     
     
 
-    [NSThread sleepForTimeInterval:1.0];//设置启动页面时间
+    [NSThread sleepForTimeInterval:0.6];//设置启动页面时间
     
     //  修改状态栏颜色
 //     [[UIApplication sharedApplication]setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];

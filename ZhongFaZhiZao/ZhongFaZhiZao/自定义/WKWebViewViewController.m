@@ -15,6 +15,8 @@
 @property (nonatomic,copy) NSString *navigatorTitle;
 @property(nonatomic,assign) BOOL isLoaing;
 @property (nonatomic,strong) UIProgressView *progressView;
+@property (nonatomic,strong) UIImageView *imageView;
+
 
 @end
 
@@ -59,12 +61,24 @@
     
     _webView.UIDelegate = self;
     
+    [_webView setMultipleTouchEnabled:YES];
+    
+    [_webView.scrollView setAlwaysBounceVertical:YES];
+    
+    [_webView setAllowsBackForwardNavigationGestures:true];
+    
     _progressView = [[UIProgressView alloc]initWithFrame:CGRectMake(0, 65, CGRectGetWidth(self.view.frame),2)];
     [self.view addSubview:_progressView];
     
     [_webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew| NSKeyValueObservingOptionOld context:nil];
     
     [self.view addSubview:_webView];
+    
+    
+    _imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"会员2"]];
+    _imageView.frame = CGRectMake(screenWidth/2.0-15, screenHeight/2.0-15, 30, 30);
+    [self.view addSubview:_imageView];
+    
     _isLoaing=NO;
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -118,6 +132,8 @@
 //内容开始返回时调用
 - (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation {
     NSLog(@"didCommitNavigation");
+    
+//    [NSThread sleepForTimeInterval:1.0];
 }
 
 //页面加载完成时调用
@@ -130,7 +146,7 @@
     
 //    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
-    
+    _imageView.frame = CGRectZero;
 }
 
 // 在收到响应后，决定是否跳转
