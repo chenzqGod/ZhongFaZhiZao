@@ -42,6 +42,7 @@
     
     [_webView.scrollView setAlwaysBounceVertical:YES];
     
+//    允许右滑退出
     [_webView setAllowsBackForwardNavigationGestures:true];
     
 //    [_webView loadRequest:[NSMutableURLRequest requestWithURL:[NSURL URLWithString:URLStr]]];
@@ -153,8 +154,13 @@
         NSString *callPhone = [NSString stringWithFormat:@"telprompt://%@", resourceSpecifier];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callPhone]];
     }
+
     
-    
+//    .jsp .html可以跳转新页面
+    if (navigationAction.targetFrame == nil ) {
+        
+        [webView loadRequest:navigationAction.request];
+    }
     
     decisionHandler(WKNavigationActionPolicyAllow);
     
@@ -163,6 +169,20 @@
 
 
 #pragma mark - WKUIdelegate
+
+//创建一个新的webView
+- (WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures{
+
+    //    .jsp .html可以跳转新页面
+    if (navigationAction.targetFrame == nil ) {
+        
+        [webView loadRequest:navigationAction.request];
+    }
+
+    
+    return nil;
+}
+
 //捕获弹窗
 - (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler{
     
