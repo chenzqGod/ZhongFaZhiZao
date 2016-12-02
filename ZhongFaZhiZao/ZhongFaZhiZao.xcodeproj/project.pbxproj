@@ -50,6 +50,28 @@
 		5603664B1DE3E7F000332DD2 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5603664A1DE3E7F000332DD2 /* CoreText.framework */; };
 		5603664D1DE3E80F00332DD2 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5603664C1DE3E80F00332DD2 /* CoreMotion.framework */; };
 		560366531DE444F700332DD2 /* NSNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 560366521DE444F700332DD2 /* NSNetworking.m */; };
+		56045FA31DF16AC100BB5EB9 /* AskDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FA21DF16AC100BB5EB9 /* AskDetailsViewController.m */; };
+		56045FA81DF17B0500BB5EB9 /* SetMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FA71DF17B0500BB5EB9 /* SetMeViewController.m */; };
+		56045FAF1DF17E5F00BB5EB9 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FAE1DF17E5F00BB5EB9 /* UserInfo.m */; };
+		56045FBE1DF17E8000BB5EB9 /* DelegateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FB11DF17E8000BB5EB9 /* DelegateView.m */; };
+		56045FBF1DF17E8000BB5EB9 /* ForgetPwView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FB31DF17E8000BB5EB9 /* ForgetPwView.m */; };
+		56045FC01DF17E8000BB5EB9 /* PromoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FB51DF17E8000BB5EB9 /* PromoteView.m */; };
+		56045FC11DF17E8000BB5EB9 /* PwLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FB71DF17E8000BB5EB9 /* PwLoginView.m */; };
+		56045FC21DF17E8000BB5EB9 /* RegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FB91DF17E8000BB5EB9 /* RegisterView.m */; };
+		56045FC31DF17E8000BB5EB9 /* SetPwView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FBB1DF17E8000BB5EB9 /* SetPwView.m */; };
+		56045FC41DF17E8000BB5EB9 /* VfLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FBD1DF17E8000BB5EB9 /* VfLoginView.m */; };
+		56045FD31DF17EBB00BB5EB9 /* DelegateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FC61DF17EBB00BB5EB9 /* DelegateViewController.m */; };
+		56045FD41DF17EBB00BB5EB9 /* ForgetPwViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FC81DF17EBB00BB5EB9 /* ForgetPwViewController.m */; };
+		56045FD51DF17EBB00BB5EB9 /* PromoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FCA1DF17EBB00BB5EB9 /* PromoteViewController.m */; };
+		56045FD61DF17EBB00BB5EB9 /* PwLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FCC1DF17EBB00BB5EB9 /* PwLoginViewController.m */; };
+		56045FD71DF17EBB00BB5EB9 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FCE1DF17EBB00BB5EB9 /* RegisterViewController.m */; };
+		56045FD81DF17EBB00BB5EB9 /* SetPwViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FD01DF17EBB00BB5EB9 /* SetPwViewController.m */; };
+		56045FD91DF17EBB00BB5EB9 /* VfLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FD21DF17EBB00BB5EB9 /* VfLoginViewController.m */; };
+		56045FDC1DF180A500BB5EB9 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FDB1DF180A500BB5EB9 /* UIColor+Hex.m */; };
+		56045FDF1DF1814F00BB5EB9 /* CreateNavgationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FDE1DF1814F00BB5EB9 /* CreateNavgationView.m */; };
+		56045FE71DF1827000BB5EB9 /* WKMessageProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FE21DF1827000BB5EB9 /* WKMessageProgressHUD.m */; };
+		56045FE81DF1827000BB5EB9 /* WKProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FE41DF1827000BB5EB9 /* WKProgressHUD.m */; };
+		56045FE91DF1827000BB5EB9 /* WKWaitingProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FE61DF1827000BB5EB9 /* WKWaitingProgressHUD.m */; };
 		561AC0171DE6B832009C8EC3 /* WKWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 561AC0161DE6B832009C8EC3 /* WKWebViewViewController.m */; };
 		561AC01A1DE812F1009C8EC3 /* StartDiagmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 561AC0191DE812F1009C8EC3 /* StartDiagmView.m */; };
 		561AC02A1DE95D2E009C8EC3 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 561AC0291DE95D2E009C8EC3 /* libsqlite3.0.tbd */; };
@@ -236,6 +258,50 @@
 		5603664C1DE3E80F00332DD2 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		560366511DE444F700332DD2 /* NSNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNetworking.h; sourceTree = "<group>"; };
 		560366521DE444F700332DD2 /* NSNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNetworking.m; sourceTree = "<group>"; };
+		56045FA11DF16AC100BB5EB9 /* AskDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AskDetailsViewController.h; path = ../AskDetailsViewController.h; sourceTree = "<group>"; };
+		56045FA21DF16AC100BB5EB9 /* AskDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AskDetailsViewController.m; path = ../AskDetailsViewController.m; sourceTree = "<group>"; };
+		56045FA61DF17B0500BB5EB9 /* SetMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetMeViewController.h; sourceTree = "<group>"; };
+		56045FA71DF17B0500BB5EB9 /* SetMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetMeViewController.m; sourceTree = "<group>"; };
+		56045FAD1DF17E5F00BB5EB9 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		56045FAE1DF17E5F00BB5EB9 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
+		56045FB01DF17E8000BB5EB9 /* DelegateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DelegateView.h; path = ../DelegateView.h; sourceTree = "<group>"; };
+		56045FB11DF17E8000BB5EB9 /* DelegateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DelegateView.m; path = ../DelegateView.m; sourceTree = "<group>"; };
+		56045FB21DF17E8000BB5EB9 /* ForgetPwView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForgetPwView.h; path = ../ForgetPwView.h; sourceTree = "<group>"; };
+		56045FB31DF17E8000BB5EB9 /* ForgetPwView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForgetPwView.m; path = ../ForgetPwView.m; sourceTree = "<group>"; };
+		56045FB41DF17E8000BB5EB9 /* PromoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PromoteView.h; path = ../PromoteView.h; sourceTree = "<group>"; };
+		56045FB51DF17E8000BB5EB9 /* PromoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PromoteView.m; path = ../PromoteView.m; sourceTree = "<group>"; };
+		56045FB61DF17E8000BB5EB9 /* PwLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PwLoginView.h; path = ../PwLoginView.h; sourceTree = "<group>"; };
+		56045FB71DF17E8000BB5EB9 /* PwLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PwLoginView.m; path = ../PwLoginView.m; sourceTree = "<group>"; };
+		56045FB81DF17E8000BB5EB9 /* RegisterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterView.h; path = ../RegisterView.h; sourceTree = "<group>"; };
+		56045FB91DF17E8000BB5EB9 /* RegisterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterView.m; path = ../RegisterView.m; sourceTree = "<group>"; };
+		56045FBA1DF17E8000BB5EB9 /* SetPwView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetPwView.h; path = ../SetPwView.h; sourceTree = "<group>"; };
+		56045FBB1DF17E8000BB5EB9 /* SetPwView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetPwView.m; path = ../SetPwView.m; sourceTree = "<group>"; };
+		56045FBC1DF17E8000BB5EB9 /* VfLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VfLoginView.h; path = ../VfLoginView.h; sourceTree = "<group>"; };
+		56045FBD1DF17E8000BB5EB9 /* VfLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VfLoginView.m; path = ../VfLoginView.m; sourceTree = "<group>"; };
+		56045FC51DF17EBB00BB5EB9 /* DelegateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateViewController.h; sourceTree = "<group>"; };
+		56045FC61DF17EBB00BB5EB9 /* DelegateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateViewController.m; sourceTree = "<group>"; };
+		56045FC71DF17EBB00BB5EB9 /* ForgetPwViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPwViewController.h; sourceTree = "<group>"; };
+		56045FC81DF17EBB00BB5EB9 /* ForgetPwViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPwViewController.m; sourceTree = "<group>"; };
+		56045FC91DF17EBB00BB5EB9 /* PromoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoteViewController.h; sourceTree = "<group>"; };
+		56045FCA1DF17EBB00BB5EB9 /* PromoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoteViewController.m; sourceTree = "<group>"; };
+		56045FCB1DF17EBB00BB5EB9 /* PwLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PwLoginViewController.h; sourceTree = "<group>"; };
+		56045FCC1DF17EBB00BB5EB9 /* PwLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PwLoginViewController.m; sourceTree = "<group>"; };
+		56045FCD1DF17EBB00BB5EB9 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		56045FCE1DF17EBB00BB5EB9 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		56045FCF1DF17EBB00BB5EB9 /* SetPwViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetPwViewController.h; sourceTree = "<group>"; };
+		56045FD01DF17EBB00BB5EB9 /* SetPwViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetPwViewController.m; sourceTree = "<group>"; };
+		56045FD11DF17EBB00BB5EB9 /* VfLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VfLoginViewController.h; sourceTree = "<group>"; };
+		56045FD21DF17EBB00BB5EB9 /* VfLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VfLoginViewController.m; sourceTree = "<group>"; };
+		56045FDA1DF180A500BB5EB9 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		56045FDB1DF180A500BB5EB9 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		56045FDD1DF1814F00BB5EB9 /* CreateNavgationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateNavgationView.h; sourceTree = "<group>"; };
+		56045FDE1DF1814F00BB5EB9 /* CreateNavgationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateNavgationView.m; sourceTree = "<group>"; };
+		56045FE11DF1827000BB5EB9 /* WKMessageProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKMessageProgressHUD.h; sourceTree = "<group>"; };
+		56045FE21DF1827000BB5EB9 /* WKMessageProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKMessageProgressHUD.m; sourceTree = "<group>"; };
+		56045FE31DF1827000BB5EB9 /* WKProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKProgressHUD.h; sourceTree = "<group>"; };
+		56045FE41DF1827000BB5EB9 /* WKProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKProgressHUD.m; sourceTree = "<group>"; };
+		56045FE51DF1827000BB5EB9 /* WKWaitingProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWaitingProgressHUD.h; sourceTree = "<group>"; };
+		56045FE61DF1827000BB5EB9 /* WKWaitingProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWaitingProgressHUD.m; sourceTree = "<group>"; };
 		561AC0151DE6B832009C8EC3 /* WKWebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewViewController.h; sourceTree = "<group>"; };
 		561AC0161DE6B832009C8EC3 /* WKWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewViewController.m; sourceTree = "<group>"; };
 		561AC0181DE812F1009C8EC3 /* StartDiagmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartDiagmView.h; sourceTree = "<group>"; };
@@ -611,6 +677,98 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		56045FA41DF17A7000BB5EB9 /* 消息详情 */ = {
+			isa = PBXGroup;
+			children = (
+				56045FA11DF16AC100BB5EB9 /* AskDetailsViewController.h */,
+				56045FA21DF16AC100BB5EB9 /* AskDetailsViewController.m */,
+			);
+			path = "消息详情";
+			sourceTree = "<group>";
+		};
+		56045FA51DF17AF100BB5EB9 /* 设置 */ = {
+			isa = PBXGroup;
+			children = (
+				56045FA61DF17B0500BB5EB9 /* SetMeViewController.h */,
+				56045FA71DF17B0500BB5EB9 /* SetMeViewController.m */,
+			);
+			path = "设置";
+			sourceTree = "<group>";
+		};
+		56045FA91DF17D0E00BB5EB9 /* 登录 */ = {
+			isa = PBXGroup;
+			children = (
+				56045FAA1DF17E4600BB5EB9 /* view */,
+				56045FAB1DF17E4600BB5EB9 /* model */,
+				56045FAC1DF17E4600BB5EB9 /* controller */,
+			);
+			path = "登录";
+			sourceTree = "<group>";
+		};
+		56045FAA1DF17E4600BB5EB9 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				56045FB01DF17E8000BB5EB9 /* DelegateView.h */,
+				56045FB11DF17E8000BB5EB9 /* DelegateView.m */,
+				56045FB21DF17E8000BB5EB9 /* ForgetPwView.h */,
+				56045FB31DF17E8000BB5EB9 /* ForgetPwView.m */,
+				56045FB41DF17E8000BB5EB9 /* PromoteView.h */,
+				56045FB51DF17E8000BB5EB9 /* PromoteView.m */,
+				56045FB61DF17E8000BB5EB9 /* PwLoginView.h */,
+				56045FB71DF17E8000BB5EB9 /* PwLoginView.m */,
+				56045FB81DF17E8000BB5EB9 /* RegisterView.h */,
+				56045FB91DF17E8000BB5EB9 /* RegisterView.m */,
+				56045FBA1DF17E8000BB5EB9 /* SetPwView.h */,
+				56045FBB1DF17E8000BB5EB9 /* SetPwView.m */,
+				56045FBC1DF17E8000BB5EB9 /* VfLoginView.h */,
+				56045FBD1DF17E8000BB5EB9 /* VfLoginView.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		56045FAB1DF17E4600BB5EB9 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				56045FAD1DF17E5F00BB5EB9 /* UserInfo.h */,
+				56045FAE1DF17E5F00BB5EB9 /* UserInfo.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		56045FAC1DF17E4600BB5EB9 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				56045FC51DF17EBB00BB5EB9 /* DelegateViewController.h */,
+				56045FC61DF17EBB00BB5EB9 /* DelegateViewController.m */,
+				56045FC71DF17EBB00BB5EB9 /* ForgetPwViewController.h */,
+				56045FC81DF17EBB00BB5EB9 /* ForgetPwViewController.m */,
+				56045FC91DF17EBB00BB5EB9 /* PromoteViewController.h */,
+				56045FCA1DF17EBB00BB5EB9 /* PromoteViewController.m */,
+				56045FCB1DF17EBB00BB5EB9 /* PwLoginViewController.h */,
+				56045FCC1DF17EBB00BB5EB9 /* PwLoginViewController.m */,
+				56045FCD1DF17EBB00BB5EB9 /* RegisterViewController.h */,
+				56045FCE1DF17EBB00BB5EB9 /* RegisterViewController.m */,
+				56045FCF1DF17EBB00BB5EB9 /* SetPwViewController.h */,
+				56045FD01DF17EBB00BB5EB9 /* SetPwViewController.m */,
+				56045FD11DF17EBB00BB5EB9 /* VfLoginViewController.h */,
+				56045FD21DF17EBB00BB5EB9 /* VfLoginViewController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		56045FE01DF1825B00BB5EB9 /* WKProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				56045FE11DF1827000BB5EB9 /* WKMessageProgressHUD.h */,
+				56045FE21DF1827000BB5EB9 /* WKMessageProgressHUD.m */,
+				56045FE31DF1827000BB5EB9 /* WKProgressHUD.h */,
+				56045FE41DF1827000BB5EB9 /* WKProgressHUD.m */,
+				56045FE51DF1827000BB5EB9 /* WKWaitingProgressHUD.h */,
+				56045FE61DF1827000BB5EB9 /* WKWaitingProgressHUD.m */,
+			);
+			path = WKProgressHUD;
+			sourceTree = "<group>";
+		};
 		561AC0351DED7B0F009C8EC3 /* 引导页 */ = {
 			isa = PBXGroup;
 			children = (
@@ -709,6 +867,7 @@
 		567B61451DCAE18C004D1CFE /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				56045FE01DF1825B00BB5EB9 /* WKProgressHUD */,
 				567B614E1DD020A0004D1CFE /* AFNetworking */,
 				567B615C1DD020A0004D1CFE /* JSONModel */,
 				567B61761DD020A0004D1CFE /* Masonry */,
@@ -1087,6 +1246,8 @@
 			children = (
 				567B62731DD08870004D1CFE /* MineViewController.h */,
 				567B62741DD08870004D1CFE /* MineViewController.m */,
+				56045FA91DF17D0E00BB5EB9 /* 登录 */,
+				56045FA51DF17AF100BB5EB9 /* 设置 */,
 			);
 			path = "会员中心";
 			sourceTree = "<group>";
@@ -1105,6 +1266,7 @@
 			children = (
 				567B626D1DD087E1004D1CFE /* AskViewController.h */,
 				567B626E1DD087E1004D1CFE /* AskViewController.m */,
+				56045FA41DF17A7000BB5EB9 /* 消息详情 */,
 			);
 			path = "咨询";
 			sourceTree = "<group>";
@@ -1135,6 +1297,10 @@
 		567B62971DD1A47E004D1CFE /* 自定义 */ = {
 			isa = PBXGroup;
 			children = (
+				56045FDD1DF1814F00BB5EB9 /* CreateNavgationView.h */,
+				56045FDE1DF1814F00BB5EB9 /* CreateNavgationView.m */,
+				56045FDA1DF180A500BB5EB9 /* UIColor+Hex.h */,
+				56045FDB1DF180A500BB5EB9 /* UIColor+Hex.m */,
 				561AC03E1DED7D17009C8EC3 /* LaunchIntroductionView.h */,
 				561AC03F1DED7D17009C8EC3 /* LaunchIntroductionView.m */,
 				567B62981DD1A4A3004D1CFE /* ABWebViewViewController.h */,
@@ -1343,8 +1509,10 @@
 				567B623B1DD020A1004D1CFE /* AFImageDownloader.m in Sources */,
 				561AC0431DEEDF95009C8EC3 /* MainWebViewController.m in Sources */,
 				567B62141DD020A0004D1CFE /* MBProgressHUD+MJ.m in Sources */,
+				56045FC01DF17E8000BB5EB9 /* PromoteView.m in Sources */,
 				567B62391DD020A1004D1CFE /* UIView+WebCacheOperation.m in Sources */,
 				567B623D1DD020A1004D1CFE /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				56045FAF1DF17E5F00BB5EB9 /* UserInfo.m in Sources */,
 				567B62301DD020A1004D1CFE /* SDWebImageDownloaderOperation.m in Sources */,
 				561AC01A1DE812F1009C8EC3 /* StartDiagmView.m in Sources */,
 				567B62041DD020A0004D1CFE /* NSArray+JSONModel.m in Sources */,
@@ -1352,8 +1520,11 @@
 				567B61FC1DD020A0004D1CFE /* AFSecurityPolicy.m in Sources */,
 				567B62091DD020A0004D1CFE /* JSONValueTransformer.m in Sources */,
 				567B621A1DD020A0004D1CFE /* MJRefreshFooter.m in Sources */,
+				56045FA81DF17B0500BB5EB9 /* SetMeViewController.m in Sources */,
+				56045FC31DF17E8000BB5EB9 /* SetPwView.m in Sources */,
 				567B62751DD08870004D1CFE /* MineViewController.m in Sources */,
 				561AC0171DE6B832009C8EC3 /* WKWebViewViewController.m in Sources */,
+				56045FD61DF17EBB00BB5EB9 /* PwLoginViewController.m in Sources */,
 				567B62261DD020A1004D1CFE /* MJRefreshConst.m in Sources */,
 				567B620D1DD020A0004D1CFE /* MASLayoutConstraint.m in Sources */,
 				567B61FE1DD020A0004D1CFE /* AFURLResponseSerialization.m in Sources */,
@@ -1366,9 +1537,11 @@
 				567B621E1DD020A0004D1CFE /* MJRefreshAutoStateFooter.m in Sources */,
 				567B62211DD020A1004D1CFE /* MJRefreshBackStateFooter.m in Sources */,
 				567B61FF1DD020A0004D1CFE /* AFURLSessionManager.m in Sources */,
+				56045FD81DF17EBB00BB5EB9 /* SetPwViewController.m in Sources */,
 				56541C061DD2B73D00E9225E /* ZFZZViewController.m in Sources */,
 				567B62311DD020A1004D1CFE /* SDWebImageManager.m in Sources */,
 				567B62201DD020A1004D1CFE /* MJRefreshBackNormalFooter.m in Sources */,
+				56045FC11DF17E8000BB5EB9 /* PwLoginView.m in Sources */,
 				567B62241DD020A1004D1CFE /* MJRefreshStateHeader.m in Sources */,
 				567B62351DD020A1004D1CFE /* UIImage+MultiFormat.m in Sources */,
 				567B62321DD020A1004D1CFE /* SDWebImagePrefetcher.m in Sources */,
@@ -1377,25 +1550,37 @@
 				567B620E1DD020A0004D1CFE /* MASViewAttribute.m in Sources */,
 				567B621B1DD020A0004D1CFE /* MJRefreshHeader.m in Sources */,
 				567B62721DD08842004D1CFE /* PurchaseViewController.m in Sources */,
+				56045FE71DF1827000BB5EB9 /* WKMessageProgressHUD.m in Sources */,
 				567B62051DD020A0004D1CFE /* JSONAPI.m in Sources */,
 				567B620C1DD020A0004D1CFE /* MASConstraintMaker.m in Sources */,
+				56045FBF1DF17E8000BB5EB9 /* ForgetPwView.m in Sources */,
+				56045FC41DF17E8000BB5EB9 /* VfLoginView.m in Sources */,
+				56045FC21DF17E8000BB5EB9 /* RegisterView.m in Sources */,
 				567B624E1DD020EE004D1CFE /* NSString+Time.m in Sources */,
+				56045FE81DF1827000BB5EB9 /* WKProgressHUD.m in Sources */,
 				567B623C1DD020A1004D1CFE /* AFNetworkActivityIndicatorManager.m in Sources */,
 				561AC0401DED7D17009C8EC3 /* LaunchIntroductionView.m in Sources */,
 				567B622E1DD020A1004D1CFE /* SDWebImageDecoder.m in Sources */,
 				567B62121DD020A0004D1CFE /* View+MASAdditions.m in Sources */,
+				56045FD51DF17EBB00BB5EB9 /* PromoteViewController.m in Sources */,
 				567B62161DD020A0004D1CFE /* MBProgressHUD.m in Sources */,
 				567B620F1DD020A0004D1CFE /* MASViewConstraint.m in Sources */,
+				56045FD91DF17EBB00BB5EB9 /* VfLoginViewController.m in Sources */,
+				56045FD31DF17EBB00BB5EB9 /* DelegateViewController.m in Sources */,
+				56045FA31DF16AC100BB5EB9 /* AskDetailsViewController.m in Sources */,
 				567B620A1DD020A0004D1CFE /* MASCompositeConstraint.m in Sources */,
+				56045FBE1DF17E8000BB5EB9 /* DelegateView.m in Sources */,
 				567B622D1DD020A1004D1CFE /* SDWebImageCompat.m in Sources */,
 				567B623F1DD020A1004D1CFE /* UIImageView+AFNetworking.m in Sources */,
 				567B62411DD020A1004D1CFE /* UIRefreshControl+AFNetworking.m in Sources */,
 				567B61171DCADFF9004D1CFE /* AppDelegate.m in Sources */,
+				56045FE91DF1827000BB5EB9 /* WKWaitingProgressHUD.m in Sources */,
 				567B62331DD020A1004D1CFE /* UIButton+WebCache.m in Sources */,
 				567B629A1DD1A4A4004D1CFE /* ABWebViewViewController.m in Sources */,
 				567B62421DD020A1004D1CFE /* UIWebView+AFNetworking.m in Sources */,
 				567B621C1DD020A0004D1CFE /* MJRefreshAutoGifFooter.m in Sources */,
 				567B62031DD020A0004D1CFE /* JSONModelError.m in Sources */,
+				56045FDF1DF1814F00BB5EB9 /* CreateNavgationView.m in Sources */,
 				560366531DE444F700332DD2 /* NSNetworking.m in Sources */,
 				567B62001DD020A0004D1CFE /* JSONModel.m in Sources */,
 				567B626C1DD087A6004D1CFE /* HomeViewController.m in Sources */,
@@ -1407,10 +1592,12 @@
 				567B622F1DD020A1004D1CFE /* SDWebImageDownloader.m in Sources */,
 				567B62361DD020A1004D1CFE /* UIImage+WebP.m in Sources */,
 				567B620B1DD020A0004D1CFE /* MASConstraint.m in Sources */,
+				56045FDC1DF180A500BB5EB9 /* UIColor+Hex.m in Sources */,
 				567B622C1DD020A1004D1CFE /* SDImageCache.m in Sources */,
 				567B62061DD020A0004D1CFE /* JSONHTTPClient.m in Sources */,
 				567B62011DD020A0004D1CFE /* JSONModelArray.m in Sources */,
 				567B623E1DD020A1004D1CFE /* UIButton+AFNetworking.m in Sources */,
+				56045FD71DF17EBB00BB5EB9 /* RegisterViewController.m in Sources */,
 				567B62231DD020A1004D1CFE /* MJRefreshNormalHeader.m in Sources */,
 				567B62401DD020A1004D1CFE /* UIProgressView+AFNetworking.m in Sources */,
 				567B622B1DD020A1004D1CFE /* NSData+ImageContentType.m in Sources */,
@@ -1421,6 +1608,7 @@
 				567B626F1DD087E1004D1CFE /* AskViewController.m in Sources */,
 				567B62101DD020A0004D1CFE /* NSArray+MASAdditions.m in Sources */,
 				567B62131DD020A0004D1CFE /* ViewController+MASAdditions.m in Sources */,
+				56045FD41DF17EBB00BB5EB9 /* ForgetPwViewController.m in Sources */,
 				567B62081DD020A0004D1CFE /* JSONKeyMapper.m in Sources */,
 				567B62501DD020EE004D1CFE /* UIImage+Scale.m in Sources */,
 				567B62191DD020A0004D1CFE /* MJRefreshComponent.m in Sources */,

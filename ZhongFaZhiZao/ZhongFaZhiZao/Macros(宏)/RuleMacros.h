@@ -16,6 +16,11 @@
 #define HEIGHT [UIScreen mainScreen].bounds.size.height/667
 
 
+#define IconFont  @"宋体"
+
+#define HUD_DURATION         1.0
+#define USER_DEFAULTS        [NSUserDefaults standardUserDefaults]
+
 //缓存
 #define USER_DEFAULTS        [NSUserDefaults standardUserDefaults]
 
@@ -28,3 +33,18 @@
 
 //间距
 #define Margin 10
+
+
+// 主颜色
+#define MAIN_COLOR [UIColor colorWithHexString:@"23aBec"]
+
+// 文字颜色
+#define TEXT_COLOR [UIColor colorWithHexString:@"#505050"]
+
+#define TEXT_COLOR1 [UIColor colorWithHexString:@"#787878"]
+
+// 横线颜色
+#define LINE_COLOR [UIColor colorWithHexString:@"#e5e5e5"]
+
+// 背景颜色
+#define BACK_COLOR [UIColor colorWithHexString:@"#F0F0F0"]

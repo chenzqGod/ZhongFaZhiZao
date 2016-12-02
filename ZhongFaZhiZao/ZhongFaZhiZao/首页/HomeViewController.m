@@ -22,7 +22,9 @@
     
     self.view.backgroundColor = [UIColor clearColor];
     
-    [self htmlJump:@"http://wap.cecb2b.com" withTitle:@""];
+    
+    
+//    [self htmlJump:@"http://wap.cecb2b.com" withTitle:@""];
     
     
 

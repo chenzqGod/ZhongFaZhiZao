@@ -157,10 +157,10 @@
 
     
 //    .jsp .html可以跳转新页面
-    if (navigationAction.targetFrame == nil ) {
-        
-        [webView loadRequest:navigationAction.request];
-    }
+//    if (navigationAction.targetFrame == nil ) {
+//        
+//        [webView loadRequest:navigationAction.request];
+//    }
     
     decisionHandler(WKNavigationActionPolicyAllow);
     
@@ -205,6 +205,8 @@
 
 - (void)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL result))completionHandler{
     
+    
+    
 }
 
 
@@ -239,11 +241,15 @@
 
 
 - (void)dealloc {
+    
     [_webView removeObserver:self forKeyPath:@"estimatedProgress"];
+    
     
     // if you have set either WKWebView delegate also set these to nil here
     [_webView setNavigationDelegate:nil];
     [_webView setUIDelegate:nil];
+    
+    
 }
 
 

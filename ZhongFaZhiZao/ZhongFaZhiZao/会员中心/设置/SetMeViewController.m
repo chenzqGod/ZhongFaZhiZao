@@ -1,33 +1,26 @@
 //
-//  MineViewController.m
+//  SetMeViewController.m
 //  ZhongFaZhiZao
 //
-//  Created by chenzhiqiang on 2016/11/7.
+//  Created by chenzhiqiang on 2016/12/2.
 //  Copyright © 2016年 chenzhiqiang. All rights reserved.
 //
 
-#import "MineViewController.h"
+#import "SetMeViewController.h"
 
-@interface MineViewController ()
+@interface SetMeViewController ()
 
 @end
 
-@implementation MineViewController
+@implementation SetMeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-//    self.navigationItem.title = @"会员中心";
-    [self.navigationController setNavigationBarHidden:YES];
+    [self.navigationController setNavigationBarHidden:NO];
     
-    
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-}
-
-- (void)viewWillAppear:(BOOL)animated{
-
+    self.navigationItem.title = @"设置";
     
 }
 

@@ -18,21 +18,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    self.navigationItem.title = @"咨询";
+    [self.navigationController setNavigationBarHidden:NO];
+  
+    self.navigationItem.title = @"消息中心";
     
     self.view.backgroundColor = [UIColor redColor];
 
-    [self htmlJump:@"http://wap.cecb2b.com" withTitle:@""];
 
 }
 
-#pragma mark - h5Url
-- (void)htmlJump:(NSString *)htmlUrl withTitle:(NSString *)title{
-    
-    ABWebViewViewController *webViewController = [[ABWebViewViewController alloc]initWithUrlStr:htmlUrl title:title];
-    
-    [self.navigationController pushViewController:webViewController animated:YES];
-}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -1,34 +1,28 @@
 //
-//  MineViewController.m
+//  AskDetailsViewController.m
 //  ZhongFaZhiZao
 //
-//  Created by chenzhiqiang on 2016/11/7.
+//  Created by chenzhiqiang on 2016/12/2.
 //  Copyright © 2016年 chenzhiqiang. All rights reserved.
 //
 
-#import "MineViewController.h"
+#import "AskDetailsViewController.h"
 
-@interface MineViewController ()
+@interface AskDetailsViewController ()
+
+
 
 @end
 
-@implementation MineViewController
+@implementation AskDetailsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-//    self.navigationItem.title = @"会员中心";
-    [self.navigationController setNavigationBarHidden:YES];
-    
-    
+    self.navigationItem.title = @"消息中心";
     
     self.view.backgroundColor = [UIColor whiteColor];
-}
-
-- (void)viewWillAppear:(BOOL)animated{
-
-    
 }
 
 - (void)didReceiveMemoryWarning {

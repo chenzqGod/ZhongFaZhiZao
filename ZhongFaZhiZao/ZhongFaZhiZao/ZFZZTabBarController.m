@@ -41,7 +41,7 @@
     
     AskViewController *askVC = [[AskViewController alloc]init];
     UINavigationController *askNav = [[UINavigationController alloc]initWithRootViewController:askVC];
-    askNav.title = @"咨询";
+    askNav.title = @"消息";
     [askNav.tabBarItem setImage:[UIImage imageNamed:@"对话1"]];
     [askNav.tabBarItem setSelectedImage:[UIImage imageNamed:@"对话2"]];
     
@@ -53,7 +53,7 @@
     
     MineViewController *mineVC = [[MineViewController alloc]init];
     UINavigationController *mineNav = [[UINavigationController alloc]initWithRootViewController:mineVC];
-    mineNav.title = @"会员中心";
+    mineNav.title = @"我的";
     [mineNav.tabBarItem setImage:[UIImage imageNamed:@"会员1"]];
     [mineNav.tabBarItem setSelectedImage:[UIImage imageNamed:@"会员2"]];
     
