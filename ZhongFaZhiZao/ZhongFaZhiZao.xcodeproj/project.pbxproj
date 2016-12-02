@@ -72,6 +72,7 @@
 		56045FE71DF1827000BB5EB9 /* WKMessageProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FE21DF1827000BB5EB9 /* WKMessageProgressHUD.m */; };
 		56045FE81DF1827000BB5EB9 /* WKProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FE41DF1827000BB5EB9 /* WKProgressHUD.m */; };
 		56045FE91DF1827000BB5EB9 /* WKWaitingProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FE61DF1827000BB5EB9 /* WKWaitingProgressHUD.m */; };
+		56045FEC1DF1850800BB5EB9 /* UIView+CPView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FEB1DF1850800BB5EB9 /* UIView+CPView.m */; };
 		561AC0171DE6B832009C8EC3 /* WKWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 561AC0161DE6B832009C8EC3 /* WKWebViewViewController.m */; };
 		561AC01A1DE812F1009C8EC3 /* StartDiagmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 561AC0191DE812F1009C8EC3 /* StartDiagmView.m */; };
 		561AC02A1DE95D2E009C8EC3 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 561AC0291DE95D2E009C8EC3 /* libsqlite3.0.tbd */; };
@@ -302,6 +303,8 @@
 		56045FE41DF1827000BB5EB9 /* WKProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKProgressHUD.m; sourceTree = "<group>"; };
 		56045FE51DF1827000BB5EB9 /* WKWaitingProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWaitingProgressHUD.h; sourceTree = "<group>"; };
 		56045FE61DF1827000BB5EB9 /* WKWaitingProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWaitingProgressHUD.m; sourceTree = "<group>"; };
+		56045FEA1DF1850800BB5EB9 /* UIView+CPView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CPView.h"; sourceTree = "<group>"; };
+		56045FEB1DF1850800BB5EB9 /* UIView+CPView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CPView.m"; sourceTree = "<group>"; };
 		561AC0151DE6B832009C8EC3 /* WKWebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewViewController.h; sourceTree = "<group>"; };
 		561AC0161DE6B832009C8EC3 /* WKWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewViewController.m; sourceTree = "<group>"; };
 		561AC0181DE812F1009C8EC3 /* StartDiagmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartDiagmView.h; sourceTree = "<group>"; };
@@ -1297,6 +1300,8 @@
 		567B62971DD1A47E004D1CFE /* 自定义 */ = {
 			isa = PBXGroup;
 			children = (
+				56045FEA1DF1850800BB5EB9 /* UIView+CPView.h */,
+				56045FEB1DF1850800BB5EB9 /* UIView+CPView.m */,
 				56045FDD1DF1814F00BB5EB9 /* CreateNavgationView.h */,
 				56045FDE1DF1814F00BB5EB9 /* CreateNavgationView.m */,
 				56045FDA1DF180A500BB5EB9 /* UIColor+Hex.h */,
@@ -1579,6 +1584,7 @@
 				567B629A1DD1A4A4004D1CFE /* ABWebViewViewController.m in Sources */,
 				567B62421DD020A1004D1CFE /* UIWebView+AFNetworking.m in Sources */,
 				567B621C1DD020A0004D1CFE /* MJRefreshAutoGifFooter.m in Sources */,
+				56045FEC1DF1850800BB5EB9 /* UIView+CPView.m in Sources */,
 				567B62031DD020A0004D1CFE /* JSONModelError.m in Sources */,
 				56045FDF1DF1814F00BB5EB9 /* CreateNavgationView.m in Sources */,
 				560366531DE444F700332DD2 /* NSNetworking.m in Sources */,
