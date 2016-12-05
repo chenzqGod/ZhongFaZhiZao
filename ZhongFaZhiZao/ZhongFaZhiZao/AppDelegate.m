@@ -28,6 +28,9 @@
 #import <UserNotifications/UserNotifications.h>
 #endif
 
+#define URLStr     @"http://wap.cecb2b.com"
+
+
 @interface AppDelegate ()<JPUSHRegisterDelegate>
 
 @end
@@ -66,6 +69,9 @@
     
     UINavigationController *rootNav = [[UINavigationController alloc]initWithRootViewController:rootVC];
 
+    rootVC.urlStr = URLStr;
+    
+    
     
     self.window.rootViewController = rootNav;
     
@@ -212,10 +218,33 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
     // Required
     NSDictionary * userInfo = notification.request.content.userInfo;
+    UNNotificationRequest *request = notification.request; // 收到推送的请求
+    UNNotificationContent *content = request.content; // 收到推送的消息内容
+    
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
+        
+        if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+            //程序运行时收到通知，先弹出消息框
+            
+            [self getPushMessageAtStateActive:userInfo];
+            
+        }
+        
+        else{
+//
+            [self pushToViewControllerWhenClickPushMessageWith:userInfo];
+        }
+    
+        
     }
-    completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
+    else{
+    
+//        本地通知
+    }
+    completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert);
+
+//    completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
 }
 
 // iOS 10 Support
@@ -224,27 +253,130 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSDictionary * userInfo = response.notification.request.content.userInfo;
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
+        
+        NSLog(@"推送数据为================%@",userInfo);
+        
+  
+        self.pushDic = [[NSMutableDictionary alloc]initWithDictionary:userInfo];
+        
+        NSLog(@"pushDic == %@",self.pushDic);
+        
+        NSLog(@"URL======= %@",self.pushDic[@"URL"]);
+        
+        if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+            //程序运行时收到通知，先弹出消息框
+            [self getPushMessageAtStateActive:userInfo];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"ApplicationState" object:@"0"];
+            
+        }
+        
+        else{
+        
+            [self pushToViewControllerWhenClickPushMessageWith:userInfo];
+        }
+
+        
+    }
+    else{
+    
+//        本地通知
     }
     completionHandler();  // 系统要求执行这个方法
 }
+
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     
     // Required, iOS 7 Support
     [JPUSHService handleRemoteNotification:userInfo];
     completionHandler(UIBackgroundFetchResultNewData);
+    
+    if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+        //程序运行时收到通知，先弹出消息框
+        
+        [self getPushMessageAtStateActive:userInfo];
+        
+    }
+    
+    else{
+        //程序已经关闭或者在后台运行
+        [self pushToViewControllerWhenClickPushMessageWith:userInfo];
+        
+    }
+    
+    [application setApplicationIconBadgeNumber:0];
+    
+    [JPUSHService handleRemoteNotification:userInfo];
+    
+    
+    
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    
+    // 取得 APNs 标准信息内容
+    NSDictionary *aps = [userInfo valueForKey:@"aps"];
+    NSString *content = [aps valueForKey:@"alert"]; //推送显示的内容
+    NSInteger badge = [[aps valueForKey:@"badge"] integerValue]; //badge数量
+    NSString *sound = [aps valueForKey:@"sound"]; //播放的声音
+    
+    // 取得Extras字段内容
+    NSString *customizeField1 = [userInfo valueForKey:@"customizeExtras"]; //服务端中Extras字段，key是自己定义的
+    NSLog(@"content =[%@], badge=[%ld], sound=[%@], customize field  =[%@]",content,badge,sound,customizeField1);
+    
     
     // Required,For systems with less than or equal to iOS6
     [JPUSHService handleRemoteNotification:userInfo];
 }
 
 
+//jpush跳转方法
+- (void)pushToViewControllerWhenClickPushMessageWith:(NSDictionary *)msgDic{
 
+    self.pushDic = [[NSMutableDictionary alloc]initWithDictionary:msgDic];
 
+    
+    MainWebViewController *vc = [[MainWebViewController alloc]init];
+    
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
 
+    
+    if ([msgDic objectForKey:@"URL"]) {
+        
+        vc.urlStr = msgDic[@"URL"];
+        
+        [self.window.rootViewController presentViewController:nav animated:YES completion:nil];
+        
+    }
+    
+    
+}
+
+#pragma mark -- 程序运行时收到通知
+-(void)getPushMessageAtStateActive:(NSDictionary *)pushMessageDic{
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@""
+                                                                             message:[[pushMessageDic objectForKey:@"aps"]objectForKey:@"alert"]
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"查看"
+                                                            style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                                                                
+                                                                [self pushToViewControllerWhenClickPushMessageWith:pushMessageDic];
+                                                            }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消"
+                                                           style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                                                               
+                                                           }];
+    
+    [alertController addAction:confirmAction];
+    [alertController addAction:cancelAction];
+    [self.window.rootViewController presentViewController:alertController animated:YES completion:nil];
+    
+    
+}
 
 
 //判断状态 后台、前台、未打开
@@ -301,5 +433,9 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     }
     return YES;
 }
+
+
+
+
 
 @end

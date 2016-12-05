@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
+#import "MBProgressHUD.h"
 
 @interface MainWebViewController : UIViewController
+
+@property (nonatomic,strong) NSString *urlStr;
 
 @end

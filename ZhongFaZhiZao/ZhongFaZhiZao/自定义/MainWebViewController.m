@@ -14,7 +14,7 @@
 
 @property (nonatomic,strong) WKWebView *webView;
 @property (nonatomic,strong) UIProgressView *progressView;
-@property (nonatomic,strong) NSString *urlStr;
+
 @property (nonatomic,strong) UIImageView *imageView;
 @property(nonatomic,assign) BOOL isLoaing;
 
@@ -57,12 +57,19 @@
     
     _imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"会员2"]];
     _imageView.frame = CGRectMake(screenWidth/2.0-15, screenHeight/2.0-15, 30, 30);
-    [self.view addSubview:_imageView];
+//    [self.view addSubview:_imageView];
+    
+    
+    
     
     _isLoaing=NO;
     
-    _urlStr = URLStr;
-
+//    _urlStr = URLStr;
+    
+    if (!_urlStr) {
+        
+        _urlStr = [[NSString alloc]init];
+    }
     
     [self loadWebViewData];
 }
@@ -109,6 +116,8 @@
     //    }
     
     
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
 }
 
 //内容开始返回时调用
@@ -129,7 +138,18 @@
     //    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
     _imageView.frame = CGRectZero;
+    
+//    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
+
+//页面加载失败时调用
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error{
+
+    [MBProgressHUD showError:@"加载失败"];
+}
+
 
 // 在收到响应后，决定是否跳转
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {
@@ -165,6 +185,8 @@
     decisionHandler(WKNavigationActionPolicyAllow);
     
 }
+
+
 
 
 
