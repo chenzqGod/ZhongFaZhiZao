@@ -36,7 +36,9 @@
 @end
 
 @implementation AppDelegate
-
+{
+    MainWebViewController *rootVC;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -65,7 +67,7 @@
 //    ZFZZTabBarController *rootVC = [[ZFZZTabBarController alloc]init];
     
     
-    MainWebViewController *rootVC = [[MainWebViewController alloc]init];
+    rootVC = [[MainWebViewController alloc]init];
     
     UINavigationController *rootNav = [[UINavigationController alloc]initWithRootViewController:rootVC];
 
@@ -254,14 +256,14 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
         
-        NSLog(@"推送数据为================%@",userInfo);
-        
-  
-        self.pushDic = [[NSMutableDictionary alloc]initWithDictionary:userInfo];
-        
-        NSLog(@"pushDic == %@",self.pushDic);
-        
-        NSLog(@"URL======= %@",self.pushDic[@"URL"]);
+//        NSLog(@"推送数据为================%@",userInfo);
+//        
+//  
+//        self.pushDic = [[NSMutableDictionary alloc]initWithDictionary:userInfo];
+//        
+//        NSLog(@"pushDic == %@",self.pushDic);
+//        
+//        NSLog(@"URL======= %@",self.pushDic[@"URL"]);
         
         if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
             //程序运行时收到通知，先弹出消息框
@@ -336,17 +338,17 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
     self.pushDic = [[NSMutableDictionary alloc]initWithDictionary:msgDic];
 
-    
-    MainWebViewController *vc = [[MainWebViewController alloc]init];
-    
-    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
+//    
+//    MainWebViewController *vc = [[MainWebViewController alloc]init];
+//    
+//    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
 
     
     if ([msgDic objectForKey:@"URL"]) {
         
-        vc.urlStr = msgDic[@"URL"];
+        rootVC.urlStr = msgDic[@"URL"];
         
-        [self.window.rootViewController presentViewController:nav animated:YES completion:nil];
+//        [self.window.rootViewController presentViewController:nav animated:YES completion:nil];
         
     }
     
