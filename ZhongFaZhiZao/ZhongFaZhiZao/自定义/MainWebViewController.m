@@ -74,6 +74,17 @@
     [self loadWebViewData];
 }
 
+//重写set方法
+- (void)setUrlStr:(NSString *)urlStr {
+
+    _urlStr = urlStr;
+    
+    _isLoaing = NO;
+    
+    [self loadWebViewData];
+
+}
+
 
 - (void)loadWebViewData{
     if (!_urlStr.length||_isLoaing) {

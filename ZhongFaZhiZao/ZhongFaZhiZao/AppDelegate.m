@@ -221,23 +221,23 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
     // Required
     NSDictionary * userInfo = notification.request.content.userInfo;
-    UNNotificationRequest *request = notification.request; // 收到推送的请求
-    UNNotificationContent *content = request.content; // 收到推送的消息内容
+//    UNNotificationRequest *request = notification.request; // 收到推送的请求
+//    UNNotificationContent *content = request.content; // 收到推送的消息内容
     
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
         
-        if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
-            //程序运行时收到通知，先弹出消息框
-            
-            [self getPushMessageAtStateActive:userInfo];
-            
-        }
-        
-        else{
+//        if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+//            //程序运行时收到通知，先弹出消息框
+//            
+//            [self getPushMessageAtStateActive:userInfo];
+//            
+//        }
+//        
+//        else{
 //
             [self pushToViewControllerWhenClickPushMessageWith:userInfo];
-        }
+//        }
     
         
     }
@@ -266,18 +266,18 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 //        
 //        NSLog(@"URL======= %@",self.pushDic[@"URL"]);
         
-        if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+//        if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
             //程序运行时收到通知，先弹出消息框
-            [self getPushMessageAtStateActive:userInfo];
+//            [self getPushMessageAtStateActive:userInfo];
+//            
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"ApplicationState" object:@"0"];
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"ApplicationState" object:@"0"];
-            
-        }
-        
-        else{
+//        }
+//        
+//        else{
         
             [self pushToViewControllerWhenClickPushMessageWith:userInfo];
-        }
+//        }
 
         
     }
@@ -295,18 +295,18 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [JPUSHService handleRemoteNotification:userInfo];
     completionHandler(UIBackgroundFetchResultNewData);
     
-    if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
-        //程序运行时收到通知，先弹出消息框
-        
-        [self getPushMessageAtStateActive:userInfo];
-        
-    }
-    
-    else{
+//    if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+//        //程序运行时收到通知，先弹出消息框
+//        
+//        [self getPushMessageAtStateActive:userInfo];
+//        
+//    }
+//    
+//    else{
         //程序已经关闭或者在后台运行
         [self pushToViewControllerWhenClickPushMessageWith:userInfo];
         
-    }
+//    }
     
     [application setApplicationIconBadgeNumber:0];
     
