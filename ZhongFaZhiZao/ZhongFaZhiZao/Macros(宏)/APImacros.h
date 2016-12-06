@@ -7,13 +7,12 @@
 //
 
 
-#define MAIN_URL    @"http://cectest.cecb2b.com/waps"
+#define HOST_URL    @"http://cectest.cecb2b.com/waps"
 
 #define ALIPAY_URL  @"/apppay/toAli?orderIds=201312291707559XMZ"
 
 #define SOURCE_URL  @"/cart/doSubmitOrde"
 
-#define HOST_URL                    @"http://test.neisha.cc"
 
 // 登录注册
 #define LOGIN                       @"/app/user/login"

@@ -31,14 +31,15 @@
 #define URLStr     @"http://wap.cecb2b.com"
 
 
-@interface AppDelegate ()<JPUSHRegisterDelegate>
+@interface AppDelegate ()<JPUSHRegisterDelegate>{
+    
+    MainWebViewController *rootVC;
+}
 
 @end
 
 @implementation AppDelegate
-{
-    MainWebViewController *rootVC;
-}
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.

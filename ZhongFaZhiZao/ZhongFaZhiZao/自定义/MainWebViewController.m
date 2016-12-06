@@ -147,7 +147,8 @@
 //页面加载失败时调用
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error{
 
-    [MBProgressHUD showError:@"加载失败"];
+//    [MBProgressHUD showError:@"加载失败"];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
 
