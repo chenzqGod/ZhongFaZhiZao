@@ -57,6 +57,9 @@
 		56045FE81DF1827000BB5EB9 /* WKProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FE41DF1827000BB5EB9 /* WKProgressHUD.m */; };
 		56045FE91DF1827000BB5EB9 /* WKWaitingProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FE61DF1827000BB5EB9 /* WKWaitingProgressHUD.m */; };
 		56045FEC1DF1850800BB5EB9 /* UIView+CPView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56045FEB1DF1850800BB5EB9 /* UIView+CPView.m */; };
+		560955911DF6A1A100DA0B72 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560955901DF6A1A100DA0B72 /* LoginViewController.m */; };
+		560955941DF6A1F800DA0B72 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 560955931DF6A1F800DA0B72 /* UserInfo.m */; };
+		560955971DF6AF5E00DA0B72 /* PwLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 560955961DF6AF5E00DA0B72 /* PwLoginView.m */; };
 		561AC0171DE6B832009C8EC3 /* WKWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 561AC0161DE6B832009C8EC3 /* WKWebViewViewController.m */; };
 		561AC01A1DE812F1009C8EC3 /* StartDiagmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 561AC0191DE812F1009C8EC3 /* StartDiagmView.m */; };
 		561AC02A1DE95D2E009C8EC3 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 561AC0291DE95D2E009C8EC3 /* libsqlite3.0.tbd */; };
@@ -257,6 +260,12 @@
 		56045FE61DF1827000BB5EB9 /* WKWaitingProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWaitingProgressHUD.m; sourceTree = "<group>"; };
 		56045FEA1DF1850800BB5EB9 /* UIView+CPView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CPView.h"; sourceTree = "<group>"; };
 		56045FEB1DF1850800BB5EB9 /* UIView+CPView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CPView.m"; sourceTree = "<group>"; };
+		5609558F1DF6A1A100DA0B72 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		560955901DF6A1A100DA0B72 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		560955921DF6A1F800DA0B72 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		560955931DF6A1F800DA0B72 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
+		560955951DF6AF5E00DA0B72 /* PwLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PwLoginView.h; sourceTree = "<group>"; };
+		560955961DF6AF5E00DA0B72 /* PwLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PwLoginView.m; sourceTree = "<group>"; };
 		561AC0151DE6B832009C8EC3 /* WKWebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewViewController.h; sourceTree = "<group>"; };
 		561AC0161DE6B832009C8EC3 /* WKWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewViewController.m; sourceTree = "<group>"; };
 		561AC0181DE812F1009C8EC3 /* StartDiagmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartDiagmView.h; sourceTree = "<group>"; };
@@ -661,6 +670,43 @@
 				56045FE61DF1827000BB5EB9 /* WKWaitingProgressHUD.m */,
 			);
 			path = WKProgressHUD;
+			sourceTree = "<group>";
+		};
+		5609558B1DF6A15400DA0B72 /* 登录 */ = {
+			isa = PBXGroup;
+			children = (
+				5609558C1DF6A15400DA0B72 /* controller */,
+				5609558D1DF6A15400DA0B72 /* model */,
+				5609558E1DF6A15400DA0B72 /* view */,
+			);
+			path = "登录";
+			sourceTree = "<group>";
+		};
+		5609558C1DF6A15400DA0B72 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				5609558F1DF6A1A100DA0B72 /* LoginViewController.h */,
+				560955901DF6A1A100DA0B72 /* LoginViewController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		5609558D1DF6A15400DA0B72 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				560955921DF6A1F800DA0B72 /* UserInfo.h */,
+				560955931DF6A1F800DA0B72 /* UserInfo.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		5609558E1DF6A15400DA0B72 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				560955951DF6AF5E00DA0B72 /* PwLoginView.h */,
+				560955961DF6AF5E00DA0B72 /* PwLoginView.m */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		561AC0351DED7B0F009C8EC3 /* 引导页 */ = {
@@ -1138,6 +1184,7 @@
 		567B62671DD08753004D1CFE /* 会员中心 */ = {
 			isa = PBXGroup;
 			children = (
+				5609558B1DF6A15400DA0B72 /* 登录 */,
 				567B62731DD08870004D1CFE /* MineViewController.h */,
 				567B62741DD08870004D1CFE /* MineViewController.m */,
 				56045FA51DF17AF100BB5EB9 /* 设置 */,
@@ -1416,6 +1463,7 @@
 				561AC0171DE6B832009C8EC3 /* WKWebViewViewController.m in Sources */,
 				567B62261DD020A1004D1CFE /* MJRefreshConst.m in Sources */,
 				567B620D1DD020A0004D1CFE /* MASLayoutConstraint.m in Sources */,
+				560955941DF6A1F800DA0B72 /* UserInfo.m in Sources */,
 				567B61FE1DD020A0004D1CFE /* AFURLResponseSerialization.m in Sources */,
 				567B61481DCAE1EF004D1CFE /* ZFZZTabBarController.m in Sources */,
 				567B62271DD020A1004D1CFE /* UIScrollView+MJExtension.m in Sources */,
@@ -1466,6 +1514,7 @@
 				567B626C1DD087A6004D1CFE /* HomeViewController.m in Sources */,
 				567B61FB1DD020A0004D1CFE /* AFNetworkReachabilityManager.m in Sources */,
 				567B623A1DD020A1004D1CFE /* AFAutoPurgingImageCache.m in Sources */,
+				560955971DF6AF5E00DA0B72 /* PwLoginView.m in Sources */,
 				567B62071DD020A0004D1CFE /* JSONModel+networking.m in Sources */,
 				567B62221DD020A1004D1CFE /* MJRefreshGifHeader.m in Sources */,
 				567B624D1DD020EE004D1CFE /* NSString+Mobile.m in Sources */,
@@ -1474,6 +1523,7 @@
 				567B620B1DD020A0004D1CFE /* MASConstraint.m in Sources */,
 				56045FDC1DF180A500BB5EB9 /* UIColor+Hex.m in Sources */,
 				567B622C1DD020A1004D1CFE /* SDImageCache.m in Sources */,
+				560955911DF6A1A100DA0B72 /* LoginViewController.m in Sources */,
 				567B62061DD020A0004D1CFE /* JSONHTTPClient.m in Sources */,
 				567B62011DD020A0004D1CFE /* JSONModelArray.m in Sources */,
 				567B623E1DD020A1004D1CFE /* UIButton+AFNetworking.m in Sources */,

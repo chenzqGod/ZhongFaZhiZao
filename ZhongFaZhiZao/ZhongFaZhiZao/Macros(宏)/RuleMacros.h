@@ -34,6 +34,11 @@
 //间距
 #define Margin 10
 
+//红色
+#define RED_COLOR   [UIColor colorWithHexString:@"#F35833"]
+
+//蓝色
+#define BLUE_COLOR  [UIColor colorWithHexString:@"#31B3EF"]
 
 // 主颜色
 #define MAIN_COLOR [UIColor colorWithHexString:@"23aBec"]

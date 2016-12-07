@@ -278,7 +278,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         
             [self pushToViewControllerWhenClickPushMessageWith:userInfo];
 //        }
-
+ 
         
     }
     else{
