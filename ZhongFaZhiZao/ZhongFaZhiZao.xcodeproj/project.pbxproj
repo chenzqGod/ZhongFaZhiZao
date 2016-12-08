@@ -60,6 +60,19 @@
 		560955911DF6A1A100DA0B72 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560955901DF6A1A100DA0B72 /* LoginViewController.m */; };
 		560955941DF6A1F800DA0B72 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 560955931DF6A1F800DA0B72 /* UserInfo.m */; };
 		560955971DF6AF5E00DA0B72 /* PwLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 560955961DF6AF5E00DA0B72 /* PwLoginView.m */; };
+		5609559A1DF7EDCD00DA0B72 /* VfLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 560955991DF7EDCD00DA0B72 /* VfLoginView.m */; };
+		5609559D1DF7F11F00DA0B72 /* ForgetPwView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5609559C1DF7F11F00DA0B72 /* ForgetPwView.m */; };
+		560955A21DF7F12C00DA0B72 /* RegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5609559F1DF7F12C00DA0B72 /* RegisterView.m */; };
+		560955A31DF7F12C00DA0B72 /* SetPwView.m in Sources */ = {isa = PBXBuildFile; fileRef = 560955A11DF7F12C00DA0B72 /* SetPwView.m */; };
+		560955A91DF7F7DB00DA0B72 /* DelegateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 560955A81DF7F7DB00DA0B72 /* DelegateView.m */; };
+		560955AC1DF7F82100DA0B72 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560955AB1DF7F82100DA0B72 /* RegisterViewController.m */; };
+		560955AF1DF7F87300DA0B72 /* DelegateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560955AE1DF7F87300DA0B72 /* DelegateViewController.m */; };
+		560955B21DF7FADF00DA0B72 /* PwLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560955B11DF7FADF00DA0B72 /* PwLoginViewController.m */; };
+		560955B51DF7FB2D00DA0B72 /* VfLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560955B41DF7FB2D00DA0B72 /* VfLoginViewController.m */; };
+		560955B81DF7FB3700DA0B72 /* ForgetPwViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560955B71DF7FB3700DA0B72 /* ForgetPwViewController.m */; };
+		560955BB1DF7FBE400DA0B72 /* SetPwViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560955BA1DF7FBE400DA0B72 /* SetPwViewController.m */; };
+		560955BE1DF812E000DA0B72 /* AskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 560955BD1DF812E000DA0B72 /* AskTableViewCell.m */; };
+		560955C11DF93AEE00DA0B72 /* SetMeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 560955C01DF93AEE00DA0B72 /* SetMeTableViewCell.m */; };
 		561AC0171DE6B832009C8EC3 /* WKWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 561AC0161DE6B832009C8EC3 /* WKWebViewViewController.m */; };
 		561AC01A1DE812F1009C8EC3 /* StartDiagmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 561AC0191DE812F1009C8EC3 /* StartDiagmView.m */; };
 		561AC02A1DE95D2E009C8EC3 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 561AC0291DE95D2E009C8EC3 /* libsqlite3.0.tbd */; };
@@ -266,6 +279,32 @@
 		560955931DF6A1F800DA0B72 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		560955951DF6AF5E00DA0B72 /* PwLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PwLoginView.h; sourceTree = "<group>"; };
 		560955961DF6AF5E00DA0B72 /* PwLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PwLoginView.m; sourceTree = "<group>"; };
+		560955981DF7EDCD00DA0B72 /* VfLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VfLoginView.h; sourceTree = "<group>"; };
+		560955991DF7EDCD00DA0B72 /* VfLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VfLoginView.m; sourceTree = "<group>"; };
+		5609559B1DF7F11F00DA0B72 /* ForgetPwView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPwView.h; sourceTree = "<group>"; };
+		5609559C1DF7F11F00DA0B72 /* ForgetPwView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPwView.m; sourceTree = "<group>"; };
+		5609559E1DF7F12C00DA0B72 /* RegisterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterView.h; sourceTree = "<group>"; };
+		5609559F1DF7F12C00DA0B72 /* RegisterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterView.m; sourceTree = "<group>"; };
+		560955A01DF7F12C00DA0B72 /* SetPwView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetPwView.h; sourceTree = "<group>"; };
+		560955A11DF7F12C00DA0B72 /* SetPwView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetPwView.m; sourceTree = "<group>"; };
+		560955A71DF7F7DB00DA0B72 /* DelegateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateView.h; sourceTree = "<group>"; };
+		560955A81DF7F7DB00DA0B72 /* DelegateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateView.m; sourceTree = "<group>"; };
+		560955AA1DF7F82100DA0B72 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		560955AB1DF7F82100DA0B72 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		560955AD1DF7F87300DA0B72 /* DelegateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateViewController.h; sourceTree = "<group>"; };
+		560955AE1DF7F87300DA0B72 /* DelegateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateViewController.m; sourceTree = "<group>"; };
+		560955B01DF7FADF00DA0B72 /* PwLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PwLoginViewController.h; sourceTree = "<group>"; };
+		560955B11DF7FADF00DA0B72 /* PwLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PwLoginViewController.m; sourceTree = "<group>"; };
+		560955B31DF7FB2D00DA0B72 /* VfLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VfLoginViewController.h; sourceTree = "<group>"; };
+		560955B41DF7FB2D00DA0B72 /* VfLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VfLoginViewController.m; sourceTree = "<group>"; };
+		560955B61DF7FB3700DA0B72 /* ForgetPwViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPwViewController.h; sourceTree = "<group>"; };
+		560955B71DF7FB3700DA0B72 /* ForgetPwViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPwViewController.m; sourceTree = "<group>"; };
+		560955B91DF7FBE400DA0B72 /* SetPwViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetPwViewController.h; sourceTree = "<group>"; };
+		560955BA1DF7FBE400DA0B72 /* SetPwViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetPwViewController.m; sourceTree = "<group>"; };
+		560955BC1DF812E000DA0B72 /* AskTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AskTableViewCell.h; sourceTree = "<group>"; };
+		560955BD1DF812E000DA0B72 /* AskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AskTableViewCell.m; sourceTree = "<group>"; };
+		560955BF1DF93AEE00DA0B72 /* SetMeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetMeTableViewCell.h; sourceTree = "<group>"; };
+		560955C01DF93AEE00DA0B72 /* SetMeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetMeTableViewCell.m; sourceTree = "<group>"; };
 		561AC0151DE6B832009C8EC3 /* WKWebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewViewController.h; sourceTree = "<group>"; };
 		561AC0161DE6B832009C8EC3 /* WKWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewViewController.m; sourceTree = "<group>"; };
 		561AC0181DE812F1009C8EC3 /* StartDiagmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartDiagmView.h; sourceTree = "<group>"; };
@@ -655,6 +694,15 @@
 			children = (
 				56045FA61DF17B0500BB5EB9 /* SetMeViewController.h */,
 				56045FA71DF17B0500BB5EB9 /* SetMeViewController.m */,
+				560955BF1DF93AEE00DA0B72 /* SetMeTableViewCell.h */,
+				560955C01DF93AEE00DA0B72 /* SetMeTableViewCell.m */,
+				560955C21DF9441900DA0B72 /* 账户安全 */,
+				560955C31DF9441900DA0B72 /* 意见反馈 */,
+				560955C41DF9441900DA0B72 /* 新手帮助 */,
+				560955C51DF9441900DA0B72 /* 消息通知 */,
+				560955C61DF9441900DA0B72 /* 清除缓存 */,
+				560955C71DF9441900DA0B72 /* 联系客服 */,
+				560955C81DF9441900DA0B72 /* 版本显示 */,
 			);
 			path = "设置";
 			sourceTree = "<group>";
@@ -685,6 +733,18 @@
 		5609558C1DF6A15400DA0B72 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				560955B91DF7FBE400DA0B72 /* SetPwViewController.h */,
+				560955BA1DF7FBE400DA0B72 /* SetPwViewController.m */,
+				560955B61DF7FB3700DA0B72 /* ForgetPwViewController.h */,
+				560955B71DF7FB3700DA0B72 /* ForgetPwViewController.m */,
+				560955B31DF7FB2D00DA0B72 /* VfLoginViewController.h */,
+				560955B41DF7FB2D00DA0B72 /* VfLoginViewController.m */,
+				560955B01DF7FADF00DA0B72 /* PwLoginViewController.h */,
+				560955B11DF7FADF00DA0B72 /* PwLoginViewController.m */,
+				560955AD1DF7F87300DA0B72 /* DelegateViewController.h */,
+				560955AE1DF7F87300DA0B72 /* DelegateViewController.m */,
+				560955AA1DF7F82100DA0B72 /* RegisterViewController.h */,
+				560955AB1DF7F82100DA0B72 /* RegisterViewController.m */,
 				5609558F1DF6A1A100DA0B72 /* LoginViewController.h */,
 				560955901DF6A1A100DA0B72 /* LoginViewController.m */,
 			);
@@ -703,10 +763,69 @@
 		5609558E1DF6A15400DA0B72 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				560955A71DF7F7DB00DA0B72 /* DelegateView.h */,
+				560955A81DF7F7DB00DA0B72 /* DelegateView.m */,
+				5609559E1DF7F12C00DA0B72 /* RegisterView.h */,
+				5609559F1DF7F12C00DA0B72 /* RegisterView.m */,
+				560955A01DF7F12C00DA0B72 /* SetPwView.h */,
+				560955A11DF7F12C00DA0B72 /* SetPwView.m */,
+				5609559B1DF7F11F00DA0B72 /* ForgetPwView.h */,
+				5609559C1DF7F11F00DA0B72 /* ForgetPwView.m */,
 				560955951DF6AF5E00DA0B72 /* PwLoginView.h */,
 				560955961DF6AF5E00DA0B72 /* PwLoginView.m */,
+				560955981DF7EDCD00DA0B72 /* VfLoginView.h */,
+				560955991DF7EDCD00DA0B72 /* VfLoginView.m */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		560955C21DF9441900DA0B72 /* 账户安全 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "账户安全";
+			sourceTree = "<group>";
+		};
+		560955C31DF9441900DA0B72 /* 意见反馈 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "意见反馈";
+			sourceTree = "<group>";
+		};
+		560955C41DF9441900DA0B72 /* 新手帮助 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "新手帮助";
+			sourceTree = "<group>";
+		};
+		560955C51DF9441900DA0B72 /* 消息通知 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "消息通知";
+			sourceTree = "<group>";
+		};
+		560955C61DF9441900DA0B72 /* 清除缓存 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "清除缓存";
+			sourceTree = "<group>";
+		};
+		560955C71DF9441900DA0B72 /* 联系客服 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "联系客服";
+			sourceTree = "<group>";
+		};
+		560955C81DF9441900DA0B72 /* 版本显示 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "版本显示";
 			sourceTree = "<group>";
 		};
 		561AC0351DED7B0F009C8EC3 /* 引导页 */ = {
@@ -1204,6 +1323,8 @@
 		567B62691DD08753004D1CFE /* 咨询 */ = {
 			isa = PBXGroup;
 			children = (
+				560955BC1DF812E000DA0B72 /* AskTableViewCell.h */,
+				560955BD1DF812E000DA0B72 /* AskTableViewCell.m */,
 				567B626D1DD087E1004D1CFE /* AskViewController.h */,
 				567B626E1DD087E1004D1CFE /* AskViewController.m */,
 				56045FA41DF17A7000BB5EB9 /* 消息详情 */,
@@ -1457,6 +1578,7 @@
 				567B62281DD020A1004D1CFE /* UIScrollView+MJRefresh.m in Sources */,
 				567B61FC1DD020A0004D1CFE /* AFSecurityPolicy.m in Sources */,
 				567B62091DD020A0004D1CFE /* JSONValueTransformer.m in Sources */,
+				560955B51DF7FB2D00DA0B72 /* VfLoginViewController.m in Sources */,
 				567B621A1DD020A0004D1CFE /* MJRefreshFooter.m in Sources */,
 				56045FA81DF17B0500BB5EB9 /* SetMeViewController.m in Sources */,
 				567B62751DD08870004D1CFE /* MineViewController.m in Sources */,
@@ -1466,8 +1588,13 @@
 				560955941DF6A1F800DA0B72 /* UserInfo.m in Sources */,
 				567B61FE1DD020A0004D1CFE /* AFURLResponseSerialization.m in Sources */,
 				567B61481DCAE1EF004D1CFE /* ZFZZTabBarController.m in Sources */,
+				560955BB1DF7FBE400DA0B72 /* SetPwViewController.m in Sources */,
 				567B62271DD020A1004D1CFE /* UIScrollView+MJExtension.m in Sources */,
 				567B622A1DD020A1004D1CFE /* MKAnnotationView+WebCache.m in Sources */,
+				560955AF1DF7F87300DA0B72 /* DelegateViewController.m in Sources */,
+				560955BE1DF812E000DA0B72 /* AskTableViewCell.m in Sources */,
+				560955B81DF7FB3700DA0B72 /* ForgetPwViewController.m in Sources */,
+				560955AC1DF7F82100DA0B72 /* RegisterViewController.m in Sources */,
 				567B61FA1DD020A0004D1CFE /* AFHTTPSessionManager.m in Sources */,
 				567B624F1DD020EE004D1CFE /* UIImage+Extension.m in Sources */,
 				567B62171DD020A0004D1CFE /* MJRefreshAutoFooter.m in Sources */,
@@ -1494,6 +1621,7 @@
 				561AC0401DED7D17009C8EC3 /* LaunchIntroductionView.m in Sources */,
 				567B622E1DD020A1004D1CFE /* SDWebImageDecoder.m in Sources */,
 				567B62121DD020A0004D1CFE /* View+MASAdditions.m in Sources */,
+				560955B21DF7FADF00DA0B72 /* PwLoginViewController.m in Sources */,
 				567B62161DD020A0004D1CFE /* MBProgressHUD.m in Sources */,
 				567B620F1DD020A0004D1CFE /* MASViewConstraint.m in Sources */,
 				56045FA31DF16AC100BB5EB9 /* AskDetailsViewController.m in Sources */,
@@ -1501,6 +1629,7 @@
 				567B622D1DD020A1004D1CFE /* SDWebImageCompat.m in Sources */,
 				567B623F1DD020A1004D1CFE /* UIImageView+AFNetworking.m in Sources */,
 				567B62411DD020A1004D1CFE /* UIRefreshControl+AFNetworking.m in Sources */,
+				560955A31DF7F12C00DA0B72 /* SetPwView.m in Sources */,
 				567B61171DCADFF9004D1CFE /* AppDelegate.m in Sources */,
 				56045FE91DF1827000BB5EB9 /* WKWaitingProgressHUD.m in Sources */,
 				567B62331DD020A1004D1CFE /* UIButton+WebCache.m in Sources */,
@@ -1515,6 +1644,7 @@
 				567B61FB1DD020A0004D1CFE /* AFNetworkReachabilityManager.m in Sources */,
 				567B623A1DD020A1004D1CFE /* AFAutoPurgingImageCache.m in Sources */,
 				560955971DF6AF5E00DA0B72 /* PwLoginView.m in Sources */,
+				560955C11DF93AEE00DA0B72 /* SetMeTableViewCell.m in Sources */,
 				567B62071DD020A0004D1CFE /* JSONModel+networking.m in Sources */,
 				567B62221DD020A1004D1CFE /* MJRefreshGifHeader.m in Sources */,
 				567B624D1DD020EE004D1CFE /* NSString+Mobile.m in Sources */,
@@ -1539,9 +1669,13 @@
 				567B62131DD020A0004D1CFE /* ViewController+MASAdditions.m in Sources */,
 				567B62081DD020A0004D1CFE /* JSONKeyMapper.m in Sources */,
 				567B62501DD020EE004D1CFE /* UIImage+Scale.m in Sources */,
+				5609559A1DF7EDCD00DA0B72 /* VfLoginView.m in Sources */,
+				5609559D1DF7F11F00DA0B72 /* ForgetPwView.m in Sources */,
 				567B62191DD020A0004D1CFE /* MJRefreshComponent.m in Sources */,
 				567B61141DCADFF9004D1CFE /* main.m in Sources */,
 				567B61FD1DD020A0004D1CFE /* AFURLRequestSerialization.m in Sources */,
+				560955A21DF7F12C00DA0B72 /* RegisterView.m in Sources */,
+				560955A91DF7F7DB00DA0B72 /* DelegateView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

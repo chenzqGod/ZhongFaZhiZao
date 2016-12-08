@@ -172,7 +172,6 @@
 
 - (WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures{
 
-    [self webSuccess];
     
     return nil;
     
@@ -238,34 +237,24 @@
     NSString *parameter = @"orderID";
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [[NSNetworking sharedManager]get:[NSString stringWithFormat:@"%@%@",/*HOST_URL,COMMUNITY_HOT_SEARCH*/@"",@""] parameters:parameter success:^(id response) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        
-        [[AlipaySDK defaultService] payOrder:response fromScheme:response callback:^(NSDictionary *resultDic) {
-            NSLog(@"reslut = %@",resultDic);
-        }];
-        
-        
-        
-        
-    } failure:^(NSString *error) {
-        
-    }];
+//    [[NSNetworking sharedManager]get:[NSString stringWithFormat:@"%@%@",/*HOST_URL,COMMUNITY_HOT_SEARCH*/@"",@""] parameters:parameter success:^(id response) {
+//        [MBProgressHUD hideHUDForView:self.view animated:YES];
+//        
+//        [[AlipaySDK defaultService] payOrder:response fromScheme:response callback:^(NSDictionary *resultDic) {
+//            NSLog(@"reslut = %@",resultDic);
+//        }];
+//        
+//        
+//        
+//        
+//    } failure:^(NSString *error) {
+//        
+//    }];
     
     
 }
 
 
-#pragma mark - 测试webView
-- (void)webSuccess{
-
-
-    NSInteger a = 0;
-    NSInteger b = 18;
-    
-    NSLog(@"%ld就是webSuccess",a+b);
-    
-}
 
 //#pragma mark - h5Url
 - (void)htmlJump:(NSString *)htmlUrl withTitle:(NSString *)title{

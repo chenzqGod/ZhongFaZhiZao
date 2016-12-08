@@ -8,10 +8,12 @@
 
 #import "APImacros.h"
 #import "RuleMacros.h"
-#import "NSNetworking.h"
+//#import "NSNetworking.h"
 #import "MBProgressHUD.h"
 #import "Masonry.h"
 
 #import "UIColor+Hex.h"
 #import "WKProgressHUD.h"
 #import "MBProgressHUD+MJ.h"
+
+#import "UserInfo.h"

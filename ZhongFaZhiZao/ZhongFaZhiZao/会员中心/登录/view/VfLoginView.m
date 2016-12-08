@@ -1,18 +1,18 @@
 //
-//  PwLoginView.m
+//  VfLoginView.m
 //  ZhongFaZhiZao
 //
-//  Created by chenzhiqiang on 2016/12/6.
+//  Created by chenzhiqiang on 2016/12/7.
 //  Copyright © 2016年 chenzhiqiang. All rights reserved.
 //
 
-#import "PwLoginView.h"
+#import "VfLoginView.h"
 
-@implementation PwLoginView
+@implementation VfLoginView
 
 - (instancetype)initWithFrame:(CGRect)frame{
 
-    self = [super initWithFrame:frame];
+    self = [super initWithFrame: frame];
     
     if (self) {
         
@@ -20,9 +20,10 @@
     }
     
     return self;
+    
 }
 
-- (void)addSubviews {
+- (void)addSubviews{
 
     self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
     [self addSubview:self.scrollView];
@@ -32,9 +33,9 @@
     [self.scrollView addSubview:self.logoView];
     
     self.phoneNumLbl = [[UIImageView alloc]init];
-//    self.phoneNumLbl.font = [UIFont fon];
-    self.phoneNumLbl.image = @"\U0000e605";
-    self.phoneNumLbl.backgroundColor = [UIColor colorWithHexString:@"#b4b4b4"];
+//    self.phoneNumLbl.font = [UIFont fontWithName:IconFont size:26];
+//    self.phoneNumLbl.text = @"\U0000e605";
+//    self.phoneNumLbl.textColor = [UIColor colorWithHexString:@"#b4b4b4"];
     [self.phoneNumLbl sizeToFit];
     [self.scrollView addSubview:self.phoneNumLbl];
     
@@ -50,53 +51,42 @@
     self.firstLine.backgroundColor = [UIColor colorWithHexString:@"#b4b4b4"];
     [self.scrollView addSubview:self.firstLine];
     
-    self.passWdLbl = [[UIImageView alloc]init];
-//    self.passWdLbl.font = [UIFont fontWithName:IconFont size:26];
-    self.passWdLbl.image = @"\U0000e608";
-    self.passWdLbl.backgroundColor = [UIColor colorWithHexString:@"#b4b4b4"];
-    [self.passWdLbl sizeToFit];
-    [self.scrollView addSubview:self.passWdLbl];
+    self.vfCodeLbl = [[UIImageView alloc]init];
+//    self.vfCodeLbl.font = [UIFont fontWithName:IconFont size:26];
+//    self.vfCodeLbl.text = @"\U0000e60b";
+//    self.vfCodeLbl.textColor = [UIColor colorWithHexString:@"#787878"];
+    [self.vfCodeLbl sizeToFit];
+    [self.scrollView addSubview:self.vfCodeLbl];
     
-    self.passWdTF = [[UITextField alloc]init];
-    self.passWdTF.leftView = self.passWdLbl;
-    self.passWdTF.leftViewMode = UITextFieldViewModeAlways;
-    self.passWdTF.rightView = self.pwVisibleBtn;
-    self.passWdTF.rightViewMode = UITextFieldViewModeAlways;
-    self.passWdTF.placeholder = @"请输入您的密码";
-    self.passWdTF.font = [UIFont systemFontOfSize:15];
-    self.passWdTF.secureTextEntry = YES;
-    self.passWdTF.textColor = [UIColor colorWithHexString:@"#646464"];
-    [self.scrollView addSubview:self.passWdTF];
+    self.getvfCodeBtn = [[UIButton alloc]init];
+    [self.getvfCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+    [self.getvfCodeBtn setTitleColor:[UIColor colorWithHexString:@"#a0a0a0"] forState:UIControlStateNormal];
+    self.getvfCodeBtn.layer.cornerRadius = 2;
+    self.getvfCodeBtn.layer.borderColor = [UIColor colorWithHexString:@"#a0a0a0"].CGColor;
+    self.getvfCodeBtn.layer.borderWidth = 1;
+    self.getvfCodeBtn.layer.masksToBounds = YES;
+    self.getvfCodeBtn.titleLabel.font  = [UIFont systemFontOfSize:11];
+    [self.scrollView addSubview:self.getvfCodeBtn];
+    
+    self.vfCodeTF = [[UITextField alloc]init];
+    self.vfCodeTF.leftView = self.vfCodeLbl;
+    self.vfCodeTF.leftViewMode = UITextFieldViewModeAlways;
+    self.vfCodeTF.rightView = self.getvfCodeBtn;
+    self.vfCodeTF.rightViewMode = UITextFieldViewModeAlways;
+    self.vfCodeTF.placeholder = @"请输入验证码";
+    self.vfCodeTF.font = [UIFont systemFontOfSize:15];
+    self.vfCodeTF.textColor = [UIColor colorWithHexString:@"#646464"];
+    [self.scrollView addSubview:self.vfCodeTF];
     
     self.secondLine = [[UIView alloc]init];
-    self.secondLine.backgroundColor = [UIColor colorWithHexString:@"#b4b4b4"];
+    self.secondLine.backgroundColor = [UIColor colorWithHexString:@"#787878"];
     [self.scrollView addSubview:self.secondLine];
     
-    
-    self.pwVisibleBtn = [[UIButton alloc]init];
-    self.pwVisibleBtn.titleLabel.font = [UIFont fontWithName:IconFont size:26];
-    [self.pwVisibleBtn setTitle:@"\U0000e607" forState:UIControlStateNormal];
-    [self.pwVisibleBtn setTitleColor:[UIColor colorWithHexString:@"#787878"] forState:UIControlStateNormal];
-    [self.pwVisibleBtn sizeToFit];
-    [self.scrollView addSubview:self.pwVisibleBtn];
-    
-    self.vfLoginBtn = [[UIButton alloc]init];
-    [self.vfLoginBtn setTitle:@"验证码登录" forState:UIControlStateNormal];
-    [self.vfLoginBtn setTitleColor:MAIN_COLOR forState:UIControlStateNormal];
-    self.vfLoginBtn.titleLabel.font = [UIFont systemFontOfSize:11];
-    [self.scrollView addSubview:self.vfLoginBtn];
-    
-    self.rememberPwBtn = [[UIButton alloc]init];
-    self.rememberPwBtn.layer.borderColor = [UIColor colorWithHexString:@"#a0a0a0"].CGColor;
-    self.rememberPwBtn.layer.borderWidth = 1;
-    self.rememberPwBtn.layer.masksToBounds = YES;
-    [self.scrollView addSubview:self.rememberPwBtn];
-    
-    self.rememberPwLbl = [[UILabel alloc]init];
-    self.rememberPwLbl.text = @"记住密码";
-    self.rememberPwLbl.textColor = [UIColor colorWithHexString:@"#a0a0a0"];
-    self.rememberPwLbl.font = [UIFont systemFontOfSize:9];
-    [self.scrollView addSubview: self.rememberPwLbl];
+    self.pwLoginBtn = [[UIButton alloc]init];
+    [self.pwLoginBtn setTitle:@"密码登录" forState:UIControlStateNormal];
+    [self.pwLoginBtn setTitleColor:MAIN_COLOR forState:UIControlStateNormal];
+    self.pwLoginBtn.titleLabel.font = [UIFont systemFontOfSize:11];
+    [self.scrollView addSubview:self.pwLoginBtn];
     
     self.loginBtn = [[UIButton alloc]init];
     [self.loginBtn setTitle:@"登录" forState:UIControlStateNormal];
@@ -130,7 +120,6 @@
     
 }
 
-
 -(void)layoutSubviews{
     [super layoutSubviews];
     
@@ -160,54 +149,43 @@
         make.centerX.equalTo(self.phoneNumTF.mas_centerX);
     }];
     
-    [self.passWdTF mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.vfCodeTF mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@(270.5*WIDTH));
         make.height.equalTo(@(32));
         make.top.equalTo(self.phoneNumTF.mas_bottom).offset(35*HEIGHT);
         make.centerX.equalTo(self.mas_centerX);
     }];
     
-    [self.passWdLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.vfCodeLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(35, 32));
-        make.left.equalTo(self.passWdTF.mas_left);
-        make.centerY.equalTo(self.passWdTF.mas_centerY);
+        make.left.equalTo(self.vfCodeTF.mas_left);
+        make.centerY.equalTo(self.vfCodeTF.mas_centerY);
+    }];
+    
+    [self.getvfCodeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(65, 26));
+        make.right.equalTo(self.vfCodeTF.mas_right);
+        make.top.equalTo(self.vfCodeTF.mas_top);
     }];
     
     [self.secondLine mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(self.passWdTF);
+        make.width.equalTo(self.vfCodeTF);
         make.height.equalTo(@1);
-        make.top.equalTo(self.passWdTF.mas_bottom).offset(-1);
-        make.centerX.equalTo(self.passWdTF.mas_centerX);
+        make.top.equalTo(self.vfCodeTF.mas_bottom).offset(-1);
+        make.centerX.equalTo(self.vfCodeTF.mas_centerX);
     }];
     
-    [self.pwVisibleBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(32, 32));
-        make.right.equalTo(self.passWdTF.mas_right).offset(5);
-        make.centerY.equalTo(self.passWdTF.mas_centerY);
-    }];
     
-    [self.rememberPwLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.passWdTF.mas_bottom).offset(19*HEIGHT);
-        make.right.equalTo(self.passWdTF.mas_right);
-    }];
-    
-    [self.rememberPwBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(10.5, 10.5));
-        make.top.equalTo(self.rememberPwLbl);
-        make.right.equalTo(self.rememberPwLbl.mas_left).offset(-2);
-        
-    }];
-    
-    [self.vfLoginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.rememberPwBtn.mas_centerY);
-        make.left.equalTo(self.passWdTF.mas_left);
+    [self.pwLoginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.vfCodeTF.mas_bottom).offset(19*HEIGHT);
+        make.left.equalTo(self.vfCodeTF.mas_left);
     }];
     
     [self.loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.rememberPwBtn.mas_bottom).offset(43.5*HEIGHT);
+        make.top.equalTo(self.pwLoginBtn.mas_bottom).offset(43.5*HEIGHT);
         make.centerX.equalTo(self.mas_centerX);
         make.height.equalTo(@34);
-        make.width.equalTo(self.passWdTF.mas_width);
+        make.width.equalTo(self.vfCodeTF.mas_width);
     }];
     
     [self.forgetPwBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -227,9 +205,10 @@
     
     [self.closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(12, 12));
-        make.top.equalTo(self.scrollView.mas_top).offset(10*HEIGHT);
+        make.top.equalTo(self.scrollView.mas_top).offset(10);
         make.right.equalTo(@(screenWidth-10));
     }];
 }
+
 
 @end

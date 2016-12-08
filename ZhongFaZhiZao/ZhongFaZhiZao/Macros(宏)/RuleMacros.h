@@ -28,11 +28,14 @@
 #define screenWidth [UIScreen mainScreen].bounds.size.width
 #define screenHeight [UIScreen mainScreen].bounds.size.height
 
+
 //屏幕比例
 #define screenScale   screenWidth/375.0
 
+#define screenH       screenWidth/667.0
+
 //间距
-#define Margin 10
+#define Margin 12
 
 //红色
 #define RED_COLOR   [UIColor colorWithHexString:@"#F35833"]
