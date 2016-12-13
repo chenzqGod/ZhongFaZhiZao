@@ -19,3 +19,11 @@
 #define FOGET_PW                    @"/app/user/checkmobcode"
 #define SET_PW                      @"/app/user/findPwd"
 #define SEND_VF                     @"/app/user/sendcode"
+
+//     /getLoginDynamicCode/手机号
+
+// 获取注册动态码   http://cectest.cecb3b.com/waps/getDynamicCode/手机号
+
+//登录接口   http://cectest.cecb2b.com/waps/api/login/dynamic/手机号/短信验证码
+
+//注册接口    http://cectest.cecb2b.com/waps/api/register/手机号/密码/短信验证码

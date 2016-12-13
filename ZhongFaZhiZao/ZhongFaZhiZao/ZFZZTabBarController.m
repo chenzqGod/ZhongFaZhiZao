@@ -11,6 +11,7 @@
 #import "AskViewController.h"
 #import "PurchaseViewController.h"
 #import "MineViewController.h"
+#import "PwLoginViewController.h"
 
 @interface ZFZZTabBarController ()
 
@@ -34,35 +35,83 @@
 //    NSDictionary *fontDic=@{NSFontAttributeName:[UIFont systemFontOfSize:12.0]};
     
     HomeViewController *homeVC = [[HomeViewController alloc]init];
-    UINavigationController *homeNav = [[UINavigationController alloc]initWithRootViewController:homeVC];
     homeVC.title = @"首页";
+    homeVC.tabBarItem.title = @"首页";
     [homeVC.tabBarItem setImage:[UIImage imageNamed:@"首页1"]];
     [homeVC.tabBarItem setSelectedImage:[UIImage imageNamed:@"首页2"]];
     
     AskViewController *askVC = [[AskViewController alloc]init];
-    UINavigationController *askNav = [[UINavigationController alloc]initWithRootViewController:askVC];
-    askNav.title = @"消息";
-    [askNav.tabBarItem setImage:[UIImage imageNamed:@"对话1"]];
-    [askNav.tabBarItem setSelectedImage:[UIImage imageNamed:@"对话2"]];
+//    UINavigationController *askNav = [[UINavigationController alloc]initWithRootViewController:askVC];
+    askVC.title = @"消息";
+    askVC.tabBarItem.title = @"IM";
+    askVC.tabBarItem.badgeValue = @"10";
+    [askVC.tabBarItem setImage:[UIImage imageNamed:@"对话1"]];
+    [askVC.tabBarItem setSelectedImage:[UIImage imageNamed:@"对话2"]];
     
     PurchaseViewController *purchaseVC = [[PurchaseViewController alloc]init];
     UINavigationController *purchaseNav = [[UINavigationController alloc]initWithRootViewController:purchaseVC];
     purchaseNav.title = @"采购料单";
+    purchaseNav.tabBarItem.title = @"采购料单";
     [purchaseNav.tabBarItem setImage:[UIImage imageNamed:@"采购1"]];
     [purchaseNav.tabBarItem setSelectedImage:[UIImage imageNamed:@"采购2"]];
     
     MineViewController *mineVC = [[MineViewController alloc]init];
     UINavigationController *mineNav = [[UINavigationController alloc]initWithRootViewController:mineVC];
     mineNav.title = @"我的";
+    mineNav.tabBarItem.title = @"我的";
     [mineNav.tabBarItem setImage:[UIImage imageNamed:@"会员1"]];
     [mineNav.tabBarItem setSelectedImage:[UIImage imageNamed:@"会员2"]];
     
-    self.viewControllers = @[homeNav,askNav,purchaseNav,mineNav];
+    PwLoginViewController *pwVC = [[PwLoginViewController alloc]init];
+    UINavigationController *pwNav = [[UINavigationController alloc]initWithRootViewController:pwVC];
+    pwNav.title = @"我的";
+    pwNav.tabBarItem.title = @"我的";
+    [pwNav.tabBarItem setImage:[UIImage imageNamed:@"会员1"]];
+    [pwNav.tabBarItem setSelectedImage:[UIImage imageNamed:@"会员2"]];
     
-    self.selectedViewController = homeNav;
+//    self.viewControllers = @[homeVC,askVC,purchaseNav,mineNav];
+    
+    self.viewControllers = @[homeVC,askVC,purchaseNav,pwNav];
+    
+//    self.selectedViewController = homeVC;
     
 }
 
+
+//- (void)hideTabBar {
+//    if (self.tabBarController.tabBar.hidden == YES) {
+//        return;
+//    }
+//    UIView *contentView;
+//    if ( [[self.tabBarController.view.subviews objectAtIndex:0] isKindOfClass:[UITabBar class]] )
+//        contentView = [self.tabBarController.view.subviews objectAtIndex:1];
+//    else
+//        contentView = [self.tabBarController.view.subviews objectAtIndex:0];
+//    contentView.frame = CGRectMake(contentView.bounds.origin.x,  contentView.bounds.origin.y,  contentView.bounds.size.width, contentView.bounds.size.height + self.tabBarController.tabBar.frame.size.height);
+//    self.tabBarController.tabBar.hidden = YES;
+//    
+//}
+
+
+//- (void)showTabBar
+//
+//{
+//    if (self.tabBarController.tabBar.hidden == NO)
+//    {
+//        return;
+//    }
+//    UIView *contentView;
+//    if ([[self.tabBarController.view.subviews objectAtIndex:0] isKindOfClass:[UITabBar class]])
+//        
+//        contentView = [self.tabBarController.view.subviews objectAtIndex:1];
+//    
+//    else
+//        
+//        contentView = [self.tabBarController.view.subviews objectAtIndex:0];
+//    contentView.frame = CGRectMake(contentView.bounds.origin.x, contentView.bounds.origin.y,  contentView.bounds.size.width, contentView.bounds.size.height - self.tabBarController.tabBar.frame.size.height);
+//    self.tabBarController.tabBar.hidden = NO;
+//    
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

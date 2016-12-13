@@ -43,6 +43,9 @@
 //蓝色
 #define BLUE_COLOR  [UIColor colorWithHexString:@"#31B3EF"]
 
+//灰字颜色
+#define TEXT_GREY_COLOR  [UIColor colorWithHexString:@"#9B9B9B"]
+
 // 主颜色
 #define MAIN_COLOR [UIColor colorWithHexString:@"23aBec"]
 
@@ -55,4 +58,4 @@
 #define LINE_COLOR [UIColor colorWithHexString:@"#e5e5e5"]
 
 // 背景颜色
-#define BACK_COLOR [UIColor colorWithHexString:@"#F0F0F0"]
+#define BACK_COLOR [UIColor colorWithHexString:@"#F5F5F5"]

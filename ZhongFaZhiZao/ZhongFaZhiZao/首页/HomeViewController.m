@@ -18,25 +18,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.navigationController setNavigationBarHidden:YES];
-    
-    self.view.backgroundColor = [UIColor clearColor];
+//    [self.navigationController setNavigationBarHidden:YES];
     
     
-    
-//    [self htmlJump:@"http://wap.cecb2b.com" withTitle:@""];
+    self.view.backgroundColor = [UIColor cyanColor];
     
     
 
 }
 
-#pragma mark - h5Url
-- (void)htmlJump:(NSString *)htmlUrl withTitle:(NSString *)title{
-    
-    ABWebViewViewController *webViewController = [[ABWebViewViewController alloc]initWithUrlStr:htmlUrl title:title];
-    
-    [self.navigationController pushViewController:webViewController animated:YES];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

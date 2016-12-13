@@ -21,17 +21,32 @@
 
 @implementation AskViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+
+    [super viewWillAppear:YES];
+    
+//    self.tabBarController.tabBar.hidden=YES;
+    self.navigationItem.title = @"消息中心";
+    
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavBack.png"] forBarMetrics:UIBarMetricsDefault];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@""]forBarMetrics:UIBarMetricsDefault];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    [self.navigationController setNavigationBarHidden:NO];
+//    [self.navigationController setNavigationBarHidden:NO];
   
-    self.navigationItem.title = @"消息中心";
     
-    self.view.backgroundColor = [UIColor redColor];
+    
+    
+    
+    self.view.backgroundColor = [UIColor clearColor];
 
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight-64) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight-49) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSelectionStyleNone;

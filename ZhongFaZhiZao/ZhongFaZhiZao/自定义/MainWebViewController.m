@@ -101,9 +101,9 @@
         if (!fileURL) {
             return;
         }
-        //        NSURLRequest *request = [NSURLRequest requestWithURL:fileURL];
-        //        [self.webView loadRequest:request];
-        [self.webView loadFileURL:fileURL allowingReadAccessToURL:fileURL];
+                NSURLRequest *request = [NSURLRequest requestWithURL:fileURL];
+                [self.webView loadRequest:request];
+//        [self.webView loadFileURL:fileURL allowingReadAccessToURL:fileURL];
     }
 }
 
@@ -159,7 +159,11 @@
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error{
 
 //    [MBProgressHUD showError:@"加载失败"];
+    
+    _isLoaing = NO;
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    
+    return;
 }
 
 

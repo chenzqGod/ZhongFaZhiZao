@@ -16,6 +16,14 @@
 
 @implementation PurchaseViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+
+    [super viewWillAppear:NO];
+    
+    self.tabBarController.tabBar.hidden=YES;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

@@ -56,7 +56,7 @@
 
     
     
-    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
+//    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     
     self.window.backgroundColor = [UIColor whiteColor];
@@ -65,18 +65,19 @@
 //    ZFZZViewController *rootVC = [[ZFZZViewController alloc]init];
     
     
-//    ZFZZTabBarController *rootVC = [[ZFZZTabBarController alloc]init];
+
     
     
+/*************************rootVC**************************/
     rootVC = [[MainWebViewController alloc]init];
-    
+    rootVC.urlStr = URLStr;
     UINavigationController *rootNav = [[UINavigationController alloc]initWithRootViewController:rootVC];
 
-    rootVC.urlStr = URLStr;
+    
+        ZFZZTabBarController *rootVC1 = [[ZFZZTabBarController alloc]init];
     
     
-    
-    self.window.rootViewController = rootNav;
+    self.window.rootViewController = rootVC1;
     
     [self.window makeKeyAndVisible];
     

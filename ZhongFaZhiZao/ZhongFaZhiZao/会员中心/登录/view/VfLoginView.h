@@ -25,6 +25,8 @@
 @property (nonatomic,strong) UIButton *quickRegisterBtn; // 快速注册按钮
 @property (nonatomic,strong) UIImageView *bottomImage; // 底部图案
 @property (nonatomic,strong) UIButton *closeBtn; // 关闭按钮
+@property (nonatomic,strong) UIView *userView;
+@property (nonatomic,strong) UIView *pwdView;
 
 
 @end
