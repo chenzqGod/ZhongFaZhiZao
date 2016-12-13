@@ -37,37 +37,37 @@
     HomeViewController *homeVC = [[HomeViewController alloc]init];
     homeVC.title = @"首页";
     homeVC.tabBarItem.title = @"首页";
-    [homeVC.tabBarItem setImage:[UIImage imageNamed:@"首页1"]];
-    [homeVC.tabBarItem setSelectedImage:[UIImage imageNamed:@"首页2"]];
+    [homeVC.tabBarItem setImage:[UIImage imageNamed:@"首页11"]];
+    [homeVC.tabBarItem setSelectedImage:[UIImage imageNamed:@"首页21"]];
     
     AskViewController *askVC = [[AskViewController alloc]init];
 //    UINavigationController *askNav = [[UINavigationController alloc]initWithRootViewController:askVC];
     askVC.title = @"消息";
     askVC.tabBarItem.title = @"IM";
     askVC.tabBarItem.badgeValue = @"10";
-    [askVC.tabBarItem setImage:[UIImage imageNamed:@"对话1"]];
-    [askVC.tabBarItem setSelectedImage:[UIImage imageNamed:@"对话2"]];
+    [askVC.tabBarItem setImage:[UIImage imageNamed:@"咨询11"]];
+    [askVC.tabBarItem setSelectedImage:[UIImage imageNamed:@"咨询21"]];
     
     PurchaseViewController *purchaseVC = [[PurchaseViewController alloc]init];
     UINavigationController *purchaseNav = [[UINavigationController alloc]initWithRootViewController:purchaseVC];
     purchaseNav.title = @"采购料单";
     purchaseNav.tabBarItem.title = @"采购料单";
-    [purchaseNav.tabBarItem setImage:[UIImage imageNamed:@"采购1"]];
-    [purchaseNav.tabBarItem setSelectedImage:[UIImage imageNamed:@"采购2"]];
+    [purchaseNav.tabBarItem setImage:[UIImage imageNamed:@"采购11"]];
+    [purchaseNav.tabBarItem setSelectedImage:[UIImage imageNamed:@"采购21"]];
     
     MineViewController *mineVC = [[MineViewController alloc]init];
     UINavigationController *mineNav = [[UINavigationController alloc]initWithRootViewController:mineVC];
     mineNav.title = @"我的";
     mineNav.tabBarItem.title = @"我的";
-    [mineNav.tabBarItem setImage:[UIImage imageNamed:@"会员1"]];
-    [mineNav.tabBarItem setSelectedImage:[UIImage imageNamed:@"会员2"]];
+    [mineNav.tabBarItem setImage:[UIImage imageNamed:@"会员11"]];
+    [mineNav.tabBarItem setSelectedImage:[UIImage imageNamed:@"会员21"]];
     
     PwLoginViewController *pwVC = [[PwLoginViewController alloc]init];
     UINavigationController *pwNav = [[UINavigationController alloc]initWithRootViewController:pwVC];
     pwNav.title = @"我的";
     pwNav.tabBarItem.title = @"我的";
-    [pwNav.tabBarItem setImage:[UIImage imageNamed:@"会员1"]];
-    [pwNav.tabBarItem setSelectedImage:[UIImage imageNamed:@"会员2"]];
+    [pwNav.tabBarItem setImage:[UIImage imageNamed:@"会员11"]];
+    [pwNav.tabBarItem setSelectedImage:[UIImage imageNamed:@"会员21"]];
     
 //    self.viewControllers = @[homeVC,askVC,purchaseNav,mineNav];
     

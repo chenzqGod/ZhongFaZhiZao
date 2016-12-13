@@ -64,6 +64,18 @@
     [self.vfCodeLbl sizeToFit];
     [self.pwdView addSubview:self.vfCodeLbl];
     
+    self.vfCodeTF = [[UITextField alloc]init];
+    self.vfCodeTF.leftView = self.vfCodeLbl;
+    self.vfCodeTF.leftViewMode = UITextFieldViewModeAlways;
+    self.vfCodeTF.rightView = self.getvfCodeBtn;
+    self.vfCodeTF.rightViewMode = UITextFieldViewModeAlways;
+    self.vfCodeTF.placeholder = @"请输入短信验证码";
+    self.vfCodeTF.font = [UIFont systemFontOfSize:15];
+    self.vfCodeTF.textColor = TEXT_GREY_COLOR;
+    
+    self.vfCodeTF.clearButtonMode = UITextFieldViewModeWhileEditing;
+    [self.pwdView addSubview:self.vfCodeTF];
+
     self.getvfCodeBtn = [[UIButton alloc]init];
     [self.getvfCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
     [self.getvfCodeBtn setTitleColor:[UIColor colorWithHexString:@"#9b9b9b"] forState:UIControlStateNormal];
@@ -72,20 +84,9 @@
     self.getvfCodeBtn.layer.borderWidth = 1;
     self.getvfCodeBtn.layer.masksToBounds = YES;
     self.getvfCodeBtn.titleLabel.font  = [UIFont systemFontOfSize:11];
+//    self.getvfCodeBtn.backgroundColor =[UIColor redColor];
     [self.pwdView addSubview:self.getvfCodeBtn];
     
-    self.vfCodeTF = [[UITextField alloc]init];
-    self.vfCodeTF.leftView = self.vfCodeLbl;
-    self.vfCodeTF.leftViewMode = UITextFieldViewModeAlways;
-    self.vfCodeTF.rightView = self.getvfCodeBtn;
-    self.vfCodeTF.rightViewMode = UITextFieldViewModeAlways;
-    self.vfCodeTF.placeholder = @"请输入短信验证码";
-    self.vfCodeTF.font = [UIFont systemFontOfSize:15];
-    self.vfCodeTF.textColor = [UIColor colorWithHexString:@"#646464"];
-    
-    self.vfCodeTF.clearButtonMode = UITextFieldViewModeWhileEditing;
-
-    [self.pwdView addSubview:self.vfCodeTF];
     
     self.secondLine = [[UIView alloc]init];
     self.secondLine.backgroundColor = [UIColor colorWithHexString:@"#787878"];
@@ -188,7 +189,8 @@
     [self.vfCodeTF mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@(20));
         make.left.mas_equalTo(self.phoneNumTF.mas_left);
-        make.right.mas_equalTo(self.phoneNumTF.mas_right).offset(-38);
+//        make.right.mas_equalTo(self.phoneNumTF.mas_right).offset(-68);
+        make.width.mas_equalTo(@160);
         make.centerY.equalTo(self.pwdView.mas_centerY);
     }];
     

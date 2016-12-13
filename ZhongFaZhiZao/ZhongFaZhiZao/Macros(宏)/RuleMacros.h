@@ -46,13 +46,13 @@
 //灰字颜色
 #define TEXT_GREY_COLOR  [UIColor colorWithHexString:@"#9B9B9B"]
 
+//下划线颜色
+#define TEXT_LINE_COLOR  [UIColor colorWithHexString:@"#EBEBEB"]
+
+
 // 主颜色
 #define MAIN_COLOR [UIColor colorWithHexString:@"23aBec"]
 
-// 文字颜色
-#define TEXT_COLOR [UIColor colorWithHexString:@"#505050"]
-
-#define TEXT_COLOR1 [UIColor colorWithHexString:@"#787878"]
 
 // 横线颜色
 #define LINE_COLOR [UIColor colorWithHexString:@"#e5e5e5"]
