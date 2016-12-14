@@ -11,6 +11,7 @@
 #import "NSString+Mobile.h"
 #import "DelegateViewController.h"
 #import "PwLoginViewController.h"
+#import "NSNetworking.h"
 
 @interface RegisterViewController ()
 
@@ -51,43 +52,43 @@
         
         NSDictionary *parameters = @{@"mob":self.phoneNum};
         
-//        [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,SEND_VF] parameters:parameters success:^(id response) {
-//            if ([response[@"msg"] isEqualToString:@"ok"]) {
-//                [WKProgressHUD popMessage:@"验证码已发送" inView:self.view duration:HUD_DURATION animated:YES];
-//                __block int timeout = 60; // 倒计时时间
-//                dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-//                dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
-//                dispatch_source_set_timer(_timer, dispatch_walltime(NULL, 0), 1.0 * NSEC_PER_SEC, 0); // 每秒执行
-//                dispatch_source_set_event_handler(_timer, ^{
-//                    if (timeout <= 1) // 倒计时结束关闭
-//                    {
-//                        dispatch_source_cancel(_timer);
-//                        dispatch_async(dispatch_get_main_queue(), ^{
-//                            
-//                            [sender setTitle:@"获取验证码" forState:UIControlStateNormal];
-//                            sender.userInteractionEnabled = YES;
-//                        });
-//                    }
-//                    else
-//                    {
-//                        dispatch_async(dispatch_get_main_queue(), ^{
-//                            
-//                            [UIView beginAnimations:nil context:nil];
-//                            [UIView setAnimationDuration:1.0f];
-//                            [sender setTitle:[NSString stringWithFormat:@"%ds", timeout] forState:UIControlStateNormal];
-//                            [UIView commitAnimations];
-//                            sender.userInteractionEnabled = NO;
-//                        });
-//                        
-//                        timeout--;
-//                    }
-//                });
-//                
-//                dispatch_resume(_timer);
-//            }
-//        } failure:^(NSString *error) {
-//            [WKProgressHUD popMessage:@"请检查网络连接" inView:self.view duration:HUD_DURATION animated:YES];
-//        }];
+        [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,REGIST_VF] parameters:parameters success:^(id response) {
+            if ([response[@"state"] isEqualToString:@"Y"]) {
+                [WKProgressHUD popMessage:@"验证码已发送" inView:self.view duration:HUD_DURATION animated:YES];
+                __block int timeout = 60; // 倒计时时间
+                dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+                dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+                dispatch_source_set_timer(_timer, dispatch_walltime(NULL, 0), 1.0 * NSEC_PER_SEC, 0); // 每秒执行
+                dispatch_source_set_event_handler(_timer, ^{
+                    if (timeout <= 1) // 倒计时结束关闭
+                    {
+                        dispatch_source_cancel(_timer);
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            
+                            [sender setTitle:@"获取验证码" forState:UIControlStateNormal];
+                            sender.userInteractionEnabled = YES;
+                        });
+                    }
+                    else
+                    {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            
+                            [UIView beginAnimations:nil context:nil];
+                            [UIView setAnimationDuration:1.0f];
+                            [sender setTitle:[NSString stringWithFormat:@"%ds", timeout] forState:UIControlStateNormal];
+                            [UIView commitAnimations];
+                            sender.userInteractionEnabled = NO;
+                        });
+                        
+                        timeout--;
+                    }
+                });
+                
+                dispatch_resume(_timer);
+            }
+        } failure:^(NSString *error) {
+            [WKProgressHUD popMessage:@"请检查网络连接" inView:self.view duration:HUD_DURATION animated:YES];
+        }];
     }
 
 }
@@ -130,22 +131,25 @@
     }else if (self.passWd.length > 16){
         [WKProgressHUD popMessage:@"密码长度不能大于16位" inView:self.view duration:HUD_DURATION animated:YES];
     }else{
-        NSDictionary *parameters = @{@"logmob":self.phoneNum,@"logpassword":@"",@"wxopenId":@"",@"logincode":self.verifyCode};
+        NSDictionary *parameters = @{@"logmob":self.phoneNum,@"logpassword":self.passWd,@"logincode":self.verifyCode};
         
-//        [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,LOGIN] parameters:parameters success:^(id response) {
-//            if ([response[@"msg"]isEqualToString:@"ok"]) {
-//                [WKProgressHUD popMessage:@"注册成功" inView:self.view duration:HUD_DURATION animated:YES];
-//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                    PwLoginViewController *pwLogin = [[PwLoginViewController alloc]init];
-//                    [self.navigationController pushViewController:pwLogin animated:YES];
-//                });
-//            }else{
-//                [WKProgressHUD popMessage:response[@"msg"] inView:self.view duration:HUD_DURATION animated:YES];
-//            }
-//            
-//        } failure:^(NSString *error) {
-//            [WKProgressHUD popMessage:@"请检查网络连接" inView:self.view duration:HUD_DURATION animated:YES];
-//        }];
+        [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,REGIST] parameters:parameters success:^(id response) {
+            if ([response[@"resultCode"]isEqualToString:@"1000"]) {
+                [WKProgressHUD popMessage:@"注册成功" inView:self.view duration:HUD_DURATION animated:YES];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    PwLoginViewController *pwLogin = [[PwLoginViewController alloc]init];
+                    [self.navigationController pushViewController:pwLogin animated:YES];
+                });
+            }else if ([response[@"resultCode"]isEqualToString:@"1001"]){
+                [WKProgressHUD popMessage:@"失败" inView:self.view duration:HUD_DURATION animated:YES];
+            }else if ( [response[@"resultCode"]isEqualToString:@"1004"]){
+            
+                [WKProgressHUD popMessage:@"验证码过期" inView:self.view duration:HUD_DURATION animated:YES];
+            }
+            
+        } failure:^(NSString *error) {
+            [WKProgressHUD popMessage:@"请检查网络连接" inView:self.view duration:HUD_DURATION animated:YES];
+        }];
     }
 }
 

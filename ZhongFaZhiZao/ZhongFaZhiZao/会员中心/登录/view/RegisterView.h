@@ -29,6 +29,12 @@
 @property (nonatomic,strong) UILabel *pwPromoteLbl; // 密码提示
 @property (nonatomic,strong) UIButton *registerBtn; // 注册按钮
 
+@property (nonatomic,strong) UILabel *passWdLbl2; // 密码
+@property (nonatomic,strong) UITextField *passWdTF2;
+@property (nonatomic,strong) UIButton *pwVisibleBtn2; // 密码可见按钮
+
+
+
 @property (nonatomic,strong) UIView *view1;
 @property (nonatomic,strong) UIView *view2;
 @property (nonatomic,strong) UIView *view3;

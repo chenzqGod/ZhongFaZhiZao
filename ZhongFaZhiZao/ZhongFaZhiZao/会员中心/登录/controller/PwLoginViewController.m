@@ -39,6 +39,17 @@
         [self.pwLoginView.rememberPwBtn setTitleColor:[UIColor colorWithHexString:@"#a0a0a0"] forState:UIControlStateNormal];
     }
     
+    
+    
+    if (self.pwLoginView.phoneNumTF.text && self.pwLoginView.passWdTF.text) {
+        
+        [self.pwLoginView.loginBtn setBackgroundColor:BLUE_COLOR];
+    }else{
+    
+        [self.pwLoginView.loginBtn setBackgroundColor:[UIColor colorWithHexString:@"#9b9b9b"]];
+
+    }
+    
     [self.pwLoginView.pwVisibleBtn addTarget:self action:@selector(pwVisible) forControlEvents:UIControlEventTouchUpInside];
     
     [self.pwLoginView.vfLoginBtn addTarget:self action:@selector(pwLogin) forControlEvents:UIControlEventTouchUpInside];

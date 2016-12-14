@@ -60,7 +60,7 @@
     [self.scrollView addSubview:self.pwdView];
 
     self.vfCodeLbl = [[UIImageView alloc]init];
-    self.vfCodeLbl.image = [UIImage imageNamed:@"密码登录"];
+    self.vfCodeLbl.image = [UIImage imageNamed:@"验证icon"];
     [self.vfCodeLbl sizeToFit];
     [self.pwdView addSubview:self.vfCodeLbl];
     
@@ -195,7 +195,7 @@
     }];
     
     [self.vfCodeLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(self.phoneNumLbl);
+        make.size.mas_equalTo(CGSizeMake(15, 15));
         make.left.equalTo(self.vfCodeTF.mas_left);
         make.centerY.equalTo(self.pwdView.mas_centerY);
     }];
