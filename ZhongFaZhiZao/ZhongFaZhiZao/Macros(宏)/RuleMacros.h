@@ -59,3 +59,5 @@
 
 // 背景颜色
 #define BACK_COLOR [UIColor colorWithHexString:@"#F5F5F5"]
+
+#define BACK2_COLOR  [UIColor colorWithHexString:@"#F1F1F1"]
