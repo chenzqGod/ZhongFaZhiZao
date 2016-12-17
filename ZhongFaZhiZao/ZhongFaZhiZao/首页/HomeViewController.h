@@ -23,6 +23,13 @@ typedef NS_ENUM(int,ZF){
 @property (nonatomic,strong) UICollectionView *collectionView;
 @property (nonatomic,strong) UIImageView *collectionHeaderView;
 
+//导航栏view
+@property (nonatomic,strong) UIView *navigationView;
+@property (nonatomic,strong) UIButton *pushSerchBtn;
+
+//搜索框
+//@property (nonatomic,strong) UITextField *textField;
+
 //header里的内容
 @property (nonatomic,strong) UIScrollView *scrollView;
 @property (nonatomic,strong) UIView *headerView;

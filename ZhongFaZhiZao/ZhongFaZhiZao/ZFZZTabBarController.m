@@ -35,10 +35,12 @@
 //    NSDictionary *fontDic=@{NSFontAttributeName:[UIFont systemFontOfSize:12.0]};
     
     HomeViewController *homeVC = [[HomeViewController alloc]init];
-    homeVC.title = @"首页";
-    homeVC.tabBarItem.title = @"首页";
-    [homeVC.tabBarItem setImage:[UIImage imageNamed:@"首页-1"]];
-    [homeVC.tabBarItem setSelectedImage:[UIImage imageNamed:@"首页-1"]];
+    UINavigationController *homeNav = [[UINavigationController alloc]initWithRootViewController:homeVC];
+
+    homeNav.title = @"首页";
+    homeNav.tabBarItem.title = @"首页";
+    [homeNav.tabBarItem setImage:[UIImage imageNamed:@"首页-1"]];
+    [homeNav.tabBarItem setSelectedImage:[UIImage imageNamed:@"首页-1"]];
     
     AskViewController *askVC = [[AskViewController alloc]init];
 //    UINavigationController *askNav = [[UINavigationController alloc]initWithRootViewController:askVC];
@@ -71,7 +73,7 @@
     
 //    self.viewControllers = @[homeVC,askVC,purchaseNav,mineNav];
     
-    self.viewControllers = @[homeVC,askVC,purchaseNav,pwNav];
+    self.viewControllers = @[homeNav,askVC,purchaseNav,pwNav];
     
 //    self.selectedViewController = homeVC;
     

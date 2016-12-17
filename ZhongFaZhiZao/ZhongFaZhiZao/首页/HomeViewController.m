@@ -10,6 +10,8 @@
 #import "ABWebViewViewController.h"
 #import "WKWebViewViewController.h"
 
+#import "SearchViewController.h"
+
 #import "SupplyCollectionViewCell.h"
 #import "ScienceCollectionViewCell.h"
 #import "KnowledgeCollectionViewCell.h"
@@ -41,6 +43,16 @@
     return _imageArr;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+
+    [super viewWillAppear:NO];
+//   self.tabBarController.tabBar.hidden=YES;
+    
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -56,9 +68,58 @@
     
 //    [self createCollectionHeader];
     
+   
+    
     [self createCollectionView];
+    
+     [self createNavgationView];
 }
 
+
+- (void)createNavgationView {
+
+    self.navigationView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 64)];
+    self.navigationView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bar"]];
+//    self.navigationView.backgroundColor = [UIColor redColor];
+        [self.view addSubview:self.navigationView];
+    
+//    UIImageView *searchImg = [[UIImageView alloc]initWithFrame:CGRectMake(59, 24, 539/2.0*screenScale, 30)];
+//    searchImg.image = [UIImage imageNamed:@"搜索"];
+////    searchImg.backgroundColor = [UIColor cyanColor];
+//    [self.navigationView setMaskView:searchImg];
+    
+    self.pushSerchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.pushSerchBtn.frame = CGRectMake(59, 24, 539/2.0*screenScale, 59/2.0);
+    self.pushSerchBtn.backgroundColor = [UIColor clearColor];
+    [self.pushSerchBtn setBackgroundImage:[UIImage imageNamed:@"搜素"] forState:UIControlStateNormal];
+//    self.pushSerchBtn.layer.cornerRadius = 3;
+//    self.pushSerchBtn.layer.masksToBounds = YES;
+    self.pushSerchBtn.imageView.frame = self.pushSerchBtn.bounds;
+    self.pushSerchBtn.hidden = NO;
+    [self.pushSerchBtn setEnabled:YES];
+    [self.pushSerchBtn addTarget:self action:@selector(SearchButtonPush) forControlEvents:UIControlEventTouchUpInside];
+    
+//    [self.view setMaskView:self.pushSerchBtn];
+    [self.view addSubview:self.pushSerchBtn];
+    
+    
+    UIButton *pushBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    pushBtn.frame = CGRectMake(screenWidth-20-14, 24+(59/2.0-24)/2.0, 20, 27);
+    pushBtn.backgroundColor = [UIColor clearColor];
+    [pushBtn setBackgroundImage:[UIImage imageNamed:@"消息"] forState:UIControlStateNormal];
+    pushBtn.imageView.frame = pushBtn.bounds;
+    pushBtn.hidden = NO;
+    [self.view addSubview:pushBtn];
+    
+    UIButton *QRcode = [UIButton buttonWithType:UIButtonTypeCustom];
+    QRcode.frame = CGRectMake(14, 24+(59/2.0-57/2.0)/2.0, 59/2.0, 57/2.0);
+    QRcode.backgroundColor = [UIColor clearColor];
+    [QRcode setBackgroundImage:[UIImage imageNamed:@"扫一扫"] forState:UIControlStateNormal];
+    QRcode.imageView.frame = QRcode.bounds;
+    QRcode.hidden = NO;
+    [self.view addSubview:QRcode];
+    
+}
 
 //每个cell页头
 - (void)createCollectionHeader {
@@ -67,6 +128,7 @@
 //    self.collectionHeaderView.backgroundColor = [UIColor blueColor];
     
 }
+
 
 //collectionView最上面Header
 - (void)createHeaderView{
@@ -78,6 +140,22 @@
     self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 180)];
     self.scrollView.backgroundColor = [UIColor redColor];
     [self.headerView addSubview:self.scrollView];
+    
+    UIImageView *bannerimage = [[UIImageView alloc]initWithFrame:self.scrollView.bounds];
+    bannerimage.image = [UIImage imageNamed:@"banner"];
+    [self.headerView addSubview:bannerimage];
+    
+//    UILabel *textFieldLbl = [];
+    
+//    self.textField = [[UITextField alloc]initWithFrame:CGRectMake(59, 26, 539/2.0*screenScale, 30)];
+//    self.textField.placeholder = @"搜索产品名称或型号";
+//    self.textField.font = [UIFont boldSystemFontOfSize:15.0];
+//    self.textField.textColor = TEXT_GREY_COLOR;
+//    self.textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+//    self.textField.background = [UIColor whiteColor];
+//    self.textField.layer.masksToBounds = YES;
+//    self.textField.layer.cornerRadius = 3;
+    
 
 //    UILabel *scrollLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.scrollView.frame), screenWidth, 8)];
 //    scrollLabel.backgroundColor = BACK_COLOR;
@@ -464,6 +542,37 @@
             break;
     }
 
+}
+
+//跳转到搜索页
+- (void)SearchButtonPush{
+
+    SearchViewController *vc = [[SearchViewController alloc]init];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - scrollView滑动
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+
+    if (scrollView.contentOffset.y > 0) {
+        
+//        self.navigationView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"NavBack"]];
+       
+//        [self.navigationView removeFromSuperview];
+        
+        
+        self.navigationView.backgroundColor = [UIColor redColor];
+        
+        CGFloat alphas = (scrollView.contentOffset.y / 58.0 < 1)?scrollView.contentOffset.y/58.0:1;
+        
+        self.navigationView.alpha = alphas;
+        
+    }
+    
+    self.navigationView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bar"]];
+    
+    self.navigationView.alpha = 1;
 }
 
 
