@@ -12,5 +12,6 @@
 
 @property (nonatomic,strong) UIView *navigationView;
 @property (nonatomic,strong) UITextField *textField;
+@property (nonatomic,strong) UITableView *tableView;
 
 @end

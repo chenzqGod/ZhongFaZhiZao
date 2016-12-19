@@ -39,7 +39,7 @@
     
     self.phoneNumLbl = [[UIImageView alloc]init];
     self.phoneNumLbl.image = [UIImage imageNamed:@"账号登录"];
-    [self.phoneNumLbl sizeToFit];
+//    [self.phoneNumLbl sizeToFit];
 //    self.phoneNumLbl.contentMode = UIViewContentModeLeft;
     [self.userView addSubview:self.phoneNumLbl];
     

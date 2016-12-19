@@ -34,3 +34,7 @@
 #define REGIST                     @"/api/register"
 
 
+
+//首页
+#define Electronic_API              @"/api/findData"
+#define AD_API                      @"/api/adInfo/41,44"

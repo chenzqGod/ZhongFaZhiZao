@@ -23,6 +23,8 @@
 #import "ElectronicCollectionViewCell.h"
 #import "KnowLedgeCustomCollectionViewCell.h"
 
+#import "CommitKnowledgeViewController.h"
+
 #define margins 8
 
 @interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>{
@@ -203,7 +205,7 @@
     [self.headerView addSubview:self.mainBtnView];
 
   
-    NSArray *mainBtnImageArr = @[@"供应链icon",@"智能创新icon",@"科技成果icon",@"解决方案icon",@"产权专利icon",@"金融服务icon"];
+    NSArray *mainBtnImageArr = @[@"供应链icon",@"智能创新icon",@"科技成果icon",@"解决方案icon",@"产权专利icon",@"金融"];
     NSArray *mainBtnArr = @[@"供应链采购",@"智能创新",@"科技成果",@"解决方案",@"知识产权专利",@"金融服务"];
     
     int flag = 0;
@@ -305,6 +307,15 @@
     NSArray *collecHeaderArr = @[@"科技bar",@"产权专利bar",@"智能bar",@"解决方案bar",@"电子市场bar"];
     self.collectionHeaderView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 80)];
     self.collectionHeaderView.image = [UIImage imageNamed:collecHeaderArr[indexPath.section-1]];
+    self.collectionView.userInteractionEnabled = YES;
+    
+//    collectionView header 点击
+    UIButton *collectHeaderBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    collectHeaderBtn.frame = self.collectionView.frame;
+    [collectHeaderBtn addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
+    collectHeaderBtn.enabled = YES;
+    collectHeaderBtn.hidden = NO;
+    [self.collectionHeaderView addSubview:collectHeaderBtn];
     
     UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView1" forIndexPath:indexPath];
     
@@ -510,8 +521,21 @@
 //    vc.scenicSpot = model;
 //    vc.name = model.name;
 //    [self.navigationController pushViewController:vc animated:YES];
+    
     //    }
+    
+    
+    if (indexPath.section == 2 && indexPath.row <= 5) {
+        
+        CommitKnowledgeViewController *vc = [[CommitKnowledgeViewController alloc]init];
+        
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
+
+
+
+
 
 -(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -639,6 +663,13 @@
     self.navigationView.alpha = 1;
 }
 
+
+- (void)buttonClick{
+
+    SearchViewController *vc = [[SearchViewController alloc]init];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
