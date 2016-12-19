@@ -1,31 +1,38 @@
 //
-//  AskDetailsViewController.m
+//  KnowLedgeViewController.m
 //  ZhongFaZhiZao
 //
-//  Created by chenzhiqiang on 2016/12/2.
+//  Created by chenzhiqiang on 2016/12/17.
 //  Copyright © 2016年 chenzhiqiang. All rights reserved.
 //
 
-#import "AskDetailsViewController.h"
+#import "KnowLedgeViewController.h"
 
-@interface AskDetailsViewController ()
-
-
+@interface KnowLedgeViewController ()
 
 @end
 
-@implementation AskDetailsViewController
+@implementation KnowLedgeViewController
+
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:YES];
+
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    
+    [self.tabBarController.tabBar setHidden:YES];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NavigationControllerView *navView = [[NavigationControllerView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 64) andLeftBtn:@"消息中心"];
+    self.view.backgroundColor = BACK_COLOR;
+    
+    NavigationControllerView *navView = [[NavigationControllerView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 64) andLeftBtn:@"知识产权专利"];
     navView.viewController = self;
     [self.view addSubview:navView];
-    
-    
-    self.view.backgroundColor = BACK_COLOR;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -43,12 +43,12 @@
     [homeNav.tabBarItem setSelectedImage:[UIImage imageNamed:@"首页-1"]];
     
     AskViewController *askVC = [[AskViewController alloc]init];
-//    UINavigationController *askNav = [[UINavigationController alloc]initWithRootViewController:askVC];
-    askVC.title = @"消息";
-    askVC.tabBarItem.title = @"IM";
-    askVC.tabBarItem.badgeValue = @"10";
-    [askVC.tabBarItem setImage:[UIImage imageNamed:@"咨询-1"]];
-    [askVC.tabBarItem setSelectedImage:[UIImage imageNamed:@"咨询-1"]];
+    UINavigationController *askNav = [[UINavigationController alloc]initWithRootViewController:askVC];
+    askNav.title = @"消息";
+    askNav.tabBarItem.title = @"IM";
+    askNav.tabBarItem.badgeValue = @"10";
+    [askNav.tabBarItem setImage:[UIImage imageNamed:@"咨询-1"]];
+    [askNav.tabBarItem setSelectedImage:[UIImage imageNamed:@"咨询-1"]];
     
     PurchaseViewController *purchaseVC = [[PurchaseViewController alloc]init];
     UINavigationController *purchaseNav = [[UINavigationController alloc]initWithRootViewController:purchaseVC];
@@ -73,7 +73,7 @@
     
 //    self.viewControllers = @[homeVC,askVC,purchaseNav,mineNav];
     
-    self.viewControllers = @[homeNav,askVC,purchaseNav,pwNav];
+    self.viewControllers = @[homeNav,askNav,purchaseNav,pwNav];
     
 //    self.selectedViewController = homeVC;
     

@@ -21,12 +21,25 @@
 
 @implementation PwLoginViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+
+    [super viewWillAppear:YES];
+    
+    [self.navigationController setNavigationBarHidden:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
-    self.pwLoginView =[[PwLoginView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    NavigationControllerView *navView = [[NavigationControllerView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 64) andRightBtn:@"会员登录"];
+//    navView.backgroundColor = [UIColor blueColor];
+    navView.viewController = self;
+    [self.view addSubview:navView];
+    
+//    self.pwLoginView =[[PwLoginView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    self.pwLoginView = [[PwLoginView alloc]initWithFrame:CGRectMake(0, 64, screenWidth, screenHeight-64)];
     [self.view addSubview:self.pwLoginView];
     
     self.pwLoginView.phoneNumTF.text = [USER_DEFAULTS objectForKey:@"mob"];

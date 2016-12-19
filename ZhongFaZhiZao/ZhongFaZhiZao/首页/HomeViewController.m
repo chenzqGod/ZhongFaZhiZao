@@ -6,11 +6,14 @@
 //  Copyright © 2016年 chenzhiqiang. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import "HomeViewController.h"
 #import "ABWebViewViewController.h"
 #import "WKWebViewViewController.h"
 
 #import "SearchViewController.h"
+#import "AskViewController.h"
+#import "KnowLedgeViewController.h"
 
 #import "SupplyCollectionViewCell.h"
 #import "ScienceCollectionViewCell.h"
@@ -18,6 +21,7 @@
 #import "IntelligenceCollectionViewCell.h"
 #import "SolveCollectionViewCell.h"
 #import "ElectronicCollectionViewCell.h"
+#import "KnowLedgeCustomCollectionViewCell.h"
 
 #define margins 8
 
@@ -46,7 +50,7 @@
 - (void)viewWillAppear:(BOOL)animated{
 
     [super viewWillAppear:NO];
-//   self.tabBarController.tabBar.hidden=YES;
+   self.tabBarController.tabBar.hidden=NO;
     
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 
@@ -67,8 +71,6 @@
     [self createHeaderView];
     
 //    [self createCollectionHeader];
-    
-   
     
     [self createCollectionView];
     
@@ -109,6 +111,8 @@
     [pushBtn setBackgroundImage:[UIImage imageNamed:@"消息"] forState:UIControlStateNormal];
     pushBtn.imageView.frame = pushBtn.bounds;
     pushBtn.hidden = NO;
+    [pushBtn addTarget:self action:@selector(jPushButton) forControlEvents:UIControlEventTouchUpInside];
+    
     [self.view addSubview:pushBtn];
     
     UIButton *QRcode = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -199,8 +203,8 @@
     [self.headerView addSubview:self.mainBtnView];
 
   
-    NSArray *mainBtnImageArr = @[@"供应链icon",@"科技成果icon",@"产权专利icon",@"智能创新icon",@"解决方案icon",@"金融服务icon"];
-    NSArray *mainBtnArr = @[@"供应链采购",@"科技成果",@"知识产权专利",@"智能创新",@"解决方案",@"金融服务"];
+    NSArray *mainBtnImageArr = @[@"供应链icon",@"智能创新icon",@"科技成果icon",@"解决方案icon",@"产权专利icon",@"金融服务icon"];
+    NSArray *mainBtnArr = @[@"供应链采购",@"智能创新",@"科技成果",@"解决方案",@"知识产权专利",@"金融服务"];
     
     int flag = 0;
     
@@ -260,13 +264,21 @@
     
     //注册cell
     [_collectionView registerClass:[SupplyCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    [_collectionView registerClass:[KnowLedgeCustomCollectionViewCell class] forCellWithReuseIdentifier:@"knowcustomCell"];
+    
+    
     [_flowLayout setHeaderReferenceSize:CGSizeMake(screenWidth, _headerView.frame.size.height)];
+    
+    
+    
     
     //注册header
     
     [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
 
         [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView1"];
+    
+
     
         [self.view addSubview:_collectionView];
     
@@ -347,8 +359,44 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+   
+    if (indexPath.section == 2 && indexPath.row < 6) {
+        
+        NSArray *knowCustomIcon = @[@"申请icon",@"分析icon",@"挖掘icon",@"数据库icon",@"预警icon",@"交易icon"];
+        NSArray *konwCustomLabel = @[@"专利申请",@"专利分析",@"专利挖掘",@"数据库定制",@"专利预警",@"专利交易"];
+        
+        static NSString *knowCellIdent = @"knowcustomCell";
+        
+        KnowLedgeCustomCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:knowCellIdent forIndexPath:indexPath];
+        
+        cell.textLbl.text = konwCustomLabel[indexPath.row];
+        cell.textLbl.font = [UIFont systemFontOfSize:13.0];
+        
+        cell.iconImg.image = [UIImage imageNamed:knowCustomIcon[indexPath.row]];
+        
+        cell.backgroundColor = [UIColor whiteColor];
+        
+        
+        
+//       UIImageView  *iconImg = [[UIImageView alloc]initWithFrame:CGRectMake(45*screenScale, (cell.frame.size.height-26)/2.0, 26, 26)];
+//        
+//        iconImg.backgroundColor = [UIColor cyanColor];
+//        [cell addSubview:iconImg];
+//        
+//        UILabel *textLbl = [[UILabel alloc]initWithFrame:CGRectMake(12*screenScale+CGRectGetMaxX(iconImg.frame), (cell.frame.size.height-16)/2.0, 64, 16)];
+//        textLbl.text = @"申请专利";
+//        [cell addSubview:textLbl];
+        
+        return cell;
+        
+    }
+    
     static NSString * CellIdentifier = @"cell";
     SupplyCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    
+    
+    
     
     //    if(_sceniclist.spot.count>indexPath.row+1)
     //    {
@@ -357,6 +405,8 @@
     //        return cell;
     //    }
 //    ABScenicSpot *model = (ABScenicSpot*)_sceniclist.spot[indexPath.row];
+    
+
 //    [cell setcellmodel:model];
     
     cell.backgroundColor = [UIColor redColor];
@@ -515,10 +565,20 @@
 
 #pragma mark - 点击事件
 
+//jpush消息
+- (void)jPushButton{
+
+    AskViewController *vc = [[AskViewController alloc]init];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 //6个圆形按钮点击事件
 - (void)mainButtonClick:(UIButton *)button{
 
     NSLog(@"%ld",button.tag);
+    
+    KnowLedgeViewController *vc = [[KnowLedgeViewController alloc]init];
     
     switch (button.tag) {
         case Supply:
@@ -526,18 +586,22 @@
             break;
         case Science:
 //            [self htmlJump:_scenicDetailModel.triplineurl withTitle:@"路线"];
+            
             break;
         case Knowledge:
-//            [self htmlJump:_scenicDetailModel.ticketurl withTitle:@"门票"];
+
+
+            [self.navigationController pushViewController:vc animated:YES];
+            
             break;
         case Intelligence:
-//            [self htmlJump:_scenicDetailModel.trafficurl withTitle:@"交通"];
+
             break;
         case Solve:
-//            [self htmlJump:_scenicDetailModel.tipurl withTitle:@"贴士"];
+            
             break;
         case  Electronic:
-            
+            [WKProgressHUD popMessage:@"敬请期待" inView:self.view duration:HUD_DURATION animated:YES];
 
             break;
     }

@@ -11,10 +11,10 @@
 typedef NS_ENUM(int,ZF){
 
     Supply = 0+1000,
-    Science,
-    Knowledge,
     Intelligence,
+    Science,
     Solve,
+    Knowledge,
     Electronic
 };
 

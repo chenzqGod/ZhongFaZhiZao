@@ -25,7 +25,12 @@
     // Do any additional setup after loading the view.
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
-    self.registView = [[RegisterView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    NavigationControllerView *navView = [[NavigationControllerView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 64) andLeftBtn:@"注册"];
+    navView.viewController = self;
+    
+    [self.view addSubview:navView];
+    
+    self.registView = [[RegisterView alloc]initWithFrame:CGRectMake(0, 64, screenWidth, screenHeight-64)];
     [self.view addSubview:self.registView];
     
 //    self.registView.navView.viewController = self;
@@ -35,6 +40,8 @@
     [self.registView.delegateBtn addTarget:self action:@selector(delegate) forControlEvents:UIControlEventTouchUpInside];
     
     [self.registView.pwVisibleBtn addTarget:self action:@selector(pwVisible) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.registView.pwVisibleBtn2 addTarget:self action:@selector(pwVisible2) forControlEvents:UIControlEventTouchUpInside];
     
     [self.registView.registerBtn addTarget:self action:@selector(regist) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -111,12 +118,27 @@
     }
 }
 
+
+// 密码可见2
+- (void)pwVisible2{
+    self.registView.pwVisibleBtn2.selected = !self.registView.pwVisibleBtn2.isSelected;
+    
+    if (self.registView.pwVisibleBtn2.isSelected) {
+        [self.registView.pwVisibleBtn2 setTitleColor:MAIN_COLOR forState:UIControlStateNormal];
+        self.registView.passWdTF2.secureTextEntry = NO;
+    }else{
+        [self.registView.pwVisibleBtn2 setTitleColor:[UIColor colorWithHexString:@"#787878"] forState:UIControlStateNormal];
+        self.registView.passWdTF2.secureTextEntry = YES;
+    }
+}
+
 // 注册
 - (void)regist{
     
     self.phoneNum = self.registView.phoneNumTF.text;
     self.verifyCode = self.registView.vfCodeTF.text;
     self.passWd = self.registView.passWdTF.text;
+    self.passWd2 = self.registView.passWdTF2.text;
     
     if ([self.phoneNum isEqualToString:@""]) {
         [WKProgressHUD popMessage:@"请输入手机号" inView:self.view duration:HUD_DURATION animated:YES];
@@ -124,6 +146,10 @@
         [WKProgressHUD popMessage:@"请输入验证码" inView:self.view duration:HUD_DURATION animated:YES];
     }else if ([self.passWd isEqualToString:@""]){
         [WKProgressHUD popMessage:@"请输入密码" inView:self.view duration:HUD_DURATION animated:YES];
+    }else if ([self.passWd2 isEqualToString:@""]){
+        [WKProgressHUD popMessage:@"请确认密码" inView:self.view duration:HUD_DURATION animated:YES];
+    }else if (![self.passWd isEqualToString:self.passWd2]){
+        [WKProgressHUD popMessage:@"确认密码与设置密码不一致" inView:self.view duration:HUD_DURATION animated:YES];
     }else if (![self.phoneNum isMobileNumber]){
         [WKProgressHUD popMessage:@"请输入正确的手机号" inView:self.view duration:HUD_DURATION animated:YES];
     }else if (self.passWd.length < 6){

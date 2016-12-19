@@ -13,4 +13,5 @@
 @property (nonatomic,copy) NSString *phoneNum;
 @property (nonatomic,copy) NSString *verifyCode;
 @property (nonatomic,copy) NSString *passWd;
+@property (nonatomic,copy) NSString *passWd2;
 @end

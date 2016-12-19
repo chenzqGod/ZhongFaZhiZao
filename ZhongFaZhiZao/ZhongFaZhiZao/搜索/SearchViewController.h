@@ -10,4 +10,7 @@
 
 @interface SearchViewController : UIViewController
 
+@property (nonatomic,strong) UIView *navigationView;
+@property (nonatomic,strong) UITextField *textField;
+
 @end

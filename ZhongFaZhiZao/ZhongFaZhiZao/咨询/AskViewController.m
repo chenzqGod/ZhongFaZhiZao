@@ -10,6 +10,7 @@
 #import "AskTableViewCell.h"
 #import "AskDetailsViewController.h"
 
+
 @interface AskViewController ()<UITableViewDelegate,UITableViewDataSource>{
 
 }
@@ -25,12 +26,9 @@
 
     [super viewWillAppear:YES];
     
-//    self.tabBarController.tabBar.hidden=YES;
-    self.navigationItem.title = @"消息中心";
-    
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavBack.png"] forBarMetrics:UIBarMetricsDefault];
-    
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@""]forBarMetrics:UIBarMetricsDefault];
+    self.tabBarController.tabBar.hidden=YES;
+
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
     
 }
 
@@ -38,15 +36,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-//    [self.navigationController setNavigationBarHidden:NO];
   
-    
-    
-    
-    
-    self.view.backgroundColor = [UIColor clearColor];
+    self.view.backgroundColor = BACK_COLOR;
 
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight-49) style:UITableViewStylePlain];
+    NavigationControllerView *navView = [[NavigationControllerView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 64) andLeftBtn:@"消息中心"];
+    navView.viewController = self;
+    [self.view addSubview:navView];
+    
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(12*screenScale, 64, screenWidth-12*screenScale*2, screenHeight-64) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSelectionStyleNone;
@@ -89,61 +86,57 @@
 //返回cell高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 300;
+    return 240;
 }
 
 //返回页头高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    
-    //    if (section == 0) {
-    //
-    //        return 0;
-    //
-    //    }else
-    if (section == 0){
-        
-        return Margin;
-        
-    }else if (section == 1){
-        
-        return 0;
-    }
-    return 0;
+ 
+    return 55;
+ 
 }
 
 //自定义区头
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-//
-////    if (section == 1) {
-////
-////        UIView *view = [[UIView alloc]init];
-//////        view.frame = CGRectMake(0 , 0, screenWidth, 14);
-////        view.backgroundColor = [UIColor cyanColor];
-////
-////        return view;
-////
-////    }
-//
-//    return nil;
-//}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+
+
+        UIView *view = [[UIView alloc]init];
+        view.frame = CGRectMake(0 , 0, screenWidth, 55);
+        view.backgroundColor = BACK_COLOR;
+    
+    UILabel *timeLabel = [[UILabel alloc]initWithFrame:CGRectMake((screenWidth-98)/2.0, (55-27)/2.0, 98, 27)];
+    timeLabel.text = @"2016年11月23日";
+    timeLabel.backgroundColor = [UIColor colorWithHexString:@"#9b9b9b"];
+    timeLabel.alpha = 0.4;
+    timeLabel.font = [UIFont systemFontOfSize:11.0];
+    timeLabel.textAlignment = NSTextAlignmentCenter;
+    timeLabel.textColor = [UIColor whiteColor];
+    timeLabel.layer.masksToBounds = YES;
+    timeLabel.layer.cornerRadius = 4;
+    [view addSubview:timeLabel];
+
+    return view;
+
+
+}
 
 //自定义footer
-
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    
-    if (section == 0) {
-        
-        UIView *view = [[UIView alloc]init];
-        view.frame = CGRectMake(0 , 0, screenWidth, 14);
-        view.backgroundColor = [UIColor cyanColor];
-        
-        return view;
-        
-    }
-    
-    return nil;
-    
-}
+//
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+//    
+//    if (section == 0) {
+//        
+//        UIView *view = [[UIView alloc]init];
+//        view.frame = CGRectMake(0 , 0, screenWidth, 14);
+//        view.backgroundColor = [UIColor cyanColor];
+//        
+//        return view;
+//        
+//    }
+//    
+//    return nil;
+//    
+//}
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -165,6 +158,26 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+
+    if (scrollView == _tableView) {
+        CGFloat sectionHeaderHeight = 55;
+        
+        if (scrollView.contentOffset.y<=sectionHeaderHeight && scrollView.contentOffset.y>0) {
+            scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
+        }
+        
+        
+        else if (scrollView.contentOffset.y>=sectionHeaderHeight) {
+            scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
+            
+        }
+        
+    }
+
 }
 
 /*

@@ -284,6 +284,13 @@
 		56CFD7AF1E03BCC500D18340 /* 搜素@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD7AD1E03BCC500D18340 /* 搜素@3x.png */; };
 		56CFD7F61E03CD9B00D18340 /* 搜素22222222@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD7F51E03CD9B00D18340 /* 搜素22222222@2x.png */; };
 		56CFD7FB1E03DD7900D18340 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CFD7FA1E03DD7900D18340 /* SearchViewController.m */; };
+		56CFD8021E04DD3900D18340 /* KnowLedgeCustomCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CFD8011E04DD3900D18340 /* KnowLedgeCustomCollectionViewCell.m */; };
+		56CFD8051E0509C800D18340 /* NavigationControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CFD8041E0509C800D18340 /* NavigationControllerView.m */; };
+		56CFD8081E051C8B00D18340 /* KnowLedgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CFD8071E051C8B00D18340 /* KnowLedgeViewController.m */; };
+		56CFD80C1E0528D800D18340 /* 消息-默认图@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD80A1E0528D800D18340 /* 消息-默认图@2x.png */; };
+		56CFD80D1E0528D800D18340 /* 消息-默认图@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD80B1E0528D800D18340 /* 消息-默认图@3x.png */; };
+		56CFD8101E052CA100D18340 /* Shape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD80E1E052CA100D18340 /* Shape@2x.png */; };
+		56CFD8111E052CA100D18340 /* Shape@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD80F1E052CA100D18340 /* Shape@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -727,6 +734,16 @@
 		56CFD7F51E03CD9B00D18340 /* 搜素22222222@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "搜素22222222@2x.png"; sourceTree = "<group>"; };
 		56CFD7F91E03DD7900D18340 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		56CFD7FA1E03DD7900D18340 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		56CFD8001E04DD3900D18340 /* KnowLedgeCustomCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnowLedgeCustomCollectionViewCell.h; sourceTree = "<group>"; };
+		56CFD8011E04DD3900D18340 /* KnowLedgeCustomCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnowLedgeCustomCollectionViewCell.m; sourceTree = "<group>"; };
+		56CFD8031E0509C800D18340 /* NavigationControllerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationControllerView.h; sourceTree = "<group>"; };
+		56CFD8041E0509C800D18340 /* NavigationControllerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationControllerView.m; sourceTree = "<group>"; };
+		56CFD8061E051C8B00D18340 /* KnowLedgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnowLedgeViewController.h; sourceTree = "<group>"; };
+		56CFD8071E051C8B00D18340 /* KnowLedgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnowLedgeViewController.m; sourceTree = "<group>"; };
+		56CFD80A1E0528D800D18340 /* 消息-默认图@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "消息-默认图@2x.png"; sourceTree = "<group>"; };
+		56CFD80B1E0528D800D18340 /* 消息-默认图@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "消息-默认图@3x.png"; sourceTree = "<group>"; };
+		56CFD80E1E052CA100D18340 /* Shape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Shape@2x.png"; sourceTree = "<group>"; };
+		56CFD80F1E052CA100D18340 /* Shape@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Shape@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1101,16 +1118,16 @@
 		567B61111DCADFF9004D1CFE /* ZhongFaZhiZao */ = {
 			isa = PBXGroup;
 			children = (
+				567B61451DCAE18C004D1CFE /* Third */,
+				567B614A1DCB1937004D1CFE /* Categories */,
+				567B614B1DCB1937004D1CFE /* Expand */,
+				567B614D1DCB1937004D1CFE /* Others */,
+				567B61491DCAE489004D1CFE /* Images */,
+				5603660B1DDB125700332DD2 /* ZhongFaZhiZao.entitlements */,
+				567B614C1DCB1937004D1CFE /* Macros(宏) */,
+				567B62971DD1A47E004D1CFE /* 自定义 */,
 				56CFD7F71E03DADF00D18340 /* IM通讯 */,
 				56CFD7F81E03DADF00D18340 /* 搜索 */,
-				5603660B1DDB125700332DD2 /* ZhongFaZhiZao.entitlements */,
-				567B62971DD1A47E004D1CFE /* 自定义 */,
-				567B614C1DCB1937004D1CFE /* Macros(宏) */,
-				567B61491DCAE489004D1CFE /* Images */,
-				567B614D1DCB1937004D1CFE /* Others */,
-				567B614B1DCB1937004D1CFE /* Expand */,
-				567B614A1DCB1937004D1CFE /* Categories */,
-				567B61451DCAE18C004D1CFE /* Third */,
 				567B62661DD08753004D1CFE /* 采购料单 */,
 				567B62671DD08753004D1CFE /* 会员中心 */,
 				567B62681DD08753004D1CFE /* 首页 */,
@@ -1178,6 +1195,7 @@
 		567B61491DCAE489004D1CFE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				56CFD8091E0528C800D18340 /* 消息中心 */,
 				56CFD73F1E028FA900D18340 /* 首页 */,
 				56CFD6B71E00277700D18340 /* Tabbar */,
 				560955FE1DFF998E00DA0B72 /* 登录注册 */,
@@ -1592,6 +1610,8 @@
 				561AC0191DE812F1009C8EC3 /* StartDiagmView.m */,
 				560956271DFFE00300DA0B72 /* UserLoginTextField.h */,
 				560956281DFFE00300DA0B72 /* UserLoginTextField.m */,
+				56CFD8031E0509C800D18340 /* NavigationControllerView.h */,
+				56CFD8041E0509C800D18340 /* NavigationControllerView.m */,
 			);
 			path = "自定义";
 			sourceTree = "<group>";
@@ -1641,6 +1661,8 @@
 				56CFD73A1E026EED00D18340 /* SolveCollectionViewCell.m */,
 				56CFD73C1E026EFF00D18340 /* ElectronicCollectionViewCell.h */,
 				56CFD73D1E026EFF00D18340 /* ElectronicCollectionViewCell.m */,
+				56CFD8001E04DD3900D18340 /* KnowLedgeCustomCollectionViewCell.h */,
+				56CFD8011E04DD3900D18340 /* KnowLedgeCustomCollectionViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1728,8 +1750,21 @@
 		56CFD7FC1E03ED7300D18340 /* 知识产权 */ = {
 			isa = PBXGroup;
 			children = (
+				56CFD8061E051C8B00D18340 /* KnowLedgeViewController.h */,
+				56CFD8071E051C8B00D18340 /* KnowLedgeViewController.m */,
 			);
 			path = "知识产权";
+			sourceTree = "<group>";
+		};
+		56CFD8091E0528C800D18340 /* 消息中心 */ = {
+			isa = PBXGroup;
+			children = (
+				56CFD80E1E052CA100D18340 /* Shape@2x.png */,
+				56CFD80F1E052CA100D18340 /* Shape@3x.png */,
+				56CFD80A1E0528D800D18340 /* 消息-默认图@2x.png */,
+				56CFD80B1E0528D800D18340 /* 消息-默认图@3x.png */,
+			);
+			path = "消息中心";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1874,6 +1909,7 @@
 				56CFD7A21E028FC700D18340 /* 智能创新icon@2x.png in Resources */,
 				56CFD7851E028FC700D18340 /* 解决方案icon@3x.png in Resources */,
 				56CFD7901E028FC700D18340 /* 申请icon@2x.png in Resources */,
+				56CFD80C1E0528D800D18340 /* 消息-默认图@2x.png in Resources */,
 				560366411DDEAD3E00332DD2 /* 60x60.png in Resources */,
 				56CFD7931E028FC700D18340 /* 数据库icon@3x.png in Resources */,
 				56CFD77F1E028FC700D18340 /* 供bar@3x.png in Resources */,
@@ -1921,8 +1957,10 @@
 				56CFD78E1E028FC700D18340 /* 扫一扫@2x.png in Resources */,
 				5603662F1DDEA20000332DD2 /* 120@2x.png in Resources */,
 				56CFD7771E028FC700D18340 /* 产权专利icon@3x.png in Resources */,
+				56CFD8101E052CA100D18340 /* Shape@2x.png in Resources */,
 				560955D31DFAA0D600DA0B72 /* NavBK@2x.png in Resources */,
 				560956201DFF998E00DA0B72 /* 关闭@3x.png in Resources */,
+				56CFD80D1E0528D800D18340 /* 消息-默认图@3x.png in Resources */,
 				560955D01DFAA05A00DA0B72 /* NavBack@3x.png in Resources */,
 				56CFD7AF1E03BCC500D18340 /* 搜素@3x.png in Resources */,
 				5609561A1DFF998E00DA0B72 /* wechat-press@3x.png in Resources */,
@@ -1977,6 +2015,7 @@
 				56CFD7101E00E45700D18340 /* 首页-1@2x.png in Resources */,
 				560366311DDEA20000332DD2 /* 152@2x.png in Resources */,
 				56CFD70A1E00E45700D18340 /* 采购-2@2x.png in Resources */,
+				56CFD8111E052CA100D18340 /* Shape@3x.png in Resources */,
 				560956241DFF998E00DA0B72 /* 账号登录@3x.png in Resources */,
 				56CFD78F1E028FC700D18340 /* 扫一扫@3x.png in Resources */,
 				560366321DDEA20000332DD2 /* 167@2x.png in Resources */,
@@ -2044,10 +2083,12 @@
 				567B624F1DD020EE004D1CFE /* UIImage+Extension.m in Sources */,
 				567B62171DD020A0004D1CFE /* MJRefreshAutoFooter.m in Sources */,
 				567B621E1DD020A0004D1CFE /* MJRefreshAutoStateFooter.m in Sources */,
+				56CFD8081E051C8B00D18340 /* KnowLedgeViewController.m in Sources */,
 				567B62211DD020A1004D1CFE /* MJRefreshBackStateFooter.m in Sources */,
 				567B61FF1DD020A0004D1CFE /* AFURLSessionManager.m in Sources */,
 				56541C061DD2B73D00E9225E /* ZFZZViewController.m in Sources */,
 				567B62311DD020A1004D1CFE /* SDWebImageManager.m in Sources */,
+				56CFD8051E0509C800D18340 /* NavigationControllerView.m in Sources */,
 				567B62201DD020A1004D1CFE /* MJRefreshBackNormalFooter.m in Sources */,
 				567B62241DD020A1004D1CFE /* MJRefreshStateHeader.m in Sources */,
 				56CFD7351E026ECB00D18340 /* KnowledgeCollectionViewCell.m in Sources */,
@@ -2099,6 +2140,7 @@
 				567B622F1DD020A1004D1CFE /* SDWebImageDownloader.m in Sources */,
 				567B62361DD020A1004D1CFE /* UIImage+WebP.m in Sources */,
 				567B620B1DD020A0004D1CFE /* MASConstraint.m in Sources */,
+				56CFD8021E04DD3900D18340 /* KnowLedgeCustomCollectionViewCell.m in Sources */,
 				56045FDC1DF180A500BB5EB9 /* UIColor+Hex.m in Sources */,
 				567B622C1DD020A1004D1CFE /* SDImageCache.m in Sources */,
 				560955911DF6A1A100DA0B72 /* LoginViewController.m in Sources */,

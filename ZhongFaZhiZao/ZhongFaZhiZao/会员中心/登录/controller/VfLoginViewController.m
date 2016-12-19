@@ -27,7 +27,12 @@
     // Do any additional setup after loading the view.
     [self.view setBackgroundColor:[UIColor whiteColor]];
 
-    self.vfLoginView =[[VfLoginView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    NavigationControllerView *navView = [[NavigationControllerView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 64) andRightBtn:@"动态密码登录"];
+    navView.viewController = self;
+    
+    [self.view addSubview:navView];
+    
+    self.vfLoginView =[[VfLoginView alloc]initWithFrame:CGRectMake(0, 64, screenWidth, screenHeight-64)];
     [self.view addSubview:self.vfLoginView];
 
     [self.vfLoginView.pwLoginBtn addTarget:self action:@selector(pwLogin) forControlEvents:UIControlEventTouchUpInside];

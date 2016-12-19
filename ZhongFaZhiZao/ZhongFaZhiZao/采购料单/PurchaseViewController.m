@@ -28,7 +28,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.navigationItem.title = @"采购料单";
+    NavigationControllerView *navView = [[NavigationControllerView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 64) andLeftBtn:@"采购料单"];
+    navView.viewController = self;
+    [self.view addSubview:navView];
     
     self.view.backgroundColor = [UIColor whiteColor];
     

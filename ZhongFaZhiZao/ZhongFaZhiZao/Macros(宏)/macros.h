@@ -17,3 +17,5 @@
 #import "MBProgressHUD+MJ.h"
 
 #import "UserInfo.h"
+
+#import "NavigationControllerView.h"
