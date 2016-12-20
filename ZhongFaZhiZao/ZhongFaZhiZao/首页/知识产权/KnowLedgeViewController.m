@@ -8,6 +8,7 @@
 
 #import "KnowLedgeViewController.h"
 #import "KnowLedgeTableViewCell.h"
+#import "CommitKnowledgeViewController.h"
 
 @interface KnowLedgeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -53,6 +54,9 @@
 }
 
 - (void)createHeader{
+    
+    NSArray *btnNameArr = @[@[@"专利申请",@"专利挖掘",@"无效请求"],@[@"专利维权",@"专利培训",@"专利预警"],@[@"专利分析",@"专利交易",@"数据库定制"]];
+    NSArray *btniconArr = @[@[@"申请icon",@"挖掘icon",@"icon2"],@[@"Group 15",@"icon",@"预警icon"],@[@"分析icon",@"交易icon",@"数据库icon"]];
 
     self.headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 64, screenWidth, screenWidth/375.0*145+46*3+51)];
     self.headerView.backgroundColor = BACK_COLOR;
@@ -88,24 +92,34 @@
         
         for (NSInteger j = 0; j < 3; j++) {
             
-            UILabel *buttonLbl = [[UILabel alloc]init];
-            buttonLbl.frame = CGRectMake(i*1+(screenWidth-2)/3.0*i, 1*j+45*j, (screenWidth-2)/3.0, 45);
-            buttonLbl.backgroundColor = [UIColor cyanColor];
-            [buttonView addSubview:buttonLbl];
-            
-            UIImageView *buttonIcon = [[UIImageView alloc]initWithFrame:CGRectMake(20*screenScale, (45-26)/2.0, 26, 26)];
-            buttonIcon.backgroundColor = [UIColor redColor];
-            [buttonLbl addSubview:buttonIcon];
+//            UILabel *buttonLbl = [[UILabel alloc]init];
+//            buttonLbl.frame = CGRectMake(i*1+(screenWidth-2)/3.0*i, 1*j+45*j, (screenWidth-2)/3.0, 45);
+//            buttonLbl.backgroundColor = [UIColor cyanColor];
+//            [buttonView addSubview:buttonLbl];
+//            
+//            UIImageView *buttonIcon = [[UILabel alloc]initWithFrame:CGRectMake(20*screenScale, (45-26)/2.0, 26, 26)];
+//            buttonIcon.backgroundColor = [UIColor redColor];
+//            [buttonLbl addSubview:buttonIcon];
             
 //            UILabel *btnSumLabel = [[UILabel alloc]initWithFrame:CGRectMake(12*screenScale+CGRectGetMaxX(buttonIcon.frame), (90-16)/2.0, 62, 16)];
 //            btnSumLabel.text = @"数据库定制";
 //            btnSumLabel.font = [UIFont systemFontOfSize:12.0];
 //            [buttonLbl addSubview:buttonLbl];
             
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            CustomButton *button = [CustomButton buttonWithType:UIButtonTypeCustom];
             button.frame = CGRectMake(i*1+(screenWidth-2)/3.0*i, 1*j+45*j, (screenWidth-2)/3.0, 45);
-            button.backgroundColor = [UIColor clearColor];
+            button.backgroundColor = [UIColor whiteColor];
+            [button setTitle:btnNameArr[j][i] forState:UIControlStateNormal];
+            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            button.titleLabel.font = [UIFont systemFontOfSize:12.0];
+            [button setImage:[UIImage imageNamed:btniconArr[j][i]] forState:UIControlStateNormal];
+            
+            button.imageRect = CGRectMake(16*screenScale, (45-26)/2.0, 26, 26);
+            button.titleRect = CGRectMake(8*screenScale+16*screenScale+26, (45-16)/2.0, 62, 16);
+            
+            [button addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
             [buttonView addSubview:button];
+            
         }
         
   
@@ -113,6 +127,14 @@
     
     
     
+}
+
+
+#pragma mark - 点击事件
+- (void)buttonClick{
+
+    CommitKnowledgeViewController *vc = [[CommitKnowledgeViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 

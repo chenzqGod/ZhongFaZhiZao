@@ -38,7 +38,14 @@
     [self.view addSubview:self.navigationView];
     
     
+    UILabel *leftLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 32, 59/2.0)];
     
+    
+    
+    UIImageView *searchImg = [[UIImageView alloc]initWithFrame:CGRectMake((32-18)/2.0, (59/2.0-18)/2.0, 18, 18)];
+    searchImg.image = [UIImage imageNamed:@"搜索"];
+    searchImg.backgroundColor = [UIColor blackColor];
+    [leftLbl addSubview:searchImg];
     
         self.textField = [[UITextField alloc]initWithFrame:CGRectMake(59, 26, 516/2.0*screenScale, 59/2.0)];
         self.textField.placeholder = @"搜索产品名称或型号";
@@ -48,18 +55,14 @@
         self.textField.backgroundColor = [UIColor whiteColor];
         self.textField.layer.masksToBounds = YES;
         self.textField.layer.cornerRadius = 3;
-    self.textField.leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 32, 59/2.0)];
+//    self.textField.leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 32, 59/2.0)];
+    self.textField.leftView = leftLbl;
+    self.textField.leftViewMode = UITextFieldViewModeAlways;
     [self.textField addSubview:self.textField.leftView];
     
     [self.view addSubview:self.textField];
     
-    UIImageView *searchImg = [[UIImageView alloc]initWithFrame:CGRectMake((32-18)/2.0, 24, 18, 18)];
-    searchImg.image = [UIImage imageNamed:@"搜索"];
-    searchImg.center = self.textField.leftView.center;
-    //    searchImg.backgroundColor = [UIColor cyanColor];
-    [self.navigationView setMaskView:searchImg];
 
-    [self.textField.leftView addSubview:searchImg];
     
 //    UIButton  *pushSerchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 //    pushSerchBtn.frame = CGRectMake(59, 24, 516/2.0*screenScale, 59/2.0);

@@ -204,6 +204,9 @@
 		567B629A1DD1A4A4004D1CFE /* ABWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 567B62991DD1A4A3004D1CFE /* ABWebViewViewController.m */; };
 		5697C7FE1E07E9F6008A1D98 /* 占位图-消息@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5697C7FC1E07E9F6008A1D98 /* 占位图-消息@2x.png */; };
 		5697C7FF1E07E9F6008A1D98 /* 占位图-消息@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5697C7FD1E07E9F6008A1D98 /* 占位图-消息@3x.png */; };
+		5697C8021E08D0DF008A1D98 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5697C8011E08D0DF008A1D98 /* CustomButton.m */; };
+		5697C8051E08DDEF008A1D98 /* Group 15@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5697C8031E08DDEF008A1D98 /* Group 15@2x.png */; };
+		5697C8061E08DDEF008A1D98 /* Group 15@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5697C8041E08DDEF008A1D98 /* Group 15@3x.png */; };
 		56CFD7081E00E45700D18340 /* 采购-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD6F81E00E45700D18340 /* 采购-1@2x.png */; };
 		56CFD7091E00E45700D18340 /* 采购-1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD6F91E00E45700D18340 /* 采购-1@3x.png */; };
 		56CFD70A1E00E45700D18340 /* 采购-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD6FA1E00E45700D18340 /* 采购-2@2x.png */; };
@@ -659,6 +662,10 @@
 		567B62991DD1A4A3004D1CFE /* ABWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABWebViewViewController.m; sourceTree = "<group>"; };
 		5697C7FC1E07E9F6008A1D98 /* 占位图-消息@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "占位图-消息@2x.png"; sourceTree = "<group>"; };
 		5697C7FD1E07E9F6008A1D98 /* 占位图-消息@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "占位图-消息@3x.png"; sourceTree = "<group>"; };
+		5697C8001E08D0DF008A1D98 /* CustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
+		5697C8011E08D0DF008A1D98 /* CustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
+		5697C8031E08DDEF008A1D98 /* Group 15@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Group 15@2x.png"; sourceTree = "<group>"; };
+		5697C8041E08DDEF008A1D98 /* Group 15@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Group 15@3x.png"; sourceTree = "<group>"; };
 		56B770811DD2CF4B00BA1D2B /* ZhongFa.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZhongFa.pch; sourceTree = "<group>"; };
 		56B770831DD2D1BB00BA1D2B /* APImacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APImacros.h; sourceTree = "<group>"; };
 		56B770841DD2D2AB00BA1D2B /* RuleMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleMacros.h; sourceTree = "<group>"; };
@@ -1647,6 +1654,8 @@
 				560956281DFFE00300DA0B72 /* UserLoginTextField.m */,
 				56CFD8031E0509C800D18340 /* NavigationControllerView.h */,
 				56CFD8041E0509C800D18340 /* NavigationControllerView.m */,
+				5697C8001E08D0DF008A1D98 /* CustomButton.h */,
+				5697C8011E08D0DF008A1D98 /* CustomButton.m */,
 			);
 			path = "自定义";
 			sourceTree = "<group>";
@@ -1813,6 +1822,8 @@
 		56CFD8121E0789FE00D18340 /* 知识产权 */ = {
 			isa = PBXGroup;
 			children = (
+				5697C8031E08DDEF008A1D98 /* Group 15@2x.png */,
+				5697C8041E08DDEF008A1D98 /* Group 15@3x.png */,
 				56CFD8131E0789FE00D18340 /* banner2@2x.png */,
 				56CFD8141E0789FE00D18340 /* banner2@3x.png */,
 				56CFD8151E0789FE00D18340 /* chat@2x.png */,
@@ -1990,6 +2001,7 @@
 				560366291DDEA20000332DD2 /* Default-568h@2x.png in Resources */,
 				5603663B1DDEA20000332DD2 /* 87@3x.png in Resources */,
 				56CFD71B1E01265900D18340 /* 验证icon@3x.png in Resources */,
+				5697C8061E08DDEF008A1D98 /* Group 15@3x.png in Resources */,
 				5603662B1DDEA20000332DD2 /* Default.png in Resources */,
 				560366281DDEA20000332DD2 /* Default-414w-736h@3x.png in Resources */,
 				561AC03C1DED7B0F009C8EC3 /* guid03.jpg in Resources */,
@@ -2006,6 +2018,7 @@
 				5603662D1DDEA20000332DD2 /* Default@3x.png in Resources */,
 				56CFD79C1E028FC700D18340 /* 消息@2x.png in Resources */,
 				560366361DDEA20000332DD2 /* 58@2x-1.png in Resources */,
+				5697C8051E08DDEF008A1D98 /* Group 15@2x.png in Resources */,
 				560956261DFF998E00DA0B72 /* 默认头像@3x.png in Resources */,
 				56CFD8251E0789FE00D18340 /* icon@2x.png in Resources */,
 				5603663D1DDEA7BC00332DD2 /* Images.xcassets in Resources */,
@@ -2133,6 +2146,7 @@
 				567B62041DD020A0004D1CFE /* NSArray+JSONModel.m in Sources */,
 				567B62281DD020A1004D1CFE /* UIScrollView+MJRefresh.m in Sources */,
 				567B61FC1DD020A0004D1CFE /* AFSecurityPolicy.m in Sources */,
+				5697C8021E08D0DF008A1D98 /* CustomButton.m in Sources */,
 				567B62091DD020A0004D1CFE /* JSONValueTransformer.m in Sources */,
 				56CFD73E1E026EFF00D18340 /* ElectronicCollectionViewCell.m in Sources */,
 				560955B51DF7FB2D00DA0B72 /* VfLoginViewController.m in Sources */,
