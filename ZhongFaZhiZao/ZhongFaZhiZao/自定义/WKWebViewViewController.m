@@ -235,7 +235,12 @@
     
 }
 
-
+//- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+//    if (navigationType==UIWebViewNavigationTypeBackForward) {
+//        self.webView.canGoBack?[self.webView goBack]:[self.navigationController popViewControllerAnimated:YES];
+//    }
+//    return YES;
+//}
 
 - (void)dealloc {
     [_webView removeObserver:self forKeyPath:@"estimatedProgress"];

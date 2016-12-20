@@ -12,10 +12,10 @@
 
 @property (nonatomic,strong) UIScrollView *scrollView;
 @property (nonatomic,strong) UIImageView *logoView; // logo
-@property (nonatomic,strong) UIImageView *phoneNumLbl; // 手机号
+@property (nonatomic,strong) UILabel *phoneNumLbl; // 手机号
 @property (nonatomic,strong) UITextField *phoneNumTF;
 @property (nonatomic,strong) UIView *firstLine;
-@property (nonatomic,strong) UIImageView *vfCodeLbl; // 验证码
+@property (nonatomic,strong) UILabel *vfCodeLbl; // 验证码
 @property (nonatomic,strong) UITextField *vfCodeTF;
 @property (nonatomic,strong) UIView *secondLine;
 @property (nonatomic,strong) UIButton *getvfCodeBtn; // 获取验证码按钮

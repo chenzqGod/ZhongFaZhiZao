@@ -12,6 +12,7 @@
 #import "PurchaseViewController.h"
 #import "MineViewController.h"
 #import "PwLoginViewController.h"
+#import "IMViewController.h"
 
 @interface ZFZZTabBarController ()
 
@@ -42,7 +43,7 @@
     [homeNav.tabBarItem setImage:[UIImage imageNamed:@"首页-1"]];
     [homeNav.tabBarItem setSelectedImage:[UIImage imageNamed:@"首页-1"]];
     
-    AskViewController *askVC = [[AskViewController alloc]init];
+    IMViewController *askVC = [[IMViewController alloc]init];
     UINavigationController *askNav = [[UINavigationController alloc]initWithRootViewController:askVC];
     askNav.title = @"消息";
     askNav.tabBarItem.title = @"IM";

@@ -13,11 +13,11 @@
 
 @property (nonatomic,strong) UIScrollView *scrollView;
 @property (nonatomic,strong) UIImageView *logoView;      //logo
-@property (nonatomic,strong) UIImageView *phoneNumLbl;   //手机号
+@property (nonatomic,strong) UILabel *phoneNumLbl;   //手机号
 @property (nonatomic,strong) UITextField *phoneNumTF;
 @property (nonatomic,strong) UIView *firstLine;          //下划线
-@property (nonatomic,strong) UIImageView *passWdLbl;     // 密码
-@property (nonatomic,strong) UserLoginTextField *passWdTF;
+@property (nonatomic,strong) UILabel *passWdLbl;     // 密码
+@property (nonatomic,strong) UITextField *passWdTF;
 @property (nonatomic,strong) UIView *secondLine;
 @property (nonatomic,strong) UIButton *pwVisibleBtn;     //密码可见按钮
 @property (nonatomic,strong) UIButton *vfLoginBtn;       //验证码登录按钮

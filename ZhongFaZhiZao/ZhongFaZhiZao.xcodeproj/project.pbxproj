@@ -207,6 +207,7 @@
 		5697C8021E08D0DF008A1D98 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5697C8011E08D0DF008A1D98 /* CustomButton.m */; };
 		5697C8051E08DDEF008A1D98 /* Group 15@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5697C8031E08DDEF008A1D98 /* Group 15@2x.png */; };
 		5697C8061E08DDEF008A1D98 /* Group 15@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5697C8041E08DDEF008A1D98 /* Group 15@3x.png */; };
+		5697C8091E090E23008A1D98 /* IMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5697C8081E090E23008A1D98 /* IMViewController.m */; };
 		56CFD7081E00E45700D18340 /* 采购-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD6F81E00E45700D18340 /* 采购-1@2x.png */; };
 		56CFD7091E00E45700D18340 /* 采购-1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD6F91E00E45700D18340 /* 采购-1@3x.png */; };
 		56CFD70A1E00E45700D18340 /* 采购-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD6FA1E00E45700D18340 /* 采购-2@2x.png */; };
@@ -666,6 +667,8 @@
 		5697C8011E08D0DF008A1D98 /* CustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
 		5697C8031E08DDEF008A1D98 /* Group 15@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Group 15@2x.png"; sourceTree = "<group>"; };
 		5697C8041E08DDEF008A1D98 /* Group 15@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Group 15@3x.png"; sourceTree = "<group>"; };
+		5697C8071E090E23008A1D98 /* IMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMViewController.h; sourceTree = "<group>"; };
+		5697C8081E090E23008A1D98 /* IMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMViewController.m; sourceTree = "<group>"; };
 		56B770811DD2CF4B00BA1D2B /* ZhongFa.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZhongFa.pch; sourceTree = "<group>"; };
 		56B770831DD2D1BB00BA1D2B /* APImacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APImacros.h; sourceTree = "<group>"; };
 		56B770841DD2D2AB00BA1D2B /* RuleMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleMacros.h; sourceTree = "<group>"; };
@@ -1780,6 +1783,8 @@
 		56CFD7F71E03DADF00D18340 /* IM通讯 */ = {
 			isa = PBXGroup;
 			children = (
+				5697C8071E090E23008A1D98 /* IMViewController.h */,
+				5697C8081E090E23008A1D98 /* IMViewController.m */,
 			);
 			path = "IM通讯";
 			sourceTree = "<group>";
@@ -2133,6 +2138,7 @@
 			files = (
 				56CFD73B1E026EED00D18340 /* SolveCollectionViewCell.m in Sources */,
 				567B621F1DD020A0004D1CFE /* MJRefreshBackGifFooter.m in Sources */,
+				5697C8091E090E23008A1D98 /* IMViewController.m in Sources */,
 				567B62021DD020A0004D1CFE /* JSONModelClassProperty.m in Sources */,
 				560956291DFFE00300DA0B72 /* UserLoginTextField.m in Sources */,
 				567B62371DD020A1004D1CFE /* UIImageView+HighlightedWebCache.m in Sources */,

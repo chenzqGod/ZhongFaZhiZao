@@ -37,9 +37,13 @@
     self.userView.backgroundColor = [UIColor whiteColor];
     [self.scrollView addSubview:self.userView];
     
-    self.phoneNumLbl = [[UIImageView alloc]init];
-    self.phoneNumLbl.image = [UIImage imageNamed:@"账号登录"];
-    [self.phoneNumLbl sizeToFit];
+//    self.phoneNumLbl = [[UILabel alloc]init];
+//    self.phoneNumLbl.image = [UIImage imageNamed:@"账号登录"];
+    self.phoneNumLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 58, 41)];
+    UIImageView *NumImg = [[UIImageView alloc]initWithFrame:CGRectMake(27, (41-17)/2.0, 14, 17)];
+    NumImg.image = [UIImage imageNamed:@"账号登录"];
+    [self.phoneNumLbl addSubview:NumImg];
+//    [self.phoneNumLbl sizeToFit];
     [self.userView addSubview:self.phoneNumLbl];
     
     self.phoneNumTF = [[UITextField alloc]init];
@@ -59,17 +63,24 @@
     self.pwdView.backgroundColor = [UIColor whiteColor];
     [self.scrollView addSubview:self.pwdView];
 
-    self.vfCodeLbl = [[UIImageView alloc]init];
-    self.vfCodeLbl.image = [UIImage imageNamed:@"验证icon"];
-    [self.vfCodeLbl sizeToFit];
+    self.vfCodeLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 58, 41)];
+//    self.vfCodeLbl.image = [UIImage imageNamed:@"验证icon"];
+//    [self.vfCodeLbl sizeToFit];
+    
+    UIImageView *passImg = [[UIImageView alloc]initWithFrame:CGRectMake(27, (41-15)/2.0, 15, 15)];
+    passImg.image = [UIImage imageNamed:@"验证icon"];
+    [self.vfCodeLbl addSubview:passImg];
+    
     [self.pwdView addSubview:self.vfCodeLbl];
+    
+    
     
     self.vfCodeTF = [[UITextField alloc]init];
     self.vfCodeTF.leftView = self.vfCodeLbl;
     self.vfCodeTF.leftViewMode = UITextFieldViewModeAlways;
     self.vfCodeTF.rightView = self.getvfCodeBtn;
     self.vfCodeTF.rightViewMode = UITextFieldViewModeAlways;
-    self.vfCodeTF.placeholder = @"请输入短信验证码";
+    self.vfCodeTF.placeholder = @"请输入验证码";
     self.vfCodeTF.font = [UIFont systemFontOfSize:15];
     self.vfCodeTF.textColor = TEXT_GREY_COLOR;
     
@@ -160,16 +171,16 @@
     
     [self.phoneNumTF mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@(20));
-        make.left.mas_equalTo(self.userView.mas_left).offset(26);
+        make.left.mas_equalTo(self.userView.mas_left);
         make.right.mas_equalTo(self.userView.mas_right).offset(-18);
         make.centerY.equalTo(self.userView.mas_centerY);
     }];
     
-    [self.phoneNumLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(14, 17));
-        make.left.equalTo(self.phoneNumTF.mas_left);
-        make.centerY.equalTo(self.userView.mas_centerY);
-    }];
+//    [self.phoneNumLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.size.mas_equalTo(CGSizeMake(14, 17));
+//        make.left.equalTo(self.phoneNumTF.mas_left);
+//        make.centerY.equalTo(self.userView.mas_centerY);
+//    }];
     
     [self.firstLine mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@(screenWidth));
@@ -190,15 +201,15 @@
         make.height.equalTo(@(20));
         make.left.mas_equalTo(self.phoneNumTF.mas_left);
 //        make.right.mas_equalTo(self.phoneNumTF.mas_right).offset(-68);
-        make.width.mas_equalTo(@160);
+        make.width.mas_equalTo(@180);
         make.centerY.equalTo(self.pwdView.mas_centerY);
     }];
     
-    [self.vfCodeLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(15, 15));
-        make.left.equalTo(self.vfCodeTF.mas_left);
-        make.centerY.equalTo(self.pwdView.mas_centerY);
-    }];
+//    [self.vfCodeLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.size.mas_equalTo(CGSizeMake(15, 15));
+//        make.left.equalTo(self.vfCodeTF.mas_left);
+//        make.centerY.equalTo(self.pwdView.mas_centerY);
+//    }];
     
     [self.getvfCodeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(73, 26));

@@ -74,7 +74,11 @@
 //    [self.vfCodeLbl sizeToFit];
     [self.view2 addSubview:self.vfCodeLbl];
     
-    self.getvfCodeBtn = [[UIButton alloc]init];
+    
+    UILabel *vfcoderightlbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 73+17, 40)];
+    
+    self.getvfCodeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.getvfCodeBtn.frame = CGRectMake(0, (40-26)/2.0, 73, 26);
     [self.getvfCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
     [self.getvfCodeBtn setTitleColor:[UIColor colorWithHexString:@"#787878"] forState:UIControlStateNormal];
     self.getvfCodeBtn.layer.cornerRadius = 2;
@@ -82,17 +86,18 @@
     self.getvfCodeBtn.layer.borderWidth = 1;
     self.getvfCodeBtn.layer.masksToBounds = YES;
     self.getvfCodeBtn.titleLabel.font  = [UIFont systemFontOfSize:12];
-    [self.view2 addSubview:self.getvfCodeBtn];
+    [vfcoderightlbl addSubview:self.getvfCodeBtn];
     
     self.vfCodeTF = [[UITextField alloc]init];
     self.vfCodeTF.leftView = self.vfCodeLbl;
     self.vfCodeTF.leftViewMode = UITextFieldViewModeAlways;
-    self.vfCodeTF.rightView = self.getvfCodeBtn;
+    self.vfCodeTF.rightView = vfcoderightlbl;
     self.vfCodeTF.rightViewMode = UITextFieldViewModeAlways;
     self.vfCodeTF.placeholder = @"请输入验证码";
     self.vfCodeTF.font = [UIFont systemFontOfSize:15];
     self.vfCodeTF.textColor = TEXT_GREY_COLOR;
     self.vfCodeTF.clearButtonMode = UITextFieldViewModeWhileEditing;
+
     [self.view2 addSubview:self.vfCodeTF];
     
     self.secondLine = [[UIView alloc]init];
@@ -259,7 +264,8 @@
         make.centerY.equalTo(self.view2.mas_centerY);
         //        make.centerX.equalTo(self.mas_centerX);
         make.left.equalTo(self.phoneNumTF.mas_left);
-        make.right.mas_equalTo(self.view2.mas_right).offset(-91);
+//        make.right.mas_equalTo(self.view2.mas_right).offset(-91);
+        make.width.equalTo(@(screenWidth-18));
         
 //        make.height.equalTo(@(20));
 //        make.left.mas_equalTo(self.phoneNumTF.mas_left);
@@ -275,12 +281,12 @@
         make.centerY.equalTo(self.vfCodeTF.mas_centerY);
     }];
 
-    [self.getvfCodeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(73, 26));
-        make.right.equalTo(self.view2.mas_right).offset(-17);
-        
-        make.top.equalTo(self.vfCodeTF.mas_top);
-    }];
+//    [self.getvfCodeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.size.mas_equalTo(CGSizeMake(73, 26));
+//        make.right.equalTo(self.view2.mas_right).offset(-17);
+//        
+//        make.top.equalTo(self.vfCodeTF.mas_top);
+//    }];
 
     [self.secondLine mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(self.firstLine);

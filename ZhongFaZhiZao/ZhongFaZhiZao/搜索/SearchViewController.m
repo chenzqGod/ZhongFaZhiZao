@@ -43,8 +43,8 @@
     
     
     UIImageView *searchImg = [[UIImageView alloc]initWithFrame:CGRectMake((32-18)/2.0, (59/2.0-18)/2.0, 18, 18)];
-    searchImg.image = [UIImage imageNamed:@"搜索"];
-    searchImg.backgroundColor = [UIColor blackColor];
+    searchImg.image = [UIImage imageNamed:@"搜索icon"];
+    searchImg.backgroundColor = [UIColor clearColor];
     [leftLbl addSubview:searchImg];
     
         self.textField = [[UITextField alloc]initWithFrame:CGRectMake(59, 26, 516/2.0*screenScale, 59/2.0)];
