@@ -15,4 +15,6 @@
 
 - (instancetype)initWithUrlStr:(NSString *)urlStr title:(NSString *)title;
 
+@property (nonatomic,copy) NSString *title;
+
 @end

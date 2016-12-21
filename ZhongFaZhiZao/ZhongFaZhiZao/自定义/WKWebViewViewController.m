@@ -39,6 +39,7 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
     
+    self.tabBarController.tabBar.hidden = YES;
     //    [[self navigationController] setNavigationBarHidden:YES animated:NO];
     
     
@@ -56,7 +57,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 20, screenWidth, screenHeight-20)];
+    NavigationControllerView *navView = [[NavigationControllerView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 64) andLeftBtn:_navigatorTitle];
+    navView.viewController = self;
+    [self.view addSubview:navView];
+    
+    _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 64, screenWidth, screenHeight-64)];
     _webView.navigationDelegate=self;
     
     _webView.UIDelegate = self;

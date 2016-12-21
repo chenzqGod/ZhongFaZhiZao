@@ -56,7 +56,9 @@
     
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 
+    [self loadadData];
 
+    [self loadCityData];
 }
 
 - (void)viewDidLoad {
@@ -80,6 +82,56 @@
 }
 
 
+#pragma mark - loadData
+- (void)loadadData{
+
+    [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,AD_API] parameters:nil success:^(id response) {
+        
+        if ([response[@"resultCode"]integerValue] == 1000) {
+            
+            NSArray *adid41Arr = response[@"ad_id_41"];
+            
+            NSArray *adid44Arr = response[@"ad_id_44"];
+
+        }
+        else if ([response[@"resultCode"]integerValue] == 1001){
+        
+             [WKProgressHUD popMessage:@"广告位请求失败" inView:self.view duration:HUD_DURATION animated:YES];
+        }
+        
+        
+    } failure:^(NSString *error) {
+        
+        [WKProgressHUD popMessage:@"请检查网络连接" inView:self.view duration:HUD_DURATION animated:YES];
+
+    }];
+    
+}
+
+
+- (void)loadCityData{
+    
+    [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,Electronic_API] parameters:nil success:^(id response) {
+        
+        if ([response[@"resultCode"]integerValue] == 1000) {
+            
+        }
+        else if ([response[@"resultCode"]integerValue] == 1001){
+            
+            [WKProgressHUD popMessage:@"电子市场请求失败" inView:self.view duration:HUD_DURATION animated:YES];
+        }
+        
+
+        
+        
+    } failure:^(NSString *error) {
+       
+        
+    }];
+    
+}
+
+#pragma mark - 创建UI
 - (void)createNavgationView {
 
     self.navigationView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 64)];
@@ -229,6 +281,9 @@
     
     UIImageView *firstImg = [[UIImageView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.mainBtnView.frame)+8, screenWidth, 80)];
     firstImg.image = [UIImage imageNamed:@"供bar"];
+    firstImg.userInteractionEnabled = YES;
+    [firstImg addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(GongbuttonClick)]];
+    
     [self.headerView addSubview:firstImg];
     
 }
@@ -296,14 +351,17 @@
     self.collectionHeaderView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 80)];
     self.collectionHeaderView.image = [UIImage imageNamed:collecHeaderArr[indexPath.section-1]];
     self.collectionHeaderView.userInteractionEnabled = YES;
-    [self.collectionHeaderView addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(buttonClick)]];
+//    self.collectionHeaderView.tag = 50000+indexPath.section;
+//    [self.collectionHeaderView addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(buttonClick:)]];
 //    collectionView header 点击
-//    UIButton *collectHeaderBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    collectHeaderBtn.frame = self.collectionView.frame;
-//    [collectHeaderBtn addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
-//    collectHeaderBtn.enabled = YES;
-//    collectHeaderBtn.hidden = NO;
-//    [self.collectionHeaderView addSubview:collectHeaderBtn];
+    UIButton *collectHeaderBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    collectHeaderBtn.frame = self.collectionView.frame;
+    collectHeaderBtn.tag = 2000+indexPath.section;
+    [collectHeaderBtn addTarget:self action:@selector(mainButtonClick2:) forControlEvents:UIControlEventTouchUpInside];
+    
+    collectHeaderBtn.enabled = YES;
+    collectHeaderBtn.hidden = NO;
+    [self.collectionHeaderView addSubview:collectHeaderBtn];
     
     UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView1" forIndexPath:indexPath];
     
@@ -313,6 +371,8 @@
     
     return reusableview;
 }
+
+
 
 #pragma mark - UICollectionViewDataSource
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -590,35 +650,129 @@
 
     NSLog(@"%ld",button.tag);
     
-    KnowLedgeViewController *vc = [[KnowLedgeViewController alloc]init];
     
-    switch (button.tag) {
-        case Supply:
-//            [self htmlJump:_scenicDetailModel.infourl withTitle:@"景区简介"];
-            break;
-        case Science:
-//            [self htmlJump:_scenicDetailModel.triplineurl withTitle:@"路线"];
-            
-            break;
-        case Knowledge:
-
-
-            [self.navigationController pushViewController:vc animated:YES];
-            
-            break;
-        case Intelligence:
-
-            break;
-        case Solve:
-            
-            break;
-        case  Electronic:
-            [WKProgressHUD popMessage:@"敬请期待" inView:self.view duration:HUD_DURATION animated:YES];
-
-            break;
+    if (button.tag == Supply ) {
+        
+        WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,SUPPLY_LIST] title:@"供应链采购"];
+        [self.navigationController pushViewController:wkvc animated:YES];
+        
+    }
+    else if (button.tag == Science){
+        
+        WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,SCIENCE_LIST] title:@"供应链采购"];
+        [self.navigationController pushViewController:wkvc animated:YES];
+    
+    }
+    else if (button.tag == Knowledge){
+        
+        KnowLedgeViewController *vc = [[KnowLedgeViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }
+    else if (button.tag == Intelligence){
+    
+        WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,Intelligence_LIST] title:@"供应链采购"];
+        [self.navigationController pushViewController:wkvc animated:YES];
+        
+    }
+    else if (button.tag == Solve){
+        
+        WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,SOLVE_LIST] title:@"供应链采购"];
+        [self.navigationController pushViewController:wkvc animated:YES];
+    
+    }
+    else{
+    
+        [WKProgressHUD popMessage:@"敬请期待" inView:self.view duration:HUD_DURATION animated:YES];
+        
     }
 
 }
+
+- (void)mainButtonClick2:(UIButton *)button{
+    
+    NSLog(@"%ld",button.tag);
+    
+    
+    if (button.tag == 2001){
+        
+        WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,SCIENCE_LIST] title:@"供应链采购"];
+        [self.navigationController pushViewController:wkvc animated:YES];
+        
+    }
+    else if (button.tag == 2002){
+        
+        KnowLedgeViewController *vc = [[KnowLedgeViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }
+    else if (button.tag == 2003){
+        
+        WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,Intelligence_LIST] title:@"供应链采购"];
+        [self.navigationController pushViewController:wkvc animated:YES];
+        
+    }
+    else if (button.tag == 2004){
+        
+        WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,SOLVE_LIST] title:@"供应链采购"];
+        [self.navigationController pushViewController:wkvc animated:YES];
+        
+    }
+    else{
+        
+//        [WKProgressHUD popMessage:@"敬请期待" inView:self.view duration:HUD_DURATION animated:YES];
+        
+    }
+    
+}
+
+
+
+//供应链header点击事件
+- (void)GongbuttonClick{
+
+    WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,SUPPLY_LIST] title:@"供应链采购"];
+    [self.navigationController pushViewController:wkvc animated:YES];
+
+}
+
+////其他header点击事件
+//- (void)buttonClick:(UIImageView *)i{
+//    
+//    if (i.tag == 1+50000) {
+//        
+//        WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,SCIENCE_LIST] title:@"供应链采购"];
+//        [self.navigationController pushViewController:wkvc animated:YES];
+//
+//    }
+//    else if (i.tag == 2+50000){
+//    
+//        KnowLedgeViewController *vc = [[KnowLedgeViewController alloc]init];
+//        [self.navigationController pushViewController:vc animated:YES];
+//
+//        
+//    }
+//    else if (i.tag == 3+50000){
+//        
+//        WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,Intelligence_LIST] title:@"供应链采购"];
+//        [self.navigationController pushViewController:wkvc animated:YES];
+//
+//        
+//    }
+//    else if (i.tag == 4+50000){
+//        
+//        WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,SOLVE_LIST] title:@"供应链采购"];
+//        [self.navigationController pushViewController:wkvc animated:YES];
+//
+//    
+//    }
+//    else{
+//    
+//    }
+//    
+//}
+
+
 
 //跳转到搜索页
 - (void)SearchButtonPush{
@@ -627,6 +781,9 @@
     
     [self.navigationController pushViewController:vc animated:YES];
 }
+
+
+
 
 #pragma mark - scrollView滑动
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -652,12 +809,7 @@
 }
 
 
-- (void)buttonClick{
 
-    SearchViewController *vc = [[SearchViewController alloc]init];
-    
-    [self.navigationController pushViewController:vc animated:YES];
-}
 
 
 
