@@ -20,5 +20,7 @@
 @property (nonatomic,copy) NSString *password;   //密码
 @property (nonatomic,copy) NSString *uid;        //uid
 @property (nonatomic,assign) BOOL isLogin;       //判断是否已登录
+@property (nonatomic,copy) NSString *token;      //token
+@property (nonatomic,copy) NSString *uname;      //姓名
 
 @end

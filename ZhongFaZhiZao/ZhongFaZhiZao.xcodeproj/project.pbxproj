@@ -208,6 +208,8 @@
 		5697C8051E08DDEF008A1D98 /* Group 15@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5697C8031E08DDEF008A1D98 /* Group 15@2x.png */; };
 		5697C8061E08DDEF008A1D98 /* Group 15@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5697C8041E08DDEF008A1D98 /* Group 15@3x.png */; };
 		5697C8091E090E23008A1D98 /* IMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5697C8081E090E23008A1D98 /* IMViewController.m */; };
+		5697C8101E0A2703008A1D98 /* DCWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5697C80F1E0A2703008A1D98 /* DCWebImageManager.m */; };
+		5697C8131E0A2757008A1D98 /* CustomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5697C8121E0A2756008A1D98 /* CustomScrollView.m */; };
 		56CFD7081E00E45700D18340 /* 采购-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD6F81E00E45700D18340 /* 采购-1@2x.png */; };
 		56CFD7091E00E45700D18340 /* 采购-1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD6F91E00E45700D18340 /* 采购-1@3x.png */; };
 		56CFD70A1E00E45700D18340 /* 采购-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD6FA1E00E45700D18340 /* 采购-2@2x.png */; };
@@ -669,6 +671,10 @@
 		5697C8041E08DDEF008A1D98 /* Group 15@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Group 15@3x.png"; sourceTree = "<group>"; };
 		5697C8071E090E23008A1D98 /* IMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMViewController.h; sourceTree = "<group>"; };
 		5697C8081E090E23008A1D98 /* IMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMViewController.m; sourceTree = "<group>"; };
+		5697C80E1E0A2703008A1D98 /* DCWebImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCWebImageManager.h; sourceTree = "<group>"; };
+		5697C80F1E0A2703008A1D98 /* DCWebImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCWebImageManager.m; sourceTree = "<group>"; };
+		5697C8111E0A2756008A1D98 /* CustomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomScrollView.h; sourceTree = "<group>"; };
+		5697C8121E0A2756008A1D98 /* CustomScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomScrollView.m; sourceTree = "<group>"; };
 		56B770811DD2CF4B00BA1D2B /* ZhongFa.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZhongFa.pch; sourceTree = "<group>"; };
 		56B770831DD2D1BB00BA1D2B /* APImacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APImacros.h; sourceTree = "<group>"; };
 		56B770841DD2D2AB00BA1D2B /* RuleMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleMacros.h; sourceTree = "<group>"; };
@@ -1640,6 +1646,7 @@
 		567B62971DD1A47E004D1CFE /* 自定义 */ = {
 			isa = PBXGroup;
 			children = (
+				5697C80D1E0A26ED008A1D98 /* imagecache */,
 				56CFD71C1E014E2A00D18340 /* scrollView */,
 				56045FEA1DF1850800BB5EB9 /* UIView+CPView.h */,
 				56045FEB1DF1850800BB5EB9 /* UIView+CPView.m */,
@@ -1661,6 +1668,15 @@
 				5697C8011E08D0DF008A1D98 /* CustomButton.m */,
 			);
 			path = "自定义";
+			sourceTree = "<group>";
+		};
+		5697C80D1E0A26ED008A1D98 /* imagecache */ = {
+			isa = PBXGroup;
+			children = (
+				5697C80E1E0A2703008A1D98 /* DCWebImageManager.h */,
+				5697C80F1E0A2703008A1D98 /* DCWebImageManager.m */,
+			);
+			path = imagecache;
 			sourceTree = "<group>";
 		};
 		56CFD6B71E00277700D18340 /* Tabbar */ = {
@@ -1689,6 +1705,8 @@
 		56CFD71C1E014E2A00D18340 /* scrollView */ = {
 			isa = PBXGroup;
 			children = (
+				5697C8111E0A2756008A1D98 /* CustomScrollView.h */,
+				5697C8121E0A2756008A1D98 /* CustomScrollView.m */,
 			);
 			path = scrollView;
 			sourceTree = "<group>";
@@ -2167,6 +2185,7 @@
 				567B61481DCAE1EF004D1CFE /* ZFZZTabBarController.m in Sources */,
 				560955BB1DF7FBE400DA0B72 /* SetPwViewController.m in Sources */,
 				567B62271DD020A1004D1CFE /* UIScrollView+MJExtension.m in Sources */,
+				5697C8101E0A2703008A1D98 /* DCWebImageManager.m in Sources */,
 				56CFD72F1E026EAC00D18340 /* SupplyCollectionViewCell.m in Sources */,
 				567B622A1DD020A1004D1CFE /* MKAnnotationView+WebCache.m in Sources */,
 				560955AF1DF7F87300DA0B72 /* DelegateViewController.m in Sources */,
@@ -2197,6 +2216,7 @@
 				567B62721DD08842004D1CFE /* PurchaseViewController.m in Sources */,
 				56045FE71DF1827000BB5EB9 /* WKMessageProgressHUD.m in Sources */,
 				567B62051DD020A0004D1CFE /* JSONAPI.m in Sources */,
+				5697C8131E0A2757008A1D98 /* CustomScrollView.m in Sources */,
 				567B620C1DD020A0004D1CFE /* MASConstraintMaker.m in Sources */,
 				567B624E1DD020EE004D1CFE /* NSString+Time.m in Sources */,
 				56045FE81DF1827000BB5EB9 /* WKProgressHUD.m in Sources */,

@@ -76,7 +76,7 @@
     
     
     UILabel *vfcoderightlbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 73+17, 40)];
-    
+    vfcoderightlbl.userInteractionEnabled = YES;
     self.getvfCodeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.getvfCodeBtn.frame = CGRectMake(0, (40-26)/2.0, 73, 26);
     [self.getvfCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomScrollView.h"
 
 typedef NS_ENUM(int,ZF){
 

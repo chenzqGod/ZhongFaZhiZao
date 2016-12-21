@@ -12,8 +12,9 @@
 #import "DelegateViewController.h"
 #import "PwLoginViewController.h"
 #import "NSNetworking.h"
+#import "PwLoginViewController.h"
 
-@interface RegisterViewController ()
+@interface RegisterViewController ()<UITextFieldDelegate>
 
 @property (nonatomic,strong) RegisterView *registView;
 @end
@@ -57,10 +58,10 @@
         [WKProgressHUD popMessage:@"请输入正确的手机号" inView:self.view duration:HUD_DURATION animated:YES];
     }else{
         
-        NSDictionary *parameters = @{@"mob":self.phoneNum};
+//        NSDictionary *parameters = @{@"mob":self.phoneNum};
         
-        [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,REGIST_VF] parameters:parameters success:^(id response) {
-            if ([response[@"state"] isEqualToString:@"Y"]) {
+        [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@/%@",HOST_URL,REGIST_VF,self.phoneNum] parameters:nil success:^(id response) {
+            if ([response[@"resultCode"]integerValue] == 1000) {
                 [WKProgressHUD popMessage:@"验证码已发送" inView:self.view duration:HUD_DURATION animated:YES];
                 __block int timeout = 60; // 倒计时时间
                 dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -93,6 +94,13 @@
                 
                 dispatch_resume(_timer);
             }
+            
+            else if ([response[@"resultCode"]integerValue] == 1001){
+                
+                [WKProgressHUD popMessage:@"发送失败" inView:self.view duration:HUD_DURATION animated:YES];
+            }
+
+            
         } failure:^(NSString *error) {
             [WKProgressHUD popMessage:@"请检查网络连接" inView:self.view duration:HUD_DURATION animated:YES];
         }];
@@ -157,20 +165,41 @@
     }else if (self.passWd.length > 16){
         [WKProgressHUD popMessage:@"密码长度不能大于16位" inView:self.view duration:HUD_DURATION animated:YES];
     }else{
-        NSDictionary *parameters = @{@"logmob":self.phoneNum,@"logpassword":self.passWd,@"logincode":self.verifyCode};
+//        NSDictionary *parameters = @{@"logmob":self.phoneNum,@"logpassword":self.passWd,@"logincode":self.verifyCode};
         
-        [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,REGIST] parameters:parameters success:^(id response) {
-            if ([response[@"resultCode"]isEqualToString:@"1000"]) {
+        [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@/%@/%@/%@",HOST_URL,REGIST,self.phoneNum,self.passWd,self.verifyCode] parameters:nil success:^(id response) {
+            if ([response[@"resultCode"]integerValue ] == 1000) {
                 [WKProgressHUD popMessage:@"注册成功" inView:self.view duration:HUD_DURATION animated:YES];
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     PwLoginViewController *pwLogin = [[PwLoginViewController alloc]init];
                     [self.navigationController pushViewController:pwLogin animated:YES];
                 });
-            }else if ([response[@"resultCode"]isEqualToString:@"1001"]){
-                [WKProgressHUD popMessage:@"失败" inView:self.view duration:HUD_DURATION animated:YES];
-            }else if ( [response[@"resultCode"]isEqualToString:@"1004"]){
+            }else if ([response[@"resultCode"]integerValue ] == 1001){
+                [WKProgressHUD popMessage:@"注册失败" inView:self.view duration:HUD_DURATION animated:YES];
+            }else if ( [response[@"resultCode"]integerValue ] == 1005){
             
-                [WKProgressHUD popMessage:@"验证码过期" inView:self.view duration:HUD_DURATION animated:YES];
+                [WKProgressHUD popMessage:@"验证错误" inView:self.view duration:HUD_DURATION animated:YES];
+            }else if ( [response[@"resultCode"]integerValue ] == 1007){
+                
+                //UIAlertController风格：UIAlertControllerStyleAlert
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"该手机号码已注册"
+                                                                                         message:nil
+                                                                                  preferredStyle:UIAlertControllerStyleAlert ];
+                
+                //添加取消到UIAlertController中
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+                [alertController addAction:cancelAction];
+                [self presentViewController:alertController animated:YES completion:nil];
+
+                //添加确定到UIAlertController中
+                UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"去登陆" style:UIAlertActionStyleDefault handler:nil];
+                [alertController addAction:OKAction];
+                PwLoginViewController *vc = [[PwLoginViewController alloc]init];
+                [self presentViewController:vc animated:YES completion:nil];
+                
+                
+                
+//                [WKProgressHUD popMessage:@"该手机号已被注册" inView:self.view duration:HUD_DURATION animated:YES];
             }
             
         } failure:^(NSString *error) {

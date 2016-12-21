@@ -24,7 +24,7 @@
 #import "KnowLedgeCustomCollectionViewCell.h"
 
 #import "CommitKnowledgeViewController.h"
-
+#import "DCWebImageManager.h"
 #define margins 8
 
 @interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>{
@@ -84,26 +84,18 @@
 
     self.navigationView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 64)];
     self.navigationView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bar"]];
-//    self.navigationView.backgroundColor = [UIColor redColor];
-        [self.view addSubview:self.navigationView];
-    
-//    UIImageView *searchImg = [[UIImageView alloc]initWithFrame:CGRectMake(59, 24, 539/2.0*screenScale, 30)];
-//    searchImg.image = [UIImage imageNamed:@"搜索"];
-////    searchImg.backgroundColor = [UIColor cyanColor];
-//    [self.navigationView setMaskView:searchImg];
+    [self.view addSubview:self.navigationView];
     
     self.pushSerchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.pushSerchBtn.frame = CGRectMake(59, 24, 539/2.0*screenScale, 59/2.0);
     self.pushSerchBtn.backgroundColor = [UIColor clearColor];
     [self.pushSerchBtn setBackgroundImage:[UIImage imageNamed:@"搜素"] forState:UIControlStateNormal];
-//    self.pushSerchBtn.layer.cornerRadius = 3;
-//    self.pushSerchBtn.layer.masksToBounds = YES;
+
     self.pushSerchBtn.imageView.frame = self.pushSerchBtn.bounds;
     self.pushSerchBtn.hidden = NO;
     [self.pushSerchBtn setEnabled:YES];
     [self.pushSerchBtn addTarget:self action:@selector(SearchButtonPush) forControlEvents:UIControlEventTouchUpInside];
     
-//    [self.view setMaskView:self.pushSerchBtn];
     [self.view addSubview:self.pushSerchBtn];
     
     
@@ -143,30 +135,26 @@
     self.headerView.backgroundColor = BACK_COLOR;
     [self.view addSubview:self.headerView];
     
-    self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 180)];
-    self.scrollView.backgroundColor = [UIColor redColor];
-    [self.headerView addSubview:self.scrollView];
+    NSArray *scrollImg = @[@"banner",@"banner",@"banner"];
     
-    UIImageView *bannerimage = [[UIImageView alloc]initWithFrame:self.scrollView.bounds];
-    bannerimage.image = [UIImage imageNamed:@"banner"];
-    [self.headerView addSubview:bannerimage];
+    CustomScrollView *mainscrollView = [[CustomScrollView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 180)WithImageNames:scrollImg];
     
-//    UILabel *textFieldLbl = [];
+    [mainscrollView setImageViewDidTapAtIndex:^(NSInteger index) {
+        
+    }];
+    mainscrollView.placeImage = [UIImage imageNamed:@"banner"];
+    mainscrollView.AutoScrollDelay = 5.0f;
     
-//    self.textField = [[UITextField alloc]initWithFrame:CGRectMake(59, 26, 539/2.0*screenScale, 30)];
-//    self.textField.placeholder = @"搜索产品名称或型号";
-//    self.textField.font = [UIFont boldSystemFontOfSize:15.0];
-//    self.textField.textColor = TEXT_GREY_COLOR;
-//    self.textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-//    self.textField.background = [UIColor whiteColor];
-//    self.textField.layer.masksToBounds = YES;
-//    self.textField.layer.cornerRadius = 3;
+    mainscrollView.backgroundColor = [UIColor redColor];
+    [self.headerView addSubview:mainscrollView];
     
+    [[DCWebImageManager shareManager] setDownloadImageRepeatCount:1];
+    [[DCWebImageManager shareManager] setDownLoadImageError:^(NSError *error, NSString *url) {
+        NSLog(@"%@",error);
+    }];
 
-//    UILabel *scrollLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.scrollView.frame), screenWidth, 8)];
-//    scrollLabel.backgroundColor = BACK_COLOR;
     
-    self.adView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.scrollView.frame)+8, screenWidth, 40)];
+    self.adView = [[UIView alloc]initWithFrame:CGRectMake(0, 8+CGRectGetMaxY(mainscrollView.frame), screenWidth, 40)];
     self.adView.backgroundColor = [UIColor whiteColor];
     [self.headerView addSubview:self.adView];
     
@@ -200,7 +188,7 @@
     lineLabel1.backgroundColor = TEXT_LINE_COLOR;
     [self.headerView addSubview:lineLabel1];
 
-    self.mainBtnView = [[UIView alloc]initWithFrame:CGRectMake(0,CGRectGetMaxY(self.scrollView.frame)+40+8 , screenWidth, 164)];
+    self.mainBtnView = [[UIView alloc]initWithFrame:CGRectMake(0,CGRectGetMaxY(mainscrollView.frame)+40+8 , screenWidth, 164)];
     self.mainBtnView.backgroundColor = [UIColor whiteColor];
     [self.headerView addSubview:self.mainBtnView];
 
@@ -307,15 +295,15 @@
     NSArray *collecHeaderArr = @[@"科技bar",@"产权专利bar",@"智能bar",@"解决方案bar",@"电子市场bar"];
     self.collectionHeaderView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 80)];
     self.collectionHeaderView.image = [UIImage imageNamed:collecHeaderArr[indexPath.section-1]];
-    self.collectionView.userInteractionEnabled = YES;
-    
+    self.collectionHeaderView.userInteractionEnabled = YES;
+    [self.collectionHeaderView addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(buttonClick)]];
 //    collectionView header 点击
-    UIButton *collectHeaderBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    collectHeaderBtn.frame = self.collectionView.frame;
-    [collectHeaderBtn addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
-    collectHeaderBtn.enabled = YES;
-    collectHeaderBtn.hidden = NO;
-    [self.collectionHeaderView addSubview:collectHeaderBtn];
+//    UIButton *collectHeaderBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    collectHeaderBtn.frame = self.collectionView.frame;
+//    [collectHeaderBtn addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
+//    collectHeaderBtn.enabled = YES;
+//    collectHeaderBtn.hidden = NO;
+//    [self.collectionHeaderView addSubview:collectHeaderBtn];
     
     UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView1" forIndexPath:indexPath];
     
@@ -670,6 +658,9 @@
     
     [self.navigationController pushViewController:vc animated:YES];
 }
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

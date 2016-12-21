@@ -12,9 +12,8 @@
 #import "RegisterViewController.h"
 #import "ForgetPwViewController.h"
 #import "NSString+Mobile.h"
-#import "NSNetworking.h"
 
-@interface VfLoginViewController ()
+@interface VfLoginViewController ()<UITextFieldDelegate>
 
 @property (nonatomic,strong) VfLoginView *vfLoginView;
 @property (nonatomic, strong) UserInfo *userInfo;
@@ -50,7 +49,7 @@
 }
 
 - (void)pwLogin{
-    PwLoginViewController *pwLogin = [[PwLoginViewController alloc]init];
+//    PwLoginViewController *pwLogin = [[PwLoginViewController alloc]init];
 //    [self.navigationController pushViewController:pwLogin animated:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -75,14 +74,16 @@
         [WKProgressHUD popMessage:@"请输入正确的手机号" inView:self.view duration:HUD_DURATION animated:YES];
     }else{
         
-        NSDictionary *parameters = @{@"mob":self.phoneNum};
+//        NSDictionary *parameters = @{@"mob":self.phoneNum};
         
 //        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HOST_URL,LOGIN_VF,self.phoneNum]];
 //        
 //        NSLog(@"url url == %@",url);
 //        
-        [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@/%@",HOST_URL,SEND_VF,self.phoneNum] parameters:nil success:^(id response) {
-            if ([response[@"rusultCode"] isEqualToString:@"1000"]) {
+        [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@/%@",HOST_URL,LOGIN_VF,self.phoneNum] parameters:nil success:^(id response) {
+            if ([response[@"resultCode"]integerValue] == 1000 ) {
+            
+                
             [WKProgressHUD popMessage:@"验证码已发送" inView:self.view duration:HUD_DURATION animated:YES];
                 __block int timeout = 60; // 倒计时时间
                 dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -115,7 +116,15 @@
                 
                 dispatch_resume(_timer);
             }
-        } failure:^(NSString *error) {
+            else if ([response[@"resultCode"]integerValue] == 1001){
+            
+                [WKProgressHUD popMessage:@"发送失败" inView:self.view duration:HUD_DURATION animated:YES];
+            }
+            
+        }
+         
+
+                    failure:^(NSString *error) {
             [WKProgressHUD popMessage:@"请检查网络连接" inView:self.view duration:HUD_DURATION animated:YES];
             
             
@@ -137,34 +146,56 @@
         [WKProgressHUD popMessage:@"请输入正确的手机号" inView:self.view duration:HUD_DURATION animated:YES];
     }else{
         
-        NSDictionary *parameters = @{@"logmob":self.phoneNum,@"logincode":self.vfCode};
+//        NSDictionary *parameters = @{@"logmob":self.phoneNum,@"logincode":self.vfCode};
         
         
         
-        [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,LOGIN] parameters:parameters success:^(id response) {
-            if ([response[@"resultCode"]isEqualToString:@"1000"]) {
+        [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@/%@/%@",HOST_URL,LOGIN,self.phoneNum,self.vfCode] parameters:nil success:^(id response) {
+            if ([response[@"resultCode"]integerValue] == 1000) {
                 [WKProgressHUD popMessage:@"登录成功" inView:self.view duration:HUD_DURATION animated:YES];
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    self.userInfo = [UserInfo sharedUserInfo];
-                    self.userInfo.desId = response[@"desId"];
-                    self.userInfo.mob = response[@"mob"];
-                    self.userInfo.nickName = response[@"nick_name"];
-                    self.userInfo.photo = response[@"photo"];
-                    self.userInfo.createDate = response[@"create_date"];
+//                    self.userInfo = [UserInfo sharedUserInfo];
+//                    self.userInfo.desId = response[@"desId"];
+//                    self.userInfo.mob = response[@"mob"];
+//                    self.userInfo.nickName = response[@"nick_name"];
+//                    self.userInfo.photo = response[@"photo"];
+//                    self.userInfo.createDate = response[@"create_date"];
                     self.userInfo.uid = response[@"uid"];
+                    self.userInfo.token = response[@"token"];
+                    self.userInfo.uname = response[@"uname"];
                     self.userInfo.isLogin = YES;
                     
-                    [USER_DEFAULTS setObject:_userInfo.desId forKey:@"desId"];
-                    [USER_DEFAULTS setObject:_userInfo.mob forKey:@"mob"];
-                    [USER_DEFAULTS setObject:_userInfo.nickName forKey:@"nick_name"];
-                    [USER_DEFAULTS setObject:_userInfo.photo forKey:@"photo"];
-                    [USER_DEFAULTS setObject:_userInfo.createDate forKey:@"create_date"];
                     [USER_DEFAULTS setObject:_userInfo.uid forKey:@"uid"];
+                    [USER_DEFAULTS setObject:_userInfo.token forKey:@"token"];
+                    [USER_DEFAULTS setObject:_userInfo.uname forKey:@"uname"];
                     [USER_DEFAULTS synchronize];
-//                    [(NeiShaTabbar *)self.tabBarController showImageView];
+//
+//                    [USER_DEFAULTS setObject:_userInfo.desId forKey:@"desId"];
+//                    [USER_DEFAULTS setObject:_userInfo.mob forKey:@"mob"];
+//                    [USER_DEFAULTS setObject:_userInfo.nickName forKey:@"nick_name"];
+//                    [USER_DEFAULTS setObject:_userInfo.photo forKey:@"photo"];
+//                    [USER_DEFAULTS setObject:_userInfo.createDate forKey:@"create_date"];
+//                    [USER_DEFAULTS setObject:_userInfo.uid forKey:@"uid"];
+//                    [USER_DEFAULTS synchronize];
                 });
-            }else{
-                [WKProgressHUD popMessage:@"失败" inView:self.view duration:HUD_DURATION animated:YES];
+            }else if ([response[@"resultCode"]integerValue] == 1003){
+            
+                [WKProgressHUD popMessage:@"不存在该用户" inView:self.view duration:HUD_DURATION animated:YES];
+            }else if ([response[@"resultCode"]integerValue] == 1004){
+                
+                [WKProgressHUD popMessage:@"验证码过期" inView:self.view duration:HUD_DURATION animated:YES];
+            }else if ([response[@"resultCode"]integerValue] == 1008){
+                
+                [WKProgressHUD popMessage:@"参数错误" inView:self.view duration:HUD_DURATION animated:YES];
+            }else if ([response[@"resultCode"]integerValue] == 1009){
+                
+                [WKProgressHUD popMessage:@"账号已过期" inView:self.view duration:HUD_DURATION animated:YES];
+            }else if ([response[@"resultCode"]integerValue] == 1006){
+                
+                [WKProgressHUD popMessage:@"手机号格式错误" inView:self.view duration:HUD_DURATION animated:YES];
+            }
+            else{
+                [WKProgressHUD popMessage:@"登录失败" inView:self.view duration:HUD_DURATION animated:YES];
             }
             
         } failure:^(NSString *error) {

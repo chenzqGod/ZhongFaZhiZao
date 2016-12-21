@@ -13,7 +13,8 @@
 #import "ForgetPwViewController.h"
 #import "NSString+Mobile.h"
 
-@interface PwLoginViewController ()
+
+@interface PwLoginViewController ()<UITextFieldDelegate>
 
 @property (nonatomic,strong) PwLoginView *pwLoginView;
 @property (nonatomic, strong) UserInfo *userInfo;
@@ -127,13 +128,13 @@
         [WKProgressHUD popMessage:@"请输入正确的手机号" inView:self.view duration:HUD_DURATION animated:YES];
     }else{
         
-        NSDictionary *parameters = @{@"logmob":self.phoneNum,@"logpassword":self.passWd,@"wxopenId":@"",@"logincode":@""};
+//        NSDictionary *parameters = @{@"logmob":self.phoneNum,@"logpassword":self.passWd,@"wxopenId":@"",@"logincode":@""};
         
-//        [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,LOGIN] parameters:parameters success:^(id response) {
-//            NSLog(@"%@",response[@"msg"]);
-//            if ([response[@"msg"]isEqualToString:@"ok"]) {
-//            [WKProgressHUD popMessage:@"登录成功" inView:self.view duration:HUD_DURATION animated:YES];
-//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@/%@/%@",HOST_URL,LOGIN_PW,self.phoneNum,self.passWd] parameters:nil success:^(id response) {
+
+            if ([response[@"resultCode"]integerValue] == 1000) {
+            [WKProgressHUD popMessage:@"登录成功" inView:self.view duration:HUD_DURATION animated:YES];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //                    self.userInfo = [UserInfo sharedUserInfo];
 //                    self.userInfo.desId = response[@"desId"];
 //                    self.userInfo.mob = response[@"mob"];
@@ -142,31 +143,53 @@
 //                    self.userInfo.createDate = response[@"create_date"];
 //                    self.userInfo.uid = response[@"uid"];
 //                    self.userInfo.isLogin = YES;
-//                    
-//                    self.userInfo.password = self.passWd;
+                    
+                    self.userInfo.uid = response[@"uid"];
+                    self.userInfo.token = response[@"token"];
+                    self.userInfo.uname = response[@"uname"];
+                    self.userInfo.isLogin = YES;
+                    
+                    self.userInfo.password = self.passWd;
 //                    [USER_DEFAULTS setObject:_userInfo.desId forKey:@"desId"];
 //                    [USER_DEFAULTS setObject:_userInfo.mob forKey:@"mob"];
 //                    [USER_DEFAULTS setObject:_userInfo.nickName forKey:@"nick_name"];
 //                    [USER_DEFAULTS setObject:_userInfo.photo forKey:@"photo"];
 //                    [USER_DEFAULTS setObject:_userInfo.createDate forKey:@"create_date"];
 //                    [USER_DEFAULTS setObject:_userInfo.uid forKey:@"uid"];
-//                    if (_pwLoginView.rememberPwBtn.isSelected) {
-//                    [USER_DEFAULTS setObject:_userInfo.password forKey:@"password"];
-//                    }else{
-//                    [USER_DEFAULTS setObject:@"" forKey:@"password"];
-//                    }
-//                    [USER_DEFAULTS synchronize];
-//                    [(NeiShaTabbar *)self.tabBarController showImageView];
-//                });
-//
-//            }else{
-//            [WKProgressHUD popMessage:response[@"msg"] inView:self.view duration:HUD_DURATION animated:YES];
-//            }
-//            
-//        } failure:^(NSString *error) {
-//            NSLog(@"%@",error);
-//            [WKProgressHUD popMessage:@"请检查网络连接" inView:self.view duration:HUD_DURATION animated:YES];
-//        }];
+                    [USER_DEFAULTS setObject:_userInfo.uid forKey:@"uid"];
+                    [USER_DEFAULTS setObject:_userInfo.token forKey:@"token"];
+                    [USER_DEFAULTS setObject:_userInfo.uname forKey:@"uname"];
+                    [USER_DEFAULTS synchronize];
+                    
+                    if (_pwLoginView.rememberPwBtn.isSelected) {
+                    [USER_DEFAULTS setObject:_userInfo.password forKey:@"password"];
+                    }else{
+                    [USER_DEFAULTS setObject:@"" forKey:@"password"];
+                    }
+                    [USER_DEFAULTS synchronize];
+                });
+
+            }else if ([response[@"resultCode"]integerValue] == 1003){
+                
+                [WKProgressHUD popMessage:@"不存在该用户" inView:self.view duration:HUD_DURATION animated:YES];
+            }else if ([response[@"resultCode"]integerValue] == 1004){
+                
+                [WKProgressHUD popMessage:@"验证码过期" inView:self.view duration:HUD_DURATION animated:YES];
+            }else if ([response[@"resultCode"]integerValue] == 1008){
+                
+                [WKProgressHUD popMessage:@"参数错误" inView:self.view duration:HUD_DURATION animated:YES];
+            }else if ([response[@"resultCode"]integerValue] == 1009){
+                
+                [WKProgressHUD popMessage:@"账号已过期" inView:self.view duration:HUD_DURATION animated:YES];
+            }
+            else{
+                [WKProgressHUD popMessage:@"登录失败" inView:self.view duration:HUD_DURATION animated:YES];
+            }
+
+        } failure:^(NSString *error) {
+            NSLog(@"%@",error);
+            [WKProgressHUD popMessage:@"请检查网络连接" inView:self.view duration:HUD_DURATION animated:YES];
+        }];
         
     }
     
