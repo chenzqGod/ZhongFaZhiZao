@@ -321,9 +321,9 @@
     
     [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
 
-        [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView1"];
+    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView1"];
     
-
+    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView2"];
     
         [self.view addSubview:_collectionView];
     
@@ -345,6 +345,59 @@
         reusableview = headerView;
     
         return reusableview;
+    }
+    
+   else if (kind == UICollectionElementKindSectionHeader &&indexPath.section == 5 ) {
+       
+       UIView *fifView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 80+53)];
+       fifView.backgroundColor = BACK_COLOR;
+       fifView.userInteractionEnabled = YES;
+       
+       UIImageView *fifImg = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 80)];
+       fifImg.image = [UIImage imageNamed:@"电子市场bar"];
+       fifImg.userInteractionEnabled = YES;
+       [fifView addSubview:fifImg];
+     
+       CGFloat fifBtnX = (screenWidth-78*4)/5.0;
+       
+       NSArray *fifArr = @[@"全部",@"北京",@"西安",@"深圳"];
+       
+       for (NSInteger i = 0; i < 4; i++) {
+           
+            UIButton *fifButton = [UIButton buttonWithType:UIButtonTypeCustom];
+           
+           fifButton.frame = CGRectMake(78*i+(i+1)*fifBtnX, (53-25)/2.0+CGRectGetMaxY(fifImg.frame), 78, 25);
+           [fifButton setTitle:fifArr[i] forState:UIControlStateNormal];
+           [fifButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+//           [fifButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+
+           
+           [fifButton setTitleColor:TEXT_GREY_COLOR forState:UIControlStateNormal];
+           fifButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
+           fifButton.layer.masksToBounds = YES;
+           fifButton.layer.cornerRadius = 10;
+           fifButton.tag = 3000+i;
+           [fifButton addTarget:self action:@selector(fifBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+           
+           fifButton.backgroundColor = BLUE_COLOR;
+           
+           [fifView addSubview:fifButton];
+
+           if (i == 0) {
+               self.tmpbtn = fifButton;
+               fifButton.selected = YES;
+           }
+
+       }
+       
+       UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView2" forIndexPath:indexPath];
+       
+       [headerView addSubview: fifView];
+       
+       reusableview = headerView;
+       
+       return reusableview;
+       
     }
     
     NSArray *collecHeaderArr = @[@"科技bar",@"产权专利bar",@"智能bar",@"解决方案bar",@"电子市场bar"];
@@ -579,6 +632,8 @@
         
         [self.navigationController pushViewController:vc animated:YES];
     }
+    
+    
 }
 
 
@@ -597,7 +652,10 @@
         
         return CGSizeMake(screenWidth, 180+8+40+164+80+8);
     }
+    else if (section == 5){
     
+        return CGSizeMake(screenWidth, 80+53);
+    }
     return CGSizeMake(screenWidth, 80);
 }
 
@@ -724,6 +782,16 @@
         
     }
     
+}
+
+
+- (void)fifBtnClick:(UIButton *)button{
+
+//    if (!self.tmpbtn.selected) {
+//        
+//        self.tmpbtn = button;
+//        self.tmpbtn.selected = YES;
+//    }
 }
 
 

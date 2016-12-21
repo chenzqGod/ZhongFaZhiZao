@@ -39,6 +39,8 @@ typedef NS_ENUM(int,ZF){
 @property (nonatomic,strong) UIView *mainBtnView;
 
 
+@property (nonatomic,strong) UIButton *tmpbtn;
+
 //死数据
 //@property (nonatomic,strong) UIButton *titleBtnSupply;    //供应链title
 //@property (nonatomic,strong) UIButton *titleBtnScience;    //科技成果title
