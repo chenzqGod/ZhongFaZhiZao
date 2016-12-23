@@ -13,4 +13,7 @@
 @property (nonatomic,strong) UIImageView *imageView;
 @property (nonatomic,strong) UIView *headerView;
 
+@property (nonatomic,copy) NSMutableArray *dataArray;
+@property (nonatomic,assign) NSInteger pageIndex;
+
 @end

@@ -40,6 +40,9 @@
     
     [self createHeader];
     
+    self.pageIndex = 1;
+    self.dataArray = [[NSMutableArray alloc]init];
+    
     self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, screenWidth, screenHeight-64) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -49,10 +52,63 @@
     self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     self.tableView.backgroundColor = BACK_COLOR;
     
+    
+//    下拉刷新、上拉加载
+    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        //Call this Block When enter the refresh status automatically
+        
+        self.pageIndex = 1;
+        [self loadData];
+        
+        [_tableView.header endRefreshing];
+        
+    }];
+    
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        //Call this Block When enter the refresh status automatically
+        
+        self.pageIndex++;
+        [self loadData];
+        
+        [_tableView.footer endRefreshing];
+        
+        
+    }];
+
+    
     [self.view addSubview:self.tableView];
     
 }
 
+#pragma mark - loadData
+- (void)loadData{
+
+    NSDictionary *parameters = @{@"pageIndex":[NSNumber numberWithInteger:self.pageIndex]};
+    
+    [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,PATENT_LIST] parameters:parameters success:^(id response) {
+        
+        if ([response[@"resultCode"]integerValue] == 1000) {
+        
+//            self.dataArray = [NSMutableArray arrayWithObject:<#(nonnull id)#>]
+//            response[@"data"][@"goodList1"]
+            
+        }
+        else if ([response[@"resultCode"]integerValue] == 1001){
+        
+            NSLog(@"知识产权页面请求失败");
+        
+        }
+        
+    } failure:^(NSString *error) {
+       
+        [WKProgressHUD popMessage:@"请检查网络连接" inView:self.view duration:HUD_DURATION animated:YES];
+        
+    }];
+    
+}
+
+
+#pragma mark - createUI
 - (void)createHeader{
     
     NSArray *btnNameArr = @[@[@"专利申请",@"专利挖掘",@"无效请求"],@[@"专利维权",@"专利培训",@"专利预警"],@[@"专利分析",@"专利交易",@"数据库定制"]];

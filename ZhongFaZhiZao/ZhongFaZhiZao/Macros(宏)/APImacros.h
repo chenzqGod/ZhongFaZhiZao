@@ -26,7 +26,13 @@
 #define REGIST_VF                  @"/api/getDynamicCode"
 #define REGIST                     @"/api/register"
 
+//融云  sessionId为登录时返回的devicetoken
+#define GETRONG_TOKEN              @"/api/getRongToken/?sessionId=50c745df-3b38-4728-a3a8-8d8cbf1231c9"
 
+//知识产权
+#define PATENT_LIST                @"/api/patent/list"
+#define PATENT_DOMAINLIST          @"/api/patent/domainList"
+#define PATENT_APPLY               @"/api/patent/apply/{typeId}"
 
 //首页
 #define Electronic_API             @"/api/findData"

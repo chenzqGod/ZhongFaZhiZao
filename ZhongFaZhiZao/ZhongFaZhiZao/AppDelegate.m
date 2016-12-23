@@ -7,11 +7,18 @@
 //
 
 #import "AppDelegate.h"
+
+#import <UIKit/UIKit.h>
+
 #import "ZFZZTabBarController.h"
 #import "ZFZZViewController.h"
 #import "MainWebViewController.h"
 
 #import <AlipaySDK/AlipaySDK.h>
+
+//融云IM
+#import <RongIMKit/RongIMKit.h>
+#import <RongIMLib/RongIMLib.h>
 
 //友盟统计
 #import "UMMobClick/MobClick.h"
@@ -27,6 +34,10 @@
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #endif
+
+#define RONGCLOUD_IM_APPKEY @"c9kqb3rdkbwrj"   
+//@"6tnym1brnm7b7"  生产环境
+
 
 #define URLStr     @"http://wap.cecb2b.com"
 
@@ -94,6 +105,41 @@
 //    launch.currentColor = [UIColor redColor];
 //    launch.nomalColor = [UIColor greenColor];
     
+    
+#pragma mark - Rongcloud
+    [[RCIM sharedRCIM]initWithAppKey:RONGCLOUD_IM_APPKEY];
+    
+    /**
+     * 推送处理1
+     */
+    if ([application
+         respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        //注册推送, iOS 8
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings
+                                                settingsForTypes:(UIUserNotificationTypeBadge |
+                                                                  UIUserNotificationTypeSound |
+                                                                  UIUserNotificationTypeAlert)
+                                                categories:nil];
+        [application registerUserNotificationSettings:settings];
+    } else {
+        UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge |
+        UIRemoteNotificationTypeAlert |
+        UIRemoteNotificationTypeSound;
+        [application registerForRemoteNotificationTypes:myTypes];
+    }
+
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(didReceiveMessageNotification:)
+     name:RCKitDispatchMessageNotification
+     object:nil];
+    
+    
+    [[RCIM sharedRCIM] setConnectionStatusDelegate:self];
+//    [[RCIM sharedRCIM]setUserInfoDataSource:self];
+//    设置接收消息代理
+//    [RCIM sharedRCIM].receiveMessageDelegate = self;
+
     
 #pragma mark - to do 初始化APNs
     
@@ -205,7 +251,18 @@
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
-    /// Required - 注册 DeviceToken
+    NSString *token =
+    [[[[deviceToken description] stringByReplacingOccurrencesOfString:@"<"
+                                                           withString:@""]
+      stringByReplacingOccurrencesOfString:@">"
+      withString:@""]
+     stringByReplacingOccurrencesOfString:@" "
+     withString:@""];
+    
+    [[RCIMClient sharedRCIMClient] setDeviceToken:token];
+
+    
+    // Required - 注册 DeviceToken
     [JPUSHService registerDeviceToken:deviceToken];
 }
 
@@ -439,7 +496,41 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 }
 
 
+#pragma mark - 网络状态变化 RongClond
 
+/**
+ *  网络状态变化。
+ *
+ *  @param status 网络状态。
+ */
+- (void)onRCIMConnectionStatusChanged:(RCConnectionStatus)status {
+    if (status == ConnectionStatus_KICKED_OFFLINE_BY_OTHER_CLIENT) {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"提示"
+                              message:@"您"
+                              @"的帐号在别的设备上登录，您被迫下线！"
+                              delegate:nil
+                              cancelButtonTitle:@"知道了"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+//        ViewController *loginVC = [[ViewController alloc] init];
+//        UINavigationController *_navi =
+//        [[UINavigationController alloc] initWithRootViewController:loginVC];
+//        self.window.rootViewController = _navi;
+    }
+}
+
+- (void)didReceiveMessageNotification:(NSNotification *)notification {
+    
+    RCMessage *message = notification.object;
+    if (message.messageDirection == MessageDirection_RECEIVE && [[message.content class] persistentFlag] & MessagePersistent_ISCOUNTED) {
+        [UIApplication sharedApplication].applicationIconBadgeNumber =
+        [UIApplication sharedApplication].applicationIconBadgeNumber + 1;
+    }
+    
+//    [UIApplication sharedApplication].applicationIconBadgeNumber =
+//    [UIApplication sharedApplication].applicationIconBadgeNumber + 1;
+}
 
 
 @end

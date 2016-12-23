@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IMViewController : UIViewController
+#import <RongIMKit/RongIMKit.h>
+#import <RongIMLib/RongIMLib.h>
+
+@interface IMViewController : RCConversationListViewController
 
 @end
