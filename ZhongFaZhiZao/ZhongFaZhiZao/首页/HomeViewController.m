@@ -105,7 +105,7 @@
         [WKProgressHUD popMessage:@"请检查网络连接" inView:self.view duration:HUD_DURATION animated:YES];
 
     }];
-    
+        
 }
 
 
@@ -183,13 +183,13 @@
 //collectionView最上面Header
 - (void)createHeaderView{
 
-    self.headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 180+8+40+164+80+8)];
+    self.headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 180*screenScale+8+40+164+80+8)];
     self.headerView.backgroundColor = BACK_COLOR;
     [self.view addSubview:self.headerView];
     
     NSArray *scrollImg = @[@"banner",@"banner",@"banner"];
     
-    CustomScrollView *mainscrollView = [[CustomScrollView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 180)WithImageNames:scrollImg];
+    CustomScrollView *mainscrollView = [[CustomScrollView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 180*screenScale)WithImageNames:scrollImg];
     
     [mainscrollView setImageViewDidTapAtIndex:^(NSInteger index) {
         
@@ -296,7 +296,7 @@
     //设置滚动方向
     _flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     //设置headerView尺寸大小
-    _flowLayout.headerReferenceSize = CGSizeMake(screenWidth, 180+8+40+164);
+    _flowLayout.headerReferenceSize = CGSizeMake(screenWidth, 180*screenScale+8+40+164);
     
 //    _flowLayout.itemSize 
     
@@ -308,9 +308,13 @@
     _collectionView.backgroundColor = BACK_COLOR;
     
     //注册cell
-    [_collectionView registerClass:[SupplyCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    [_collectionView registerClass:[SupplyCollectionViewCell class] forCellWithReuseIdentifier:@"supplycell"];
     [_collectionView registerClass:[KnowLedgeCustomCollectionViewCell class] forCellWithReuseIdentifier:@"knowcustomCell"];
-    
+     [_collectionView registerClass:[ScienceCollectionViewCell class] forCellWithReuseIdentifier:@"scienceCell"];
+     [_collectionView registerClass:[IntelligenceCollectionViewCell class] forCellWithReuseIdentifier:@"intelligenceCell"];
+     [_collectionView registerClass:[SolveCollectionViewCell class] forCellWithReuseIdentifier:@"solveCell"];
+     [_collectionView registerClass:[ElectronicCollectionViewCell class] forCellWithReuseIdentifier:@"eletronicCell"];
     
     [_flowLayout setHeaderReferenceSize:CGSizeMake(screenWidth, _headerView.frame.size.height)];
     
@@ -471,6 +475,7 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
    
     if (indexPath.section == 2 && indexPath.row < 6) {
         
@@ -488,38 +493,92 @@
         
         cell.backgroundColor = [UIColor whiteColor];
         
-        
-        
-//       UIImageView  *iconImg = [[UIImageView alloc]initWithFrame:CGRectMake(45*screenScale, (cell.frame.size.height-26)/2.0, 26, 26)];
-//        
-//        iconImg.backgroundColor = [UIColor cyanColor];
-//        [cell addSubview:iconImg];
-//        
-//        UILabel *textLbl = [[UILabel alloc]initWithFrame:CGRectMake(12*screenScale+CGRectGetMaxX(iconImg.frame), (cell.frame.size.height-16)/2.0, 64, 16)];
-//        textLbl.text = @"申请专利";
-//        [cell addSubview:textLbl];
+
         
         return cell;
         
     }
     
-    static NSString * CellIdentifier = @"cell";
+    else if (indexPath.section == 1){
+    
+        static NSString * CellIdentifier = @"scienceCell";
+        ScienceCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+        
+        
+        cell.backgroundColor = [UIColor redColor];
+        
+        return cell;
+
+        
+    }
+    
+    
+    
+  else  if (indexPath.section == 3) {
+        
+        static NSString * CellIdentifier = @"intelligenceCell";
+        IntelligenceCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+      
+        NSArray *section3Arr = @[@"智能1",@"智能2",@"智能3",@"智能4"];
+        
+        cell.IntelligenceImg.image =  [UIImage imageNamed:section3Arr[indexPath.row]];
+        
+        return cell;
+        
+    }
+    
+else if (indexPath.section == 2 && indexPath.row >= 6){
+       
+       static NSString * CellIdentifier = @"supplycell";
+       SupplyCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+        NSArray *section36Arr = @[@"Group 41",@"Group 40"];
+        
+        cell.SupplyImg.image = [UIImage imageNamed:section36Arr[indexPath.row-6]];
+        
+        return cell;
+    }
+    
+else if (indexPath.section == 0){
+
+    static NSString * CellIdentifier = @"supplycell";
     SupplyCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+
     
+    cell.backgroundColor = [UIColor redColor];
     
+    return cell;
+
+
+}
+else if (indexPath.section == 4){
     
+    static NSString * CellIdentifier = @"solveCell";
+    SolveCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     
+    cell.backgroundColor = [UIColor redColor];
     
-    //    if(_sceniclist.spot.count>indexPath.row+1)
-    //    {
-    //        ABScenicSpot *model = (ABScenicSpot*)_sceniclist.spot[indexPath.row+1];
-    //        [cell setcellmodel:model];
-    //        return cell;
-    //    }
-//    ABScenicSpot *model = (ABScenicSpot*)_sceniclist.spot[indexPath.row];
+    return cell;
+
+
+}
+else if (indexPath.section == 5){
+    
+    static NSString * CellIdentifier = @"eletronicCell";
+    ElectronicCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    cell.backgroundColor = [UIColor redColor];
+    
+    return cell;
+
+
     
 
-//    [cell setcellmodel:model];
+}
+    
+    static NSString * CellIdentifier = @"cell";
+    UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+
     
     cell.backgroundColor = [UIColor redColor];
     
@@ -650,7 +709,7 @@
 
     if (section == 0) {
         
-        return CGSizeMake(screenWidth, 180+8+40+164+80+8);
+        return CGSizeMake(screenWidth, 180*screenScale+8+40+164+80+8);
     }
     else if (section == 5){
     

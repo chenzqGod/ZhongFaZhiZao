@@ -104,7 +104,7 @@
 
     
 //    点击引导页  设置小圆点颜色等
-   [LaunchIntroductionView sharedWithImages:@[@"guid01.jpg",@"guid02.jpg",@"guid03.jpg",@"guid04.jpg"] buttonImage:@"login" buttonFrame:CGRectMake(0,  0, screenWidth, screenHeight)];
+   [LaunchIntroductionView sharedWithImages:@[@"引导页1.jpg",@"guid02.jpg",@"guid03.jpg",@"guid04.jpg"] buttonImage:@"login" buttonFrame:CGRectMake(0,  0, screenWidth, screenHeight)];
 //    launch.currentColor = [UIColor redColor];
 //    launch.nomalColor = [UIColor greenColor];
     
