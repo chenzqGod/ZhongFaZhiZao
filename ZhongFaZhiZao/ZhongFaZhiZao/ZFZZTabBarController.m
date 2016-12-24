@@ -14,6 +14,7 @@
 #import "PwLoginViewController.h"
 #import "IMViewController.h"
 
+
 @interface ZFZZTabBarController ()
 
 
@@ -46,7 +47,7 @@
     IMViewController *askVC = [[IMViewController alloc]init];
     UINavigationController *askNav = [[UINavigationController alloc]initWithRootViewController:askVC];
     askNav.title = @"消息";
-    askNav.tabBarItem.title = @"IM";
+    askNav.tabBarItem.title = @"咨询";
     askNav.tabBarItem.badgeValue = @"10";
     [askNav.tabBarItem setImage:[UIImage imageNamed:@"咨询-1"]];
     [askNav.tabBarItem setSelectedImage:[UIImage imageNamed:@"咨询-1"]];

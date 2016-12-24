@@ -134,9 +134,9 @@
      name:RCKitDispatchMessageNotification
      object:nil];
     
-    
+//    [RCIM sharedRCIM].userInfoDataSource = [RCDataManager shareManager];
     [[RCIM sharedRCIM] setConnectionStatusDelegate:self];
-//    [[RCIM sharedRCIM]setUserInfoDataSource:self];
+    [[RCIM sharedRCIM]setUserInfoDataSource:self];
 //    设置接收消息代理
 //    [RCIM sharedRCIM].receiveMessageDelegate = self;
 
@@ -531,6 +531,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 //    [UIApplication sharedApplication].applicationIconBadgeNumber =
 //    [UIApplication sharedApplication].applicationIconBadgeNumber + 1;
 }
+
 
 
 @end

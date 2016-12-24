@@ -232,6 +232,7 @@
 		5697C85F1E0CF667008A1D98 /* RongCloudKit.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5697C85D1E0CF667008A1D98 /* RongCloudKit.strings */; };
 		5697C8611E0CF680008A1D98 /* RongIMLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5697C8601E0CF680008A1D98 /* RongIMLib.framework */; };
 		5697C8631E0CF68A008A1D98 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5697C8621E0CF68A008A1D98 /* libopencore-amrnb.a */; };
+		5697C8661E0D33E8008A1D98 /* IMDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5697C8651E0D33E8008A1D98 /* IMDetailViewController.m */; };
 		56CFD7081E00E45700D18340 /* 采购-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD6F81E00E45700D18340 /* 采购-1@2x.png */; };
 		56CFD7091E00E45700D18340 /* 采购-1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD6F91E00E45700D18340 /* 采购-1@3x.png */; };
 		56CFD70A1E00E45700D18340 /* 采购-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD6FA1E00E45700D18340 /* 采购-2@2x.png */; };
@@ -719,6 +720,8 @@
 		5697C85E1E0CF667008A1D98 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = RongCloudKit.strings; sourceTree = "<group>"; };
 		5697C8601E0CF680008A1D98 /* RongIMLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RongIMLib.framework; sourceTree = "<group>"; };
 		5697C8621E0CF68A008A1D98 /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a"; sourceTree = "<group>"; };
+		5697C8641E0D33E8008A1D98 /* IMDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDetailViewController.h; sourceTree = "<group>"; };
+		5697C8651E0D33E8008A1D98 /* IMDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDetailViewController.m; sourceTree = "<group>"; };
 		56B770811DD2CF4B00BA1D2B /* ZhongFa.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZhongFa.pch; sourceTree = "<group>"; };
 		56B770831DD2D1BB00BA1D2B /* APImacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APImacros.h; sourceTree = "<group>"; };
 		56B770841DD2D2AB00BA1D2B /* RuleMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleMacros.h; sourceTree = "<group>"; };
@@ -1911,6 +1914,8 @@
 			children = (
 				5697C8071E090E23008A1D98 /* IMViewController.h */,
 				5697C8081E090E23008A1D98 /* IMViewController.m */,
+				5697C8641E0D33E8008A1D98 /* IMDetailViewController.h */,
+				5697C8651E0D33E8008A1D98 /* IMDetailViewController.m */,
 			);
 			path = "IM通讯";
 			sourceTree = "<group>";
@@ -2325,6 +2330,7 @@
 				567B62381DD020A1004D1CFE /* UIImageView+WebCache.m in Sources */,
 				567B62181DD020A0004D1CFE /* MJRefreshBackFooter.m in Sources */,
 				567B620E1DD020A0004D1CFE /* MASViewAttribute.m in Sources */,
+				5697C8661E0D33E8008A1D98 /* IMDetailViewController.m in Sources */,
 				567B621B1DD020A0004D1CFE /* MJRefreshHeader.m in Sources */,
 				567B62721DD08842004D1CFE /* PurchaseViewController.m in Sources */,
 				56045FE71DF1827000BB5EB9 /* WKMessageProgressHUD.m in Sources */,
