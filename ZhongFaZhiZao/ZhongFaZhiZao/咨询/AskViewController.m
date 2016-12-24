@@ -9,14 +9,16 @@
 #import "AskViewController.h"
 #import "AskTableViewCell.h"
 #import "AskDetailsViewController.h"
-
+#import "FMDB.h"
+#import "UIImageView+WebCache.h"
+#import "WKWebViewViewController.h"
 
 @interface AskViewController ()<UITableViewDelegate,UITableViewDataSource>{
 
 }
 
 @property (nonatomic,strong) UITableView *tableView;
-
+@property (nonatomic,strong) NSMutableArray *dataArr;
 
 @end
 
@@ -30,6 +32,35 @@
 
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
+
+//    刷新数据库信息
+    NSString *path = [NSString stringWithFormat:@"%@/Documents/data.db",NSHomeDirectory()];
+    FMDatabase *database = [FMDatabase databaseWithPath:path];
+    [database open];
+    
+    [database executeUpdate:@"update push_data"];
+
+//    查找并赋值
+//    按日期排序 order by date desc
+    
+    FMResultSet *result = [database executeQuery:@"select * from push_data"];
+    
+    NSMutableArray *array = [NSMutableArray array];
+    
+    while ([result next]) {
+        
+        NSString *url = [result stringForColumn:@"url"];
+        NSString *title = [result stringForColumn:@"title"];
+        NSString *summury = [result stringForColumn:@"summury"];
+        NSString *imgurl = [result stringForColumn:@"imgurl"];
+        NSString *date = [result stringForColumn:@"date"];
+        
+        [array addObject:@[url,title,summury,imgurl,date]];
+    }
+    
+    self.dataArr = [NSMutableArray arrayWithArray:array];
+    
+    [database close];
 }
 
 - (void)viewDidLoad {
@@ -57,6 +88,8 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
     return 6;
+    
+//    return self.dataArr.count;
 }
 
 //每一个分组cell的个数，分组中某一行的cell叫做row
@@ -77,6 +110,18 @@
         cell = [[AskTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         //        cell.userInteractionEnabled = NO;
+        
+//        if (self.dataArr[indexPath.section]) {
+//            
+//            cell.titleLabel.text = self.dataArr[indexPath.section][1];
+//            [cell.mainImgView sd_setImageWithURL:[NSURL URLWithString:self.dataArr[indexPath.section][3]] placeholderImage:[UIImage imageNamed:@"占位图-消息"]];
+//            
+//            cell.sumLabel.text = self.dataArr[indexPath.section][2];
+//
+//            
+//        }
+        
+        
     }
        return cell;
     
@@ -106,6 +151,13 @@
     
     UILabel *timeLabel = [[UILabel alloc]initWithFrame:CGRectMake((screenWidth-98)/2.0, (55-27)/2.0, 98, 27)];
     timeLabel.text = @"2016年11月23日";
+    
+//    if (self.dataArr[section]) {
+//        
+//        timeLabel.text = self.dataArr[section];
+//        
+//    }
+//    
     timeLabel.backgroundColor = [UIColor colorWithHexString:@"#9b9b9b"];
     timeLabel.alpha = 0.4;
     timeLabel.font = [UIFont systemFontOfSize:11.0];
@@ -148,10 +200,17 @@
 //cell点击
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    AskDetailsViewController *vc = [[AskDetailsViewController alloc]init];
-    vc.detailUrl = @"http://www.baidu.com";
+//    AskDetailsViewController *vc = [[AskDetailsViewController alloc]init];
+//    vc.detailUrl = @"http://www.baidu.com";
+//    
+////    vc.detailUrl = self.dataArr[indexPath.section][0];
+//    
+//    [self.navigationController pushViewController:vc animated:YES];
     
-    [self.navigationController pushViewController:vc animated:YES];
+    WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"http://www.baidu.com"] title:@"消息中心"];
+    [self.navigationController pushViewController:wkvc animated:YES];
+
+    
 }
 
 

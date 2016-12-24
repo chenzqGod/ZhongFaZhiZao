@@ -233,6 +233,12 @@
 		5697C8611E0CF680008A1D98 /* RongIMLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5697C8601E0CF680008A1D98 /* RongIMLib.framework */; };
 		5697C8631E0CF68A008A1D98 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5697C8621E0CF68A008A1D98 /* libopencore-amrnb.a */; };
 		5697C8661E0D33E8008A1D98 /* IMDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5697C8651E0D33E8008A1D98 /* IMDetailViewController.m */; };
+		5697C8741E0E2DB3008A1D98 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5697C8691E0E2DB3008A1D98 /* FMDatabase.m */; };
+		5697C8751E0E2DB3008A1D98 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5697C86B1E0E2DB3008A1D98 /* FMDatabaseAdditions.m */; };
+		5697C8761E0E2DB3008A1D98 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5697C86D1E0E2DB3008A1D98 /* FMDatabasePool.m */; };
+		5697C8771E0E2DB3008A1D98 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5697C86F1E0E2DB3008A1D98 /* FMDatabaseQueue.m */; };
+		5697C8781E0E2DB3008A1D98 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5697C8721E0E2DB3008A1D98 /* FMResultSet.m */; };
+		5697C8791E0E2DB3008A1D98 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5697C8731E0E2DB3008A1D98 /* Info.plist */; };
 		56CFD7081E00E45700D18340 /* 采购-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD6F81E00E45700D18340 /* 采购-1@2x.png */; };
 		56CFD7091E00E45700D18340 /* 采购-1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD6F91E00E45700D18340 /* 采购-1@3x.png */; };
 		56CFD70A1E00E45700D18340 /* 采购-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD6FA1E00E45700D18340 /* 采购-2@2x.png */; };
@@ -722,6 +728,18 @@
 		5697C8621E0CF68A008A1D98 /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a"; sourceTree = "<group>"; };
 		5697C8641E0D33E8008A1D98 /* IMDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDetailViewController.h; sourceTree = "<group>"; };
 		5697C8651E0D33E8008A1D98 /* IMDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDetailViewController.m; sourceTree = "<group>"; };
+		5697C8681E0E2DB3008A1D98 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		5697C8691E0E2DB3008A1D98 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		5697C86A1E0E2DB3008A1D98 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		5697C86B1E0E2DB3008A1D98 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		5697C86C1E0E2DB3008A1D98 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		5697C86D1E0E2DB3008A1D98 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		5697C86E1E0E2DB3008A1D98 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		5697C86F1E0E2DB3008A1D98 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		5697C8701E0E2DB3008A1D98 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		5697C8711E0E2DB3008A1D98 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		5697C8721E0E2DB3008A1D98 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		5697C8731E0E2DB3008A1D98 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56B770811DD2CF4B00BA1D2B /* ZhongFa.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZhongFa.pch; sourceTree = "<group>"; };
 		56B770831DD2D1BB00BA1D2B /* APImacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APImacros.h; sourceTree = "<group>"; };
 		56B770841DD2D2AB00BA1D2B /* RuleMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleMacros.h; sourceTree = "<group>"; };
@@ -1311,6 +1329,7 @@
 		567B61451DCAE18C004D1CFE /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				5697C8671E0E2DB3008A1D98 /* fmdb */,
 				56045FE01DF1825B00BB5EB9 /* WKProgressHUD */,
 				567B614E1DD020A0004D1CFE /* AFNetworking */,
 				567B615C1DD020A0004D1CFE /* JSONModel */,
@@ -1790,6 +1809,25 @@
 			path = "zh-Hans.lproj";
 			sourceTree = "<group>";
 		};
+		5697C8671E0E2DB3008A1D98 /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				5697C8681E0E2DB3008A1D98 /* FMDatabase.h */,
+				5697C8691E0E2DB3008A1D98 /* FMDatabase.m */,
+				5697C86A1E0E2DB3008A1D98 /* FMDatabaseAdditions.h */,
+				5697C86B1E0E2DB3008A1D98 /* FMDatabaseAdditions.m */,
+				5697C86C1E0E2DB3008A1D98 /* FMDatabasePool.h */,
+				5697C86D1E0E2DB3008A1D98 /* FMDatabasePool.m */,
+				5697C86E1E0E2DB3008A1D98 /* FMDatabaseQueue.h */,
+				5697C86F1E0E2DB3008A1D98 /* FMDatabaseQueue.m */,
+				5697C8701E0E2DB3008A1D98 /* FMDB.h */,
+				5697C8711E0E2DB3008A1D98 /* FMResultSet.h */,
+				5697C8721E0E2DB3008A1D98 /* FMResultSet.m */,
+				5697C8731E0E2DB3008A1D98 /* Info.plist */,
+			);
+			path = fmdb;
+			sourceTree = "<group>";
+		};
 		56CFD6B71E00277700D18340 /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
@@ -2187,6 +2225,7 @@
 				5609561A1DFF998E00DA0B72 /* wechat-press@3x.png in Resources */,
 				560366271DDEA20000332DD2 /* Default-375w-667h@2x.png in Resources */,
 				56CFD70B1E00E45700D18340 /* 采购-2@3x.png in Resources */,
+				5697C8791E0E2DB3008A1D98 /* Info.plist in Resources */,
 				56CFD81F1E0789FE00D18340 /* chat@2x.png in Resources */,
 				5603663A1DDEA20000332DD2 /* 80@2x.png in Resources */,
 				5603662A1DDEA20000332DD2 /* Default-667h@2x.png in Resources */,
@@ -2275,6 +2314,7 @@
 				56CFD73B1E026EED00D18340 /* SolveCollectionViewCell.m in Sources */,
 				567B621F1DD020A0004D1CFE /* MJRefreshBackGifFooter.m in Sources */,
 				5697C8091E090E23008A1D98 /* IMViewController.m in Sources */,
+				5697C8761E0E2DB3008A1D98 /* FMDatabasePool.m in Sources */,
 				567B62021DD020A0004D1CFE /* JSONModelClassProperty.m in Sources */,
 				560956291DFFE00300DA0B72 /* UserLoginTextField.m in Sources */,
 				567B62371DD020A1004D1CFE /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -2301,6 +2341,7 @@
 				560955941DF6A1F800DA0B72 /* UserInfo.m in Sources */,
 				567B61FE1DD020A0004D1CFE /* AFURLResponseSerialization.m in Sources */,
 				567B61481DCAE1EF004D1CFE /* ZFZZTabBarController.m in Sources */,
+				5697C8781E0E2DB3008A1D98 /* FMResultSet.m in Sources */,
 				560955BB1DF7FBE400DA0B72 /* SetPwViewController.m in Sources */,
 				567B62271DD020A1004D1CFE /* UIScrollView+MJExtension.m in Sources */,
 				5697C8101E0A2703008A1D98 /* DCWebImageManager.m in Sources */,
@@ -2347,9 +2388,11 @@
 				56CFD7381E026EE000D18340 /* IntelligenceCollectionViewCell.m in Sources */,
 				567B62161DD020A0004D1CFE /* MBProgressHUD.m in Sources */,
 				567B620F1DD020A0004D1CFE /* MASViewConstraint.m in Sources */,
+				5697C8741E0E2DB3008A1D98 /* FMDatabase.m in Sources */,
 				56045FA31DF16AC100BB5EB9 /* AskDetailsViewController.m in Sources */,
 				567B620A1DD020A0004D1CFE /* MASCompositeConstraint.m in Sources */,
 				567B622D1DD020A1004D1CFE /* SDWebImageCompat.m in Sources */,
+				5697C8771E0E2DB3008A1D98 /* FMDatabaseQueue.m in Sources */,
 				567B623F1DD020A1004D1CFE /* UIImageView+AFNetworking.m in Sources */,
 				567B62411DD020A1004D1CFE /* UIRefreshControl+AFNetworking.m in Sources */,
 				560955A31DF7F12C00DA0B72 /* SetPwView.m in Sources */,
@@ -2381,6 +2424,7 @@
 				567B62061DD020A0004D1CFE /* JSONHTTPClient.m in Sources */,
 				567B62011DD020A0004D1CFE /* JSONModelArray.m in Sources */,
 				567B623E1DD020A1004D1CFE /* UIButton+AFNetworking.m in Sources */,
+				5697C8751E0E2DB3008A1D98 /* FMDatabaseAdditions.m in Sources */,
 				567B62231DD020A1004D1CFE /* MJRefreshNormalHeader.m in Sources */,
 				567B62401DD020A1004D1CFE /* UIProgressView+AFNetworking.m in Sources */,
 				567B622B1DD020A1004D1CFE /* NSData+ImageContentType.m in Sources */,

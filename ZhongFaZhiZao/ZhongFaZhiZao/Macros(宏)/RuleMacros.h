@@ -34,6 +34,9 @@
 
 #define screenH       screenWidth/667.0
 
+//数据库表名字
+#define PUSH_DATA    @"pushdata"
+
 //间距
 #define Margin 12
 

@@ -25,6 +25,9 @@
 
 #import "LaunchIntroductionView.h"
 
+//数据库
+#import "FMDB.h"
+
 //Bugly
 #import <Bugly/Bugly.h>
 
@@ -333,6 +336,32 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 //        }
 //        
 //        else{
+        
+//        userInfo需要传入的字段  URL  TITLE  SUMMURY  IMGURL  DATE
+        
+        self.pushDic = [[NSMutableDictionary alloc]initWithDictionary:userInfo];
+        
+        
+        NSString *path = [NSString stringWithFormat:@"%@/Documents/data.db",NSHomeDirectory()];
+        FMDatabase *database = [FMDatabase databaseWithPath:path];
+        
+        [database open];
+        
+//        创建db
+        NSString *pushSql = @"create table push_data(url,title,summury,imgurl,date)";
+        [database executeUpdate:pushSql];
+        
+        if (self.pushDic) {
+            
+            //        将userinfo字段插入
+            [database executeUpdate:@"insert into push_data values(?,?,?,?,?)",self.pushDic[@"URL"],self.pushDic[@"TITLE"],self.pushDic[@"SUMMURY"],self.pushDic[@"IMGURL"],self.pushDic[@"DATE"]];
+            
+            [database close];
+            
+        }
+
+        
+        
         
             [self pushToViewControllerWhenClickPushMessageWith:userInfo];
 //        }
