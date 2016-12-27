@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 
 #define PUSH_CREATE_SQL     \
-    @"CREATE TABLE push_data( url TEXT,title TEXT,summury TEXT,imgurl TEXT,date TEXT )"
+    @"CREATE TABLE push_data1( url TEXT,title TEXT,summury TEXT,imgurl TEXT,date TEXT,time long )"
 
+//    @"CREATE TABLE push_data( url TEXT,title TEXT,summury TEXT,imgurl TEXT,date TEXT)"
 
 @interface ZhongFaDataBase : NSObject
 

@@ -37,7 +37,7 @@
     BOOL flag =  [database open];
     
     //        将userinfo字段插入
-    NSString *sql = [NSString stringWithFormat:@"insert into push_data(url,title,summury,imgurl,date) values ('%@','%@','%@','%@','%@')",pushDic[@"URL"],pushDic[@"TITLE"],pushDic[@"SUMMURY"],pushDic[@"IMGURL"],pushDic[@"DATE"]];
+    NSString *sql = [NSString stringWithFormat:@"insert into push_data1(url,title,summury,imgurl,date,time) values ('%@','%@','%@','%@','%@','%@')",pushDic[@"URL"],pushDic[@"TITLE"],pushDic[@"SUMMURY"],pushDic[@"IMGURL"],pushDic[@"DATE"],pushDic[@"TIME"]];
     
          BOOL insert =     [database executeUpdate:sql];
     
@@ -55,7 +55,7 @@
     FMDatabase *database = [FMDatabase databaseWithPath:path];
     [database open];
 
-    FMResultSet *result = [database executeQuery:@"select * from push_data"];
+    FMResultSet *result = [database executeQuery:@"select * from push_data1 order by time desc"];
     
     NSMutableArray *array = [NSMutableArray array];
     

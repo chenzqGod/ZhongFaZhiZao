@@ -26,6 +26,10 @@
 #define REGIST_VF                  @"/api/getDynamicCode"
 #define REGIST                     @"/api/register"
 
+//交互
+#define SERVER_LOGIN               @"http://cectest.cecb2b.com/waps/member/home"
+
+
 //融云  sessionId为登录时返回的devicetoken
 #define GETRONG_TOKEN              @"/api/getRongToken/?sessionId=50c745df-3b38-4728-a3a8-8d8cbf1231c9"
 

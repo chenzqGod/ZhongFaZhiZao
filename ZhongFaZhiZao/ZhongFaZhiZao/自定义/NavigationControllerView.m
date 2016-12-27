@@ -15,15 +15,16 @@
     if (self = [super initWithFrame:frame]) {
         
         UIView *navView = [[UIView alloc]initWithFrame:frame];
-        navView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"NavBack"]];
+        navView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"NavBG"]];
         [self addSubview:navView];
         
         UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        leftBtn.frame = CGRectMake(0, 64-65/2.0-10, 94/2.0, 65/2.0);
+        leftBtn.frame = CGRectMake(0, 64-65/2.0-6, 94/2.0, 65/2.0);
         leftBtn.imageView.frame = leftBtn.bounds;
         leftBtn.hidden = NO;
 //        leftBtn.center = CGPointMake(94/2.0/2.0, 44);
-        [leftBtn setBackgroundImage:[UIImage imageNamed:@"NavBk"] forState:UIControlStateNormal];
+//        leftBtn.backgroundColor = [UIColor redColor];
+        [leftBtn setBackgroundImage:[UIImage imageNamed:@"BackNV"] forState:UIControlStateNormal];
         [leftBtn addTarget:self action:@selector(leftBarButtonItemClick) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:leftBtn];
         
@@ -47,7 +48,7 @@
     if (self = [super initWithFrame:frame]) {
         
         UIView *navView = [[UIView alloc]initWithFrame:frame];
-        navView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"NavBack"]];
+        navView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"NavBG"]];
         [self addSubview:navView];
         
         UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];

@@ -29,36 +29,31 @@
 
 @interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>{
 
-    NSArray *_imageArr;
     UICollectionViewFlowLayout *_flowLayout;
+    
+    NSMutableArray *_adid41Arr;
+    NSMutableArray *_adid44Arr;
+    NSMutableArray *_scrollImg;
 
 }
-
-
 
 @end
 
 @implementation HomeViewController
 
-- (NSArray *)imageArr{
-
-    if (!_imageArr){
-    
-        _imageArr = [[NSArray alloc]init];
-    }
-    return _imageArr;
-}
 
 - (void)viewWillAppear:(BOOL)animated{
 
-    [super viewWillAppear:NO];
+//    [self loadadData];
+    
+    [self loadCityData];
+    
+    [super viewWillAppear:YES];
    self.tabBarController.tabBar.hidden=NO;
     
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 
-    [self loadadData];
-
-    [self loadCityData];
+   
 }
 
 - (void)viewDidLoad {
@@ -71,7 +66,14 @@
 
     self.edgesForExtendedLayout = UIRectEdgeNone;
 
+    _adid41Arr = [[NSMutableArray alloc]init];
+    _adid44Arr = [[NSMutableArray alloc]init];
     
+    [self loadadData];
+    
+    _scrollImg = [[NSMutableArray alloc]init];
+
+
     [self createHeaderView];
     
 //    [self createCollectionHeader];
@@ -89,9 +91,12 @@
         
         if ([response[@"resultCode"]integerValue] == 1000) {
             
-            NSArray *adid41Arr = response[@"ad_id_41"];
+            _adid41Arr = [NSMutableArray arrayWithArray:response[@"data"][@"ad_id_41"]];
             
-            NSArray *adid44Arr = response[@"ad_id_44"];
+            _adid44Arr = [NSMutableArray arrayWithArray:response[@"data"][@"ad_id_44"]];
+            
+            
+//            [self createHeaderView];
 
         }
         else if ([response[@"resultCode"]integerValue] == 1001){
@@ -101,6 +106,8 @@
         
         
     } failure:^(NSString *error) {
+        
+        NSLog(@"error = %@",error);
         
         [WKProgressHUD popMessage:@"请检查网络连接" inView:self.view duration:HUD_DURATION animated:YES];
 
@@ -189,14 +196,26 @@
     self.headerView.backgroundColor = BACK_COLOR;
     [self.view addSubview:self.headerView];
     
-    NSArray *scrollImg = @[@"banner",@"banner",@"banner"];
+//    NSArray *scrollImg = @[@"banner",@"banner",@"banner"];
     
-    CustomScrollView *mainscrollView = [[CustomScrollView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 180*screenScale)WithImageNames:scrollImg];
+    
+    for (int i = 0; i < _adid41Arr.count; i++) {
+        
+//        [scrollImg addObjectsFromArray:_adid41Arr[i][@"img_path"]];
+        
+        [_scrollImg addObject:[NSString stringWithFormat:@"%@",_adid41Arr[i][@"img_path"]]];
+
+    }
+    
+    CustomScrollView *mainscrollView = [[CustomScrollView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 180*screenScale)WithImageNames:_scrollImg];
     
     [mainscrollView setImageViewDidTapAtIndex:^(NSInteger index) {
         
-//        WKWebViewViewController *vc = [WKWebViewViewController alloc]initWithUrlStr:<#(NSString *)#> title:<#(NSString *)#>
-//        [self.navigationController pushViewController:vc animated:YES];
+//        WKWebViewViewController *vc = [WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@",_adid41Arr[index][@"url"]] title:@"广告"];
+        
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@",_adid41Arr[index][@"url"]] title:@"广告"];
+        
+        [self.navigationController pushViewController:vc animated:YES];
         
         
     }];
@@ -1136,22 +1155,6 @@ else if (indexPath.section == 5){
                
            }];
 }
-        
-
-//    if (scrollView.contentOffset.y > 0) {
-//        
-////        self.navigationView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"NavBack"]];
-//       
-////        [self.navigationView removeFromSuperview];
-//        
-//        
-////        self.navigationView.backgroundColor = [UIColor redColor];
-//        
-//        CGFloat alphas = (scrollView.contentOffset.y / 58.0 < 1)?scrollView.contentOffset.y/58.0:1;
-//        
-//        self.navigationView.alpha = alphas;
-//        
-//    }
 
 }
 

@@ -11,7 +11,8 @@
 @interface SearchViewController : UIViewController
 
 @property (nonatomic,strong) UIView *navigationView;
-@property (nonatomic,strong) UITextField *textField;
+@property (nonatomic,strong) UISearchBar *searchBar;
 @property (nonatomic,strong) UITableView *tableView;
+@property (nonatomic,strong) UITextField *textField;
 
 @end

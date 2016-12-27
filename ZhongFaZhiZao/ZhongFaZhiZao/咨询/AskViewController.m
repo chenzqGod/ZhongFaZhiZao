@@ -43,7 +43,7 @@
 
 //    查找并赋值
 //    按日期排序 order by date desc
-    
+//    _dataArr = [[NSMutableArray alloc]init];
     _dataArr = [ZhongFaDataBase getPushMessage];
     
     }
@@ -72,9 +72,9 @@
 //有多少个分组
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 6;
+//    return 6;
     
-//    return self.dataArr.count;
+    return self.dataArr.count;
 }
 
 //每一个分组cell的个数，分组中某一行的cell叫做row
@@ -93,21 +93,22 @@
     
     if (!cell) {
         cell = [[AskTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        //        cell.userInteractionEnabled = NO;
+      
+            
+        }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    //        cell.userInteractionEnabled = NO;
+    
+//    if (self.dataArr[indexPath.section]) {
+    
+        cell.titleLabel.text = [NSString stringWithFormat:@"%@",self.dataArr[indexPath.section][@"title"]];
+        [cell.mainImgView sd_setImageWithURL:[NSURL URLWithString:self.dataArr[indexPath.section][@"imgurl"]] placeholderImage:[UIImage imageNamed:@"占位图-消息"]];
         
-//        if (self.dataArr[indexPath.section]) {
-//            
-//            cell.titleLabel.text = self.dataArr[indexPath.section][1];
-//            [cell.mainImgView sd_setImageWithURL:[NSURL URLWithString:self.dataArr[indexPath.section][3]] placeholderImage:[UIImage imageNamed:@"占位图-消息"]];
-//            
-//            cell.sumLabel.text = self.dataArr[indexPath.section][2];
-//
-//            
-//        }
+        cell.sumLabel.text = [NSString stringWithFormat:@"%@",self.dataArr[indexPath.section][@"summury"]];
+
         
-        
-    }
+//    }
        return cell;
     
 }
@@ -137,12 +138,12 @@
     UILabel *timeLabel = [[UILabel alloc]initWithFrame:CGRectMake((screenWidth-98)/2.0, (55-27)/2.0, 98, 27)];
     timeLabel.text = @"2016年11月23日";
     
-//    if (self.dataArr[section]) {
-//        
-//        timeLabel.text = self.dataArr[section];
-//        
-//    }
-//    
+    if (self.dataArr[section]) {
+        
+        timeLabel.text = [NSString stringWithFormat:@"%@",self.dataArr[section][@"date"]];
+        
+    }
+//
     timeLabel.backgroundColor = [UIColor colorWithHexString:@"#9b9b9b"];
     timeLabel.alpha = 0.4;
     timeLabel.font = [UIFont systemFontOfSize:11.0];
@@ -188,11 +189,11 @@
 //    AskDetailsViewController *vc = [[AskDetailsViewController alloc]init];
 //    vc.detailUrl = @"http://www.baidu.com";
 //    
-////    vc.detailUrl = self.dataArr[indexPath.section][0];
-//    
+//
 //    [self.navigationController pushViewController:vc animated:YES];
     
-    WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"http://www.baidu.com"] title:@"消息中心"];
+//    WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@",self.dataArr[indexPath.section][@"url"]] title:@"消息中心"];
+    WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://www.baidu.com" title:@"消息中心"];
     [self.navigationController pushViewController:wkvc animated:YES];
 
     

@@ -37,6 +37,7 @@
 - (void)get:(NSString *)url parameters:(NSDictionary *)parameters success:(Success)success failure:(Failure)failure
 {
     AFHTTPSessionManager *manager = [self baseSessionManager];
+
     NSString *UTF8_URL = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [manager GET:UTF8_URL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
         nil;

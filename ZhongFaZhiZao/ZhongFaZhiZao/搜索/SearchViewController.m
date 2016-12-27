@@ -91,13 +91,19 @@
 - (void)createNavgationView {
     
     self.navigationView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 64)];
-    self.navigationView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"NavBack"]];
+    self.navigationView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"NavBG"]];
     //    self.navigationView.backgroundColor = [UIColor redColor];
     [self.view addSubview:self.navigationView];
     
+
+//    UISearchBar *searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(27, 20, screenWidth-27, 44)];
+//    searchBar.backgroundColor = BLUE_COLOR;
+//    searchBar.barTintColor = BLUE_COLOR;
+//    searchBar.showsCancelButton = YES;
+//    [self.navigationView addSubview:searchBar];
+    
     
     UILabel *leftLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 32, 59/2.0)];
-    
     
     
     UIImageView *searchImg = [[UIImageView alloc]initWithFrame:CGRectMake((32-18)/2.0, (59/2.0-18)/2.0, 18, 18)];
@@ -105,7 +111,7 @@
     searchImg.backgroundColor = [UIColor clearColor];
     [leftLbl addSubview:searchImg];
     
-        self.textField = [[UITextField alloc]initWithFrame:CGRectMake(59, 26, 516/2.0*screenScale, 59/2.0)];
+        self.textField = [[UITextField alloc]initWithFrame:CGRectMake(27, 26, 16+516/2.0*screenScale, 59/2.0)];
         self.textField.placeholder = @"搜索产品名称或型号";
         self.textField.font = [UIFont boldSystemFontOfSize:15.0];
         self.textField.textColor = TEXT_GREY_COLOR;
@@ -122,21 +128,6 @@
     
     [self.view addSubview:self.textField];
     
-
-    
-//    UIButton  *pushSerchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    pushSerchBtn.frame = CGRectMake(59, 24, 516/2.0*screenScale, 59/2.0);
-//    pushSerchBtn.backgroundColor = [UIColor clearColor];
-//    [pushSerchBtn setBackgroundImage:[UIImage imageNamed:@"搜素"] forState:UIControlStateNormal];
-//    //    self.pushSerchBtn.layer.cornerRadius = 3;
-//    //    self.pushSerchBtn.layer.masksToBounds = YES;
-//    pushSerchBtn.imageView.frame = pushSerchBtn.bounds;
-//    pushSerchBtn.hidden = NO;
-//    [pushSerchBtn setEnabled:YES];
-////    [pushSerchBtn addTarget:self action:@selector(SearchButtonPush) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    [self.view addSubview:pushSerchBtn];
-    
     
     UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     cancelBtn.frame = CGRectMake(screenWidth-32-12, 24+(59/2.0-21)/2.0, 32, 21);
@@ -151,13 +142,13 @@
     
     [self.view addSubview:cancelBtn];
     
-    UIButton *QRcode = [UIButton buttonWithType:UIButtonTypeCustom];
-    QRcode.frame = CGRectMake(14, 24+(59/2.0-57/2.0)/2.0, 59/2.0, 57/2.0);
-    QRcode.backgroundColor = [UIColor clearColor];
-    [QRcode setBackgroundImage:[UIImage imageNamed:@"扫一扫"] forState:UIControlStateNormal];
-    QRcode.imageView.frame = QRcode.bounds;
-    QRcode.hidden = NO;
-    [self.view addSubview:QRcode];
+//    UIButton *QRcode = [UIButton buttonWithType:UIButtonTypeCustom];
+//    QRcode.frame = CGRectMake(14, 24+(59/2.0-57/2.0)/2.0, 59/2.0, 57/2.0);
+//    QRcode.backgroundColor = [UIColor clearColor];
+//    [QRcode setBackgroundImage:[UIImage imageNamed:@"扫一扫"] forState:UIControlStateNormal];
+//    QRcode.imageView.frame = QRcode.bounds;
+//    QRcode.hidden = NO;
+//    [self.view addSubview:QRcode];
     
 }
 
