@@ -136,6 +136,7 @@
 
     self.navigationView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 64)];
     self.navigationView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bar"]];
+
     [self.view addSubview:self.navigationView];
     
     self.pushSerchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -167,6 +168,7 @@
     [QRcode setBackgroundImage:[UIImage imageNamed:@"扫一扫"] forState:UIControlStateNormal];
     QRcode.imageView.frame = QRcode.bounds;
     QRcode.hidden = NO;
+    [QRcode addTarget:self action:@selector(scanning) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:QRcode];
     
 }
@@ -192,6 +194,10 @@
     CustomScrollView *mainscrollView = [[CustomScrollView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 180*screenScale)WithImageNames:scrollImg];
     
     [mainscrollView setImageViewDidTapAtIndex:^(NSInteger index) {
+        
+//        WKWebViewViewController *vc = [WKWebViewViewController alloc]initWithUrlStr:<#(NSString *)#> title:<#(NSString *)#>
+//        [self.navigationController pushViewController:vc animated:YES];
+        
         
     }];
     mainscrollView.placeImage = [UIImage imageNamed:@"banner"];
@@ -501,11 +507,12 @@
     
     else if (indexPath.section == 1){
     
+        NSArray *section1Arr = @[@"Group 42",@"Group 43",@"Group 47",@"Group 46"];
+        
         static NSString * CellIdentifier = @"scienceCell";
         ScienceCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
         
-        
-        cell.backgroundColor = [UIColor redColor];
+        cell.ScienceImg.image = [UIImage imageNamed:section1Arr[indexPath.row]];
         
         return cell;
 
@@ -541,11 +548,31 @@ else if (indexPath.section == 2 && indexPath.row >= 6){
     
 else if (indexPath.section == 0){
 
+    NSArray *section1 = @[@"Group 55",@"Group 54",@"Group 2",@"Group 4",@"Group 5"];
+    
     static NSString * CellIdentifier = @"supplycell";
     SupplyCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
 
     
-    cell.backgroundColor = [UIColor redColor];
+//    cell.backgroundColor = [UIColor redColor];
+    cell.SupplyImg.image = [UIImage imageNamed:section1[indexPath.row]];
+    
+    cell.SupplyImg.userInteractionEnabled = YES;
+    
+    UIButton *leftSupplyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    leftSupplyBtn.frame = CGRectMake(0, 78, cell.frame.size.width/2.0, cell.frame.size.height-78);
+    leftSupplyBtn.backgroundColor = [UIColor clearColor];
+    leftSupplyBtn.tag = 200+indexPath.row;
+    [leftSupplyBtn addTarget:self action:@selector(cellBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [cell addSubview:leftSupplyBtn];
+    
+    UIButton *rightSupplyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    rightSupplyBtn.frame = CGRectMake(cell.frame.size.width/2.0, 78, cell.frame.size.width/2.0, cell.frame.size.height-78);
+    rightSupplyBtn.backgroundColor = [UIColor clearColor];
+    rightSupplyBtn.tag = 500+indexPath.row;
+    [rightSupplyBtn addTarget:self action:@selector(cellBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [cell addSubview:rightSupplyBtn];
+
     
     return cell;
 
@@ -553,10 +580,15 @@ else if (indexPath.section == 0){
 }
 else if (indexPath.section == 4){
     
+    
+    
     static NSString * CellIdentifier = @"solveCell";
     SolveCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.backgroundColor = [UIColor redColor];
+    NSArray *section4Arr = @[@"Group 51",@"Group 52",@"Group 50"];
+    
+    cell.SolveImg.image = [UIImage imageNamed:section4Arr[indexPath.row]];
+    
     
     return cell;
 
@@ -664,34 +696,153 @@ else if (indexPath.section == 5){
 #pragma mark - UICollectionViewDelegate
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSLog(@"%ld",(long)indexPath.row);
-//    ABScenicSpotDetailsViewController *vc = [[ABScenicSpotDetailsViewController alloc]init];
-    //    if(_sceniclist.spot.count>indexPath.row+1)
-    //    {
-    //        ABScenicSpot *model = (ABScenicSpot*)_sceniclist.spot[indexPath.row+1];
-    //        vc.scenic=_scenic;
-    //        vc.scenicSpot = model;
-    //        vc.name = model.name;
-    //        [self.navigationController pushViewController:vc animated:YES];
-    //    }else{
-//    ABScenicSpot *model =(ABScenicSpot*) _sceniclist.spot[indexPath.row];
-    //    vc.currentSid = model.sid;
-    //    vc.currentId = model.spotIdentifier;
-//    vc.scenic=_scenic;
-//    vc.scenicSpot = model;
-//    vc.name = model.name;
-//    [self.navigationController pushViewController:vc animated:YES];
+
+    if (indexPath.section == 0){
     
-    //    }
+        if (indexPath.row == 0) {
+            
+        }
+        else if (indexPath.row == 1){
+        
+        }
+        else if (indexPath.row == 2){
+        
+        }
+        else if (indexPath.row == 3){
+        
+        }
+        else if (indexPath.row == 4){
+        
+        }
+        
+        
+        
+    }
+    else if (indexPath.section == 1 ){
+        
+        if (indexPath.row == 0) {
+            
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5644790?corpId="title:@"商品详情页"];
+            
+//            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://www.cecb2b.com/solution/index.php?r=project-info%2Ftech&id=5644828"title:@"商品详情页"];
+            
+            
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        else if (indexPath.row == 1){
+        
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5644784?corpId=123"title:@"商品详情页"];
+            [self.navigationController pushViewController:vc animated:YES];
+
+            
+        }
+        else if (indexPath.row == 2){
+           
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5644765?corpId=123"title:@"商品详情页"];
+            [self.navigationController pushViewController:vc animated:YES];
+
+            
+        }
+        else if (indexPath.row == 3){
+        
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5644788?corpId=123"title:@"商品详情页"];
+            [self.navigationController pushViewController:vc animated:YES];
+
+            
+        }
+        
     
-    
-    if (indexPath.section == 2 && indexPath.row <= 5) {
+    }
+    else if (indexPath.section == 2 && indexPath.row <= 5) {
         
         CommitKnowledgeViewController *vc = [[CommitKnowledgeViewController alloc]init];
         
         [self.navigationController pushViewController:vc animated:YES];
     }
+
+    else if (indexPath.section == 2 && indexPath.row >5){
+        
+        if (indexPath.row == 6) {
+            
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5644823?corpId=123"title:@"商品详情页"];
+            [self.navigationController pushViewController:vc animated:YES];
+
+        }
+        else if (indexPath.row == 7){
+        
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5644825?corpId=123"title:@"商品详情页"];
+            [self.navigationController pushViewController:vc animated:YES];
+
+        }
     
+    }
+    else if (indexPath.section == 3){
+        
+        if (indexPath.row == 0) {
+            
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5644790?corpId="title:@"商品详情页"];
+            
+            //            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://www.cecb2b.com/solution/index.php?r=project-info%2Ftech&id=5644828"title:@"商品详情页"];
+            
+            
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        else if (indexPath.row == 1){
+            
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5644784?corpId=123"title:@"商品详情页"];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+            
+        }
+        else if (indexPath.row == 2){
+            
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5644765?corpId=123"title:@"商品详情页"];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+            
+        }
+        else if (indexPath.row == 3){
+            
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5644277?corpId=444820"title:@"商品详情页"];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+            
+        }
+
+    
+    }
+    else if (indexPath.section == 4){
+        
+        if (indexPath.row == 0) {
+            
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5534283?corpId="title:@"商品详情页"];
+            
+            
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        else if (indexPath.row == 1){
+            
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5534303?corpId=123"title:@"商品详情页"];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+            
+        }
+        else if (indexPath.row == 2){
+            
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5534387?corpId=123"title:@"商品详情页"];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+            
+        }
+    
+    }
+    else if (indexPath.section == 5){
+    
+//        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5534387?corpId=123"title:@"商品详情页"];
+//        [self.navigationController pushViewController:vc animated:YES];
+
+        
+    }
     
 }
 
@@ -753,6 +904,48 @@ else if (indexPath.section == 5){
 
 
 #pragma mark - 点击事件
+
+
+//cellBtnClick
+
+- (void)cellBtnClick:(UIButton *)button{
+
+    if (button.tag == 200) {
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/icInfo/10498233?corpId=200890"title:@"商品详情页"];
+        [self.navigationController pushViewController:vc animated:YES];
+
+
+        
+    }
+    else if (button.tag == 500){
+    
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/icInfo/10498212?corpId=200890"title:@"商品详情页"];
+        [self.navigationController pushViewController:vc animated:YES];
+
+    }
+    else if (button.tag == 201){
+      
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/4717332?corpId=204505"title:@"商品详情页"];
+        [self.navigationController pushViewController:vc animated:YES];
+
+    
+    }
+    else if (button.tag == 501){
+    
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/4717330?corpId=204505"title:@"商品详情页"];
+        [self.navigationController pushViewController:vc animated:YES];
+
+
+    }
+
+}
+
+//扫一扫
+- (void)scanning{
+
+    [WKProgressHUD popMessage:@"敬请期待" inView:self.view duration:HUD_DURATION animated:YES];
+
+}
 
 //jpush消息
 - (void)jPushButton{
@@ -915,24 +1108,51 @@ else if (indexPath.section == 5){
 #pragma mark - scrollView滑动
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
 
-    if (scrollView.contentOffset.y > 0) {
+    
+    float y = scrollView.contentOffset.y;
+    
+    
+    if(y<70){
+        self.navigationView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bar"]];
         
-//        self.navigationView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"NavBack"]];
-       
-//        [self.navigationView removeFromSuperview];
-        
-        
-        self.navigationView.backgroundColor = [UIColor redColor];
-        
-        CGFloat alphas = (scrollView.contentOffset.y / 58.0 < 1)?scrollView.contentOffset.y/58.0:1;
-        
-        self.navigationView.alpha = alphas;
-        
+        self.navigationView.alpha = 1;
+
     }
-    
-    self.navigationView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bar"]];
-    
-    self.navigationView.alpha = 1;
+    else{
+        self.navigationView.backgroundColor = BLUE_COLOR;
+
+           [UIView animateWithDuration:0.1 animations:^{
+               
+               CGFloat alphas = (scrollView.contentOffset.y / 135 < 1)?scrollView.contentOffset.y/135:1;
+               
+               self.navigationView.backgroundColor = BLUE_COLOR;
+               
+               self.navigationView.alpha = alphas;
+               
+               
+           } completion:^(BOOL finished) {
+               
+               
+               
+           }];
+}
+        
+
+//    if (scrollView.contentOffset.y > 0) {
+//        
+////        self.navigationView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"NavBack"]];
+//       
+////        [self.navigationView removeFromSuperview];
+//        
+//        
+////        self.navigationView.backgroundColor = [UIColor redColor];
+//        
+//        CGFloat alphas = (scrollView.contentOffset.y / 58.0 < 1)?scrollView.contentOffset.y/58.0:1;
+//        
+//        self.navigationView.alpha = alphas;
+//        
+//    }
+
 }
 
 

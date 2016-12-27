@@ -26,7 +26,9 @@
 #import "LaunchIntroductionView.h"
 
 //数据库
-#import "FMDB.h"
+//#import "FMDB.h"
+
+#import "ZhongFaDataBase.h"
 
 //Bugly
 #import <Bugly/Bugly.h>
@@ -67,6 +69,7 @@
 //    [[UIApplication sharedApplication]setStatusBarStyle:YES];
 //
 
+    [ZhongFaDataBase createDataBase];
 
     
     
@@ -341,27 +344,16 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         
         self.pushDic = [[NSMutableDictionary alloc]initWithDictionary:userInfo];
         
+//        
+//        NSString *path = [NSString stringWithFormat:@"%@/Documents/data.db",NSHomeDirectory()];
+//        FMDatabase *database = [FMDatabase databaseWithPath:path];
         
-        NSString *path = [NSString stringWithFormat:@"%@/Documents/data.db",NSHomeDirectory()];
-        FMDatabase *database = [FMDatabase databaseWithPath:path];
+//        [database open];
         
-        [database open];
-        
-//        创建db
-        NSString *pushSql = @"create table push_data(url,title,summury,imgurl,date)";
-        [database executeUpdate:pushSql];
-        
-        if (self.pushDic) {
-            
-            //        将userinfo字段插入
-            [database executeUpdate:@"insert into push_data values(?,?,?,?,?)",self.pushDic[@"URL"],self.pushDic[@"TITLE"],self.pushDic[@"SUMMURY"],self.pushDic[@"IMGURL"],self.pushDic[@"DATE"]];
-            
-            [database close];
-            
-        }
+//        }
 
         
-        
+        [ZhongFaDataBase addPushMessage:self.pushDic];
         
             [self pushToViewControllerWhenClickPushMessageWith:userInfo];
 //        }

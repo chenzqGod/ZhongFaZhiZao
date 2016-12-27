@@ -29,11 +29,11 @@
     
     self.iconImageView = [[UIImageView alloc]initWithFrame:CGRectMake(17*screenScale, 16, 80, 66)];
 //    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:self.imgUrl] placeholderImage:[UIImage imageNamed:@""]];
-    self.iconImageView.backgroundColor = [UIColor cyanColor];
+//    self.iconImageView.backgroundColor = [UIColor cyanColor];
     [self.contentView addSubview:self.iconImageView];
     
     self.sumLabel = [[UILabel alloc]initWithFrame:CGRectMake(Margin*screenScale+CGRectGetMaxX(self.iconImageView.frame), 16, screenWidth-16-(Margin*screenScale+CGRectGetMaxX(self.iconImageView.frame)), 41)];
-    self.sumLabel.backgroundColor = [UIColor cyanColor];
+//    self.sumLabel.backgroundColor = [UIColor cyanColor];
     self.sumLabel.numberOfLines = 2;
     self.sumLabel.text = @"大大塑料袋啊大师的卡号的拉升多大的和大大塑料袋大大和四大范德萨发熟练度发的说法是电风扇拉大放松放松";
     self.sumLabel.font = [UIFont systemFontOfSize:14.0];

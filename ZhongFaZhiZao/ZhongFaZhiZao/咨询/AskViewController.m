@@ -9,12 +9,13 @@
 #import "AskViewController.h"
 #import "AskTableViewCell.h"
 #import "AskDetailsViewController.h"
-#import "FMDB.h"
+#import "ZhongFaDataBase.h"
 #import "UIImageView+WebCache.h"
 #import "WKWebViewViewController.h"
 
-@interface AskViewController ()<UITableViewDelegate,UITableViewDataSource>{
 
+@interface AskViewController ()<UITableViewDelegate,UITableViewDataSource>{
+    
 }
 
 @property (nonatomic,strong) UITableView *tableView;
@@ -34,34 +35,18 @@
     
 
 //    刷新数据库信息
-    NSString *path = [NSString stringWithFormat:@"%@/Documents/data.db",NSHomeDirectory()];
-    FMDatabase *database = [FMDatabase databaseWithPath:path];
-    [database open];
-    
-    [database executeUpdate:@"update push_data"];
+//    NSString *path = [NSString stringWithFormat:@"%@/Documents/data.db",NSHomeDirectory()];
+//    FMDatabase *database = [FMDatabase databaseWithPath:path];
+//    [database open];
+//    
+//    [database executeUpdate:@"update push_data"];
 
 //    查找并赋值
 //    按日期排序 order by date desc
     
-    FMResultSet *result = [database executeQuery:@"select * from push_data"];
+    _dataArr = [ZhongFaDataBase getPushMessage];
     
-    NSMutableArray *array = [NSMutableArray array];
-    
-    while ([result next]) {
-        
-        NSString *url = [result stringForColumn:@"url"];
-        NSString *title = [result stringForColumn:@"title"];
-        NSString *summury = [result stringForColumn:@"summury"];
-        NSString *imgurl = [result stringForColumn:@"imgurl"];
-        NSString *date = [result stringForColumn:@"date"];
-        
-        [array addObject:@[url,title,summury,imgurl,date]];
     }
-    
-    self.dataArr = [NSMutableArray arrayWithArray:array];
-    
-    [database close];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

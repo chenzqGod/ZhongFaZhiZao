@@ -8,11 +8,23 @@
 
 #import "SearchViewController.h"
 
-@interface SearchViewController ()
+@interface SearchViewController ()<UITextFieldDelegate>
+
+@property (nonatomic,strong) NSMutableArray *searchArray;
 
 @end
 
 @implementation SearchViewController
+
+-(NSMutableArray *)searchArray
+{
+    if (_searchArray == nil) {
+        _searchArray = [NSMutableArray array];
+    }
+    return _searchArray;
+}
+
+
 - (void)viewWillAppear:(BOOL)animated{
 
     [super viewWillAppear:YES];
@@ -20,13 +32,59 @@
     [self.tabBarController.tabBar setHidden:YES];
 }
 
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor = BACK_COLOR;
+    
+    self.view.backgroundColor = [UIColor whiteColor];
     
     [self createNavgationView];
+    
+    [self createHistory];
+}
+
+#pragma mark - 加载数据
+- (void)loadhotData{
+
+//热搜
+//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    [[NSNetworking sharedManager]get:[NSString stringWithFormat:@"%@%@",HOST_URL,COMMUNITY_HOT_SEARCH] parameters:nil success:^(id response) {
+//        [MBProgressHUD hideHUDForView:self.view animated:YES];
+//        for (NSDictionary *dict in response[@"items"]) {
+//            [self.hotSearchArray addObject:@{@"content_name":dict[@"name"]}];
+//        }
+//        [self prepareData];
+//        [self.searchCollectionView reloadData];
+//    } failure:^(NSString *error) {
+//        
+//    }];
+
+}
+
+- (void)prepareData{
+
+    UserInfo *userinfo = [UserInfo sharedUserInfo];
+    
+    NSDictionary *historyDict = [NSDictionary dictionary];
+    if (userinfo.uid) {
+        historyDict = [USER_DEFAULTS objectForKey:[NSString stringWithFormat:@"%@searchHistory",userinfo.uid]];
+    }
+    
+//    if (historyDict.count) {
+//        [testArray addObject:historyDict];
+//        [self.searchArray addObjectsFromArray:historyDict[@"section_content"]];
+//    }
+//    
+//    for (NSDictionary *sectionDict in testArray) {
+//        CXSearchSectionModel *model = [[CXSearchSectionModel alloc]initWithDictionary:sectionDict];
+//        [self.sectionArray addObject:model];
+//    }
+
+    
 }
 
 
@@ -59,6 +117,8 @@
     self.textField.leftView = leftLbl;
     self.textField.leftViewMode = UITextFieldViewModeAlways;
     [self.textField addSubview:self.textField.leftView];
+    
+    self.textField.delegate = self;
     
     [self.view addSubview:self.textField];
     
@@ -101,8 +161,38 @@
     
 }
 
+- (void)createHistory{
+
+    UIView *historyView = [[UIView alloc]initWithFrame:CGRectMake(0, 65, screenWidth, 32)];
+    historyView.backgroundColor = BACK_COLOR;
+    [self.view addSubview:historyView];
+    
+    UILabel *hisLabel = [[UILabel alloc]initWithFrame:CGRectMake(14, 0, 60, 32)];
+    hisLabel.text = @"历史记录";
+    hisLabel.font = [UIFont systemFontOfSize:14.0];
+    [historyView addSubview:hisLabel];
+    
+  
+    CustomButton *hisdelHisBtn = [CustomButton buttonWithType:UIButtonTypeCustom];
+    hisdelHisBtn.frame = CGRectMake(screenWidth-16-45, 14/2.0, 45, 18);
+    hisdelHisBtn.imageRect = CGRectMake(0, 1,27/2.0 ,15);
+    hisdelHisBtn.titleRect = CGRectMake(27/2.0+7, 0, 26, 18);
+    [hisdelHisBtn setTitle:@"清除" forState:UIControlStateNormal];
+    hisdelHisBtn.titleLabel.font = [UIFont systemFontOfSize:12.0];
+    [hisdelHisBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [hisdelHisBtn setImage:[UIImage imageNamed:@"清除"] forState:UIControlStateNormal];
+//    hisdelHisBtn.backgroundColor = [UIColor redColor];
+    [hisdelHisBtn addTarget:self action:@selector(removeHisBtn) forControlEvents:UIControlEventTouchUpInside];
+    [historyView addSubview:hisdelHisBtn];
+}
 
 #pragma mark - 点击事件
+
+//清除历史记录
+- (void)removeHisBtn{
+
+    
+}
 
 //取消按钮
 - (void)cancelBtnClick{
@@ -115,14 +205,18 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+
+#pragma mark - UITextField delegate
+- (void)searchButtonClick{
+
+    [self.textField resignFirstResponder];
+    if ([self.textField.text isEqualToString:@""] ) {
+        
+//        WKProgressHUD
+    }
 }
-*/
+
 
 @end

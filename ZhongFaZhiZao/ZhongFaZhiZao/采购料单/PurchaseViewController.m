@@ -8,7 +8,7 @@
 
 #import "PurchaseViewController.h"
 #import "ABWebViewViewController.h"
-
+#import "WKWebViewViewController.h"
 
 @interface PurchaseViewController ()
 
@@ -34,7 +34,10 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    [self htmlJump:@"http://wap.cecb2b.com/cart/list" withTitle:@""];
+    WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/cart/list" title:@"采购料单"];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+//    [self htmlJump:@"http://wap.cecb2b.com/cart/list" withTitle:@""];
 
 }
 

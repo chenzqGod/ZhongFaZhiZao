@@ -9,14 +9,35 @@
 #import "KnowLedgeViewController.h"
 #import "KnowLedgeTableViewCell.h"
 #import "CommitKnowledgeViewController.h"
+#import "UIImageView+WebCache.h"
+#import "WKWebViewViewController.h"
 
-@interface KnowLedgeViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface KnowLedgeViewController ()<UITableViewDelegate,UITableViewDataSource>{
+
+    
+    NSDictionary *_dataDic;
+    
+    NSMutableArray *_dataArray;
+}
 
 @property (nonatomic,strong) UITableView *tableView;
 
 @end
 
 @implementation KnowLedgeViewController
+
+
+
+- (NSDictionary *)dataDic{
+
+    if (!_dataDic) {
+        
+        _dataDic = [NSDictionary dictionary];
+    }
+    
+    return _dataDic;
+
+}
 
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -26,11 +47,14 @@
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
     [self.tabBarController.tabBar setHidden:YES];
+    
+   
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _dataArray = [[NSMutableArray alloc]init];
     
     self.view.backgroundColor = BACK_COLOR;
     
@@ -38,10 +62,11 @@
     navView.viewController = self;
     [self.view addSubview:navView];
     
+     [self loadData];
+    
     [self createHeader];
     
     self.pageIndex = 1;
-    self.dataArray = [[NSMutableArray alloc]init];
     
     self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, screenWidth, screenHeight-64) style:UITableViewStylePlain];
     self.tableView.delegate = self;
@@ -61,7 +86,7 @@
         [self loadData];
         
         [_tableView.header endRefreshing];
-        
+
     }];
     
     self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
@@ -69,9 +94,8 @@
         
         self.pageIndex++;
         [self loadData];
-        
+
         [_tableView.footer endRefreshing];
-        
         
     }];
 
@@ -82,14 +106,23 @@
 
 #pragma mark - loadData
 - (void)loadData{
-
-    NSDictionary *parameters = @{@"pageIndex":[NSNumber numberWithInteger:self.pageIndex]};
     
-    [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,PATENT_LIST] parameters:parameters success:^(id response) {
+
+//    NSDictionary *parameters = @{@"pageIndex":[NSNumber numberWithInteger:self.pageIndex]};
+    
+    NSDictionary *parameters = [[NSDictionary alloc]initWithObjectsAndKeys:[NSNumber numberWithInteger:self.pageIndex],@"pageIndex", nil];
+    
+    [[NSNetworking sharedManager]get:[NSString stringWithFormat:@"%@%@",HOST_URL,PATENT_LIST] parameters:parameters success:^(id response) {
         
         if ([response[@"resultCode"]integerValue] == 1000) {
         
-//            self.dataArray = [NSMutableArray arrayWithObject:<#(nonnull id)#>]
+            _dataDic = [NSDictionary dictionaryWithDictionary:response[@"data"]];
+            
+            
+            _dataArray = [NSMutableArray arrayWithArray:_dataDic[@"goodList"]];
+            
+            [self.tableView reloadData];
+            
 //            response[@"data"][@"goodList1"]
             
         }
@@ -100,6 +133,8 @@
         }
         
     } failure:^(NSString *error) {
+        
+        NSLog(@"%@",error);
        
         [WKProgressHUD popMessage:@"请检查网络连接" inView:self.view duration:HUD_DURATION animated:YES];
         
@@ -206,23 +241,38 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     
-    return 4;
+    return _dataArray.count;
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
+//    
+//        static NSString *hotCellID = @"hotCellID";
+//        KnowLedgeTableViewCell *hotCell = [tableView dequeueReusableCellWithIdentifier:hotCellID];
+//        
+//        if (!hotCell) {
+//            hotCell = [[KnowLedgeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:hotCellID];
+//            //            hotCell.backgroundColor = [UIColor cyanColor];
+//            hotCell.selectionStyle = UITableViewCellSelectionStyleNone;
+//            
+////                [self.tableView reloadData];
+//        }
+    static NSString *hotCellID = @"hotCellID";
+    KnowLedgeTableViewCell *hotCell = [tableView dequeueReusableCellWithIdentifier:hotCellID];
     
-        static NSString *hotCellID = @"hotCellID";
-        KnowLedgeTableViewCell *hotCell = [tableView dequeueReusableCellWithIdentifier:hotCellID];
-        
-        if (!hotCell) {
-            hotCell = [[KnowLedgeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:hotCellID];
-            //            hotCell.backgroundColor = [UIColor cyanColor];
-            hotCell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
-//        [hotCell setcellModel:_modelDic2.items[indexPath.row]];
-//    hotCell.textLabel.text = @"123456";
+    if (!hotCell) {
+        hotCell = [[KnowLedgeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:hotCellID];
+    }
+    
+    hotCell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+    hotCell.sumLabel.text = [[_dataArray objectAtIndex:indexPath.row] objectForKey:@"name"];
+    
+    hotCell.priceLabel.text = [NSString stringWithFormat:@"%.1f",[[[_dataArray objectAtIndex:indexPath.row] objectForKey:@"price"] floatValue]];
+    
+    [hotCell.imageView sd_setImageWithURL:[NSURL URLWithString:[[_dataArray objectAtIndex:indexPath.row] objectForKey:@"imgpath"]] placeholderImage:nil];
+    
     
         return hotCell;
 }
@@ -253,7 +303,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    
+    WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[[_dataArray objectAtIndex:indexPath.row] objectForKey:@"url"] title:@"url"];
+    [self.navigationController pushViewController:vc animated:YES];
   
 }
 
