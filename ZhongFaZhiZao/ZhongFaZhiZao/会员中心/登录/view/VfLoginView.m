@@ -115,10 +115,10 @@
     self.loginBtn = [[UIButton alloc]init];
     [self.loginBtn setTitle:@"登录" forState:UIControlStateNormal];
     [self.loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.loginBtn setBackgroundColor:[UIColor colorWithHexString:@"#9b9b9b"]];
+    [self.loginBtn setBackgroundColor:BLUE_COLOR];
     self.loginBtn.alpha = 0.5;
     self.loginBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
-    [self.loginBtn setBackgroundColor:[UIColor colorWithHexString:@"#9b9b9b"]];
+//    [self.loginBtn setBackgroundColor:[UIColor colorWithHexString:@"#9b9b9b"]];
     self.loginBtn.layer.cornerRadius = 3;
     self.loginBtn.layer.masksToBounds = YES;
     [self.scrollView addSubview:self.loginBtn];

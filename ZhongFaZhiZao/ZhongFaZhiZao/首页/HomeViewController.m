@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "HomeViewController.h"
+#import "UIImageView+WebCache.h"
+
 #import "ABWebViewViewController.h"
 #import "WKWebViewViewController.h"
 
@@ -34,8 +36,14 @@
     NSMutableArray *_adid41Arr;
     NSMutableArray *_adid44Arr;
     NSMutableArray *_scrollImg;
+    NSMutableArray *_cityArray;
+    NSMutableDictionary *_cityDict;
+    
+    CustomScrollView *_mainscrollView;
 
 }
+
+@property (nonatomic,assign) NSInteger cityNumber;
 
 @end
 
@@ -46,7 +54,6 @@
 
 //    [self loadadData];
     
-    [self loadCityData];
     
     [super viewWillAppear:YES];
    self.tabBarController.tabBar.hidden=NO;
@@ -61,6 +68,7 @@
     // Do any additional setup after loading the view.
 //    [self.navigationController setNavigationBarHidden:YES];
     
+    self.cityNumber = 0;
     
     self.view.backgroundColor = BACK_COLOR;
 
@@ -68,20 +76,26 @@
 
     _adid41Arr = [[NSMutableArray alloc]init];
     _adid44Arr = [[NSMutableArray alloc]init];
-    
+    _cityArray = [[NSMutableArray alloc]init];
+    _cityDict = [[NSMutableDictionary alloc]init];
+    [self createHeaderView];
+
     [self loadadData];
     
     _scrollImg = [[NSMutableArray alloc]init];
 
 
-    [self createHeaderView];
+//    [self createHeaderView];
     
 //    [self createCollectionHeader];
     
     [self createCollectionView];
     
-     [self createNavgationView];
-}
+    [self createNavgationView];
+
+//    [self loadCityData];
+
+   }
 
 
 #pragma mark - loadData
@@ -95,8 +109,15 @@
             
             _adid44Arr = [NSMutableArray arrayWithArray:response[@"data"][@"ad_id_44"]];
             
-            
-//            [self createHeaderView];
+            for (int i = 0; i < _adid41Arr.count; i++) {
+                
+                //        [scrollImg addObjectsFromArray:_adid41Arr[i][@"img_path"]];
+                
+                [_scrollImg addObject:[NSString stringWithFormat:@"%@",_adid41Arr[i][@"img_path"]]];
+                
+            }
+
+            [_mainscrollView setImageData:_scrollImg];
 
         }
         else if ([response[@"resultCode"]integerValue] == 1001){
@@ -121,6 +142,23 @@
     [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,Electronic_API] parameters:nil success:^(id response) {
         
         if ([response[@"resultCode"]integerValue] == 1000) {
+            
+            _cityDict = [NSMutableDictionary dictionaryWithDictionary:response[@"data"]];
+            
+            if (self.cityNumber == 3) {
+                _cityArray = [NSMutableArray arrayWithArray:_cityDict[@"深圳"]];
+            }
+            else if (self.cityNumber == 1){
+            _cityArray = [NSMutableArray arrayWithArray:_cityDict[@"北京"]];
+            }
+            else if (self.cityNumber == 2){
+            _cityArray = [NSMutableArray arrayWithArray:_cityDict[@"西安"]];
+            }
+            else{
+            
+                _cityArray = [NSMutableArray arrayWithArray:_cityDict[@"all"]];
+            }
+            
             
         }
         else if ([response[@"resultCode"]integerValue] == 1001){
@@ -189,6 +227,12 @@
 }
 
 
+- (void)setadData41:(NSMutableArray *)array{
+
+    
+
+}
+
 //collectionView最上面Header
 - (void)createHeaderView{
 
@@ -199,31 +243,22 @@
 //    NSArray *scrollImg = @[@"banner",@"banner",@"banner"];
     
     
-    for (int i = 0; i < _adid41Arr.count; i++) {
+    
+    _mainscrollView = [[CustomScrollView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 180*screenScale)];
+    __weak HomeViewController *weakself = self;
+    
+    [_mainscrollView setImageViewDidTapAtIndex:^(NSInteger index) {
         
-//        [scrollImg addObjectsFromArray:_adid41Arr[i][@"img_path"]];
-        
-        [_scrollImg addObject:[NSString stringWithFormat:@"%@",_adid41Arr[i][@"img_path"]]];
+        [weakself turntoWebView:index];
 
-    }
-    
-    CustomScrollView *mainscrollView = [[CustomScrollView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 180*screenScale)WithImageNames:_scrollImg];
-    
-    [mainscrollView setImageViewDidTapAtIndex:^(NSInteger index) {
-        
-//        WKWebViewViewController *vc = [WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@",_adid41Arr[index][@"url"]] title:@"广告"];
-        
-        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@",_adid41Arr[index][@"url"]] title:@"广告"];
-        
-        [self.navigationController pushViewController:vc animated:YES];
         
         
     }];
-    mainscrollView.placeImage = [UIImage imageNamed:@"banner"];
-    mainscrollView.AutoScrollDelay = 5.0f;
+    _mainscrollView.placeImage = [UIImage imageNamed:@"banner"];
+    _mainscrollView.AutoScrollDelay = 5.0f;
     
-    mainscrollView.backgroundColor = [UIColor redColor];
-    [self.headerView addSubview:mainscrollView];
+    _mainscrollView.backgroundColor = [UIColor redColor];
+    [self.headerView addSubview:_mainscrollView];
     
     [[DCWebImageManager shareManager] setDownloadImageRepeatCount:1];
     [[DCWebImageManager shareManager] setDownLoadImageError:^(NSError *error, NSString *url) {
@@ -231,7 +266,7 @@
     }];
 
     
-    self.adView = [[UIView alloc]initWithFrame:CGRectMake(0, 8+CGRectGetMaxY(mainscrollView.frame), screenWidth, 40)];
+    self.adView = [[UIView alloc]initWithFrame:CGRectMake(0, 8+CGRectGetMaxY(_mainscrollView.frame), screenWidth, 40)];
     self.adView.backgroundColor = [UIColor whiteColor];
     [self.headerView addSubview:self.adView];
     
@@ -265,7 +300,7 @@
     lineLabel1.backgroundColor = TEXT_LINE_COLOR;
     [self.headerView addSubview:lineLabel1];
 
-    self.mainBtnView = [[UIView alloc]initWithFrame:CGRectMake(0,CGRectGetMaxY(mainscrollView.frame)+40+8 , screenWidth, 164)];
+    self.mainBtnView = [[UIView alloc]initWithFrame:CGRectMake(0,CGRectGetMaxY(_mainscrollView.frame)+40+8 , screenWidth, 164)];
     self.mainBtnView.backgroundColor = [UIColor whiteColor];
     [self.headerView addSubview:self.mainBtnView];
 
@@ -313,7 +348,12 @@
     
 }
 
+- (void) turntoWebView:(NSInteger )index {
+    WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@",_adid41Arr[index][@"url"]] title:@"广告"];
+    
+    [self.navigationController pushViewController:vc animated:YES];
 
+}
 #pragma mark - collectionView
 -(void)createCollectionView
 {
@@ -342,7 +382,6 @@
      [_collectionView registerClass:[ElectronicCollectionViewCell class] forCellWithReuseIdentifier:@"eletronicCell"];
     
     [_flowLayout setHeaderReferenceSize:CGSizeMake(screenWidth, _headerView.frame.size.height)];
-    
     
     
     
@@ -617,8 +656,11 @@ else if (indexPath.section == 5){
     
     static NSString * CellIdentifier = @"eletronicCell";
     ElectronicCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+   
+//    [cell.ElectronicImg sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",_cityArray[indexPath.row][@"small_pic"]]] placeholderImage:[UIImage imageNamed:@"占位图"]];
+
+    [cell.ElectronicImg sd_setImageWithURL:[NSURL URLWithString:nil] placeholderImage:[UIImage imageNamed:@"占位图"]];
     
-    cell.backgroundColor = [UIColor redColor];
     
     return cell;
 
@@ -774,8 +816,10 @@ else if (indexPath.section == 5){
     }
     else if (indexPath.section == 2 && indexPath.row <= 5) {
         
-        CommitKnowledgeViewController *vc = [[CommitKnowledgeViewController alloc]init];
+        NSArray *typeID = @[@"80004010",@"80004070",@"80004020",@"80004090",@"80004060",@"80004080"];
         
+        CommitKnowledgeViewController *vc = [[CommitKnowledgeViewController alloc]init];
+        vc.typeId = typeID[indexPath.row];
         [self.navigationController pushViewController:vc animated:YES];
     }
 
@@ -857,7 +901,7 @@ else if (indexPath.section == 5){
     }
     else if (indexPath.section == 5){
     
-//        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5534387?corpId=123"title:@"商品详情页"];
+//        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@",_cityArray[indexPath.row][@"url"]] title:@"商品详情页"];
 //        [self.navigationController pushViewController:vc animated:YES];
 
         
@@ -1058,11 +1102,24 @@ else if (indexPath.section == 5){
 
 - (void)fifBtnClick:(UIButton *)button{
 
-//    if (!self.tmpbtn.selected) {
+//    for(int i = 0 ; i < 4 ;i ++) {
 //        
-//        self.tmpbtn = button;
-//        self.tmpbtn.selected = YES;
+//        UIButton *btn = (UIButton *)[self.view viewWithTag:i + 3000];
+//        if(button.tag == btn.tag) {
+//            btn.selected = YES;
+//        }else {
+//            btn.selected = NO;
+//        }
 //    }
+    self.tmpbtn.selected  = NO;
+    button.selected = YES;
+    self.tmpbtn = button;
+    
+    self.cityNumber = (NSInteger)button.tag-3000;
+    
+    [self loadCityData];
+    
+
 }
 
 

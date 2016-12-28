@@ -17,6 +17,7 @@ typedef NS_ENUM(NSUInteger,PageControlStyle){
 
 @interface CustomScrollView : UIView
 
+- (void)setImageData:(NSArray *)ImageNames ;
 //占位图
 @property (nonatomic,strong) UIImage *placeImage;
 
@@ -30,8 +31,7 @@ typedef NS_ENUM(NSUInteger,PageControlStyle){
 //图片被点击会调用该block
 @property (nonatomic,copy) void(^imageViewDidTapAtIndex)(NSInteger index); //index从0开始
 
-//imageUrlString或imageName
-- (instancetype)initWithFrame:(CGRect)frame WithImageNames:(NSArray<NSString *> *)ImageName;
+
 
 //网络加载urlsring必须为http:// 开头,
 //如有特需修改284行代码

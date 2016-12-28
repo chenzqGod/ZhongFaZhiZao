@@ -183,7 +183,7 @@
     self.registerBtn = [[UIButton alloc]init];
     [self.registerBtn setTitle:@"立即注册" forState:UIControlStateNormal];
     [self.registerBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.registerBtn setBackgroundColor:[UIColor colorWithHexString:@"#9b9b9b"]];
+    [self.registerBtn setBackgroundColor:BLUE_COLOR];
     self.registerBtn.alpha = 0.5;
     self.registerBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
     self.registerBtn.layer.cornerRadius = 3;

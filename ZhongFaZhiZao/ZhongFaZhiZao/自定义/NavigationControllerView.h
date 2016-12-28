@@ -12,6 +12,7 @@
 
 @property (weak,nonatomic)UIViewController *viewController;
 
+@property (nonatomic ,assign) NSString *title;
 //左侧返回
 - (instancetype)initWithFrame:(CGRect)frame andLeftBtn:(NSString *)title;
 

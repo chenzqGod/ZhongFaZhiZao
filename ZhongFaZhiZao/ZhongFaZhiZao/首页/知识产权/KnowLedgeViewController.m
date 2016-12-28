@@ -21,6 +21,7 @@
 }
 
 @property (nonatomic,strong) UITableView *tableView;
+@property (nonatomic,assign) int flag;
 
 @end
 
@@ -55,6 +56,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _dataArray = [[NSMutableArray alloc]init];
+    
+    self.flag = 0;
     
     self.view.backgroundColor = BACK_COLOR;
     
@@ -207,10 +210,11 @@
             
             button.imageRect = CGRectMake(16*screenScale, (45-26)/2.0, 26, 26);
             button.titleRect = CGRectMake(8*screenScale+16*screenScale+26, (45-16)/2.0, 62, 16);
-            
-            [button addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
+            button.tag = 50000+self.flag;
+            [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
             [buttonView addSubview:button];
             
+            self.flag++;
         }
         
   
@@ -222,9 +226,14 @@
 
 
 #pragma mark - 点击事件
-- (void)buttonClick{
+- (void)buttonClick:(UIButton *)button{
 
+    
+    
+    NSArray *typeID = @[@"80004010",@"80004040",@"80004070",@"80004020",@"80004050",@"80004080",@"80004030",@"80004060",@"80004090"];
     CommitKnowledgeViewController *vc = [[CommitKnowledgeViewController alloc]init];
+    vc.typeId = typeID[button.tag-50000];
+    
     [self.navigationController pushViewController:vc animated:YES];
 }
 

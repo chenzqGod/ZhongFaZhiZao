@@ -45,7 +45,8 @@
     
     self.pwLoginView.phoneNumTF.text = [USER_DEFAULTS objectForKey:@"mob"];
     self.pwLoginView.passWdTF.text = [USER_DEFAULTS objectForKey:@"password"];
-    
+    self.pwLoginView.phoneNumTF.delegate = self;
+    self.pwLoginView.passWdTF.delegate = self;
     if ([USER_DEFAULTS objectForKey:@"password"]) {
         self.pwLoginView.pwVisibleBtn.selected = YES;
         self.pwLoginView.rememberPwBtn.titleLabel.font = [UIFont fontWithName:IconFont size:12];
@@ -196,6 +197,11 @@
     
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+
+    [textField resignFirstResponder];
+    return YES;
+}
 // 快速注册
 - (void)quickRegister{
     RegisterViewController *regist = [[RegisterViewController alloc]init];

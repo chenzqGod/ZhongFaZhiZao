@@ -8,7 +8,9 @@
 
 #import "WKWebViewViewController.h"
 
-@interface WKWebViewViewController ()<WKNavigationDelegate,WKUIDelegate>
+#define LoginURL    @"http://cectest.cecb2b.com/waps/member/login?"
+
+@interface WKWebViewViewController ()<WKNavigationDelegate,WKUIDelegate,UIWebViewDelegate>
 
 @property (nonatomic,strong) WKWebView *webView;
 @property (nonatomic,copy) NSString *urlStr;
@@ -21,6 +23,9 @@
 @end
 
 @implementation WKWebViewViewController
+{
+    NavigationControllerView *navView;
+}
 
 - (instancetype)initWithUrlStr:(NSString *)urlStr{
     return [self initWithUrlStr:urlStr title:nil];
@@ -57,7 +62,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NavigationControllerView *navView = [[NavigationControllerView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 64) andLeftBtn:_navigatorTitle];
+     navView = [[NavigationControllerView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 64) andLeftBtn:_navigatorTitle];
     navView.viewController = self;
     [self.view addSubview:navView];
     
@@ -89,7 +94,12 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
     [self loadWebViewData];
+    
+    
+    [_webView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:NULL];
+
 }
+
 
 - (void)loadWebViewData{
     if (!_urlStr.length||_isLoaing) {
@@ -102,13 +112,13 @@
         [self.webView loadRequest:request];
     }else{
         NSURL *fileURL = [NSURL URLWithString:_urlStr];
-        //        NSURL *fileURL = _urlStr;
+//        //        NSURL *fileURL = _urlStr;
         if (!fileURL) {
             return;
         }
-//        NSURLRequest *request = [NSURLRequest requestWithURL:fileURL];
-//        [self.webView loadRequest:request];
-        [self.webView loadFileURL:fileURL allowingReadAccessToURL:fileURL];
+        NSURLRequest *request = [NSURLRequest requestWithURL:fileURL];
+        [self.webView loadRequest:request];
+//        [self.webView loadFileURL:fileURL allowingReadAccessToURL:fileURL];
     }
 }
 
@@ -118,7 +128,11 @@
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation { // 类似UIWebView的 -webViewDidStartLoad:
     NSLog(@"didStartProvisionalNavigation");
 //    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    NSLog(@"webview URL:%@",webView.URL);
+    NSString *url = webView.URL.absoluteString;
+    if([url hasPrefix:LoginURL] || [url hasPrefix:LoginURL2]) {
     
+    }
     _isLoaing = YES;
     
 //    NSString *path=[YKBDateHelper convertNull:[webView.URL absoluteString]];
@@ -144,6 +158,10 @@
 //页面加载完成时调用
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation { // 类似 UIWebView 的 －webViewDidFinishLoad:
     NSLog(@"didFinishNavigation");
+    
+    
+    
+    
     //    [self resetControl];
     //    if (webView.title.length > 0) {
     //        self.title = webView.title;
@@ -221,7 +239,16 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
 
-        if ([keyPath isEqual: @"estimatedProgress"] && object == _webView) {
+    if ([keyPath isEqualToString:@"title"])
+    {
+        NSLog(@"webviewtitle :%@",self.webView.title);
+        if (object == self.webView) {
+            navView.title = self.webView.title;
+        }
+        else {
+            [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+        }
+    }else if ([keyPath isEqual: @"estimatedProgress"] && object == _webView) {
             [self.progressView setAlpha:1.0f];
             [self.progressView setProgress:_webView.estimatedProgress animated:YES];
             if(_webView.estimatedProgress >= 1.0f)

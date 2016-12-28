@@ -40,7 +40,8 @@
 #import <UserNotifications/UserNotifications.h>
 #endif
 
-#define RONGCLOUD_IM_APPKEY @"c9kqb3rdkbwrj"   
+#define RONGCLOUD_IM_APPKEY @"6tnym1brnm7b7"
+//@"c9kqb3rdkbwrj"
 //@"6tnym1brnm7b7"  生产环境
 
 

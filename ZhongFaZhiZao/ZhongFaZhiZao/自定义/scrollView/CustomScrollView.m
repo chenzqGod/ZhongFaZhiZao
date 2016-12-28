@@ -48,7 +48,6 @@
     [self prepareImageView];
     [self preparePageControl];
     
-    [self setUpTimer];
     
     [self changeImageLeft:_MaxImageCount-1 center:0 right:1];
 }
@@ -61,20 +60,14 @@
 }
 
 
-- (instancetype)initWithFrame:(CGRect)frame WithImageNames:(NSArray<NSString *> *)ImageName {
+- (instancetype)initWithFrame:(CGRect)frame {
     
-    
-    if (ImageName.count < 2) {
-       
-        return nil;
-    }
     
     self = [super initWithFrame:frame];
-    
-    [self prepareScrollView];
-    [self setImageData:ImageName];
-    [self setMaxImageCount:_imageData.count];
-    
+    if(self) {
+        [self prepareScrollView];
+
+    }    
     return self;
 }
 
@@ -202,11 +195,9 @@
 #pragma mark scrollViewDelegate
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    [self setUpTimer];
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    [self removeTimer];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -306,8 +297,8 @@
 
 - (void)setAutoScrollDelay:(NSTimeInterval)AutoScrollDelay {
     _AutoScrollDelay = AutoScrollDelay;
-    [self removeTimer];
-    [self setUpTimer];
+//    [self removeTimer];
+//    [self setUpTimer];
 }
 
 - (void)setUpTimer {
@@ -324,7 +315,8 @@
 }
 
 - (void)setImageData:(NSArray *)ImageNames {
-    
+    [self removeTimer];
+
     _isNetwork = [ImageNames.firstObject hasPrefix:@"http://"];
     
     if (_isNetwork) {
@@ -343,7 +335,9 @@
         
         _imageData = [temp copy];
     }
-    
+    [self setMaxImageCount:_imageData.count];
+    [self setUpTimer];
+
 }
 
 

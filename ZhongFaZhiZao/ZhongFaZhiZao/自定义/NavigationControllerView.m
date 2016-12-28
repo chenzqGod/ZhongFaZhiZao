@@ -7,9 +7,12 @@
 //
 
 #import "NavigationControllerView.h"
+#import "MineViewController.h"
 
 @implementation NavigationControllerView
-
+{
+    UILabel *_midLabel;
+}
 - (instancetype)initWithFrame:(CGRect)frame andLeftBtn:(NSString *)title{
 
     if (self = [super initWithFrame:frame]) {
@@ -28,20 +31,22 @@
         [leftBtn addTarget:self action:@selector(leftBarButtonItemClick) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:leftBtn];
         
-        UILabel *midLabel = [[UILabel alloc]init];
-        midLabel.frame = CGRectMake(0, 0, 180, 24);
-        midLabel.center = CGPointMake(screenWidth/2.0, 42);
-        midLabel.text = title;
-        midLabel.textColor = [UIColor whiteColor];
-        midLabel.textAlignment = NSTextAlignmentCenter;
-        midLabel.font = [UIFont systemFontOfSize:18.0];
-        [self addSubview:midLabel];
+        _midLabel = [[UILabel alloc]init];
+        _midLabel.frame = CGRectMake(0, 0, 180, 24);
+        _midLabel.center = CGPointMake(screenWidth/2.0, 42);
+        _midLabel.text = title;
+        _midLabel.textColor = [UIColor whiteColor];
+        _midLabel.textAlignment = NSTextAlignmentCenter;
+        _midLabel.font = [UIFont systemFontOfSize:18.0];
+        [self addSubview:_midLabel];
 
     }
 
     return self;
 }
-
+- (void)setTitle:(NSString *)title {
+    _midLabel.text = title;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame andRightBtn:(NSString *)title{
 
@@ -59,14 +64,13 @@
         [rightBtn addTarget:self action:@selector(rightButtonClick) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:rightBtn];
         
-        UILabel *midLabel = [[UILabel alloc]init];
-        midLabel.frame = CGRectMake(0, 0, 180, 24);
-        midLabel.center = CGPointMake(screenWidth/2.0, 42);
-        midLabel.text = title;
-        midLabel.textColor = [UIColor whiteColor];
-        midLabel.textAlignment = NSTextAlignmentCenter;
-        midLabel.font = [UIFont systemFontOfSize:18.0];
-        [self addSubview:midLabel];
+        _midLabel.frame = CGRectMake(0, 0, 180, 24);
+        _midLabel.center = CGPointMake(screenWidth/2.0, 42);
+        _midLabel.text = title;
+        _midLabel.textColor = [UIColor whiteColor];
+        _midLabel.textAlignment = NSTextAlignmentCenter;
+        _midLabel.font = [UIFont systemFontOfSize:18.0];
+        [self addSubview:_midLabel];
         
 
     }
@@ -90,7 +94,11 @@
 
     if (self.viewController) {
         
-        [self.viewController.navigationController popToRootViewControllerAnimated:YES];
+//        [self.viewController.navigationController popToRootViewControllerAnimated:YES];
+        
+        MineViewController *vc = [[MineViewController alloc]init];
+        
+        [self.viewController.navigationController popToViewController:vc animated:YES];
     }
     
 }

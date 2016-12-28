@@ -15,6 +15,6 @@
 @property (nonatomic,strong) UITextField *nameTF;
 @property (nonatomic,strong) UITextField *phoneTF;
 @property (nonatomic,strong) UITextView *issueTF;
-@property (nonatomic,assign) NSInteger typeId;
+@property (nonatomic,copy) NSString *typeId;
 
 @end

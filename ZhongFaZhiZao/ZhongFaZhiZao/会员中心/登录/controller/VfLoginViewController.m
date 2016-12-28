@@ -46,6 +46,15 @@
     
     [self.vfLoginView.loginBtn addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
 
+    self.vfLoginView.phoneNumTF.delegate = self;
+    self.vfLoginView.vfCodeTF.delegate = self;
+    
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (void)pwLogin{

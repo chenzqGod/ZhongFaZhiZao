@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#define USER_CENTER   @"http://cectest.cecb2b.com/waps/member/home"
 
 @interface ZFZZTabBarController : UITabBarController
 

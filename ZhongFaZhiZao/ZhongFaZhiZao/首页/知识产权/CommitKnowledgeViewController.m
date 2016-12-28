@@ -7,8 +7,12 @@
 //
 
 #import "CommitKnowledgeViewController.h"
+#import "NSString+Mobile.h"
 
-@interface CommitKnowledgeViewController ()
+@interface CommitKnowledgeViewController ()<UITextFieldDelegate,UITextViewDelegate>{
+
+    UILabel *_styleLabel;
+}
 
 @property (nonatomic,strong) UIScrollView *scrollView;
 
@@ -45,6 +49,7 @@
     [commitKnowBtn setTintColor:[UIColor whiteColor]];
     commitKnowBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
     commitKnowBtn.layer.masksToBounds = YES;
+    [commitKnowBtn addTarget:self action:@selector(comitBtnClick) forControlEvents:UIControlEventTouchUpInside];
     commitKnowBtn.layer.cornerRadius = 2;
     [self.scrollView addSubview:commitKnowBtn];
     
@@ -55,21 +60,44 @@
     label1.font = [UIFont systemFontOfSize:13.0];
     [backView addSubview:label1];
     
-    UILabel *styleLabel = [[UILabel alloc]initWithFrame:CGRectMake(16*screenScale+CGRectGetMaxX(label1.frame), 24, 100, 17)];
+    _styleLabel = [[UILabel alloc]initWithFrame:CGRectMake(16*screenScale+CGRectGetMaxX(label1.frame), 24, 100, 17)];
     
-    styleLabel.text = @"默认类型";
+    _styleLabel.text = @"默认类型";
     
-//    if ([self.styleStr isEqualToString:@""]) {
-//        
-//        styleLabel.text = @"默认类型";
-//        
-//    }else{
-//    
-//        styleLabel.text = self.styleStr;
-//    }
+    if ([_typeId isEqualToString:@"80004010"]) {
+        _styleLabel.text = @"专利申请";
+    }
+    else if ([_typeId isEqualToString:@"80004020"]){
+        _styleLabel.text = @"专利挖掘";
+    }
+    else if ([_typeId isEqualToString:@"80004030"]){
+        _styleLabel.text = @"无效请求";
+    }
+    else if ([_typeId isEqualToString:@"80004040"]){
+        _styleLabel.text = @"专利维权";
+    }
+    else if ([_typeId isEqualToString:@"80004050"]){
+        _styleLabel.text = @"专利培训";
+    }
+    else if ([_typeId isEqualToString:@"80004060"]){
+        _styleLabel.text = @"专利预警";
+    }
+    else if ([_typeId isEqualToString:@"80004070"]){
+        _styleLabel.text = @"专利分析";
+    }
+    else if ([_typeId isEqualToString:@"80004080"]){
+        _styleLabel.text = @"专利交易";
+    }
+    else if ([_typeId isEqualToString:@"80004090"]){
+        _styleLabel.text = @"数据库定制";
+    }
+    else if ([_typeId isEqualToString:@"80004020"]){
+        _styleLabel.text = @"更多";
+    }
     
-    styleLabel.font = [UIFont systemFontOfSize:13.0];
-    [backView addSubview:styleLabel];
+    
+    _styleLabel.font = [UIFont systemFontOfSize:13.0];
+    [backView addSubview:_styleLabel];
     
 //    申请领域
     UILabel *label2 = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(label1.frame)+24, CGRectGetWidth(label1.frame), CGRectGetHeight(label1.frame))];
@@ -143,13 +171,98 @@
     self.issueTF.layer.borderColor = BACK_COLOR.CGColor;
     [backView addSubview:self.issueTF];
 
-
+    self.areasTF.delegate = self;
+    self.nameTF.delegate = self;
+    self.phoneTF.delegate = self;
+    self.issueTF.delegate = self;
+    
     
 }
 
 
+- (void)setTypeId:(NSString *)typeId{
+
+    _typeId = typeId;
+   
+    [self createCommitKnow];
+
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)comitBtnClick{
+
+    if ([self.areasTF.text isEqualToString:@""]) {
+        [WKProgressHUD popMessage:@"请选择领域" inView:self.view duration:HUD_DURATION animated:YES];
+    }
+    else if ([self.nameTF.text isEqualToString:@""]){
+        [WKProgressHUD popMessage:@"请输入联系人" inView:self.view duration:HUD_DURATION animated:YES];
+
+    }
+    else if ([self.phoneTF.text isEqualToString:@""]){
+    
+        [WKProgressHUD popMessage:@"请输入手机号" inView:self.view duration:HUD_DURATION animated:YES];
+    }
+    else if (![self.phoneTF.text isMobileNumber]){
+        [WKProgressHUD popMessage:@"请输入正确手机号" inView:self.view duration:HUD_DURATION animated:YES];
+
+    }
+    else if ([self.issueTF.text isEqualToString:@""]){
+    
+        [WKProgressHUD popMessage:@"请输入需求" inView:self.view duration:HUD_DURATION animated:YES];
+
+    }
+    else{
+        
+        NSDictionary *parameters = @{@"domain":self.areasTF.text,@"contacts":self.nameTF.text,@"mobile":self.phoneTF.text,@"description":self.issueTF.text};
+
+    
+        [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@/%@",HOST_URL,PATENT_APPLY,self.typeId] parameters:parameters success:^(id response) {
+            
+            if ([response[@"resultCode"]integerValue] == 1000) {
+                [WKProgressHUD popMessage:@"提交成功" inView:self.view duration:HUD_DURATION animated:YES];
+                
+                
+                
+            }else if ([response[@"resultCode"]integerValue] == 1001){
+                
+                [WKProgressHUD popMessage:@"提交失败" inView:self.view duration:HUD_DURATION animated:YES];
+            }else if ([response[@"resultCode"]integerValue] == 1008){
+                
+                [WKProgressHUD popMessage:@"参数错误" inView:self.view duration:HUD_DURATION animated:YES];
+            }
+            
+        } failure:^(NSString *error) {
+            NSLog(@"%@",error);
+            [WKProgressHUD popMessage:@"请检查网络连接" inView:self.view duration:HUD_DURATION animated:YES];
+        }];
+        
+    }
+}
 
 
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+
+    if ([text isEqualToString:@""] && range.length > 0) {
+        //删除字符肯定是安全的
+        return YES;
+    }
+    else {
+        if (textView.text.length - range.length + text.length > 50) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"超出50个字符" message:nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alert show];
+            return NO;
+        }
+        else {
+            return YES;
+        }
+    }
+
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

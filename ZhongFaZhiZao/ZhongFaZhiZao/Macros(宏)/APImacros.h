@@ -27,16 +27,19 @@
 #define REGIST                     @"/api/register"
 
 //交互
-#define SERVER_LOGIN               @"http://cectest.cecb2b.com/waps/member/home"
-
+#define SERVER_LOGIN               @"http://cectest.cecb2b.com/waps/member/login"
+#define USER_CENTER                @"http://cectest.cecb2b.com/waps/member/home"
+#define LoginURL                   @"http://cectest.cecb2b.com/waps/member/login?"
+#define LoginURL2                  @"http://cectest.cecb2b.com/waps//member/login?"
 
 //融云  sessionId为登录时返回的devicetoken
-#define GETRONG_TOKEN              @"/api/getRongToken/?sessionId=50c745df-3b38-4728-a3a8-8d8cbf1231c9"
+#define GETRONG_TOKEN              @"/api/getRongToken/"
+//zfa_token为参数 放到header里面
 
 //知识产权
 #define PATENT_LIST                @"/api/patent/list"
 #define PATENT_DOMAINLIST          @"/api/patent/domainList"
-#define PATENT_APPLY               @"/api/patent/apply/{typeId}"
+#define PATENT_APPLY               @"/api/patent/apply"
 
 //首页
 #define Electronic_API             @"/api/findData"

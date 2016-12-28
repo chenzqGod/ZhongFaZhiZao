@@ -15,10 +15,22 @@
 
 @implementation DelegateViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+
+    [super viewWillAppear:YES];
+    
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    NavigationControllerView *nav = [[NavigationControllerView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 64) andLeftBtn:@"用户协议"];
+    nav.viewController = self;
+    
+    [self.view addSubview:nav];
     
     DelegateView *delegateView = [[DelegateView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     [self.view addSubview:delegateView];
@@ -26,6 +38,7 @@
     
     [delegateView.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.baidu.com"]]];
     delegateView.webview.delegate = self;
+    
 }
 
 #pragma mark - h5页面webView请求
@@ -40,6 +53,8 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
 
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

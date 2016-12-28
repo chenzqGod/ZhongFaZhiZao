@@ -13,6 +13,7 @@
 #import "PwLoginViewController.h"
 #import "NSNetworking.h"
 #import "PwLoginViewController.h"
+#import "WKWebViewViewController.h"
 
 @interface RegisterViewController ()<UITextFieldDelegate>
 
@@ -45,6 +46,11 @@
     [self.registView.pwVisibleBtn2 addTarget:self action:@selector(pwVisible2) forControlEvents:UIControlEventTouchUpInside];
     
     [self.registView.registerBtn addTarget:self action:@selector(regist) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.registView.vfCodeTF.delegate = self;
+    self.registView.phoneNumTF.delegate = self;
+    self.registView.passWdTF.delegate = self;
+    self.registView.passWdTF2.delegate = self;
 }
 
 // 获取验证码
@@ -62,7 +68,7 @@
         
         [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@/%@",HOST_URL,REGIST_VF,self.phoneNum] parameters:nil success:^(id response) {
             if ([response[@"resultCode"]integerValue] == 1000) {
-                [WKProgressHUD popMessage:@"验证码已发送" inView:self.view duration:HUD_DURATION animated:YES];
+                [WKProgressHUD popMessage:@"    验证码已发送" inView:self.view duration:HUD_DURATION animated:YES];
                 __block int timeout = 60; // 倒计时时间
                 dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
                 dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
@@ -109,8 +115,12 @@
 }
 
 - (void)delegate{
-    DelegateViewController *delegate =[[DelegateViewController alloc]init];
-    [self.navigationController pushViewController:delegate animated:YES];
+//    DelegateViewController *delegate =[[DelegateViewController alloc]init];
+//    [self.navigationController pushViewController:delegate animated:YES];
+    
+    WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://www.baidu.com" title:@"用户协议"];
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 // 密码可见
@@ -206,6 +216,12 @@
             [WKProgressHUD popMessage:@"请检查网络连接" inView:self.view duration:HUD_DURATION animated:YES];
         }];
     }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning {

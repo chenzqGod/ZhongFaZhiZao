@@ -14,7 +14,6 @@
 #import "PwLoginViewController.h"
 #import "IMViewController.h"
 
-
 @interface ZFZZTabBarController ()
 
 
@@ -75,7 +74,7 @@
     
 //    self.viewControllers = @[homeVC,askVC,purchaseNav,mineNav];
     
-    self.viewControllers = @[homeNav,askNav,purchaseNav,pwNav];
+    self.viewControllers = @[homeNav,askNav,purchaseNav,mineNav];
     
 //    self.selectedViewController = homeVC;
     
