@@ -284,6 +284,9 @@
 		56CC47561E13A74600D8E42E /* 占位图157-148@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CC47521E13A74600D8E42E /* 占位图157-148@3x.png */; };
 		56CC47571E13A74600D8E42E /* 占位图200-188@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CC47531E13A74600D8E42E /* 占位图200-188@2x.png */; };
 		56CC47581E13A74600D8E42E /* 占位图200-188@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CC47541E13A74600D8E42E /* 占位图200-188@3x.png */; };
+		56CC475B1E13AF9A00D8E42E /* PlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CC475A1E13AF9A00D8E42E /* PlaceholderTextView.m */; };
+		56CC475E1E13C06F00D8E42E /* Fill 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CC475C1E13C06F00D8E42E /* Fill 1@2x.png */; };
+		56CC475F1E13C06F00D8E42E /* Fill 1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CC475D1E13C06F00D8E42E /* Fill 1@3x.png */; };
 		56CFD7081E00E45700D18340 /* 采购-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD6F81E00E45700D18340 /* 采购-1@2x.png */; };
 		56CFD7091E00E45700D18340 /* 采购-1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD6F91E00E45700D18340 /* 采购-1@3x.png */; };
 		56CFD70A1E00E45700D18340 /* 采购-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD6FA1E00E45700D18340 /* 采购-2@2x.png */; };
@@ -836,6 +839,10 @@
 		56CC47521E13A74600D8E42E /* 占位图157-148@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "占位图157-148@3x.png"; sourceTree = "<group>"; };
 		56CC47531E13A74600D8E42E /* 占位图200-188@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "占位图200-188@2x.png"; sourceTree = "<group>"; };
 		56CC47541E13A74600D8E42E /* 占位图200-188@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "占位图200-188@3x.png"; sourceTree = "<group>"; };
+		56CC47591E13AF9A00D8E42E /* PlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceholderTextView.h; sourceTree = "<group>"; };
+		56CC475A1E13AF9A00D8E42E /* PlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceholderTextView.m; sourceTree = "<group>"; };
+		56CC475C1E13C06F00D8E42E /* Fill 1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Fill 1@2x.png"; sourceTree = "<group>"; };
+		56CC475D1E13C06F00D8E42E /* Fill 1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Fill 1@3x.png"; sourceTree = "<group>"; };
 		56CFD6F81E00E45700D18340 /* 采购-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "采购-1@2x.png"; sourceTree = "<group>"; };
 		56CFD6F91E00E45700D18340 /* 采购-1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "采购-1@3x.png"; sourceTree = "<group>"; };
 		56CFD6FA1E00E45700D18340 /* 采购-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "采购-2@2x.png"; sourceTree = "<group>"; };
@@ -2173,6 +2180,8 @@
 		56CFD7FC1E03ED7300D18340 /* 知识产权 */ = {
 			isa = PBXGroup;
 			children = (
+				56CC47591E13AF9A00D8E42E /* PlaceholderTextView.h */,
+				56CC475A1E13AF9A00D8E42E /* PlaceholderTextView.m */,
 				56CFD8061E051C8B00D18340 /* KnowLedgeViewController.h */,
 				56CFD8071E051C8B00D18340 /* KnowLedgeViewController.m */,
 				56CFD82B1E07B6C200D18340 /* KnowLedgeTableViewCell.h */,
@@ -2199,6 +2208,8 @@
 		56CFD8121E0789FE00D18340 /* 知识产权 */ = {
 			isa = PBXGroup;
 			children = (
+				56CC475C1E13C06F00D8E42E /* Fill 1@2x.png */,
+				56CC475D1E13C06F00D8E42E /* Fill 1@3x.png */,
 				5697C8031E08DDEF008A1D98 /* Group 15@2x.png */,
 				5697C8041E08DDEF008A1D98 /* Group 15@3x.png */,
 				56CFD8131E0789FE00D18340 /* banner2@2x.png */,
@@ -2498,6 +2509,7 @@
 				56CFD78D1E028FC700D18340 /* 蒙版@3x.png in Resources */,
 				560956171DFF998E00DA0B72 /* qq@2x.png in Resources */,
 				56CFD79E1E028FC700D18340 /* 行业热点logo@2x.png in Resources */,
+				56CC475E1E13C06F00D8E42E /* Fill 1@2x.png in Resources */,
 				5691B6481E111AB600AC09DB /* 清除@2x.png in Resources */,
 				560366381DDEA20000332DD2 /* 76@1x.png in Resources */,
 				5697C88D1E0E6EF9008A1D98 /* Group 41@2x.png in Resources */,
@@ -2514,6 +2526,7 @@
 				56CFD70C1E00E45700D18340 /* 会员-1@2x.png in Resources */,
 				56CFD7A41E028FC700D18340 /* 智能bar@2x.png in Resources */,
 				5691B6211E10F72500AC09DB /* Group 47@2x.png in Resources */,
+				56CC475F1E13C06F00D8E42E /* Fill 1@3x.png in Resources */,
 				56CFD70D1E00E45700D18340 /* 会员-1@3x.png in Resources */,
 				5691B63D1E11070700AC09DB /* Group 4@2x.png in Resources */,
 				56C930941E125761006DC3C2 /* NavBG@3x.png in Resources */,
@@ -2636,6 +2649,7 @@
 				567B62161DD020A0004D1CFE /* MBProgressHUD.m in Sources */,
 				567B620F1DD020A0004D1CFE /* MASViewConstraint.m in Sources */,
 				5697C8741E0E2DB3008A1D98 /* FMDatabase.m in Sources */,
+				56CC475B1E13AF9A00D8E42E /* PlaceholderTextView.m in Sources */,
 				56045FA31DF16AC100BB5EB9 /* AskDetailsViewController.m in Sources */,
 				567B620A1DD020A0004D1CFE /* MASCompositeConstraint.m in Sources */,
 				567B622D1DD020A1004D1CFE /* SDWebImageCompat.m in Sources */,

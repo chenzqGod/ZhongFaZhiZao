@@ -13,7 +13,8 @@
 
     UILabel *_styleLabel;
 }
-
+//字数的限制
+@property (nonatomic, strong)UILabel *wordCountLabel;
 @property (nonatomic,strong) UIScrollView *scrollView;
 
 @end
@@ -163,14 +164,27 @@
     label5.font = [UIFont systemFontOfSize:13.0];
     [backView addSubview:label5];
     
-    self.issueTF = [[UITextView alloc]initWithFrame:CGRectMake(13*screenScale+CGRectGetMaxX(label4.frame), CGRectGetMaxY(self.phoneTF.frame)+11, 204*screenScale, 114)];
+    self.issueTF = [[PlaceholderTextView alloc]initWithFrame:CGRectMake(13*screenScale+CGRectGetMaxX(label4.frame), CGRectGetMaxY(self.phoneTF.frame)+11, 204*screenScale, 114)];
 //    self.issueTF.placeholder = @"请输入手机号";
     self.issueTF.layer.borderWidth = 1;
     self.issueTF.layer.masksToBounds = YES;
     self.issueTF.layer.cornerRadius = 2;
     self.issueTF.layer.borderColor = BACK_COLOR.CGColor;
+    self.issueTF.font = [UIFont systemFontOfSize:13.0];
+
+    self.issueTF.placeholder = @"请详细描述您的需求";
+    self.issueTF.placeholderColor = TEXT_GREY_COLOR;
     [backView addSubview:self.issueTF];
 
+    self.wordCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.issueTF.frame)-50,  CGRectGetMaxY(self.issueTF.frame)+6, 50, 12)];
+    _wordCountLabel.font = [UIFont systemFontOfSize:10.f];
+    _wordCountLabel.textColor = TEXT_GREY_COLOR;
+    _wordCountLabel.alpha = 0.7;
+    self.wordCountLabel.text = @"0/50";
+    self.wordCountLabel.backgroundColor = [UIColor whiteColor];
+    self.wordCountLabel.textAlignment = NSTextAlignmentRight;
+    [backView addSubview:self.wordCountLabel];
+    
     self.areasTF.delegate = self;
     self.nameTF.delegate = self;
     self.phoneTF.delegate = self;
@@ -179,6 +193,60 @@
     
 }
 
+
+
+//把回车键当做退出键盘的响应键  textView退出键盘的操作
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    
+    if ([@"\n" isEqualToString:text] == YES)
+    {
+        [textView resignFirstResponder];
+        
+        
+        return NO;
+    }
+    
+    return YES;
+    
+//    if ([text isEqualToString:@""] && range.length > 0) {
+//        //删除字符肯定是安全的
+//        return YES;
+//    }
+//    else {
+//        if (textView.text.length - range.length + text.length > 50) {
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"超出50个字符" message:nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+//            [alert show];
+//            return NO;
+//        }
+//        else {
+//            return YES;
+//        }
+//    }
+}
+
+#pragma mark textField的字数限制
+
+//在这个地方计算输入的字数
+- (void)textViewDidChange:(UITextView *)textView
+{
+    NSInteger wordCount = textView.text.length;
+    self.wordCountLabel.text = [NSString stringWithFormat:@"%ld/50",(long)wordCount];
+    [self wordLimit:textView];
+}
+#pragma mark 超过50字不能输入
+-(BOOL)wordLimit:(UITextView *)text{
+    if (text.text.length < 50) {
+        NSLog(@"%ld",text.text.length);
+        self.issueTF.editable = YES;
+        
+    }
+    else{
+        self.issueTF.editable = NO;
+        
+    }
+    return nil;
+}
 
 - (void)setTypeId:(NSString *)typeId{
 
@@ -244,25 +312,12 @@
     }
 }
 
-
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-
-    if ([text isEqualToString:@""] && range.length > 0) {
-        //删除字符肯定是安全的
-        return YES;
-    }
-    else {
-        if (textView.text.length - range.length + text.length > 50) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"超出50个字符" message:nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-            [alert show];
-            return NO;
-        }
-        else {
-            return YES;
-        }
-    }
-
-}
+//
+//- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+//
+//
+//
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

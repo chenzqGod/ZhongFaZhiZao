@@ -12,7 +12,7 @@
 #import "RegisterViewController.h"
 #import "ForgetPwViewController.h"
 #import "NSString+Mobile.h"
-
+#import "MineViewController.h"
 
 @interface PwLoginViewController ()<UITextFieldDelegate>
 
@@ -168,6 +168,9 @@
                     [USER_DEFAULTS setObject:@"" forKey:@"password"];
                     }
                     [USER_DEFAULTS synchronize];
+                    
+                    MineViewController *vc = [[MineViewController alloc]init];
+                    [self.navigationController pushViewController:vc animated:YES];
                 });
 
             }else if ([response[@"resultCode"]integerValue] == 1003){

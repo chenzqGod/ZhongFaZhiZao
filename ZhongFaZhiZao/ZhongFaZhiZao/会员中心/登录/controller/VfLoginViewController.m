@@ -12,6 +12,7 @@
 #import "RegisterViewController.h"
 #import "ForgetPwViewController.h"
 #import "NSString+Mobile.h"
+#import "MineViewController.h"
 
 @interface VfLoginViewController ()<UITextFieldDelegate>
 
@@ -186,6 +187,10 @@
 //                    [USER_DEFAULTS setObject:_userInfo.createDate forKey:@"create_date"];
 //                    [USER_DEFAULTS setObject:_userInfo.uid forKey:@"uid"];
 //                    [USER_DEFAULTS synchronize];
+                    MineViewController *vc = [[MineViewController alloc]init];
+                    [self.navigationController pushViewController:vc animated:YES];
+
+                    
                 });
             }else if ([response[@"resultCode"]integerValue] == 1003){
             

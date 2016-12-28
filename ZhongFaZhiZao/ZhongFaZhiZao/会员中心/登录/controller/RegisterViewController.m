@@ -118,7 +118,7 @@
 //    DelegateViewController *delegate =[[DelegateViewController alloc]init];
 //    [self.navigationController pushViewController:delegate animated:YES];
     
-    WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://www.baidu.com" title:@"用户协议"];
+    WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://www.cecb2b.com/zt/register/read.html" title:@"用户协议"];
     
     [self.navigationController pushViewController:vc animated:YES];
 }
