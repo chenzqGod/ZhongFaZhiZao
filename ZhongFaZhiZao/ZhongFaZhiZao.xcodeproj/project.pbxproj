@@ -225,6 +225,8 @@
 		5691B6481E111AB600AC09DB /* 清除@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5691B6461E111AB500AC09DB /* 清除@2x.png */; };
 		5691B6491E111AB600AC09DB /* 清除@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5691B6471E111AB500AC09DB /* 清除@3x.png */; };
 		5691B64C1E11671300AC09DB /* ZhongFaDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5691B64B1E11671300AC09DB /* ZhongFaDataBase.m */; };
+		56932B151E1429880010FC7E /* ZYJHeadLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56932B121E1429880010FC7E /* ZYJHeadLineModel.m */; };
+		56932B161E1429880010FC7E /* ZYJHeadLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56932B141E1429880010FC7E /* ZYJHeadLineView.m */; };
 		5697C7FE1E07E9F6008A1D98 /* 占位图-消息@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5697C7FC1E07E9F6008A1D98 /* 占位图-消息@2x.png */; };
 		5697C7FF1E07E9F6008A1D98 /* 占位图-消息@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5697C7FD1E07E9F6008A1D98 /* 占位图-消息@3x.png */; };
 		5697C8021E08D0DF008A1D98 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5697C8011E08D0DF008A1D98 /* CustomButton.m */; };
@@ -287,6 +289,7 @@
 		56CC475B1E13AF9A00D8E42E /* PlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CC475A1E13AF9A00D8E42E /* PlaceholderTextView.m */; };
 		56CC475E1E13C06F00D8E42E /* Fill 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CC475C1E13C06F00D8E42E /* Fill 1@2x.png */; };
 		56CC475F1E13C06F00D8E42E /* Fill 1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CC475D1E13C06F00D8E42E /* Fill 1@3x.png */; };
+		56CC47621E13C41E00D8E42E /* DropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CC47611E13C41E00D8E42E /* DropDown.m */; };
 		56CFD7081E00E45700D18340 /* 采购-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD6F81E00E45700D18340 /* 采购-1@2x.png */; };
 		56CFD7091E00E45700D18340 /* 采购-1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD6F91E00E45700D18340 /* 采购-1@3x.png */; };
 		56CFD70A1E00E45700D18340 /* 采购-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD6FA1E00E45700D18340 /* 采购-2@2x.png */; };
@@ -764,6 +767,10 @@
 		5691B6471E111AB500AC09DB /* 清除@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "清除@3x.png"; path = "../清除@3x.png"; sourceTree = "<group>"; };
 		5691B64A1E11671300AC09DB /* ZhongFaDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhongFaDataBase.h; sourceTree = "<group>"; };
 		5691B64B1E11671300AC09DB /* ZhongFaDataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhongFaDataBase.m; sourceTree = "<group>"; };
+		56932B111E1429880010FC7E /* ZYJHeadLineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYJHeadLineModel.h; sourceTree = "<group>"; };
+		56932B121E1429880010FC7E /* ZYJHeadLineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYJHeadLineModel.m; sourceTree = "<group>"; };
+		56932B131E1429880010FC7E /* ZYJHeadLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYJHeadLineView.h; sourceTree = "<group>"; };
+		56932B141E1429880010FC7E /* ZYJHeadLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYJHeadLineView.m; sourceTree = "<group>"; };
 		5697C7FC1E07E9F6008A1D98 /* 占位图-消息@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "占位图-消息@2x.png"; sourceTree = "<group>"; };
 		5697C7FD1E07E9F6008A1D98 /* 占位图-消息@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "占位图-消息@3x.png"; sourceTree = "<group>"; };
 		5697C8001E08D0DF008A1D98 /* CustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
@@ -843,6 +850,8 @@
 		56CC475A1E13AF9A00D8E42E /* PlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceholderTextView.m; sourceTree = "<group>"; };
 		56CC475C1E13C06F00D8E42E /* Fill 1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Fill 1@2x.png"; sourceTree = "<group>"; };
 		56CC475D1E13C06F00D8E42E /* Fill 1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Fill 1@3x.png"; sourceTree = "<group>"; };
+		56CC47601E13C41E00D8E42E /* DropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDown.h; sourceTree = "<group>"; };
+		56CC47611E13C41E00D8E42E /* DropDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDown.m; sourceTree = "<group>"; };
 		56CFD6F81E00E45700D18340 /* 采购-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "采购-1@2x.png"; sourceTree = "<group>"; };
 		56CFD6F91E00E45700D18340 /* 采购-1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "采购-1@3x.png"; sourceTree = "<group>"; };
 		56CFD6FA1E00E45700D18340 /* 采购-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "采购-2@2x.png"; sourceTree = "<group>"; };
@@ -1849,6 +1858,7 @@
 		567B62971DD1A47E004D1CFE /* 自定义 */ = {
 			isa = PBXGroup;
 			children = (
+				56932B101E1429880010FC7E /* HeadLineView */,
 				5697C80D1E0A26ED008A1D98 /* imagecache */,
 				56CFD71C1E014E2A00D18340 /* scrollView */,
 				56045FEA1DF1850800BB5EB9 /* UIView+CPView.h */,
@@ -1927,6 +1937,17 @@
 				5691B6461E111AB500AC09DB /* 清除@2x.png */,
 			);
 			path = "搜索页";
+			sourceTree = "<group>";
+		};
+		56932B101E1429880010FC7E /* HeadLineView */ = {
+			isa = PBXGroup;
+			children = (
+				56932B111E1429880010FC7E /* ZYJHeadLineModel.h */,
+				56932B121E1429880010FC7E /* ZYJHeadLineModel.m */,
+				56932B131E1429880010FC7E /* ZYJHeadLineView.h */,
+				56932B141E1429880010FC7E /* ZYJHeadLineView.m */,
+			);
+			path = HeadLineView;
 			sourceTree = "<group>";
 		};
 		5697C80D1E0A26ED008A1D98 /* imagecache */ = {
@@ -2188,6 +2209,8 @@
 				56CFD82C1E07B6C200D18340 /* KnowLedgeTableViewCell.m */,
 				56CFD82E1E07BBC000D18340 /* CommitKnowledgeViewController.h */,
 				56CFD82F1E07BBC000D18340 /* CommitKnowledgeViewController.m */,
+				56CC47601E13C41E00D8E42E /* DropDown.h */,
+				56CC47611E13C41E00D8E42E /* DropDown.m */,
 			);
 			path = "知识产权";
 			sourceTree = "<group>";
@@ -2642,12 +2665,14 @@
 				56045FE81DF1827000BB5EB9 /* WKProgressHUD.m in Sources */,
 				567B623C1DD020A1004D1CFE /* AFNetworkActivityIndicatorManager.m in Sources */,
 				561AC0401DED7D17009C8EC3 /* LaunchIntroductionView.m in Sources */,
+				56932B161E1429880010FC7E /* ZYJHeadLineView.m in Sources */,
 				567B622E1DD020A1004D1CFE /* SDWebImageDecoder.m in Sources */,
 				567B62121DD020A0004D1CFE /* View+MASAdditions.m in Sources */,
 				560955B21DF7FADF00DA0B72 /* PwLoginViewController.m in Sources */,
 				56CFD7381E026EE000D18340 /* IntelligenceCollectionViewCell.m in Sources */,
 				567B62161DD020A0004D1CFE /* MBProgressHUD.m in Sources */,
 				567B620F1DD020A0004D1CFE /* MASViewConstraint.m in Sources */,
+				56CC47621E13C41E00D8E42E /* DropDown.m in Sources */,
 				5697C8741E0E2DB3008A1D98 /* FMDatabase.m in Sources */,
 				56CC475B1E13AF9A00D8E42E /* PlaceholderTextView.m in Sources */,
 				56045FA31DF16AC100BB5EB9 /* AskDetailsViewController.m in Sources */,
@@ -2701,6 +2726,7 @@
 				567B62081DD020A0004D1CFE /* JSONKeyMapper.m in Sources */,
 				567B62501DD020EE004D1CFE /* UIImage+Scale.m in Sources */,
 				5609559A1DF7EDCD00DA0B72 /* VfLoginView.m in Sources */,
+				56932B151E1429880010FC7E /* ZYJHeadLineModel.m in Sources */,
 				5609559D1DF7F11F00DA0B72 /* ForgetPwView.m in Sources */,
 				567B62191DD020A0004D1CFE /* MJRefreshComponent.m in Sources */,
 				567B61141DCADFF9004D1CFE /* main.m in Sources */,

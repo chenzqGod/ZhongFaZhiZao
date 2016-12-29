@@ -9,9 +9,14 @@
 #import "CommitKnowledgeViewController.h"
 #import "NSString+Mobile.h"
 
-@interface CommitKnowledgeViewController ()<UITextFieldDelegate,UITextViewDelegate>{
+@interface CommitKnowledgeViewController ()<UITextFieldDelegate,UITextViewDelegate,UITableViewDelegate,UITableViewDataSource>{
 
+    UITableView *_tableView;
+    
+    BOOL showList;
     UILabel *_styleLabel;
+    
+    NSArray *_areaArr;
 }
 //字数的限制
 @property (nonatomic, strong)UILabel *wordCountLabel;
@@ -24,6 +29,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    _areaArr = @[@"智能穿戴",@"智能家居",@"智能家电",@"智能安防",@"智能医疗",@"智慧城市",@"物联网",@"车联网"];
     
     NavigationControllerView *navView = [[NavigationControllerView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 64) andLeftBtn:@"提交申请"];
     navView.viewController = self;
@@ -116,8 +123,19 @@
     self.areasTF.layer.borderColor = BACK_COLOR.CGColor;
     self.areasTF.leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 8, 0)];
     self.areasTF.leftViewMode = UITextFieldViewModeAlways;
+    self.areasTF.delegate = self;
+    
+    [self.areasTF addTarget:self action:@selector(showtableBtnClick) forControlEvents:UIControlEventAllTouchEvents];
+
     [backView addSubview:self.areasTF];
     
+//    self.areasTF = [[DropDown alloc]initWithFrame:CGRectMake(13*screenScale+CGRectGetMaxX(label2.frame), CGRectGetMaxY(label1.frame)+17, 204*screenScale, 29)];
+//    self.areasTF.textField.placeholder = @"请输入联系方式";
+//    NSArray* arr=[[NSArray alloc]initWithObjects:@"电话",@"email",@"手机",@"aaa",@"bbb",@"ccc",nil];
+//    self.areasTF.list = arr;
+//    self.areasTF.textField.delegate = self;
+//
+//    [backView addSubview:self.areasTF];
     
     //    联系人
     UILabel *label3 = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(label2.frame)+24, CGRectGetWidth(label1.frame), CGRectGetHeight(label1.frame))];
@@ -134,9 +152,12 @@
     self.nameTF.leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 8, 0)];
     self.nameTF.leftViewMode = UITextFieldViewModeAlways;
     self.nameTF.font = [UIFont systemFontOfSize:13.0];
-
+    self.nameTF.delegate = self;
     self.nameTF.layer.borderColor = BACK_COLOR.CGColor;
     [backView addSubview:self.nameTF];
+
+    
+    
     
     //    手机号码
     UILabel *label4 = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(label3.frame)+24, CGRectGetWidth(label1.frame), CGRectGetHeight(label1.frame))];
@@ -154,6 +175,7 @@
     self.phoneTF.leftViewMode = UITextFieldViewModeAlways;
     self.phoneTF.leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 8, 0)];
     self.phoneTF.layer.borderColor = BACK_COLOR.CGColor;
+    self.phoneTF.delegate = self;
     [backView addSubview:self.phoneTF];
     
     
@@ -171,7 +193,7 @@
     self.issueTF.layer.cornerRadius = 2;
     self.issueTF.layer.borderColor = BACK_COLOR.CGColor;
     self.issueTF.font = [UIFont systemFontOfSize:13.0];
-
+    self.issueTF.delegate = self;
     self.issueTF.placeholder = @"请详细描述您的需求";
     self.issueTF.placeholderColor = TEXT_GREY_COLOR;
     [backView addSubview:self.issueTF];
@@ -185,15 +207,41 @@
     self.wordCountLabel.textAlignment = NSTextAlignmentRight;
     [backView addSubview:self.wordCountLabel];
     
-    self.areasTF.delegate = self;
-    self.nameTF.delegate = self;
-    self.phoneTF.delegate = self;
-    self.issueTF.delegate = self;
-    
+    showList = NO;
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(CGRectGetMinX(self.areasTF.frame), CGRectGetMaxY(self.areasTF.frame), CGRectGetWidth(self.areasTF.frame), 20*8) style:UITableViewStylePlain];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    _tableView.hidden = YES;
+    [backView addSubview:_tableView];
     
 }
 
+- (void)showtableBtnClick{
 
+    [self.areasTF resignFirstResponder];
+    
+    if (showList) {//如果下拉框已显示，什么都不做
+        return;
+    }else {//如果下拉框尚未显示，则进行显示
+        
+       
+        
+        //把dropdownList放到前面，防止下拉框被别的控件遮住
+//        [self.view bringSubviewToFront:_tableView];
+        _tableView.hidden = NO;
+        showList = YES;//显示下拉框
+        
+//        CGRect frame = _tableView.frame;
+//        frame.size.height = 0;
+//        _tableView.frame = frame;
+////        frame.size.height = tabheight;
+//        [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];
+//        [UIView setAnimationCurve:UIViewAnimationCurveLinear];
+////        self.frame = sf;
+//        _tableView.frame = frame;
+//        [UIView commitAnimations];
+    }
+}
 
 //把回车键当做退出键盘的响应键  textView退出键盘的操作
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
@@ -209,22 +257,19 @@
     
     return YES;
     
-//    if ([text isEqualToString:@""] && range.length > 0) {
-//        //删除字符肯定是安全的
-//        return YES;
-//    }
-//    else {
-//        if (textView.text.length - range.length + text.length > 50) {
-//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"超出50个字符" message:nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-//            [alert show];
-//            return NO;
-//        }
-//        else {
-//            return YES;
-//        }
-//    }
+
 }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+
+    if (self.areasTF == textField) {
+        
+        [self showtableBtnClick];
+        
+        return NO;
+    }
+    return YES;
+}
 #pragma mark textField的字数限制
 
 //在这个地方计算输入的字数
@@ -312,26 +357,55 @@
     }
 }
 
-//
-//- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-//
-//
-//
-//}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [_areaArr count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    cell.textLabel.text = [_areaArr objectAtIndex:[indexPath row]];
+    cell.textLabel.font = [UIFont systemFontOfSize:16.0f];
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    
+    return cell;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 20;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.areasTF.text = [_areaArr objectAtIndex:[indexPath row]];
+    showList = NO;
+    _tableView.hidden = YES;
+    
+//    CGRect frame = _tableView.frame;
+//    frame.size.height = 0;
+//    _tableView.frame = frame;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

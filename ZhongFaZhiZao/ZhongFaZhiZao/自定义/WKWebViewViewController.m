@@ -7,7 +7,7 @@
 //
 
 #import "WKWebViewViewController.h"
-
+#import "PwLoginViewController.h"
 #define LoginURL    @"http://cectest.cecb2b.com/waps/member/login?"
 
 @interface WKWebViewViewController ()<WKNavigationDelegate,WKUIDelegate,UIWebViewDelegate>
@@ -174,8 +174,19 @@
 
 // 在收到响应后，决定是否跳转
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {
+
+    NSString *url = webView.URL.absoluteString;
+    if([url hasPrefix:LoginURL] || [url hasPrefix:LoginURL2]) {
+        
+        decisionHandler(WKNavigationResponsePolicyCancel);
+        
+        PwLoginViewController *vc = [[PwLoginViewController alloc]init];
+        
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     
     decisionHandler(WKNavigationResponsePolicyAllow);
+
 }
 
 // 在发送请求之前，决定是否跳转
@@ -276,6 +287,8 @@
 
 - (void)dealloc {
     [_webView removeObserver:self forKeyPath:@"estimatedProgress"];
+    
+    [_webView removeObserver:self forKeyPath:@"title"];
     
     // if you have set either WKWebView delegate also set these to nil here
     [_webView setNavigationDelegate:nil];

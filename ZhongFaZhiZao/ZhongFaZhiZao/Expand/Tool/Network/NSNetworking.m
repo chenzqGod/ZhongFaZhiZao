@@ -37,6 +37,9 @@
 - (void)get:(NSString *)url parameters:(NSDictionary *)parameters success:(Success)success failure:(Failure)failure
 {
     AFHTTPSessionManager *manager = [self baseSessionManager];
+    
+    NSString *token = [USER_DEFAULTS objectForKey:@"token"];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"zfa_token"];
 
     NSString *UTF8_URL = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [manager GET:UTF8_URL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
@@ -54,6 +57,13 @@
 - (void)post:(NSString *)url parameters:(NSDictionary *)parameters success:(Success)success failure:(Failure)failure
 {
     AFHTTPSessionManager *manager = [self baseSessionManager];
+    NSString *token = @"";
+    if ([USER_DEFAULTS objectForKey:@"token"]) {
+       
+        token = [NSString stringWithFormat:@"%@",[USER_DEFAULTS objectForKey:@"token"]];
+    }
+    
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"zfa_token"];
     NSString *UTF8_URL = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [manager POST:UTF8_URL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         nil;

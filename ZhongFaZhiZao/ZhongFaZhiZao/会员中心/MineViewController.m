@@ -10,7 +10,7 @@
 #import "WKWebViewViewController.h"
 #import "PwLoginViewController.h"
 
-@interface MineViewController ()<WKNavigationDelegate,WKUIDelegate>
+@interface MineViewController ()<WKNavigationDelegate,WKUIDelegate,UIWebViewDelegate>
 
 @property (nonatomic,strong) WKWebView *webView;
 @property(nonatomic,assign) BOOL isLoaing;
@@ -37,6 +37,7 @@
     
     self.webView.navigationDelegate = self;
     self.webView.UIDelegate = self;
+
     [self.view addSubview:self.webView];
     
     [self.webView setMultipleTouchEnabled:YES];
@@ -109,9 +110,24 @@
 //    _imageView.frame = CGRectZero;
 }
 
+//-(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+//    NSLog(@"webviewurl：%@",webView.);
+//    return YES;
+//}
+
+
 // 在收到响应后，决定是否跳转
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {
-    
+    NSString *url = webView.URL.absoluteString;
+    if([url hasPrefix:LoginURL] || [url hasPrefix:LoginURL2]) {
+        
+        decisionHandler(WKNavigationResponsePolicyCancel);
+        
+//        PwLoginViewController *vc = [[PwLoginViewController alloc]init];
+//        
+//        [self.navigationController pushViewController:vc animated:YES];
+    }
+
     decisionHandler(WKNavigationResponsePolicyAllow);
 }
 

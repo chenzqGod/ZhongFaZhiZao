@@ -15,6 +15,19 @@
 
 @implementation IMViewController
 
+- (id)init{
+
+    self = [super init];
+    
+    if (self) {
+        
+        [self setDisplayConversationTypes:@[@(ConversationType_PRIVATE)]];
+        
+    }
+
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -140,6 +153,8 @@
         user.portraitUri = @"https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=1756054607,4047938258&fm=96&s=94D712D20AA1875519EB37BE0300C008";
         return completion(user);
     }
+    
+    return completion(nil);
 }
 
 - (void)setUI {

@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "PlaceholderTextView.h"
+//#import "DropDown.h"
 
 @interface CommitKnowledgeViewController : UIViewController
 
 @property (nonatomic,copy) NSString *styleStr;
 @property (nonatomic,strong) UITextField *areasTF;
 @property (nonatomic,strong) UITextField *nameTF;
+//@property (nonatomic,strong) DropDown *areasTF;
+
 @property (nonatomic,strong) UITextField *phoneTF;
 @property (nonatomic,strong) PlaceholderTextView *issueTF;
 @property (nonatomic,copy) NSString *typeId;

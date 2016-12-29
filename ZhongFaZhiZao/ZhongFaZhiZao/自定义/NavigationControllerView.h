@@ -19,4 +19,7 @@
 //右侧返回
 - (instancetype)initWithFrame:(CGRect)frame andRightBtn:(NSString *)title;
 
+//无返回
+- (instancetype)initWithFrame:(CGRect)frame andtitle:(NSString *)title;
+
 @end

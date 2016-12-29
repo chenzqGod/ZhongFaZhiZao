@@ -44,6 +44,30 @@
 
     return self;
 }
+
+
+- (instancetype)initWithFrame:(CGRect)frame andtitle:(NSString *)title{
+    
+    if (self = [super initWithFrame:frame]) {
+        
+        UIView *navView = [[UIView alloc]initWithFrame:frame];
+        navView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"NavBG"]];
+        [self addSubview:navView];
+        
+        _midLabel = [[UILabel alloc]init];
+        _midLabel.frame = CGRectMake(0, 0, 180, 24);
+        _midLabel.center = CGPointMake(screenWidth/2.0, 42);
+        _midLabel.text = title;
+        _midLabel.textColor = [UIColor whiteColor];
+        _midLabel.textAlignment = NSTextAlignmentCenter;
+        _midLabel.font = [UIFont systemFontOfSize:18.0];
+        [self addSubview:_midLabel];
+        
+    }
+    
+    return self;
+}
+
 - (void)setTitle:(NSString *)title {
     _midLabel.text = title;
 }
@@ -78,6 +102,9 @@
     return self;
 }
 
+
+
+
 #pragma mark - 点击事件
 - (void)leftBarButtonItemClick{
     
@@ -96,9 +123,10 @@
         
 //        [self.viewController.navigationController popToRootViewControllerAnimated:YES];
         
-        MineViewController *vc = [[MineViewController alloc]init];
         
-        [self.viewController.navigationController popToViewController:vc animated:YES];
+//        [self.viewController.navigationController popToViewController:vc animated:YES];
+        
+        [self.viewController.navigationController popToRootViewControllerAnimated:YES];
     }
     
 }

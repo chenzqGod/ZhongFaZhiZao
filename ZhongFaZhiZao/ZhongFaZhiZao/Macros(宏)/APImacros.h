@@ -60,6 +60,9 @@
 
 #define BUYLIST_LIST               @"/waps/cart/list"
 
+//采购料单
+#define PURCHASE_LIST              @"http://wap.cecb2b.com/cart/list"
+
 //#define HOST_URL                    @"http://test.neisha.cc"
 // 登录注册
 //#define LOGIN                       @"/api/login/dynamic"

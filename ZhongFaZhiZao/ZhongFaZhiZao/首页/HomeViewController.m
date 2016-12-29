@@ -27,6 +27,10 @@
 
 #import "CommitKnowledgeViewController.h"
 #import "DCWebImageManager.h"
+
+#import "ZYJHeadLineView.h"
+#import "ZYJHeadLineModel.h"
+
 #define margins 8
 
 @interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>{
@@ -40,10 +44,16 @@
     NSMutableDictionary *_cityDict;
     
     CustomScrollView *_mainscrollView;
+    
+    UIButton *_fifButton;
 
 }
 
 @property (nonatomic,assign) NSInteger cityNumber;
+//上下滚动广告栏
+@property (nonatomic,strong) ZYJHeadLineView *TopLineView;
+@property(nonatomic,strong)NSMutableArray*dataArr;
+
 
 @end
 
@@ -67,7 +77,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 //    [self.navigationController setNavigationBarHidden:YES];
-    
+     _dataArr=[[NSMutableArray alloc]init];
     self.cityNumber = 0;
     
     self.view.backgroundColor = BACK_COLOR;
@@ -93,10 +103,24 @@
     
     [self createNavgationView];
 
-//    [self loadCityData];
+    [self loadCityData];
 
+    [self getHotData];
    }
 
+#pragma mark-获取数据
+- (void)getHotData
+{
+    NSArray *arr1 = @[@"HOT",@"HOT",@"HOT",@"HOT",@"HOT"];
+    NSArray *arr2 = @[@"大降价了啊",@"iPhone7分期",@"这个苹果蛮脆的",@"来尝个香蕉吧",@"越来越香了啊你的秀发"];
+    for (int i=0; i<arr2.count; i++) {
+        ZYJHeadLineModel *model = [[ZYJHeadLineModel alloc]init];
+        model.type = arr1[i];
+        model.title = arr2[i];
+        [_dataArr addObject:model];
+    }
+    [_TopLineView setVerticalShowDataArr:_dataArr];
+}
 
 #pragma mark - loadData
 - (void)loadadData{
@@ -138,6 +162,8 @@
 
 
 - (void)loadCityData{
+    
+    NSLog(@"地址地址地址 %@",[NSString stringWithFormat:@"%@%@",HOST_URL,Electronic_API]);
     
     [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,Electronic_API] parameters:nil success:^(id response) {
         
@@ -279,22 +305,33 @@
     hangyeLine.backgroundColor = TEXT_LINE_COLOR;
     [self.adView addSubview:hangyeLine];
     
-    UILabel *hotLabel = [[UILabel alloc]initWithFrame:CGRectMake(7+CGRectGetMaxX(hangyeLine.frame), (40-12)/2.0, 20, 12)];
-    hotLabel.backgroundColor = [UIColor blackColor];
-    hotLabel.text = @"HOT";
-    hotLabel.textAlignment = NSTextAlignmentCenter;
-    hotLabel.font = [UIFont systemFontOfSize:8.0];
-    hotLabel.textColor = [UIColor whiteColor];
-    hotLabel.layer.cornerRadius = 1.5;
-    hotLabel.layer.masksToBounds = YES;
-    [self.adView addSubview:hotLabel];
-//
-    UILabel *hotSumLabel = [[UILabel alloc]initWithFrame:CGRectMake(5+CGRectGetMaxX(hotLabel.frame), (40-15)/2.0, screenWidth-margins-(5+CGRectGetMaxX(hotLabel.frame)), 15)];
-    hotSumLabel.numberOfLines = 1;
-    hotSumLabel.text= @"想回到过去，试着让故事继续，至少不再让你离我而去，想看你看的世界,想在你梦的画面";
-    hotSumLabel.textAlignment = NSTextAlignmentLeft;
-    hotSumLabel.font = [UIFont systemFontOfSize:13.0];
-    [self.adView addSubview:hotSumLabel];
+//    UILabel *hotLabel = [[UILabel alloc]initWithFrame:CGRectMake(7+CGRectGetMaxX(hangyeLine.frame), (40-12)/2.0, 20, 12)];
+//    hotLabel.backgroundColor = [UIColor blackColor];
+//    hotLabel.text = @"HOT";
+//    hotLabel.textAlignment = NSTextAlignmentCenter;
+//    hotLabel.font = [UIFont systemFontOfSize:8.0];
+//    hotLabel.textColor = [UIColor whiteColor];
+//    hotLabel.layer.cornerRadius = 1.5;
+//    hotLabel.layer.masksToBounds = YES;
+//    [self.adView addSubview:hotLabel];
+////
+//    UILabel *hotSumLabel = [[UILabel alloc]initWithFrame:CGRectMake(5+CGRectGetMaxX(hotLabel.frame), (40-15)/2.0, screenWidth-margins-(5+CGRectGetMaxX(hotLabel.frame)), 15)];
+//    hotSumLabel.numberOfLines = 1;
+//    hotSumLabel.text= @"想回到过去，试着让故事继续，至少不再让你离我而去，想看你看的世界,想在你梦的画面";
+//    hotSumLabel.textAlignment = NSTextAlignmentLeft;
+//    hotSumLabel.font = [UIFont systemFontOfSize:13.0];
+//    [self.adView addSubview:hotSumLabel];
+    
+    
+    _TopLineView = [[ZYJHeadLineView alloc]initWithFrame:CGRectMake(7+CGRectGetMaxX(hangyeLine.frame), 0, screenWidth-margins-(7+CGRectGetMaxX(hangyeLine.frame)), 40)];
+//    _TopLineView.center = CGPointMake(ScreenWidth/2.0, ScreenHeight/2.0-150);
+    _TopLineView.backgroundColor = [UIColor whiteColor];
+    __weak __typeof(self)weakSelf = self;
+    _TopLineView.clickBlock = ^(NSInteger index){
+        ZYJHeadLineModel *model = weakSelf.dataArr[index];
+        NSLog(@"%@,%@",model.type,model.title);
+    };
+    [self.adView addSubview:_TopLineView];
     
     UILabel *lineLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.adView.frame)-1, screenWidth, 1)];
     lineLabel1.backgroundColor = TEXT_LINE_COLOR;
@@ -432,28 +469,36 @@
        
        for (NSInteger i = 0; i < 4; i++) {
            
-            UIButton *fifButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            _fifButton = [UIButton buttonWithType:UIButtonTypeCustom];
            
-           fifButton.frame = CGRectMake(78*i+(i+1)*fifBtnX, (53-25)/2.0+CGRectGetMaxY(fifImg.frame), 78, 25);
-           [fifButton setTitle:fifArr[i] forState:UIControlStateNormal];
-           [fifButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+           _fifButton.frame = CGRectMake(78*i+(i+1)*fifBtnX, (53-25)/2.0+CGRectGetMaxY(fifImg.frame), 78, 25);
+           [_fifButton setTitle:fifArr[i] forState:UIControlStateNormal];
+           [_fifButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
 //           [fifButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 
            
-           [fifButton setTitleColor:TEXT_GREY_COLOR forState:UIControlStateNormal];
-           fifButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
-           fifButton.layer.masksToBounds = YES;
-           fifButton.layer.cornerRadius = 10;
-           fifButton.tag = 3000+i;
-           [fifButton addTarget:self action:@selector(fifBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+           [_fifButton setTitleColor:TEXT_GREY_COLOR forState:UIControlStateNormal];
            
-           fifButton.backgroundColor = BLUE_COLOR;
+//           fifButton setBackgroundImage:[UIImage imwithco] forState:<#(UIControlState)#>
+           _fifButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
+           _fifButton.layer.masksToBounds = YES;
+           _fifButton.layer.cornerRadius = 10;
+           _fifButton.tag = 3000+i;
+           [_fifButton addTarget:self action:@selector(fifBtnClick:) forControlEvents:UIControlEventTouchUpInside];
            
-           [fifView addSubview:fifButton];
+           
+           
+           [fifView addSubview:_fifButton];
 
            if (i == 0) {
-               self.tmpbtn = fifButton;
-               fifButton.selected = YES;
+               
+               _fifButton.backgroundColor = BLUE_COLOR;
+               self.tmpbtn = _fifButton;
+               _fifButton.selected = YES;
+           }else{
+           
+           _fifButton.backgroundColor = [UIColor whiteColor];
+           _fifButton.layer.borderWidth = 1;
            }
 
        }
@@ -1102,18 +1147,24 @@ else if (indexPath.section == 5){
 
 - (void)fifBtnClick:(UIButton *)button{
 
-//    for(int i = 0 ; i < 4 ;i ++) {
-//        
-//        UIButton *btn = (UIButton *)[self.view viewWithTag:i + 3000];
-//        if(button.tag == btn.tag) {
-//            btn.selected = YES;
-//        }else {
-//            btn.selected = NO;
-//        }
-//    }
-    self.tmpbtn.selected  = NO;
-    button.selected = YES;
-    self.tmpbtn = button;
+    for(int i = 0 ; i < 4 ;i ++) {
+        
+        UIButton *btn = (UIButton *)[self.view viewWithTag:i + 3000];
+        if(button.tag == btn.tag) {
+            
+            [btn setBackgroundColor:BLUE_COLOR];
+            btn.layer.borderWidth = 0;
+            btn.selected = YES;
+        }else {
+            
+            [btn setBackgroundColor:[UIColor whiteColor]];
+            btn.layer.borderWidth = 1;
+            btn.selected = NO;
+        }
+    }
+//    self.tmpbtn.selected  = NO;
+//    button.selected = YES;
+//    self.tmpbtn = button;
     
     self.cityNumber = (NSInteger)button.tag-3000;
     

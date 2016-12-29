@@ -48,7 +48,7 @@
 #define URLStr     @"http://wap.cecb2b.com"
 
 
-@interface AppDelegate ()<JPUSHRegisterDelegate>{
+@interface AppDelegate ()<JPUSHRegisterDelegate,RCIMUserInfoDataSource>{
     
     MainWebViewController *rootVC;
 }
