@@ -13,6 +13,7 @@
 #import "ForgetPwViewController.h"
 #import "NSString+Mobile.h"
 #import "MineViewController.h"
+#import "WKWebViewViewController.h"
 
 @interface PwLoginViewController ()<UITextFieldDelegate>
 
@@ -96,6 +97,11 @@
 // 密码登录
 - (void)pwLogin{
     VfLoginViewController *vfLogin = [[VfLoginViewController alloc]init];
+    if (self.jumpURL) {
+        
+        vfLogin.jumpURL = self.jumpURL;
+    }
+    
     [self.navigationController pushViewController:vfLogin animated:YES];
 }
 
@@ -169,8 +175,22 @@
                     }
                     [USER_DEFAULTS synchronize];
                     
-                    MineViewController *vc = [[MineViewController alloc]init];
-                    [self.navigationController pushViewController:vc animated:YES];
+
+                    
+                    if (self.jumpURL) {
+                        
+                        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:self.jumpURL title:@""];
+                        [self.navigationController pushViewController:vc animated:YES];
+                    }
+                    else{
+                    
+                        MineViewController *vc = [[MineViewController alloc]init];
+                        [self.navigationController pushViewController:vc animated:YES];
+                    
+                    }
+                    
+                    
+                    
                 });
 
             }else if ([response[@"resultCode"]integerValue] == 1003){

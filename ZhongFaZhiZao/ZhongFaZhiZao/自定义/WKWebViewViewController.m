@@ -8,7 +8,6 @@
 
 #import "WKWebViewViewController.h"
 #import "PwLoginViewController.h"
-#define LoginURL    @"http://cectest.cecb2b.com/waps/member/login?"
 
 @interface WKWebViewViewController ()<WKNavigationDelegate,WKUIDelegate,UIWebViewDelegate>
 
@@ -108,10 +107,11 @@
     
     if ([_urlStr hasPrefix:@"http"]) {
         NSURL *url = [NSURL URLWithString:_urlStr];
-        NSURLRequest *request = [NSURLRequest requestWithURL:url];
-//        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-//        
-//        [request addValue:@"ios" forHTTPHeaderField:@"app"];
+        
+//        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+        
+        [request addValue:@"ios" forHTTPHeaderField:@"app"];
         [self.webView loadRequest:request];
     }else{
         NSURL *fileURL = [NSURL URLWithString:_urlStr];
@@ -119,11 +119,11 @@
         if (!fileURL) {
             return;
         }
-        NSURLRequest *request = [NSURLRequest requestWithURL:fileURL];
+//        NSURLRequest *request = [NSURLRequest requestWithURL:fileURL];
 //
-//        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:fileURL];
-//        
-//        [request addValue:@"ios" forHTTPHeaderField:@"app"];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:fileURL];
+        
+        [request addValue:@"ios" forHTTPHeaderField:@"app"];
 
         [self.webView loadRequest:request];
 //        [self.webView loadFileURL:fileURL allowingReadAccessToURL:fileURL];
@@ -137,10 +137,10 @@
     NSLog(@"didStartProvisionalNavigation");
 //    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     NSLog(@"webview URL:%@",webView.URL);
-    NSString *url = webView.URL.absoluteString;
-    if([url hasPrefix:LoginURL] || [url hasPrefix:LoginURL2]) {
-    
-    }
+//    NSString *url = webView.URL.absoluteString;
+//    if([url containsString:LoginURL]) {
+//    
+//    }
     _isLoaing = YES;
     
 //    NSString *path=[YKBDateHelper convertNull:[webView.URL absoluteString]];
@@ -182,7 +182,8 @@
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {
 
     NSString *url = webView.URL.absoluteString;
-    if([url hasPrefix:LoginURL] || [url hasPrefix:LoginURL2]) {
+
+    if([url containsString:LoginURL]) {
         
         decisionHandler(WKNavigationResponsePolicyCancel);
         

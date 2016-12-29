@@ -12,4 +12,7 @@
 
 @property (nonatomic,copy) NSString *phoneNum;
 @property (nonatomic,copy) NSString *passWd;
+
+@property (nonatomic,copy) NSString *jumpURL;
+
 @end

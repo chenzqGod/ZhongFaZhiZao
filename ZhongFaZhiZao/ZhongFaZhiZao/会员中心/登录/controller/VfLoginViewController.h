@@ -12,4 +12,5 @@
 
 @property (nonatomic,copy) NSString *phoneNum;
 @property (nonatomic,copy) NSString *vfCode;
+@property (nonatomic,copy) NSString *jumpURL;
 @end

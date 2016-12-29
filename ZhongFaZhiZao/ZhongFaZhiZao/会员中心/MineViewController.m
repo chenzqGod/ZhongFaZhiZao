@@ -53,8 +53,13 @@
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
 
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:USER_CENTER]];
     
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:USER_CENTER]]];
+    [request addValue:@"ios" forHTTPHeaderField:@"app"];
+
+//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:USER_CENTER]]];
+    
+    [self.webView loadRequest:request];
 }
 
 
@@ -64,13 +69,14 @@
     NSLog(@"didStartProvisionalNavigation");
     //    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     NSLog(@"webview URL:%@",webView.URL);
-    NSString *url = webView.URL.absoluteString;
-    if([url hasPrefix:LoginURL] || [url hasPrefix:LoginURL2]) {
-        
-        PwLoginViewController *vc = [[PwLoginViewController alloc]init];
-        
-        [self.navigationController pushViewController:vc animated:YES];
-    }
+//    NSString *url = webView.URL.absoluteString;
+    
+//    if([url containsString:LoginURL]) {
+//        
+//        PwLoginViewController *vc = [[PwLoginViewController alloc]init];
+//        
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }
     _isLoaing = YES;
     
     //    NSString *path=[YKBDateHelper convertNull:[webView.URL absoluteString]];
@@ -119,13 +125,13 @@
 // 在收到响应后，决定是否跳转
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {
     NSString *url = webView.URL.absoluteString;
-    if([url hasPrefix:LoginURL] || [url hasPrefix:LoginURL2]) {
+    if([url containsString:LoginURL]) {
         
         decisionHandler(WKNavigationResponsePolicyCancel);
         
-//        PwLoginViewController *vc = [[PwLoginViewController alloc]init];
-//        
-//        [self.navigationController pushViewController:vc animated:YES];
+        PwLoginViewController *vc = [[PwLoginViewController alloc]init];
+        
+        [self.navigationController pushViewController:vc animated:YES];
     }
 
     decisionHandler(WKNavigationResponsePolicyAllow);
@@ -223,7 +229,7 @@
 //}
 
 - (void)dealloc {
-    [_webView removeObserver:self forKeyPath:@"estimatedProgress"];
+//    [_webView removeObserver:self forKeyPath:@"estimatedProgress"];
     
     // if you have set either WKWebView delegate also set these to nil here
     [_webView setNavigationDelegate:nil];

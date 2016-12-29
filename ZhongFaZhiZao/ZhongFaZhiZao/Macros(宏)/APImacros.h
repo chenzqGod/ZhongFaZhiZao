@@ -26,11 +26,11 @@
 #define REGIST_VF                  @"/api/getDynamicCode"
 #define REGIST                     @"/api/register"
 
+
 //交互
 #define SERVER_LOGIN               @"http://cectest.cecb2b.com/waps/member/login"
 #define USER_CENTER                @"http://cectest.cecb2b.com/waps/member/home"
-#define LoginURL                   @"http://cectest.cecb2b.com/waps/member/login?"
-#define LoginURL2                  @"http://cectest.cecb2b.com/waps//member/login?"
+#define LoginURL                   @"/member/login?"
 
 //融云  sessionId为登录时返回的devicetoken
 #define GETRONG_TOKEN              @"/api/getRongToken/"
@@ -51,7 +51,7 @@
 #define Intelligence_LIST          @"/made/intelligence/list"
 
 //搜索
-#define SEARCH_API                 @"/made/search?q=搜索关键字&isFirst=true&icNum=0&nicNum=0&icUsedNum=0&nicUsedNum=0"
+#define SEARCH_API                 @"/made/search?q=&isFirst=true&icNum=0&nicNum=0&icUsedNum=0&nicUsedNum=0"
 
 //商品详情页
 #define DETAIL_ICLIST              @"/corp/icInfo/商品id?corpId=店铺id"

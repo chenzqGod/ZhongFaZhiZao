@@ -24,7 +24,7 @@
 #import "SolveCollectionViewCell.h"
 #import "ElectronicCollectionViewCell.h"
 #import "KnowLedgeCustomCollectionViewCell.h"
-
+#import "SupplyScrollCollectionViewCell.h"
 #import "CommitKnowledgeViewController.h"
 #import "DCWebImageManager.h"
 
@@ -47,6 +47,9 @@
     CustomScrollView *_mainscrollView;
     
     UIButton *_fifButton;
+    
+    UIScrollView *_scrollView;
+    
 
 }
 
@@ -425,6 +428,7 @@
     
     //注册cell
     [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    [_collectionView registerClass:[SupplyScrollCollectionViewCell class] forCellWithReuseIdentifier:@"supplyScrcell"];
     [_collectionView registerClass:[SupplyCollectionViewCell class] forCellWithReuseIdentifier:@"supplycell"];
     [_collectionView registerClass:[KnowLedgeCustomCollectionViewCell class] forCellWithReuseIdentifier:@"knowcustomCell"];
      [_collectionView registerClass:[ScienceCollectionViewCell class] forCellWithReuseIdentifier:@"scienceCell"];
@@ -504,7 +508,7 @@
            
            [fifView addSubview:_fifButton];
 
-           if (i == 0) {
+           if (i == self.cityNumber ) {
                
                _fifButton.backgroundColor = BLUE_COLOR;
                self.tmpbtn = _fifButton;
@@ -561,7 +565,8 @@
  
     if (section == 0) {
         
-        return 2;
+//        return 2;
+        return 1;
         
     }
     else if (section == 1){
@@ -668,28 +673,53 @@ else if (indexPath.section == 0){
 
     NSArray *section1 = @[@"Group 55",@"Group 54",@"Group 2",@"Group 4",@"Group 5"];
     
-    static NSString * CellIdentifier = @"supplycell";
-    SupplyCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString * CellIdentifier = @"supplyScrcell";
+    SupplyScrollCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+
+    _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 197*screenScale)];
+    _scrollView.pagingEnabled = NO;
+    _scrollView.bounces = NO;
+    _scrollView.userInteractionEnabled = YES;
+    //    _scrollView.showsHorizontalScrollIndicator = NO;
+    _scrollView.backgroundColor = BACK_COLOR;
+    _scrollView.contentSize = CGSizeMake(8*6+5*(screenWidth-24)/2.0, 0);
+    [cell addSubview:_scrollView];
 
     
-//    cell.backgroundColor = [UIColor redColor];
-    cell.SupplyImg.image = [UIImage imageNamed:section1[indexPath.row]];
-    
-    cell.SupplyImg.userInteractionEnabled = YES;
-    
-    UIButton *leftSupplyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    leftSupplyBtn.frame = CGRectMake(0, 78, cell.frame.size.width/2.0, cell.frame.size.height-78);
-    leftSupplyBtn.backgroundColor = [UIColor clearColor];
-    leftSupplyBtn.tag = 200+indexPath.row;
-    [leftSupplyBtn addTarget:self action:@selector(cellBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [cell addSubview:leftSupplyBtn];
-    
-    UIButton *rightSupplyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    rightSupplyBtn.frame = CGRectMake(cell.frame.size.width/2.0, 78, cell.frame.size.width/2.0, cell.frame.size.height-78);
-    rightSupplyBtn.backgroundColor = [UIColor clearColor];
-    rightSupplyBtn.tag = 500+indexPath.row;
-    [rightSupplyBtn addTarget:self action:@selector(cellBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [cell addSubview:rightSupplyBtn];
+    for (int i = 0; i < 5; i++) {
+        
+        UIImageView *imageViewS = [[UIImageView alloc]init];
+        imageViewS.frame = CGRectMake(8*(i+1)+i*(screenWidth-24)/2.0, 0, (screenWidth-24)/2.0, 197*screenScale);
+        imageViewS.image = [UIImage imageNamed:section1[i]];
+        imageViewS.userInteractionEnabled = YES;
+        [_scrollView addSubview:imageViewS];
+        
+        UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn1.frame = CGRectMake(0, 6, CGRectGetWidth(imageViewS.frame), 30);
+        btn1.tag = 10+i;
+//        btn1.backgroundColor = [UIColor redColor];
+        [btn1 addTarget:section1 action:@selector(cellBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [imageViewS addSubview:btn1];
+        
+        UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn2.frame = CGRectMake(0, 78, CGRectGetWidth(imageViewS.frame)/2.0,197*screenScale-78);
+        btn2.tag = 20+i;
+//        btn2.backgroundColor = [UIColor redColor];
+        [btn2 addTarget:section1 action:@selector(cellBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [imageViewS addSubview:btn2];
+        
+        UIButton *btn3 = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn3.frame = CGRectMake(CGRectGetWidth(imageViewS.frame)/2.0, 78, CGRectGetWidth(imageViewS.frame)/2.0, 197*screenScale-78);
+        btn3.tag = 30+i;
+//        btn3.backgroundColor = [UIColor blueColor];
+        [btn3 addTarget:section1 action:@selector(cellBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [imageViewS addSubview:btn3];
+        
+        
+        
+    }
+
+
 
     
     return cell;
@@ -742,7 +772,8 @@ else if (indexPath.section == 5){
 {
     if (indexPath.section == 0) {
         
-        return CGSizeMake(175*screenScale, 197*screenScale);
+//        return CGSizeMake(175*screenScale, 197*screenScale);
+        return CGSizeMake(screenWidth, 197*screenScale);
     }
     else if (indexPath.section == 1){
     
@@ -780,7 +811,10 @@ else if (indexPath.section == 5){
 {
     if (section == 0) {
         
-      return UIEdgeInsetsMake(margins, margins, margins, margins);
+//      return UIEdgeInsetsMake(margins, margins, margins, margins);
+        
+        return UIEdgeInsetsMake(margins, 0, margins, 0);
+        
     }
     else if (section == 1){
         
@@ -843,7 +877,7 @@ else if (indexPath.section == 5){
         
         if (indexPath.row == 0) {
             
-            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5644790?corpId="title:@"商品详情页"];
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/nicInfo/5644790?corpId="title:@"商品详情页"];
             
 //            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://www.cecb2b.com/solution/index.php?r=project-info%2Ftech&id=5644828"title:@"商品详情页"];
             
@@ -852,21 +886,21 @@ else if (indexPath.section == 5){
         }
         else if (indexPath.row == 1){
         
-            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5644784?corpId=123"title:@"商品详情页"];
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/nicInfo/5644784?corpId=123"title:@"商品详情页"];
             [self.navigationController pushViewController:vc animated:YES];
 
             
         }
         else if (indexPath.row == 2){
            
-            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5644765?corpId=123"title:@"商品详情页"];
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/nicInfo/5644765?corpId=123"title:@"商品详情页"];
             [self.navigationController pushViewController:vc animated:YES];
 
             
         }
         else if (indexPath.row == 3){
         
-            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5644788?corpId=123"title:@"商品详情页"];
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/nicInfo/5644788?corpId=123"title:@"商品详情页"];
             [self.navigationController pushViewController:vc animated:YES];
 
             
@@ -887,13 +921,13 @@ else if (indexPath.section == 5){
         
         if (indexPath.row == 6) {
             
-            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5644823?corpId=123"title:@"商品详情页"];
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/nicInfo/5644823?corpId=123"title:@"商品详情页"];
             [self.navigationController pushViewController:vc animated:YES];
 
         }
         else if (indexPath.row == 7){
         
-            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5644825?corpId=123"title:@"商品详情页"];
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/nicInfo/5644825?corpId=123"title:@"商品详情页"];
             [self.navigationController pushViewController:vc animated:YES];
 
         }
@@ -903,7 +937,7 @@ else if (indexPath.section == 5){
         
         if (indexPath.row == 0) {
             
-            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5644790?corpId="title:@"商品详情页"];
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/nicInfo/5644276?corpId=444820"title:@"商品详情页"];
             
             //            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://www.cecb2b.com/solution/index.php?r=project-info%2Ftech&id=5644828"title:@"商品详情页"];
             
@@ -912,21 +946,21 @@ else if (indexPath.section == 5){
         }
         else if (indexPath.row == 1){
             
-            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5644784?corpId=123"title:@"商品详情页"];
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/nicInfo/5644271?corpId=444820"title:@"商品详情页"];
             [self.navigationController pushViewController:vc animated:YES];
             
             
         }
         else if (indexPath.row == 2){
             
-            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5644765?corpId=123"title:@"商品详情页"];
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/nicInfo/5644284?corpId=444820"title:@"商品详情页"];
             [self.navigationController pushViewController:vc animated:YES];
             
             
         }
         else if (indexPath.row == 3){
             
-            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5644277?corpId=444820"title:@"商品详情页"];
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/nicInfo/5644277?corpId=444820"title:@"商品详情页"];
             [self.navigationController pushViewController:vc animated:YES];
             
             
@@ -938,21 +972,21 @@ else if (indexPath.section == 5){
         
         if (indexPath.row == 0) {
             
-            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5534283?corpId="title:@"商品详情页"];
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/nicInfo/5534283?corpId=444064"title:@"商品详情页"];
             
             
             [self.navigationController pushViewController:vc animated:YES];
         }
         else if (indexPath.row == 1){
             
-            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5534303?corpId=123"title:@"商品详情页"];
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/nicInfo/5534303?corpId=444078"title:@"商品详情页"];
             [self.navigationController pushViewController:vc animated:YES];
             
             
         }
         else if (indexPath.row == 2){
             
-            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/5534387?corpId=123"title:@"商品详情页"];
+            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/nicInfo/5534387?corpId=444166"title:@"商品详情页"];
             [self.navigationController pushViewController:vc animated:YES];
             
             
@@ -1033,32 +1067,106 @@ else if (indexPath.section == 5){
 
 - (void)cellBtnClick:(UIButton *)button{
 
-    if (button.tag == 200) {
-        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/icInfo/10498233?corpId=200890"title:@"商品详情页"];
+    
+    if (button.tag == 10) {
+        
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/200890/index"title:@"商品详情页"];
         [self.navigationController pushViewController:vc animated:YES];
-
+    }
+    else if (button.tag == 20) {
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/icInfo/10498233?corpId=200890"title:@"商品详情页"];
+                [self.navigationController pushViewController:vc animated:YES];
+        
+        
+    }
+    else if (button.tag == 30){
+        
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/icInfo/10498212?corpId=200890"title:@"商品详情页"];
+                [self.navigationController pushViewController:vc animated:YES];
+        
+    }
+    else if (button.tag == 11){
+       
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/204505/index"title:@"商品详情页"];
+        [self.navigationController pushViewController:vc animated:YES];
 
         
     }
-    else if (button.tag == 500){
     
-        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/icInfo/10498212?corpId=200890"title:@"商品详情页"];
+    else if (button.tag == 21){
+        
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/nicInfo/4717332?corpId=204505"title:@"商品详情页"];
+                [self.navigationController pushViewController:vc animated:YES];
+        
+        
+    }
+    else if (button.tag == 31){
+        
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/nicInfo/4717330?corpId=204505"title:@"商品详情页"];
+                [self.navigationController pushViewController:vc animated:YES];
+        
+    }
+    else if (button.tag == 12){
+        
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/344123/index"title:@"商品详情页"];
         [self.navigationController pushViewController:vc animated:YES];
 
     }
-    else if (button.tag == 201){
-      
-        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/4717332?corpId=204505"title:@"商品详情页"];
-        [self.navigationController pushViewController:vc animated:YES];
-
     
+    else if (button.tag == 22){
+        
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/nicInfo/4860411?corpId=344123"title:@"商品详情页"];
+                [self.navigationController pushViewController:vc animated:YES];
+        
+        
     }
-    else if (button.tag == 501){
+    else if (button.tag == 32){
+        
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/icInfo/174637559?corpId=344123"title:@"商品详情页"];
+                [self.navigationController pushViewController:vc animated:YES];
+        
+    }
     
-        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/4717330?corpId=204505"title:@"商品详情页"];
+    else if (button.tag == 13){
+        
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/312281/index"title:@"商品详情页"];
         [self.navigationController pushViewController:vc animated:YES];
 
+        
+    }
+    
+    else if (button.tag == 23){
+        
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/nicInfo/4803560?corpId=312281"title:@"商品详情页"];
+                [self.navigationController pushViewController:vc animated:YES];
+        
+        
+    }
+    else if (button.tag == 33){
+        
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/nicInfo/4837211?corpId=312281"title:@"商品详情页"];
+                [self.navigationController pushViewController:vc animated:YES];
+        
+    }
+    else if (button.tag == 14){
+        
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/205170/index"title:@"商品详情页"];
+        [self.navigationController pushViewController:vc animated:YES];
 
+    }
+    
+    else if (button.tag == 24){
+        
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/nicInfo/4993916?corpId=205170"title:@"商品详情页"];
+                [self.navigationController pushViewController:vc animated:YES];
+        
+        
+    }
+    else if (button.tag == 34){
+        
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/nicInfo/4993348?corpId=205170"title:@"商品详情页"];
+                [self.navigationController pushViewController:vc animated:YES];
+        
     }
 
 }
@@ -1241,9 +1349,15 @@ else if (indexPath.section == 5){
 //跳转到搜索页
 - (void)SearchButtonPush{
 
-    SearchViewController *vc = [[SearchViewController alloc]init];
+//    SearchViewController *vc = [[SearchViewController alloc]init];
+//    
+//    [self.navigationController pushViewController:vc animated:YES];
+  
+    
+    WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,SEARCH_API] title:@"搜索"];
     
     [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 
