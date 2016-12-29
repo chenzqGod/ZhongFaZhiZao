@@ -29,6 +29,10 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     //    manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableLeaves];
     //    [manager.requestSerializer setTimeoutInterval:20.0f];
+    
+    NSString *token = [USER_DEFAULTS objectForKey:@"token"];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"zfa_token"];
+    
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain", @"text/html", @"application/javascript", @"application/json", @"text/json", @"text/javascript", nil];
     
     return manager;
@@ -38,8 +42,8 @@
 {
     AFHTTPSessionManager *manager = [self baseSessionManager];
     
-    NSString *token = [USER_DEFAULTS objectForKey:@"token"];
-    [manager.requestSerializer setValue:token forHTTPHeaderField:@"zfa_token"];
+//    NSString *token = [USER_DEFAULTS objectForKey:@"token"];
+//    [manager.requestSerializer setValue:token forHTTPHeaderField:@"zfa_token"];
 
     NSString *UTF8_URL = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [manager GET:UTF8_URL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
