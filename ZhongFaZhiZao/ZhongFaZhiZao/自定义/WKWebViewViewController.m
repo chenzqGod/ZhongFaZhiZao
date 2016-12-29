@@ -109,6 +109,9 @@
     if ([_urlStr hasPrefix:@"http"]) {
         NSURL *url = [NSURL URLWithString:_urlStr];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+//        
+//        [request addValue:@"ios" forHTTPHeaderField:@"app"];
         [self.webView loadRequest:request];
     }else{
         NSURL *fileURL = [NSURL URLWithString:_urlStr];
@@ -117,6 +120,11 @@
             return;
         }
         NSURLRequest *request = [NSURLRequest requestWithURL:fileURL];
+//
+//        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:fileURL];
+//        
+//        [request addValue:@"ios" forHTTPHeaderField:@"app"];
+
         [self.webView loadRequest:request];
 //        [self.webView loadFileURL:fileURL allowingReadAccessToURL:fileURL];
     }
@@ -160,8 +168,6 @@
     NSLog(@"didFinishNavigation");
     
     
-    
-    
     //    [self resetControl];
     //    if (webView.title.length > 0) {
     //        self.title = webView.title;
@@ -197,6 +203,16 @@
     
     
 //    NSString *url = [navigationAction.request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+//    
+//    NSMutableURLRequest *mutableRequest = [navigationAction.request mutableCopy];
+//    
+//    [mutableRequest addValue:@"ios" forHTTPHeaderField:@"app"];
+//    
+//    
+//  
+//    [self.webView loadRequest:mutableRequest];
+
     
 // 解决WKWebView替换UIWebView无法拨打电话
     NSURL *URL = navigationAction.request.URL;

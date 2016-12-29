@@ -52,7 +52,7 @@
 
 - (void)createUI {
     
-    self.backgroundColor = BACK_COLOR;
+    self.backgroundColor = [UIColor whiteColor];
     
     UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth-2*Margin, 240)];
     backView.backgroundColor = [UIColor whiteColor];

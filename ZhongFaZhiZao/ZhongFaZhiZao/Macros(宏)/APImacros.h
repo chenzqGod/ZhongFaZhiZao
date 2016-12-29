@@ -42,7 +42,7 @@
 #define PATENT_APPLY               @"/api/patent/apply"
 
 //首页
-#define Electronic_API             @"/api/findData"
+#define Electronic_API             @"/api/getMarkets"
 #define AD_API                     @"/api/adInfo/41,44"
 
 #define SOLVE_LIST                 @"/made/solution/list"

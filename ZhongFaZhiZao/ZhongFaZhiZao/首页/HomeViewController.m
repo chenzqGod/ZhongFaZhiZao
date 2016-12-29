@@ -40,6 +40,7 @@
     NSMutableArray *_adid41Arr;
     NSMutableArray *_adid44Arr;
     NSMutableArray *_scrollImg;
+    NSMutableArray *_scrollTxt;
     NSMutableArray *_cityArray;
     NSMutableDictionary *_cityDict;
     
@@ -93,7 +94,7 @@
     [self loadadData];
     
     _scrollImg = [[NSMutableArray alloc]init];
-
+    _scrollTxt = [[NSMutableArray alloc]init];
 
 //    [self createHeaderView];
     
@@ -105,18 +106,17 @@
 
     [self loadCityData];
 
-    [self getHotData];
+  
    }
 
 #pragma mark-获取数据
 - (void)getHotData
 {
-    NSArray *arr1 = @[@"HOT",@"HOT",@"HOT",@"HOT",@"HOT"];
-    NSArray *arr2 = @[@"大降价了啊",@"iPhone7分期",@"这个苹果蛮脆的",@"来尝个香蕉吧",@"越来越香了啊你的秀发"];
-    for (int i=0; i<arr2.count; i++) {
+    NSArray *arr3 = [NSArray arrayWithArray:_scrollTxt];
+    for (int i=0; i<arr3.count; i++) {
         ZYJHeadLineModel *model = [[ZYJHeadLineModel alloc]init];
-        model.type = arr1[i];
-        model.title = arr2[i];
+        model.type = @"HOT";
+        model.title = arr3[i];
         [_dataArr addObject:model];
     }
     [_TopLineView setVerticalShowDataArr:_dataArr];
@@ -142,6 +142,13 @@
             }
 
             [_mainscrollView setImageData:_scrollImg];
+            
+            for (int i = 0; i < _adid44Arr.count; i++) {
+                
+                [_scrollTxt addObject:[NSString stringWithFormat:@"%@",_adid44Arr[i][@"txt"]]];
+            }
+            
+              [self getHotData];
 
         }
         else if ([response[@"resultCode"]integerValue] == 1001){
@@ -163,7 +170,7 @@
 
 - (void)loadCityData{
     
-    NSLog(@"地址地址地址 %@",[NSString stringWithFormat:@"%@%@",HOST_URL,Electronic_API]);
+//    NSLog(@"地址地址地址 %@",[NSString stringWithFormat:@"%@%@",HOST_URL,Electronic_API]);
     
     [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,Electronic_API] parameters:nil success:^(id response) {
         
@@ -185,8 +192,15 @@
                 _cityArray = [NSMutableArray arrayWithArray:_cityDict[@"all"]];
             }
             
+            NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:5];
             
-        }
+            [UIView performWithoutAnimation:^{
+                
+                [self.collectionView reloadSections:indexSet];
+
+            }];
+            
+                    }
         else if ([response[@"resultCode"]integerValue] == 1001){
             
             [WKProgressHUD popMessage:@"电子市场请求失败" inView:self.view duration:HUD_DURATION animated:YES];
@@ -499,6 +513,7 @@
            
            _fifButton.backgroundColor = [UIColor whiteColor];
            _fifButton.layer.borderWidth = 1;
+            _fifButton.layer.borderColor = TEXT_LINE_COLOR.CGColor;
            }
 
        }
@@ -570,7 +585,7 @@
     }
     else if (section == 5){
     
-        return 3;
+        return _cityArray.count;
         
     }
     
@@ -702,9 +717,9 @@ else if (indexPath.section == 5){
     static NSString * CellIdentifier = @"eletronicCell";
     ElectronicCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
    
-//    [cell.ElectronicImg sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",_cityArray[indexPath.row][@"small_pic"]]] placeholderImage:[UIImage imageNamed:@"占位图"]];
+    [cell.ElectronicImg sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",_cityArray[indexPath.row][@"small_pic"]]] placeholderImage:[UIImage imageNamed:@"占位图157-148"]];
 
-    [cell.ElectronicImg sd_setImageWithURL:[NSURL URLWithString:nil] placeholderImage:[UIImage imageNamed:@"占位图"]];
+//    [cell.ElectronicImg sd_setImageWithURL:[NSURL URLWithString:nil] placeholderImage:[UIImage imageNamed:@"占位图"]];
     
     
     return cell;
@@ -946,8 +961,8 @@ else if (indexPath.section == 5){
     }
     else if (indexPath.section == 5){
     
-//        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@",_cityArray[indexPath.row][@"url"]] title:@"商品详情页"];
-//        [self.navigationController pushViewController:vc animated:YES];
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@",_cityArray[indexPath.row][@"url"]] title:@"商品详情页"];
+        [self.navigationController pushViewController:vc animated:YES];
 
         
     }
@@ -1147,6 +1162,10 @@ else if (indexPath.section == 5){
 
 - (void)fifBtnClick:(UIButton *)button{
 
+    self.cityNumber = (NSInteger)button.tag-3000;
+    
+    [self loadCityData];
+    
     for(int i = 0 ; i < 4 ;i ++) {
         
         UIButton *btn = (UIButton *)[self.view viewWithTag:i + 3000];
@@ -1166,9 +1185,7 @@ else if (indexPath.section == 5){
 //    button.selected = YES;
 //    self.tmpbtn = button;
     
-    self.cityNumber = (NSInteger)button.tag-3000;
     
-    [self loadCityData];
     
 
 }

@@ -16,6 +16,8 @@
 
 @interface AskViewController ()<UITableViewDelegate,UITableViewDataSource>{
     
+    UIImageView *_noImgeView;
+    UILabel *_noLabel;
 }
 
 @property (nonatomic,strong) UITableView *tableView;
@@ -52,8 +54,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
+    _noImgeView = [[UIImageView alloc]init];
+    _noLabel = [[UILabel alloc]init];
   
-    self.view.backgroundColor = BACK_COLOR;
+    self.view.backgroundColor = [UIColor whiteColor];
 
     NavigationControllerView *navView = [[NavigationControllerView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 64) andLeftBtn:@"消息中心"];
     navView.viewController = self;
@@ -65,6 +69,25 @@
     _tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     _tableView.tableFooterView = [[UIView alloc]init];
     [self.view addSubview:_tableView];
+    
+    if (self.dataArr.count == 0) {
+        
+        _noImgeView.frame = CGRectMake((screenWidth-258)/2.0, 122, 258, 171);
+        _noImgeView.image = [UIImage imageNamed:@"Group no"];
+        [self.view addSubview:_noImgeView];
+        
+        _noLabel.frame = CGRectMake((screenWidth-258)/2.0, 18+122+171, 258, 14);
+        _noLabel.text = @"消息游走于太空";
+        _noLabel.font = [UIFont systemFontOfSize:12.0];
+        _noLabel.textColor = TEXT_GREY_COLOR;
+        _noLabel.textAlignment = NSTextAlignmentCenter;
+        [self.view addSubview:_noLabel];
+        
+    }else{
+    
+        _noImgeView.frame = CGRectZero;
+        _noLabel.frame = CGRectZero;
+    }
 
 }
 

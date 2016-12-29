@@ -25,7 +25,7 @@
     
     [self.navigationController setNavigationBarHidden:YES];
     
-//     [self.tabBarController.tabBar setHidden:YES];
+     [self.tabBarController.tabBar setHidden:NO];
 }
 
 - (void)viewDidLoad {

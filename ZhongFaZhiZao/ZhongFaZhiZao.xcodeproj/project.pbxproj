@@ -393,6 +393,8 @@
 		56CFD82A1E07A53700D18340 /* 金融@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD8281E07A53700D18340 /* 金融@3x.png */; };
 		56CFD82D1E07B6C200D18340 /* KnowLedgeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CFD82C1E07B6C200D18340 /* KnowLedgeTableViewCell.m */; };
 		56CFD8301E07BBC000D18340 /* CommitKnowledgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CFD82F1E07BBC000D18340 /* CommitKnowledgeViewController.m */; };
+		56D8FF0D1E14F90B008661E2 /* Group no@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D8FF0B1E14F90B008661E2 /* Group no@2x.png */; };
+		56D8FF0E1E14F90B008661E2 /* Group no@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D8FF0C1E14F90B008661E2 /* Group no@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -967,6 +969,8 @@
 		56CFD82C1E07B6C200D18340 /* KnowLedgeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnowLedgeTableViewCell.m; sourceTree = "<group>"; };
 		56CFD82E1E07BBC000D18340 /* CommitKnowledgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitKnowledgeViewController.h; sourceTree = "<group>"; };
 		56CFD82F1E07BBC000D18340 /* CommitKnowledgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitKnowledgeViewController.m; sourceTree = "<group>"; };
+		56D8FF0B1E14F90B008661E2 /* Group no@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Group no@2x.png"; sourceTree = "<group>"; };
+		56D8FF0C1E14F90B008661E2 /* Group no@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Group no@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2049,6 +2053,8 @@
 		56CC47501E13A6AA00D8E42E /* 占位图 */ = {
 			isa = PBXGroup;
 			children = (
+				56D8FF0B1E14F90B008661E2 /* Group no@2x.png */,
+				56D8FF0C1E14F90B008661E2 /* Group no@3x.png */,
 				56CC47511E13A74600D8E42E /* 占位图157-148@2x.png */,
 				56CC47521E13A74600D8E42E /* 占位图157-148@3x.png */,
 				56CC47531E13A74600D8E42E /* 占位图200-188@2x.png */,
@@ -2490,6 +2496,7 @@
 				5609561A1DFF998E00DA0B72 /* wechat-press@3x.png in Resources */,
 				5691B61B1E10F72500AC09DB /* Group 42@2x.png in Resources */,
 				560366271DDEA20000332DD2 /* Default-375w-667h@2x.png in Resources */,
+				56D8FF0E1E14F90B008661E2 /* Group no@3x.png in Resources */,
 				56CFD70B1E00E45700D18340 /* 采购-2@3x.png in Resources */,
 				5697C8791E0E2DB3008A1D98 /* Info.plist in Resources */,
 				56CFD81F1E0789FE00D18340 /* chat@2x.png in Resources */,
@@ -2532,6 +2539,7 @@
 				56CFD78D1E028FC700D18340 /* 蒙版@3x.png in Resources */,
 				560956171DFF998E00DA0B72 /* qq@2x.png in Resources */,
 				56CFD79E1E028FC700D18340 /* 行业热点logo@2x.png in Resources */,
+				56D8FF0D1E14F90B008661E2 /* Group no@2x.png in Resources */,
 				56CC475E1E13C06F00D8E42E /* Fill 1@2x.png in Resources */,
 				5691B6481E111AB600AC09DB /* 清除@2x.png in Resources */,
 				560366381DDEA20000332DD2 /* 76@1x.png in Resources */,

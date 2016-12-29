@@ -28,6 +28,13 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+
+    [super viewWillAppear:YES];
+    
+    [self.tabBarController.tabBar setHidden:NO];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

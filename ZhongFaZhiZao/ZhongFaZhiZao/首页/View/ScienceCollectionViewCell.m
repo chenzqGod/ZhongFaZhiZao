@@ -27,7 +27,7 @@
 
     self.ScienceImg = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     
-    self.backgroundColor = [UIColor cyanColor];
+    self.backgroundColor = [UIColor whiteColor];
     
     [self.contentView addSubview:self.ScienceImg];
 }

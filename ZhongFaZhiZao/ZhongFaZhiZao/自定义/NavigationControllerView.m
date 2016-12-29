@@ -88,13 +88,14 @@
         [rightBtn addTarget:self action:@selector(rightButtonClick) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:rightBtn];
         
-        _midLabel.frame = CGRectMake(0, 0, 180, 24);
-        _midLabel.center = CGPointMake(screenWidth/2.0, 42);
-        _midLabel.text = title;
-        _midLabel.textColor = [UIColor whiteColor];
-        _midLabel.textAlignment = NSTextAlignmentCenter;
-        _midLabel.font = [UIFont systemFontOfSize:18.0];
-        [self addSubview:_midLabel];
+        UILabel *midLabel1 = [[UILabel alloc]init];
+        midLabel1.frame = CGRectMake(0, 0, 180, 24);
+        midLabel1.center = CGPointMake(screenWidth/2.0, 42);
+        midLabel1.text = title;
+        midLabel1.textColor = [UIColor whiteColor];
+        midLabel1.textAlignment = NSTextAlignmentCenter;
+        midLabel1.font = [UIFont systemFontOfSize:18.0];
+        [self addSubview:midLabel1];
         
 
     }

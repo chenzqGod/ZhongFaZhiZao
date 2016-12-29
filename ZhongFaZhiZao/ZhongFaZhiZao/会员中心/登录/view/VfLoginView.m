@@ -53,6 +53,8 @@
     self.phoneNumTF.font = [UIFont boldSystemFontOfSize:15];
     self.phoneNumTF.textColor = TEXT_GREY_COLOR;
     self.phoneNumTF.clearButtonMode = UITextFieldViewModeWhileEditing;
+    self.phoneNumTF.keyboardType = UIKeyboardTypePhonePad;
+
     [self.userView addSubview:self.phoneNumTF];
     
     self.firstLine = [[UIView alloc]init];
