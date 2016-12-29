@@ -66,9 +66,9 @@
 #pragma mark - navdelegate
 //页面开始加载时调用
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation { // 类似UIWebView的 -webViewDidStartLoad:
-    NSLog(@"didStartProvisionalNavigation");
+//    NSLog(@"didStartProvisionalNavigation");
     //    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    NSLog(@"webview URL:%@",webView.URL);
+    NSLog(@"webview URL开始加载:%@",webView.URL);
 //    NSString *url = webView.URL.absoluteString;
     
 //    if([url containsString:LoginURL]) {
@@ -94,14 +94,14 @@
 
 //内容开始返回时调用
 - (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation {
-    NSLog(@"didCommitNavigation");
+//    NSLog(@"didCommitNavigation");
     
     //    [NSThread sleepForTimeInterval:1.0];
 }
 
 //页面加载完成时调用
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation { // 类似 UIWebView 的 －webViewDidFinishLoad:
-    NSLog(@"didFinishNavigation");
+//    NSLog(@"didFinishNavigation");
     
     
     
@@ -125,11 +125,24 @@
 // 在收到响应后，决定是否跳转
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {
     NSString *url = webView.URL.absoluteString;
+    NSLog(@"收到响应url ===== %@",url);
+    
+    
+   
+    
     if([url containsString:LoginURL]) {
         
         decisionHandler(WKNavigationResponsePolicyCancel);
         
+        
+        NSArray *separatedStr = [url componentsSeparatedByString:@"service="];
+        
+        NSString *jumpStr = [separatedStr objectAtIndex:1];
+        
+        NSLog(@"jumpStr========%@",jumpStr);
+        
         PwLoginViewController *vc = [[PwLoginViewController alloc]init];
+        vc.jumpURL = [NSString stringWithFormat:@"%@",jumpStr];
         
         [self.navigationController pushViewController:vc animated:YES];
     }
@@ -141,7 +154,7 @@
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     // 类似 UIWebView 的 -webView: shouldStartLoadWithRequest: navigationType:
     
-    NSLog(@"4.%@",navigationAction.request);
+//    NSLog(@"4.%@",navigationAction.request);
     
     
     //    NSString *url = [navigationAction.request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
