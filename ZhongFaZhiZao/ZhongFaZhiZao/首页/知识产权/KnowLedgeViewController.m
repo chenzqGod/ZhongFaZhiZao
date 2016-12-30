@@ -11,8 +11,13 @@
 #import "CommitKnowledgeViewController.h"
 #import "UIImageView+WebCache.h"
 #import "WKWebViewViewController.h"
+#import <RongIMKit/RongIMKit.h>
+#import "IMViewController.h"
+#import <RongIMKit/RCConversationViewController.h>
 
-@interface KnowLedgeViewController ()<UITableViewDelegate,UITableViewDataSource>{
+
+
+@interface KnowLedgeViewController ()<UITableViewDelegate,UITableViewDataSource,RCIMUserInfoDataSource>{
 
     
     NSDictionary *_dataDic;
@@ -113,16 +118,26 @@
 
 //    NSDictionary *parameters = @{@"pageIndex":[NSNumber numberWithInteger:self.pageIndex]};
     
-    NSDictionary *parameters = [[NSDictionary alloc]initWithObjectsAndKeys:[NSNumber numberWithInteger:self.pageIndex],@"pageIndex", nil];
+//    NSDictionary *parameters = [[NSDictionary alloc]initWithObjectsAndKeys:[NSNumber numberWithInteger:self.pageIndex],@"pageIndex", nil];
+    
+    NSDictionary *parameters = @{@"pageIndex":[NSNumber numberWithInteger:self.pageIndex]};
     
     [[NSNetworking sharedManager]get:[NSString stringWithFormat:@"%@%@",HOST_URL,PATENT_LIST] parameters:parameters success:^(id response) {
         
         if ([response[@"resultCode"]integerValue] == 1000) {
         
-            _dataDic = [NSDictionary dictionaryWithDictionary:response[@"data"]];
+//            _dataDic = [NSDictionary dictionaryWithDictionary:response[@"data"]];
+//            _dataArray = [NSMutableArray arrayWithArray:_dataDic[@"goodList"]];
+
+            if (self.pageIndex == 1) {
+                [_dataArray removeAllObjects];
+                _dataArray = [response[@"data"][@"goodList"] mutableCopy];
+            }else{
+                
+                [_dataArray addObjectsFromArray:response[@"data"][@"goodList"]];
+            }
+
             
-            
-            _dataArray = [NSMutableArray arrayWithArray:_dataDic[@"goodList"]];
             
             [self.tableView reloadData];
             
@@ -274,13 +289,30 @@
         hotCell = [[KnowLedgeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:hotCellID];
     }
     
+
+    
+    CustomButton *button = [CustomButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(screenWidth-16-60, 101-19-14, 60, 14);
+    
+    button.imageRect = CGRectMake(0, 1.25, 13, 11.5);
+    button.titleRect = CGRectMake(13+3, 0, 44, 14);
+    [button setTitle:@"在线咨询" forState:UIControlStateNormal];
+    [button setTitleColor:BLUE_COLOR forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont systemFontOfSize:10.0];
+    [button setImage:[UIImage imageNamed:@"chat"] forState:UIControlStateNormal];
+    
+    [button addTarget:self action:@selector(IMbtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [hotCell addSubview:button];
+    
     hotCell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     hotCell.sumLabel.text = [[_dataArray objectAtIndex:indexPath.row] objectForKey:@"name"];
     
     hotCell.priceLabel.text = [NSString stringWithFormat:@"%.1f",[[[_dataArray objectAtIndex:indexPath.row] objectForKey:@"price"] floatValue]];
     
-    [hotCell.imageView sd_setImageWithURL:[NSURL URLWithString:[[_dataArray objectAtIndex:indexPath.row] objectForKey:@"imgpath"]] placeholderImage:nil];
+    [hotCell.iconImageView sd_setImageWithURL:[NSURL URLWithString:[[_dataArray objectAtIndex:indexPath.row] objectForKey:@"imgpath"]] placeholderImage:nil];
+    
     
     
         return hotCell;
@@ -364,6 +396,87 @@
     }
     
 }
+
+
+- (void)IMbtnClick:(UIButton *)button{
+
+    //登陆融云
+    
+    //登录融云服务器,开始阶段可以先从融云API调试网站获取，之后token需要通过服务器到融云服务器取。
+    
+    NSString *token=RongTextToken;
+    
+    [[RCIM sharedRCIM] connectWithToken:token success:^(NSString *userId) {
+        
+        //设置用户信息提供者,页面展现的用户头像及昵称都会从此代理取 这里会跳到会话列表界面  就是我们平常QQ聊天都有一个
+        
+//        会话的列表  如果想直接跳到聊天界面 下面再说
+        
+        [[RCIM sharedRCIM] setUserInfoDataSource:self];
+        
+        NSLog(@"Login successfully with userId: %@.", userId);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            IMViewController *chatListViewController = [[IMViewController alloc]init];
+            
+            [self.navigationController pushViewController:chatListViewController animated:YES];
+            
+        });
+        
+    } error:^(RCConnectErrorCode status) {
+        
+        NSLog(@"login error status: %ld.", (long)status);
+        
+    } tokenIncorrect:^{
+        
+        NSLog(@"token 无效 ，请确保生成token 使用的appkey 和初始化时的appkey 一致");
+        
+    }];
+
+    
+}
+
+- (void)getUserInfoWithUserId:(NSString *)userId completion:(void(^)(RCUserInfo* userInfo))completion
+
+{
+    
+    [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,GETRONG_TOKEN] parameters:nil success:^(id response) {
+        
+    } failure:^(NSString *error) {
+        
+    }];
+    
+    //此处为了演示写了一个用户信息
+    
+    if ([@"1" isEqual:userId]) {
+        
+        RCUserInfo *user = [[RCUserInfo alloc]init];
+        
+        user.userId = @"1";
+        
+        user.name = @"测试1";
+        
+        user.portraitUri = @"https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=1756054607,4047938258&fm=96&s=94D712D20AA1875519EB37BE0300C008";
+        
+        return completion(user);
+        
+    }else if([@"2" isEqual:userId]) {
+        
+        RCUserInfo *user = [[RCUserInfo alloc]init];
+        
+        user.userId = @"2";
+        
+        user.name = @"测试2";
+        
+        user.portraitUri = @"https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=1756054607,4047938258&fm=96&s=94D712D20AA1875519EB37BE0300C008";
+        
+        return completion(user);
+        
+    }
+    
+}
+
 
 
 - (void)didReceiveMemoryWarning {

@@ -228,7 +228,7 @@
     [self.view addSubview:self.navigationView];
     
     self.pushSerchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.pushSerchBtn.frame = CGRectMake(59, 24, 539/2.0*screenScale, 59/2.0);
+    self.pushSerchBtn.frame = CGRectMake(59*screenScale, 24, 539/2.0*screenScale, 59/2.0);
     self.pushSerchBtn.backgroundColor = [UIColor clearColor];
     [self.pushSerchBtn setBackgroundImage:[UIImage imageNamed:@"搜素"] forState:UIControlStateNormal];
 
@@ -241,7 +241,7 @@
     
     
     UIButton *pushBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    pushBtn.frame = CGRectMake(screenWidth-20-14, 24+(59/2.0-24)/2.0, 20, 27);
+    pushBtn.frame = CGRectMake(screenWidth-20-14*screenScale, 24+(59/2.0-24)/2.0, 20, 27);
     pushBtn.backgroundColor = [UIColor clearColor];
     [pushBtn setBackgroundImage:[UIImage imageNamed:@"消息"] forState:UIControlStateNormal];
     pushBtn.imageView.frame = pushBtn.bounds;
@@ -250,14 +250,14 @@
     
     [self.view addSubview:pushBtn];
     
-    UIButton *QRcode = [UIButton buttonWithType:UIButtonTypeCustom];
-    QRcode.frame = CGRectMake(14, 24+(59/2.0-57/2.0)/2.0, 59/2.0, 57/2.0);
-    QRcode.backgroundColor = [UIColor clearColor];
-    [QRcode setBackgroundImage:[UIImage imageNamed:@"扫一扫"] forState:UIControlStateNormal];
-    QRcode.imageView.frame = QRcode.bounds;
-    QRcode.hidden = NO;
-    [QRcode addTarget:self action:@selector(scanning) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:QRcode];
+//    UIButton *QRcode = [UIButton buttonWithType:UIButtonTypeCustom];
+//    QRcode.frame = CGRectMake(14, 24+(59/2.0-57/2.0)/2.0, 59/2.0, 57/2.0);
+//    QRcode.backgroundColor = [UIColor clearColor];
+//    [QRcode setBackgroundImage:[UIImage imageNamed:@"扫一扫"] forState:UIControlStateNormal];
+//    QRcode.imageView.frame = QRcode.bounds;
+//    QRcode.hidden = NO;
+//    [QRcode addTarget:self action:@selector(scanning) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:QRcode];
     
 }
 
@@ -777,25 +777,28 @@ else if (indexPath.section == 5){
     }
     else if (indexPath.section == 1){
     
-        return CGSizeMake(374/2.0*screenScale, 175*screenScale);
+        return CGSizeMake((screenWidth-1)/2.0, 175*screenScale);
     }
     else if (indexPath.section == 2){
         
         if (indexPath.row <= 5){
         
-        return CGSizeMake(374/2.0*screenScale, 45*screenScale);
+//        return CGSizeMake(374/2.0*screenScale, 45*screenScale);
+            
+        return CGSizeMake((screenWidth-1)/2.0, 45*screenScale);
+
         
         }
         
-        return CGSizeMake(374/2.0*screenScale, 72*screenScale);
+        return CGSizeMake((screenWidth-1)/2.0, 72*screenScale);
     }
     else if (indexPath.section == 3){
         
-        return CGSizeMake(374/2.0*screenScale, 187*screenScale);
+        return CGSizeMake((screenWidth-1)/2.0, 187*screenScale);
     }
     else if (indexPath.section == 4){
         
-        return CGSizeMake(screenWidth*screenScale, 113*screenScale);
+        return CGSizeMake(screenWidth, 113*screenScale);
     
     }
     else if (indexPath.section == 5){
@@ -1172,11 +1175,11 @@ else if (indexPath.section == 5){
 }
 
 //扫一扫
-- (void)scanning{
-
-    [WKProgressHUD popMessage:@"敬请期待" inView:self.view duration:HUD_DURATION animated:YES];
-
-}
+//- (void)scanning{
+//
+//    [WKProgressHUD popMessage:@"敬请期待" inView:self.view duration:HUD_DURATION animated:YES];
+//
+//}
 
 //jpush消息
 - (void)jPushButton{

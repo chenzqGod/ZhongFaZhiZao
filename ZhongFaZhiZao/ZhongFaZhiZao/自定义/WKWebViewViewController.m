@@ -124,7 +124,22 @@
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:fileURL];
         
         [request addValue:@"ios" forHTTPHeaderField:@"app"];
-
+        
+        NSMutableDictionary *cookieDic = [NSMutableDictionary dictionary];
+        NSMutableString *cookieValue = [NSMutableString stringWithFormat:@""];
+        NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+        for (NSHTTPCookie *cookie in [cookieJar cookies]) {
+            [cookieDic setObject:cookie.value forKey:cookie.name];
+        }
+        
+        // cookie重复，先放到字典进行去重，再进行拼接
+        for (NSString *key in cookieDic) {
+            NSString *appendString = [NSString stringWithFormat:@"%@=%@;", key, [cookieDic valueForKey:key]];
+            [cookieValue appendString:appendString];
+        }
+        
+        [request addValue:cookieValue forHTTPHeaderField:@"Cookie"];
+        NSLog(@"添加cookie");
         [self.webView loadRequest:request];
 //        [self.webView loadFileURL:fileURL allowingReadAccessToURL:fileURL];
     }

@@ -128,12 +128,14 @@
     self.passWd = self.pwLoginView.passWdTF.text;
     
     if ([self.phoneNum isEqualToString:@""]) {
-        [WKProgressHUD popMessage:@"请输入手机号" inView:self.view duration:HUD_DURATION animated:YES];
+        [WKProgressHUD popMessage:@"请输入用户名" inView:self.view duration:HUD_DURATION animated:YES];
     }else if ([self.passWd isEqualToString:@""]){
         [WKProgressHUD popMessage:@"请输入密码" inView:self.view duration:HUD_DURATION animated:YES];
-    }else if (![self.phoneNum isMobileNumber]){
-        [WKProgressHUD popMessage:@"请输入正确的手机号" inView:self.view duration:HUD_DURATION animated:YES];
-    }else{
+    }
+//    else if (![self.phoneNum isMobileNumber]){
+//        [WKProgressHUD popMessage:@"请输入正确的手机号" inView:self.view duration:HUD_DURATION animated:YES];
+//    }
+    else{
         
 //        NSDictionary *parameters = @{@"logmob":self.phoneNum,@"logpassword":self.passWd,@"wxopenId":@"",@"logincode":@""};
         
@@ -168,6 +170,8 @@
                     [USER_DEFAULTS setObject:_userInfo.uname forKey:@"uname"];
                     [USER_DEFAULTS synchronize];
                     
+                    
+                    
                     if (_pwLoginView.rememberPwBtn.isSelected) {
                     [USER_DEFAULTS setObject:_userInfo.password forKey:@"password"];
                     }else{
@@ -179,8 +183,18 @@
                     
                     if (self.jumpURL) {
                         
-                        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:self.jumpURL title:@""];
-                        [self.navigationController pushViewController:vc animated:YES];
+                        if ([self.jumpURL hasPrefix:@"http"]) {
+                          
+                            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:self.jumpURL title:@""];
+                            [self.navigationController pushViewController:vc animated:YES];
+
+                            
+                        }else{
+                        
+                            MineViewController *vc = [[MineViewController alloc]init];
+                            [self.navigationController pushViewController:vc animated:YES];
+
+                        }
                     }
                     else{
                     

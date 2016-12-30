@@ -31,7 +31,7 @@
     
 //    self.view.backgroundColor = [UIColor whiteColor];
 
-//    self.tabBar.selectedImageTintColor = [UIColor colorWithRed:0.9 green:0.15 blue:0.2 alpha:1];
+    self.tabBar.selectedImageTintColor = BLUE_COLOR;
     
 //    NSDictionary *fontDic=@{NSFontAttributeName:[UIFont systemFontOfSize:12.0]};
     

@@ -7,6 +7,7 @@
 //
 
 #import "IMDetailViewController.h"
+#import<RongIMKit/RCConversationViewController.h>
 
 @interface IMDetailViewController ()<RCMessageCellDelegate>
 

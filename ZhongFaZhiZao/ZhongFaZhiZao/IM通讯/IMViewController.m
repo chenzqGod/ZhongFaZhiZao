@@ -9,24 +9,24 @@
 #import "IMViewController.h"
 #import "IMDetailViewController.h"
 
-@interface IMViewController ()
+@interface IMViewController ()<RCIMUserInfoDataSource>
 
 @end
 
 @implementation IMViewController
 
-- (id)init{
-
-    self = [super init];
-    
-    if (self) {
-        
-        [self setDisplayConversationTypes:@[@(ConversationType_PRIVATE)]];
-        
-    }
-
-    return self;
-}
+//- (id)init{
+//
+//    self = [super init];
+//    
+//    if (self) {
+//        
+//        [self setDisplayConversationTypes:@[@(ConversationType_PRIVATE)]];
+//        
+//    }
+//
+//    return self;
+//}
 
 - (void)viewWillAppear:(BOOL)animated{
 
@@ -57,7 +57,7 @@
     self.topCellBackgroundColor = TEXT_GREY_COLOR;
 
 
-    [self setUI];
+//    [self setUI];
 }
 
 
@@ -85,7 +85,7 @@
 
     //登录融云服务器,开始阶段可以先从融云API调试网站获取，之后token需要通过服务器到融云服务器取。
     NSString*token=@"1Cv7TsY7T7wW4kksjL6p8UmcbyeYIrXSDa0nFvL2mH/U5nPXuaB+12S6/5HoVCjf2GXR/ibrED8=";
-    [[RCIM sharedRCIM] connectWithToken:token success:^(NSString *userId) {
+    [[RCIM sharedRCIM] connectWithToken:RongTextToken success:^(NSString *userId) {
         //设置用户信息提供者,页面展现的用户头像及昵称都会从此代理取
         [[RCIM sharedRCIM] setUserInfoDataSource:self];
         NSLog(@"Login successfully with userId: %@.", userId);
@@ -146,10 +146,10 @@
 - (void)getUserInfoWithUserId:(NSString *)userId completion:(void(^)(RCUserInfo* userInfo))completion
 {
     //此处为了演示写了一个用户信息
-    if ([@"1" isEqual:userId]) {
+    if ([[USER_DEFAULTS objectForKey:@"uid"] isEqual:userId]) {
         RCUserInfo *user = [[RCUserInfo alloc]init];
-        user.userId = @"1";
-        user.name = @"测试1";
+        user.userId = [USER_DEFAULTS objectForKey:@"uid"];
+        user.name = [USER_DEFAULTS objectForKey:@"uname"];
         user.portraitUri = @"https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=1756054607,4047938258&fm=96&s=94D712D20AA1875519EB37BE0300C008";
         
         return completion(user);

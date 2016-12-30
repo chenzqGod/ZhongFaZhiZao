@@ -395,6 +395,8 @@
 		56CFD8301E07BBC000D18340 /* CommitKnowledgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CFD82F1E07BBC000D18340 /* CommitKnowledgeViewController.m */; };
 		56D8FF0D1E14F90B008661E2 /* Group no@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D8FF0B1E14F90B008661E2 /* Group no@2x.png */; };
 		56D8FF0E1E14F90B008661E2 /* Group no@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D8FF0C1E14F90B008661E2 /* Group no@3x.png */; };
+		56D8FF111E166158008661E2 /* 默认图750@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D8FF0F1E166158008661E2 /* 默认图750@2x.png */; };
+		56D8FF121E166158008661E2 /* 默认图750@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D8FF101E166158008661E2 /* 默认图750@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -971,6 +973,8 @@
 		56CFD82F1E07BBC000D18340 /* CommitKnowledgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitKnowledgeViewController.m; sourceTree = "<group>"; };
 		56D8FF0B1E14F90B008661E2 /* Group no@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Group no@2x.png"; sourceTree = "<group>"; };
 		56D8FF0C1E14F90B008661E2 /* Group no@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Group no@3x.png"; sourceTree = "<group>"; };
+		56D8FF0F1E166158008661E2 /* 默认图750@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "默认图750@2x.png"; sourceTree = "<group>"; };
+		56D8FF101E166158008661E2 /* 默认图750@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "默认图750@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2053,6 +2057,8 @@
 		56CC47501E13A6AA00D8E42E /* 占位图 */ = {
 			isa = PBXGroup;
 			children = (
+				56D8FF0F1E166158008661E2 /* 默认图750@2x.png */,
+				56D8FF101E166158008661E2 /* 默认图750@3x.png */,
 				56D8FF0B1E14F90B008661E2 /* Group no@2x.png */,
 				56D8FF0C1E14F90B008661E2 /* Group no@3x.png */,
 				56CC47511E13A74600D8E42E /* 占位图157-148@2x.png */,
@@ -2458,6 +2464,7 @@
 				560366361DDEA20000332DD2 /* 58@2x-1.png in Resources */,
 				5697C8051E08DDEF008A1D98 /* Group 15@2x.png in Resources */,
 				560956261DFF998E00DA0B72 /* 默认头像@3x.png in Resources */,
+				56D8FF111E166158008661E2 /* 默认图750@2x.png in Resources */,
 				56CFD8251E0789FE00D18340 /* icon@2x.png in Resources */,
 				5603663D1DDEA7BC00332DD2 /* Images.xcassets in Resources */,
 				5691B63F1E11070700AC09DB /* Group 54@2x.png in Resources */,
@@ -2503,6 +2510,7 @@
 				5603663A1DDEA20000332DD2 /* 80@2x.png in Resources */,
 				56CC47561E13A74600D8E42E /* 占位图157-148@3x.png in Resources */,
 				5603662A1DDEA20000332DD2 /* Default-667h@2x.png in Resources */,
+				56D8FF121E166158008661E2 /* 默认图750@3x.png in Resources */,
 				56CFD7981E028FC700D18340 /* 挖掘icon@2x.png in Resources */,
 				5691B6221E10F72500AC09DB /* Group 47@3x.png in Resources */,
 				560366391DDEA20000332DD2 /* 80@2x-1.png in Resources */,

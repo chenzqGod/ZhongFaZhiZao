@@ -33,7 +33,7 @@
     // Do any additional setup after loading the view.
     
     
-    self.webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight-49)];
+    self.webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 20, screenWidth, screenHeight-49-20)];
     
     self.webView.navigationDelegate = self;
     self.webView.UIDelegate = self;
@@ -58,6 +58,28 @@
     [request addValue:@"ios" forHTTPHeaderField:@"app"];
 
 //    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:USER_CENTER]]];
+    
+    NSMutableDictionary *cookieDic = [NSMutableDictionary dictionary];
+    NSMutableString *cookieValue = [NSMutableString stringWithFormat:@""];
+    NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *cookie in [cookieJar cookies]) {
+        [cookieDic setObject:cookie.value forKey:cookie.name];
+    }
+    
+    if ([USER_DEFAULTS objectForKey:@"token"]) {
+        [cookieDic setObject:[USER_DEFAULTS objectForKey:@"token"] forKey:@"zfa_token"];
+
+    }
+    
+    
+    // cookie重复，先放到字典进行去重，再进行拼接
+    for (NSString *key in cookieDic) {
+        NSString *appendString = [NSString stringWithFormat:@"%@=%@;", key, [cookieDic valueForKey:key]];
+        [cookieValue appendString:appendString];
+    }
+    
+    [request addValue:cookieValue forHTTPHeaderField:@"Cookie"];
+    NSLog(@"添加cookie");
     
     [self.webView loadRequest:request];
 }

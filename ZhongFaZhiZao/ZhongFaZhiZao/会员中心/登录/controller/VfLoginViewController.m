@@ -191,8 +191,18 @@
 
                     if (self.jumpURL) {
                         
-                        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:self.jumpURL title:@""];
-                        [self.navigationController pushViewController:vc animated:YES];
+                        if ([self.jumpURL hasPrefix:@"http"]) {
+                            
+                            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:self.jumpURL title:@""];
+                            [self.navigationController pushViewController:vc animated:YES];
+                            
+                            
+                        }else{
+                            
+                            MineViewController *vc = [[MineViewController alloc]init];
+                            [self.navigationController pushViewController:vc animated:YES];
+                            
+                        }
                     }
                     else{
                         

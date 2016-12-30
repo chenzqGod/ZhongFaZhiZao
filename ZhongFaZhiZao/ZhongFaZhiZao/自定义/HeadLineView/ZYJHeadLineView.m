@@ -166,7 +166,7 @@
     self.currentBtn.layer.masksToBounds = YES;
     self.currentBtn.layer.cornerRadius = 1.5;
 //    self.currentBtn.layer.borderWidth = 1;
-    [self.currentBtn setBackgroundColor:[UIColor blackColor]];
+    [self.currentBtn setBackgroundColor:[UIColor colorWithHexString:@"#f3a536"]];
 //    self.currentBtn.layer.borderColor = [UIColor redColor].CGColor;
     [self.currentBtn setTitle:model.type forState:UIControlStateNormal];
     [self.currentBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -222,7 +222,7 @@
     self.hidenBtn.layer.masksToBounds = YES;
     self.hidenBtn.layer.cornerRadius = 1.5;
 //    self.hidenBtn.layer.borderWidth = 1;
-    [self.hidenBtn setBackgroundColor:[UIColor blackColor]];
+    [self.hidenBtn setBackgroundColor:[UIColor colorWithHexString:@"#f3a536"]];
 //    self.hidenBtn.layer.borderColor = [UIColor redColor].CGColor;
     [self.hidenBtn setTitle:@"" forState:UIControlStateNormal];
     [self.hidenBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

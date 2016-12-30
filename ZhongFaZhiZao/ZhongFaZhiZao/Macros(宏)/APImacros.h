@@ -30,10 +30,12 @@
 //交互
 #define SERVER_LOGIN               @"http://cectest.cecb2b.com/waps/member/login"
 #define USER_CENTER                @"http://cectest.cecb2b.com/waps/member/home"
-#define LoginURL                   @"/member/login?"
+#define LoginURL                   @"/member/login"
 
-//融云  sessionId为登录时返回的devicetoken
-#define GETRONG_TOKEN              @"/api/getRongToken/"
+//融云  
+#define GETRONG_TOKEN              @"/api/getRongToken"
+
+#define RongTextToken             @"yTXK4Qh7VoK62uCyTsv6RXCq3wKvv+SHceNoxR7WTCWBiseR6gmMY/sGMdQUSmrtniLnJLSgtDl91xYI2kTlmg=="
 //zfa_token为参数 放到header里面
 
 //知识产权
