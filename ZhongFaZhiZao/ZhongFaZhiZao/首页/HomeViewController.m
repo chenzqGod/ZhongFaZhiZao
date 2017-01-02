@@ -127,7 +127,7 @@
 
 #pragma mark - loadData
 - (void)loadadData{
-
+    
     [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,AD_API] parameters:nil success:^(id response) {
         
         if ([response[@"resultCode"]integerValue] == 1000) {

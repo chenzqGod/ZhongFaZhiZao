@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    IMDetailViewController *vc = [[IMDetailViewController alloc]init];
 }
 
 - (void)didReceiveMemoryWarning {

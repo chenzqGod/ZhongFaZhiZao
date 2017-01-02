@@ -14,7 +14,7 @@
 #import <RongIMKit/RongIMKit.h>
 #import "IMViewController.h"
 #import <RongIMKit/RCConversationViewController.h>
-
+#import "IMDetailViewController.h"
 
 
 @interface KnowLedgeViewController ()<UITableViewDelegate,UITableViewDataSource,RCIMUserInfoDataSource>{
@@ -418,7 +418,11 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            IMViewController *chatListViewController = [[IMViewController alloc]init];
+//            IMViewController *chatListViewController = [[IMViewController alloc]init];
+            IMDetailViewController *chatListViewController = [[IMDetailViewController alloc]init];
+            chatListViewController.targetId = @"1";
+            chatListViewController.title = @"话题";
+            chatListViewController.conversationType = ConversationType_PRIVATE;
             
             [self.navigationController pushViewController:chatListViewController animated:YES];
             

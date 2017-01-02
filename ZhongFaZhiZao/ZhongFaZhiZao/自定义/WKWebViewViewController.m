@@ -92,6 +92,10 @@
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
+    
+ 
+ 
+    
     [self loadWebViewData];
     
     
@@ -111,6 +115,24 @@
 //        NSURLRequest *request = [NSURLRequest requestWithURL:url];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
         
+        NSMutableDictionary *cookieDic = [NSMutableDictionary dictionary];
+        NSMutableString *cookieValue = [NSMutableString stringWithFormat:@""];
+        NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+        for (NSHTTPCookie *cookie in [cookieJar cookies]) {
+            [cookieDic setObject:cookie.value forKey:cookie.name];
+        }
+        
+        // cookie重复，先放到字典进行去重，再进行拼接
+        for (NSString *key in cookieDic) {
+            NSString *appendString = [NSString stringWithFormat:@"%@=%@;", key, [cookieDic valueForKey:key]];
+            [cookieValue appendString:appendString];
+        }
+
+
+        WKUserContentController *userContentController = _webView.configuration.userContentController;
+        WKUserScript *script = [[WKUserScript alloc] initWithSource:cookieValue injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO];
+        [userContentController addUserScript:script];
+
         [request addValue:@"ios" forHTTPHeaderField:@"app"];
         [self.webView loadRequest:request];
     }else{
@@ -137,6 +159,10 @@
             NSString *appendString = [NSString stringWithFormat:@"%@=%@;", key, [cookieDic valueForKey:key]];
             [cookieValue appendString:appendString];
         }
+        
+        WKUserContentController *userContentController = _webView.configuration.userContentController;
+        WKUserScript *script = [[WKUserScript alloc] initWithSource:cookieValue injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO];
+        [userContentController addUserScript:script];
         
         [request addValue:cookieValue forHTTPHeaderField:@"Cookie"];
         NSLog(@"添加cookie");
@@ -228,6 +254,8 @@
 //    
 //  
 //    [self.webView loadRequest:mutableRequest];
+    //需要判断targetFrame是否为nil，如果为空则重新请求
+
 
     
 // 解决WKWebView替换UIWebView无法拨打电话
@@ -316,6 +344,15 @@
 //    }
 //    return YES;
 //}
+
+
+-(WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures
+{
+    if (!navigationAction.targetFrame.isMainFrame) {
+        [webView loadRequest:navigationAction.request];
+    }
+    return nil;
+}
 
 - (void)dealloc {
     [_webView removeObserver:self forKeyPath:@"estimatedProgress"];
