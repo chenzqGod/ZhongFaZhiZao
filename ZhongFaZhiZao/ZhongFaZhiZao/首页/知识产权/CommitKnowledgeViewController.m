@@ -117,10 +117,11 @@
     self.areasTF = [[UITextField alloc]initWithFrame:CGRectMake(13*screenScale+CGRectGetMaxX(label2.frame), CGRectGetMaxY(label1.frame)+17, 204*screenScale, 29)];
     self.areasTF.placeholder = @"请选择";
     self.areasTF.layer.borderWidth = 1;
+    
     self.areasTF.font = [UIFont systemFontOfSize:13.0];
     self.areasTF.layer.masksToBounds = YES;
     self.areasTF.layer.cornerRadius = 2;
-    self.areasTF.layer.borderColor = BACK_COLOR.CGColor;
+    self.areasTF.layer.borderColor = [UIColor colorWithHexString:@"#979797"].CGColor;
     self.areasTF.leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 8, 0)];
     self.areasTF.leftViewMode = UITextFieldViewModeAlways;
     self.areasTF.delegate = self;
@@ -153,7 +154,7 @@
     self.nameTF.leftViewMode = UITextFieldViewModeAlways;
     self.nameTF.font = [UIFont systemFontOfSize:13.0];
     self.nameTF.delegate = self;
-    self.nameTF.layer.borderColor = BACK_COLOR.CGColor;
+    self.nameTF.layer.borderColor = [UIColor colorWithHexString:@"#979797"].CGColor;
     [backView addSubview:self.nameTF];
 
     
@@ -174,7 +175,7 @@
     self.phoneTF.font = [UIFont systemFontOfSize:13.0];
     self.phoneTF.leftViewMode = UITextFieldViewModeAlways;
     self.phoneTF.leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 8, 0)];
-    self.phoneTF.layer.borderColor = BACK_COLOR.CGColor;
+    self.phoneTF.layer.borderColor = [UIColor colorWithHexString:@"#979797"].CGColor;
     self.phoneTF.delegate = self;
     [backView addSubview:self.phoneTF];
     
@@ -191,7 +192,7 @@
     self.issueTF.layer.borderWidth = 1;
     self.issueTF.layer.masksToBounds = YES;
     self.issueTF.layer.cornerRadius = 2;
-    self.issueTF.layer.borderColor = BACK_COLOR.CGColor;
+    self.issueTF.layer.borderColor = [UIColor colorWithHexString:@"#979797"].CGColor;
     self.issueTF.font = [UIFont systemFontOfSize:13.0];
     self.issueTF.delegate = self;
     self.issueTF.placeholder = @"请详细描述您的需求";

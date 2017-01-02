@@ -192,7 +192,7 @@
             }
             else{
             
-                _cityArray = [NSMutableArray arrayWithArray:_cityDict[@"all"]];
+                _cityArray = [NSMutableArray arrayWithArray:_cityDict[@"全部"]];
             }
             
             NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:5];
@@ -227,11 +227,32 @@
 
     [self.view addSubview:self.navigationView];
     
+    //    UIButton *QRcode = [UIButton buttonWithType:UIButtonTypeCustom];
+    //    QRcode.frame = CGRectMake(14, 24+(59/2.0-57/2.0)/2.0, 59/2.0, 57/2.0);
+    //    QRcode.backgroundColor = [UIColor clearColor];
+    //    [QRcode setBackgroundImage:[UIImage imageNamed:@"扫一扫"] forState:UIControlStateNormal];
+    //    QRcode.imageView.frame = QRcode.bounds;
+    //    QRcode.hidden = NO;
+    //    [QRcode addTarget:self action:@selector(scanning) forControlEvents:UIControlEventTouchUpInside];
+    //    [self.view addSubview:QRcode];
+    
+//    self.pushSerchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    self.pushSerchBtn.frame = CGRectMake(59*screenScale, 24, 539/2.0*screenScale, 59/2.0);
+//    self.pushSerchBtn.backgroundColor = [UIColor clearColor];
+//    [self.pushSerchBtn setBackgroundImage:[UIImage imageNamed:@"搜素"] forState:UIControlStateNormal];
+//
+//    self.pushSerchBtn.imageView.frame = self.pushSerchBtn.bounds;
+//    self.pushSerchBtn.hidden = NO;
+//    [self.pushSerchBtn setEnabled:YES];
+//    [self.pushSerchBtn addTarget:self action:@selector(SearchButtonPush) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    [self.view addSubview:self.pushSerchBtn];
+    
     self.pushSerchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.pushSerchBtn.frame = CGRectMake(59*screenScale, 24, 539/2.0*screenScale, 59/2.0);
+    self.pushSerchBtn.frame = CGRectMake(13*screenScale, 24, 630/2.0*screenScale, 59/2.0);
     self.pushSerchBtn.backgroundColor = [UIColor clearColor];
-    [self.pushSerchBtn setBackgroundImage:[UIImage imageNamed:@"搜素"] forState:UIControlStateNormal];
-
+    [self.pushSerchBtn setBackgroundImage:[UIImage imageNamed:@"搜素img"] forState:UIControlStateNormal];
+    
     self.pushSerchBtn.imageView.frame = self.pushSerchBtn.bounds;
     self.pushSerchBtn.hidden = NO;
     [self.pushSerchBtn setEnabled:YES];
@@ -241,7 +262,7 @@
     
     
     UIButton *pushBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    pushBtn.frame = CGRectMake(screenWidth-20-14*screenScale, 24+(59/2.0-24)/2.0, 20, 27);
+    pushBtn.frame = CGRectMake(screenWidth-20*screenScale-14*screenScale, 24+(59/2.0-24)/2.0, 20*screenScale, 27);
     pushBtn.backgroundColor = [UIColor clearColor];
     [pushBtn setBackgroundImage:[UIImage imageNamed:@"消息"] forState:UIControlStateNormal];
     pushBtn.imageView.frame = pushBtn.bounds;
@@ -250,14 +271,6 @@
     
     [self.view addSubview:pushBtn];
     
-//    UIButton *QRcode = [UIButton buttonWithType:UIButtonTypeCustom];
-//    QRcode.frame = CGRectMake(14, 24+(59/2.0-57/2.0)/2.0, 59/2.0, 57/2.0);
-//    QRcode.backgroundColor = [UIColor clearColor];
-//    [QRcode setBackgroundImage:[UIImage imageNamed:@"扫一扫"] forState:UIControlStateNormal];
-//    QRcode.imageView.frame = QRcode.bounds;
-//    QRcode.hidden = NO;
-//    [QRcode addTarget:self action:@selector(scanning) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:QRcode];
     
 }
 
@@ -279,7 +292,7 @@
 //collectionView最上面Header
 - (void)createHeaderView{
 
-    self.headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 180*screenScale+8+40+164+80+8)];
+    self.headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 180*screenScale+8+40+164+80*screenScale+8)];
     self.headerView.backgroundColor = BACK_COLOR;
     [self.view addSubview:self.headerView];
     
@@ -299,8 +312,8 @@
     }];
     _mainscrollView.placeImage = [UIImage imageNamed:@"banner"];
     _mainscrollView.AutoScrollDelay = 5.0f;
-    
-    _mainscrollView.backgroundColor = [UIColor redColor];
+    _mainscrollView.style = PageControlAtCenter;
+
     [self.headerView addSubview:_mainscrollView];
     
     [[DCWebImageManager shareManager] setDownloadImageRepeatCount:1];
@@ -393,7 +406,7 @@
     }
     
     
-    UIImageView *firstImg = [[UIImageView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.mainBtnView.frame)+8, screenWidth, 80)];
+    UIImageView *firstImg = [[UIImageView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.mainBtnView.frame)+8, screenWidth, 80*screenScale)];
     firstImg.image = [UIImage imageNamed:@"供bar"];
     firstImg.userInteractionEnabled = YES;
     [firstImg addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(GongbuttonClick)]];
@@ -472,11 +485,11 @@
     
    else if (kind == UICollectionElementKindSectionHeader &&indexPath.section == 5 ) {
        
-       UIView *fifView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 80+53)];
+       UIView *fifView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 80*screenScale+53)];
        fifView.backgroundColor = BACK_COLOR;
        fifView.userInteractionEnabled = YES;
        
-       UIImageView *fifImg = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 80)];
+       UIImageView *fifImg = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 80*screenScale)];
        fifImg.image = [UIImage imageNamed:@"电子市场bar"];
        fifImg.userInteractionEnabled = YES;
        [fifView addSubview:fifImg];
@@ -533,7 +546,7 @@
     }
     
     NSArray *collecHeaderArr = @[@"科技bar",@"产权专利bar",@"智能bar",@"解决方案bar",@"电子市场bar"];
-    self.collectionHeaderView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 80)];
+    self.collectionHeaderView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 80*screenScale)];
     self.collectionHeaderView.image = [UIImage imageNamed:collecHeaderArr[indexPath.section-1]];
     self.collectionHeaderView.userInteractionEnabled = YES;
 //    self.collectionHeaderView.tag = 50000+indexPath.section;
@@ -747,10 +760,11 @@ else if (indexPath.section == 5){
     static NSString * CellIdentifier = @"eletronicCell";
     ElectronicCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
    
-    [cell.ElectronicImg sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",_cityArray[indexPath.row][@"small_pic"]]] placeholderImage:[UIImage imageNamed:@"占位图157-148"]];
-
-//    [cell.ElectronicImg sd_setImageWithURL:[NSURL URLWithString:nil] placeholderImage:[UIImage imageNamed:@"占位图"]];
+    [cell.ElectronicImg sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",_cityArray[indexPath.row][@"small_pic"]]] placeholderImage:[UIImage imageNamed:@"默认图750"]];
     
+    cell.mengbanLabel.text = [NSString stringWithFormat:@"%@",_cityArray[indexPath.row][@"center_name"]];
+
+    cell.cityLabel.text = [NSString stringWithFormat:@"%@",_cityArray[indexPath.row][@"city"]];
     
     return cell;
 
@@ -1020,13 +1034,13 @@ else if (indexPath.section == 5){
 
     if (section == 0) {
         
-        return CGSizeMake(screenWidth, 180*screenScale+8+40+164+80+8);
+        return CGSizeMake(screenWidth, 180*screenScale+8+40+164+80*screenScale+8);
     }
     else if (section == 5){
     
-        return CGSizeMake(screenWidth, 80+53);
+        return CGSizeMake(screenWidth, 80*screenScale+53);
     }
-    return CGSizeMake(screenWidth, 80);
+    return CGSizeMake(screenWidth, 80*screenScale);
 }
 
 //设置页尾高度

@@ -114,7 +114,8 @@
     UIPageControl *page = [[UIPageControl alloc] initWithFrame:CGRectMake(myWidth/2 - 30,myHeight - pageSize,myWidth, 7)];
     
     page.pageIndicatorTintColor = [UIColor lightGrayColor];
-    page.currentPageIndicatorTintColor =  [UIColor redColor];
+//    page.currentPageIndicatorTintColor =  [UIColor redColor];
+    page.currentPageIndicatorTintColor = BLUE_COLOR;
     page.numberOfPages = _MaxImageCount;
     page.currentPage = 0;
     
@@ -146,7 +147,7 @@
 
 - (void)prepareTitleLabel {
     
-    [self setStyle:PageControlAtRight];
+    [self setStyle:PageControlAtCenter];
     
     UIView *left = [self creatLabelBgView];
     UIView *center = [self creatLabelBgView];

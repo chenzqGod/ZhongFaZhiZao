@@ -178,6 +178,7 @@
 //        NSDictionary *parameters = @{@"logmob":self.phoneNum,@"logpassword":self.passWd,@"logincode":self.verifyCode};
         
         [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@/%@/%@/%@",HOST_URL,REGIST,self.phoneNum,self.passWd,self.verifyCode] parameters:nil success:^(id response) {
+            
             if ([response[@"resultCode"]integerValue ] == 1000) {
                 [WKProgressHUD popMessage:@"注册成功" inView:self.view duration:HUD_DURATION animated:YES];
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -197,19 +198,25 @@
                                                                                   preferredStyle:UIAlertControllerStyleAlert ];
                 
                 //添加取消到UIAlertController中
-                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
                 [alertController addAction:cancelAction];
-                [self presentViewController:alertController animated:YES completion:nil];
+//                [self presentViewController:alertController animated:YES completion:nil];
 
                 //添加确定到UIAlertController中
-                UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"去登陆" style:UIAlertActionStyleDefault handler:nil];
+//                UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"去登陆" style:UIAlertActionStyleDefault handler:nil];
+//                [alertController addAction:OKAction];
+//                PwLoginViewController *vc = [[PwLoginViewController alloc]init];
+//                [self.navigationController pushViewController:vc animated:YES];
+                
+                UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"去登陆" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                   
+                    PwLoginViewController *vc = [[PwLoginViewController alloc]init];
+                [self.navigationController pushViewController:vc animated:YES];
+                }];
+                
                 [alertController addAction:OKAction];
-                PwLoginViewController *vc = [[PwLoginViewController alloc]init];
-                [self presentViewController:vc animated:YES completion:nil];
+                [self presentViewController:alertController animated:YES completion:nil];
                 
-                
-                
-//                [WKProgressHUD popMessage:@"该手机号已被注册" inView:self.view duration:HUD_DURATION animated:YES];
             }
             
         } failure:^(NSString *error) {

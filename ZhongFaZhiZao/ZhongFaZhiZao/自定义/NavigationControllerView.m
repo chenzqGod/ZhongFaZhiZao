@@ -18,8 +18,13 @@
     if (self = [super initWithFrame:frame]) {
         
         UIView *navView = [[UIView alloc]initWithFrame:frame];
-        navView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"NavBG"]];
+//        navView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"NavBG"]];
         [self addSubview:navView];
+        
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, navView.frame.size.width, navView.frame.size.height)];
+        imageView.image = [UIImage imageNamed:@"NavBG"];
+        imageView.userInteractionEnabled = YES;
+        [navView addSubview:imageView];
         
         UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         leftBtn.frame = CGRectMake(0, 64-65/2.0-6, 94/2.0, 65/2.0);
@@ -29,7 +34,7 @@
 //        leftBtn.backgroundColor = [UIColor redColor];
         [leftBtn setBackgroundImage:[UIImage imageNamed:@"BackNV"] forState:UIControlStateNormal];
         [leftBtn addTarget:self action:@selector(leftBarButtonItemClick) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:leftBtn];
+        [navView addSubview:leftBtn];
         
         _midLabel = [[UILabel alloc]init];
         _midLabel.frame = CGRectMake(0, 0, 180, 24);
@@ -38,7 +43,7 @@
         _midLabel.textColor = [UIColor whiteColor];
         _midLabel.textAlignment = NSTextAlignmentCenter;
         _midLabel.font = [UIFont systemFontOfSize:18.0];
-        [self addSubview:_midLabel];
+        [navView addSubview:_midLabel];
 
     }
 
@@ -51,8 +56,14 @@
     if (self = [super initWithFrame:frame]) {
         
         UIView *navView = [[UIView alloc]initWithFrame:frame];
-        navView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"NavBG"]];
+//        navView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"NavBG"]];
         [self addSubview:navView];
+        
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, navView.frame.size.width, navView.frame.size.height)];
+        imageView.image = [UIImage imageNamed:@"NavBG"];
+        imageView.userInteractionEnabled = YES;
+        [navView addSubview:imageView];
+
         
         _midLabel = [[UILabel alloc]init];
         _midLabel.frame = CGRectMake(0, 0, 180, 24);
@@ -61,7 +72,7 @@
         _midLabel.textColor = [UIColor whiteColor];
         _midLabel.textAlignment = NSTextAlignmentCenter;
         _midLabel.font = [UIFont systemFontOfSize:18.0];
-        [self addSubview:_midLabel];
+        [navView addSubview:_midLabel];
         
     }
     
@@ -77,8 +88,14 @@
     if (self = [super initWithFrame:frame]) {
         
         UIView *navView = [[UIView alloc]initWithFrame:frame];
-        navView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"NavBG"]];
+//        navView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"NavBG"]];
         [self addSubview:navView];
+        
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, navView.frame.size.width, navView.frame.size.height)];
+        imageView.image = [UIImage imageNamed:@"NavBG"];
+        imageView.userInteractionEnabled = YES;
+        [navView addSubview:imageView];
+
         
         UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         rightBtn.frame = CGRectMake(screenWidth-21-20, 44-21/2.0, 21, 21);
@@ -86,7 +103,7 @@
         rightBtn.hidden = NO;
         [rightBtn setBackgroundImage:[UIImage imageNamed:@"关闭"] forState:UIControlStateNormal];
         [rightBtn addTarget:self action:@selector(rightButtonClick) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:rightBtn];
+        [navView addSubview:rightBtn];
         
         UILabel *midLabel1 = [[UILabel alloc]init];
         midLabel1.frame = CGRectMake(0, 0, 180, 24);
@@ -95,7 +112,7 @@
         midLabel1.textColor = [UIColor whiteColor];
         midLabel1.textAlignment = NSTextAlignmentCenter;
         midLabel1.font = [UIFont systemFontOfSize:18.0];
-        [self addSubview:midLabel1];
+        [navView addSubview:midLabel1];
         
 
     }
