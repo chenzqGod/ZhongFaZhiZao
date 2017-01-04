@@ -265,7 +265,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     
-    return _dataArray.count;
+    return _dataArray.count>20?20:_dataArray.count;
     
 }
 
@@ -311,7 +311,7 @@
     
     hotCell.priceLabel.text = [NSString stringWithFormat:@"%.1f",[[[_dataArray objectAtIndex:indexPath.row] objectForKey:@"price"] floatValue]];
     
-    [hotCell.iconImageView sd_setImageWithURL:[NSURL URLWithString:[[_dataArray objectAtIndex:indexPath.row] objectForKey:@"imgpath"]] placeholderImage:nil];
+    [hotCell.iconImageView sd_setImageWithURL:[NSURL URLWithString:[[_dataArray objectAtIndex:indexPath.row] objectForKey:@"imgpath"]] placeholderImage:[UIImage imageNamed:@"占位图200-188"]];
     
     
     
@@ -400,6 +400,16 @@
 
 - (void)IMbtnClick:(UIButton *)button{
 
+    
+    [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,GETRONG_TOKEN] parameters:nil success:^(id response) {
+        
+        
+        
+        
+    } failure:^(NSString *error) {
+        
+    }];
+    
     //登陆融云
     
     //登录融云服务器,开始阶段可以先从融云API调试网站获取，之后token需要通过服务器到融云服务器取。
@@ -446,6 +456,9 @@
 {
     
     [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,GETRONG_TOKEN] parameters:nil success:^(id response) {
+        
+        
+        
         
     } failure:^(NSString *error) {
         

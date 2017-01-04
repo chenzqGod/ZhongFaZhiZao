@@ -35,6 +35,7 @@
 
 //融云  
 #define GETRONG_TOKEN              @"/api/getRongToken"
+#define GETRONG_NAME               @"/corp/{corpId}/getCorpName"
 
 #define RongTextToken             @"yTXK4Qh7VoK62uCyTsv6RXCq3wKvv+SHceNoxR7WTCWBiseR6gmMY/sGMdQUSmrtniLnJLSgtDl91xYI2kTlmg=="
 //zfa_token为参数 放到header里面

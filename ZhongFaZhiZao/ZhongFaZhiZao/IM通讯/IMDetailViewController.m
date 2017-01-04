@@ -15,11 +15,19 @@
 
 @implementation IMDetailViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+
+    [self.navigationController setNavigationBarHidden:NO];
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    IMDetailViewController *vc = [[IMDetailViewController alloc]init];
+//    IMDetailViewController *vc = [[IMDetailViewController alloc]initWithConversationType:ConversationType_PRIVATE targetId:@"1"];
+    
+//    [self.view addSubview:vc];
 }
 
 - (void)didReceiveMemoryWarning {

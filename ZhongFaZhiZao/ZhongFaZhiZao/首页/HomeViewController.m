@@ -31,6 +31,7 @@
 #import "ZYJHeadLineView.h"
 #import "ZYJHeadLineModel.h"
 
+
 #define margins 8
 
 @interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>{
@@ -439,6 +440,28 @@
     _collectionView.delegate = self;
     _collectionView.backgroundColor = BACK_COLOR;
     
+    //    下拉刷新、上拉加载
+//    _collectionView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+//        //Call this Block When enter the refresh status automatically
+//        
+//        self.pageIndex = 1;
+//        [self loadData];
+//        
+//        [_collectionView.header endRefreshing];
+//        
+//    }];
+//    
+//    _collectionView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+//        //Call this Block When enter the refresh status automatically
+//        
+//        self.pageIndex++;
+//        [self loadData];
+//        
+//        [_collectionView.footer endRefreshing];
+//        
+//    }];
+
+    
     //注册cell
     [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     [_collectionView registerClass:[SupplyScrollCollectionViewCell class] forCellWithReuseIdentifier:@"supplyScrcell"];
@@ -526,6 +549,8 @@
                _fifButton.backgroundColor = BLUE_COLOR;
                self.tmpbtn = _fifButton;
                _fifButton.selected = YES;
+               _fifButton.layer.borderWidth = 0;
+               
            }else{
            
            _fifButton.backgroundColor = [UIColor whiteColor];

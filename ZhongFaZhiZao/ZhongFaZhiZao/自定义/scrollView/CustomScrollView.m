@@ -111,7 +111,7 @@
 
 - (void)preparePageControl {
     
-    UIPageControl *page = [[UIPageControl alloc] initWithFrame:CGRectMake(myWidth/2 - 30,myHeight - pageSize,myWidth, 7)];
+    UIPageControl *page = [[UIPageControl alloc] initWithFrame:CGRectMake(0,myHeight - pageSize,myWidth, 7)];
     
     page.pageIndicatorTintColor = [UIColor lightGrayColor];
 //    page.currentPageIndicatorTintColor =  [UIColor redColor];

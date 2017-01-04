@@ -10,4 +10,6 @@
 
 @interface IMDetailViewController : RCConversationViewController
 
+@property (nonatomic,strong) NSString *targetId;
+
 @end
