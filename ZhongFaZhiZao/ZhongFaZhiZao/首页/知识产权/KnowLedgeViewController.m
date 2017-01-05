@@ -431,6 +431,7 @@
 //            IMViewController *chatListViewController = [[IMViewController alloc]init];
             IMDetailViewController *chatListViewController = [[IMDetailViewController alloc]init];
             chatListViewController.targetId = @"1";
+//            [[[_dataArray objectAtIndex:indexPath.row] objectForKey:@"shopId"] floatValue]]
             chatListViewController.title = @"话题";
             chatListViewController.conversationType = ConversationType_PRIVATE;
             
