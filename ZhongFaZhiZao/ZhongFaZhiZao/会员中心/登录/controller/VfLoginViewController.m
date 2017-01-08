@@ -171,9 +171,9 @@
 //                    self.userInfo.nickName = response[@"nick_name"];
 //                    self.userInfo.photo = response[@"photo"];
 //                    self.userInfo.createDate = response[@"create_date"];
-                    self.userInfo.uid = response[@"uid"];
-                    self.userInfo.token = response[@"token"];
-                    self.userInfo.uname = response[@"uname"];
+                    self.userInfo.uid = response[@"data"][@"uid"];
+                    self.userInfo.token = response[@"data"][@"token"];
+                    self.userInfo.uname = response[@"data"][@"uname"];
                     self.userInfo.isLogin = YES;
                     
                     [USER_DEFAULTS setObject:_userInfo.uid forKey:@"uid"];

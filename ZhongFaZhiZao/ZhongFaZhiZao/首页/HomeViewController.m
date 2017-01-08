@@ -69,15 +69,15 @@
 
 //    [self loadadData];
     
-    NSLog(@"loginTOken====%@",[USER_DEFAULTS objectForKey:@"token"]);
-    NSLog(@"loginUid====%@",[USER_DEFAULTS objectForKey:@"uid"]);
-    NSLog(@"loginUname====%@",[USER_DEFAULTS objectForKey:@"uname"]);
-
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-
-    NSLog(@"loginTOken2====%@",[defaults objectForKey:@"token"]);
-    NSLog(@"loginUid2====%@",[defaults objectForKey:@"uid"]);
-    NSLog(@"loginUname2====%@",[defaults objectForKey:@"uname"]);
+//    NSLog(@"loginTOken====%@",[USER_DEFAULTS objectForKey:@"token"]);
+//    NSLog(@"loginUid====%@",[USER_DEFAULTS objectForKey:@"uid"]);
+//    NSLog(@"loginUname====%@",[USER_DEFAULTS objectForKey:@"uname"]);
+//
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//
+//    NSLog(@"loginTOken2====%@",[defaults objectForKey:@"token"]);
+//    NSLog(@"loginUid2====%@",[defaults objectForKey:@"uid"]);
+//    NSLog(@"loginUname2====%@",[defaults objectForKey:@"uname"]);
 
     
     [super viewWillAppear:YES];

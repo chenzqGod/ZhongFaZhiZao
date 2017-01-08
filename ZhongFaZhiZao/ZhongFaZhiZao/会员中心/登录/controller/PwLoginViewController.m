@@ -153,9 +153,9 @@
 //                    self.userInfo.uid = response[@"uid"];
 //                    self.userInfo.isLogin = YES;
                     self.userInfo = [UserInfo sharedUserInfo];
-                    self.userInfo.uid = response[@"uid"];
-                    self.userInfo.token = response[@"token"];
-                    self.userInfo.uname = response[@"uname"];
+                    self.userInfo.uid = response[@"data"][@"uid"];
+                    self.userInfo.token = response[@"data"][@"token"];
+                    self.userInfo.uname = response[@"data"][@"uname"];
                     self.userInfo.isLogin = YES;
                     
                     self.userInfo.password = self.passWd;
@@ -171,19 +171,19 @@
 //                    [USER_DEFAULTS setObject:response[@"uname"] forKey:@"uname"];
                     [USER_DEFAULTS synchronize];
                     
-                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                    [defaults setObject:_userInfo.token forKey:@"token"];
-                    [defaults setObject:_userInfo.uid forKey:@"uid"];
-                    [defaults setObject:_userInfo.uname forKey:@"uname"];
-                    [defaults synchronize];
-                    
+//                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//                    [defaults setObject:_userInfo.token forKey:@"token"];
+//                    [defaults setObject:_userInfo.uid forKey:@"uid"];
+//                    [defaults setObject:_userInfo.uname forKey:@"uname"];
+//                    [defaults synchronize];
+//                    
                     NSLog(@"loginTOken====%@",[USER_DEFAULTS objectForKey:@"token"]);
                      NSLog(@"loginUid====%@",[USER_DEFAULTS objectForKey:@"uid"]);
                      NSLog(@"loginUname====%@",[USER_DEFAULTS objectForKey:@"uname"]);
-                    
-                    NSLog(@"loginTOken2====%@",[defaults objectForKey:@"token"]);
-                    NSLog(@"loginUid2====%@",[defaults objectForKey:@"uid"]);
-                    NSLog(@"loginUname2====%@",[defaults objectForKey:@"uname"]);
+//                    
+//                    NSLog(@"loginTOken2====%@",[defaults objectForKey:@"token"]);
+//                    NSLog(@"loginUid2====%@",[defaults objectForKey:@"uid"]);
+//                    NSLog(@"loginUname2====%@",[defaults objectForKey:@"uname"]);
                     
                     if (_pwLoginView.rememberPwBtn.isSelected) {
                     [USER_DEFAULTS setObject:_userInfo.password forKey:@"password"];
@@ -194,28 +194,29 @@
                     
 
                     
-                    if (self.jumpURL) {
-                        
-                        if ([self.jumpURL hasPrefix:@"http"]) {
-                          
-                            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:self.jumpURL title:@""];
-                            [self.navigationController pushViewController:vc animated:YES];
-
-                            
-                        }else{
-                        
-                            MineViewController *vc = [[MineViewController alloc]init];
-                            [self.navigationController pushViewController:vc animated:YES];
-
-                        }
-                    }
-                    else{
-                    
-                        MineViewController *vc = [[MineViewController alloc]init];
-                        [self.navigationController pushViewController:vc animated:YES];
-                    
-                    }
-                    
+//                    if (self.jumpURL) {
+//                        
+//                        if ([self.jumpURL hasPrefix:@"http"]) {
+//                          
+//                            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:self.jumpURL title:@""];
+//                            [self.navigationController pushViewController:vc animated:YES];
+//
+//                            
+//                        }else{
+//                        
+//                            MineViewController *vc = [[MineViewController alloc]init];
+//                            [self.navigationController pushViewController:vc animated:YES];
+//
+//                        }
+//                    }
+//                    else{
+//                    
+//                        MineViewController *vc = [[MineViewController alloc]init];
+//                        [self.navigationController pushViewController:vc animated:YES];
+//                    
+//                    }
+             
+                    [self.navigationController popViewControllerAnimated:YES];
                     
                     
                 });

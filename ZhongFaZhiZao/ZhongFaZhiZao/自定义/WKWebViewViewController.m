@@ -9,7 +9,11 @@
 #import "WKWebViewViewController.h"
 #import "PwLoginViewController.h"
 
-@interface WKWebViewViewController ()<WKNavigationDelegate,WKUIDelegate,UIWebViewDelegate,WKScriptMessageHandler>
+@interface WKWebViewViewController ()<WKNavigationDelegate,WKUIDelegate,UIWebViewDelegate,WKScriptMessageHandler>{
+
+    
+    NSString *_jumpUrl;
+}
 
 @property (nonatomic,strong) WKWebView *webView;
 @property (nonatomic,copy) NSString *urlStr;
@@ -53,6 +57,13 @@
     //self.navigationController.title=_navigatorTitle;
     self.navigationController.navigationBar.barTintColor=[UIColor blueColor];
     
+    if(_jumpUrl) {
+        _urlStr = _jumpUrl;
+        _jumpUrl = nil;
+        _isLoaing = NO;
+        [self loadWebViewData];
+        
+    }
 }
 
 
@@ -65,7 +76,7 @@
     navView.viewController = self;
     [self.view addSubview:navView];
     
-    
+    _jumpUrl = nil;
 //    创建webview
     WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc]init];
     
@@ -149,6 +160,11 @@
             [cookieDic setObject:cookie.value forKey:cookie.name];
         }
         
+        if ([USER_DEFAULTS objectForKey:@"token"]) {
+            [cookieDic setObject:[USER_DEFAULTS objectForKey:@"token"] forKey:@"zfa_token"];
+            
+        }
+        
         // cookie重复，先放到字典进行去重，再进行拼接
         for (NSString *key in cookieDic) {
             NSString *appendString = [NSString stringWithFormat:@"%@=%@;", key, [cookieDic valueForKey:key]];
@@ -159,6 +175,7 @@
         WKUserContentController *userContentController = _webView.configuration.userContentController;
         WKUserScript *script = [[WKUserScript alloc] initWithSource:cookieValue injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO];
         [userContentController addUserScript:script];
+        [request addValue:cookieValue forHTTPHeaderField:@"Cookie"];
 
         [request addValue:@"ios" forHTTPHeaderField:@"app"];
         [self.webView loadRequest:request];
@@ -179,6 +196,11 @@
         NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
         for (NSHTTPCookie *cookie in [cookieJar cookies]) {
             [cookieDic setObject:cookie.value forKey:cookie.name];
+        }
+        
+        if ([USER_DEFAULTS objectForKey:@"token"]) {
+            [cookieDic setObject:[USER_DEFAULTS objectForKey:@"token"] forKey:@"zfa_token"];
+            
         }
         
         // cookie重复，先放到字典进行去重，再进行拼接
@@ -254,6 +276,13 @@
     if([url containsString:LoginURL]) {
         
         decisionHandler(WKNavigationResponsePolicyCancel);
+        
+        
+        NSArray *separatedStr = [url componentsSeparatedByString:@"service="];
+        
+        NSString *jumpStr = [separatedStr objectAtIndex:1];
+        
+        _jumpUrl = [separatedStr objectAtIndex:1];
         
         PwLoginViewController *vc = [[PwLoginViewController alloc]init];
         
