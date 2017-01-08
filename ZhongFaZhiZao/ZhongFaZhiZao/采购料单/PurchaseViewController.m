@@ -10,10 +10,16 @@
 #import "PwLoginViewController.h"
 #import "WKWebViewViewController.h"
 
-@interface PurchaseViewController ()<WKNavigationDelegate,WKUIDelegate,UIWebViewDelegate>
+@interface PurchaseViewController ()<WKNavigationDelegate,WKUIDelegate,UIWebViewDelegate>{
+
+    NSString *_jumpUrl;
+
+}
 
 @property (nonatomic,strong) WKWebView *webView;
 @property(nonatomic,assign) BOOL isLoaing;
+@property (nonatomic,copy) NSString *urlStr;
+
 
 @end
 
@@ -27,6 +33,14 @@
     [self.navigationController setNavigationBarHidden:YES];
     
     [self.tabBarController.tabBar setHidden:NO];
+    
+//    if(_jumpUrl) {
+//        _urlStr = _jumpUrl;
+//        _jumpUrl = nil;
+//        _isLoaing = NO;
+//        [self loadWebViewData];
+//        
+//    }
 }
 
 
@@ -156,6 +170,12 @@
     if([url containsString:LoginURL]) {
         
         decisionHandler(WKNavigationResponsePolicyCancel);
+        
+        
+        NSArray *separatedStr = [url componentsSeparatedByString:@"service="];
+        
+        _jumpUrl = [separatedStr objectAtIndex:1];
+
         
                 PwLoginViewController *vc = [[PwLoginViewController alloc]init];
         

@@ -32,7 +32,6 @@
     
      [self.tabBarController.tabBar setHidden:NO];
     
-    _jumpUrl = [[NSString alloc]init];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:USER_CENTER]];
     
