@@ -152,7 +152,7 @@
 //                    self.userInfo.createDate = response[@"create_date"];
 //                    self.userInfo.uid = response[@"uid"];
 //                    self.userInfo.isLogin = YES;
-                    
+                    self.userInfo = [UserInfo sharedUserInfo];
                     self.userInfo.uid = response[@"uid"];
                     self.userInfo.token = response[@"token"];
                     self.userInfo.uname = response[@"uname"];
@@ -168,9 +168,22 @@
                     [USER_DEFAULTS setObject:_userInfo.uid forKey:@"uid"];
                     [USER_DEFAULTS setObject:_userInfo.token forKey:@"token"];
                     [USER_DEFAULTS setObject:_userInfo.uname forKey:@"uname"];
+//                    [USER_DEFAULTS setObject:response[@"uname"] forKey:@"uname"];
                     [USER_DEFAULTS synchronize];
                     
+                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                    [defaults setObject:_userInfo.token forKey:@"token"];
+                    [defaults setObject:_userInfo.uid forKey:@"uid"];
+                    [defaults setObject:_userInfo.uname forKey:@"uname"];
+                    [defaults synchronize];
                     
+                    NSLog(@"loginTOken====%@",[USER_DEFAULTS objectForKey:@"token"]);
+                     NSLog(@"loginUid====%@",[USER_DEFAULTS objectForKey:@"uid"]);
+                     NSLog(@"loginUname====%@",[USER_DEFAULTS objectForKey:@"uname"]);
+                    
+                    NSLog(@"loginTOken2====%@",[defaults objectForKey:@"token"]);
+                    NSLog(@"loginUid2====%@",[defaults objectForKey:@"uid"]);
+                    NSLog(@"loginUname2====%@",[defaults objectForKey:@"uname"]);
                     
                     if (_pwLoginView.rememberPwBtn.isSelected) {
                     [USER_DEFAULTS setObject:_userInfo.password forKey:@"password"];
@@ -219,7 +232,11 @@
             }else if ([response[@"resultCode"]integerValue] == 1009){
                 
                 [WKProgressHUD popMessage:@"账号已过期" inView:self.view duration:HUD_DURATION animated:YES];
+            }else if ([response[@"resultCode"]integerValue] == 1010){
+                
+                [WKProgressHUD popMessage:@"密码错误" inView:self.view duration:HUD_DURATION animated:YES];
             }
+
             else{
                 [WKProgressHUD popMessage:@"登录失败" inView:self.view duration:HUD_DURATION animated:YES];
             }

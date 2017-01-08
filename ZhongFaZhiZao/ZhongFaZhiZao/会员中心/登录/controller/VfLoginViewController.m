@@ -165,7 +165,7 @@
             if ([response[@"resultCode"]integerValue] == 1000) {
                 [WKProgressHUD popMessage:@"登录成功" inView:self.view duration:HUD_DURATION animated:YES];
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                    self.userInfo = [UserInfo sharedUserInfo];
+                    self.userInfo = [UserInfo sharedUserInfo];
 //                    self.userInfo.desId = response[@"desId"];
 //                    self.userInfo.mob = response[@"mob"];
 //                    self.userInfo.nickName = response[@"nick_name"];
