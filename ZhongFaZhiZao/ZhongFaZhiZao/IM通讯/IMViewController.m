@@ -44,7 +44,7 @@
 //    [WKProgressHUD popMessage:@"即时通讯" inView:self.view duration:HUD_DURATION animated:YES];
     
 //    是否显示网络状态
-    self.isShowNetworkIndicatorView = YES;
+    self.isShowNetworkIndicatorView = NO;
 //    是否显示连接状态
     self.showConnectingStatusOnNavigatorBar = YES;
 //    设置默认的聊天列表类型
