@@ -8,12 +8,6 @@
 
 #import "AskTableViewCell.h"
 
-//#define AskCellW    351.0
-//#define AskCellH    240.0
-//
-//#define  AskMargin 12
-
-
 @implementation AskTableViewCell{
 
     UIView *_lowbgdView;
@@ -36,18 +30,6 @@
 }
 
 
-//- (void)setFrame:(CGRect)frame {
-//
-//    CGRect newFrame = frame;
-//    
-//    newFrame.size.width = frame.size.width - Margin*2;
-//    
-//    newFrame.origin.x = Margin;
-//    
-//    newFrame.size.height = newFrame.size.width / AskCellW * AskCellH;
-//    
-//    [super setFrame:newFrame];
-//}
 
 
 - (void)createUI {

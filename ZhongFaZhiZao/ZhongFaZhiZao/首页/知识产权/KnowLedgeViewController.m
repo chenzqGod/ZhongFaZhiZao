@@ -15,7 +15,8 @@
 #import "IMViewController.h"
 #import <RongIMKit/RCConversationViewController.h>
 #import "IMDetailViewController.h"
-
+#import "PwLoginViewController.h"
+#import "WKProgressHUD.h"
 
 @interface KnowLedgeViewController ()<UITableViewDelegate,UITableViewDataSource,RCIMUserInfoDataSource>{
 
@@ -404,98 +405,32 @@
 
 
 - (void)IMbtnClick:(UIButton *)button{
-
     
-    [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,GETRONG_TOKEN] parameters:nil success:^(id response) {
+    
+    if ([USER_DEFAULTS objectForKey:@"token"] == nil) {
         
-         _rongDic = [NSMutableDictionary dictionaryWithDictionary:response];
+        PwLoginViewController *vc = [[PwLoginViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
         
-        //登陆融云
+    }else{
+    
+        if ([USER_DEFAULTS objectForKey:@"rongtoken"] == nil) {
+            
+            [self ssssss];
+        }
         
-        //登录融云服务器,开始阶段可以先从融云API调试网站获取，之后token需要通过服务器到融云服务器取。
+        IMDetailViewController *chatViewController = [[IMDetailViewController alloc]init];
+        chatViewController.targetId = [NSString stringWithFormat:@"%@",_dataArray[button.tag-500000][@"shopId"]];
+        NSLog(@"targetId==%@",_dataArray[button.tag-500000][@"shopId"]);
+        chatViewController.title = @"在线咨询";
+        chatViewController.conversationType = ConversationType_PRIVATE;
         
-        NSString *token=RongTextToken;
-        
-        [[RCIM sharedRCIM] connectWithToken:_rongDic[@"token"] success:^(NSString *userId) {
-            
-            //设置用户信息提供者,页面展现的用户头像及昵称都会从此代理取 这里会跳到会话列表界面  就是我们平常QQ聊天都有一个
-            
-            //        会话的列表  如果想直接跳到聊天界面 下面再说
-            
-            [[RCIM sharedRCIM] setUserInfoDataSource:self];
-            
-            NSLog(@"Login successfully with userId: %@.", userId);
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                //            IMViewController *chatListViewController = [[IMViewController alloc]init];
-                IMDetailViewController *chatListViewController = [[IMDetailViewController alloc]init];
-//                chatListViewController.targetId = [_dataArray[button.tag-500000] objectForKey:@"shopId"];
-                chatListViewController.targetId = @"444078";
-                chatListViewController.title = @"在线咨询";
-                chatListViewController.conversationType = ConversationType_PRIVATE;
-                
-                [self.navigationController pushViewController:chatListViewController animated:YES];
-                
-            });
-            
-        } error:^(RCConnectErrorCode status) {
-            
-            NSLog(@"login error status: %ld.", (long)status);
-            
-        } tokenIncorrect:^{
-            
-            NSLog(@"token 无效 ，请确保生成token 使用的appkey 和初始化时的appkey 一致");
-            
-        }];
+        [self.navigationController pushViewController:chatViewController animated:YES];
 
         
-        
-    } failure:^(NSString *error) {
-        
-    }];
+    }
     
-//    //登陆融云
-//    
-//    //登录融云服务器,开始阶段可以先从融云API调试网站获取，之后token需要通过服务器到融云服务器取。
-//    
-//    NSString *token=RongTextToken;
-//    
-//    [[RCIM sharedRCIM] connectWithToken:token success:^(NSString *userId) {
-//        
-//        //设置用户信息提供者,页面展现的用户头像及昵称都会从此代理取 这里会跳到会话列表界面  就是我们平常QQ聊天都有一个
-//        
-////        会话的列表  如果想直接跳到聊天界面 下面再说
-//        
-//        [[RCIM sharedRCIM] setUserInfoDataSource:self];
-//        
-//        NSLog(@"Login successfully with userId: %@.", userId);
-//        
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            
-////            IMViewController *chatListViewController = [[IMViewController alloc]init];
-//            IMDetailViewController *chatListViewController = [[IMDetailViewController alloc]init];
-//            chatListViewController.targetId = @"1";
-////            [[[_dataArray objectAtIndex:indexPath.row] objectForKey:@"shopId"] floatValue]]
-//            chatListViewController.title = @"话题";
-//            chatListViewController.conversationType = ConversationType_PRIVATE;
-//            
-//            [self.navigationController pushViewController:chatListViewController animated:YES];
-//            
-//        });
-//        
-//    } error:^(RCConnectErrorCode status) {
-//        
-//        NSLog(@"login error status: %ld.", (long)status);
-//        
-//    } tokenIncorrect:^{
-//        
-//        NSLog(@"token 无效 ，请确保生成token 使用的appkey 和初始化时的appkey 一致");
-//        
-//    }];
-
-    
-}
+  }
 
 - (void)getUserInfoWithUserId:(NSString *)userId completion:(void(^)(RCUserInfo* userInfo))completion
 
@@ -521,37 +456,49 @@
         
     }];
     
-    //此处为了演示写了一个用户信息
-    
-//    if ([@"1" isEqual:userId]) {
-//        
-//        RCUserInfo *user = [[RCUserInfo alloc]init];
-//        
-//        user.userId = @"1";
-//        
-//        user.name = @"测试1";
-//        
-//        user.portraitUri = @"https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=1756054607,4047938258&fm=96&s=94D712D20AA1875519EB37BE0300C008";
-//        
-//        return completion(user);
-//        
-//    }
-//    else if([@"2" isEqual:userId]) {
-//        
-//        RCUserInfo *user = [[RCUserInfo alloc]init];
-//        
-//        user.userId = @"2";
-//        
-//        user.name = @"测试2";
-//        
-//        user.portraitUri = @"https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=1756054607,4047938258&fm=96&s=94D712D20AA1875519EB37BE0300C008";
-//        
-//        return completion(user);
-//        
-//    }
-//    
+  
 }
 
+-(void)ssssss{
+    
+    [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,GETRONG_TOKEN] parameters:nil success:^(id response) {
+        
+        //        _rongDic = [NSMutableDictionary dictionaryWithDictionary:response];
+        
+        [USER_DEFAULTS setObject:response[@"token"] forKey:@"rongtoken"];
+        
+        NSString *token = [USER_DEFAULTS objectForKey:@"rongtoken"];
+        
+        if ([USER_DEFAULTS objectForKey:@"token"]) {
+            
+            [[RCIM sharedRCIM] connectWithToken:token success:^(NSString *userId) {
+                
+                //设置用户信息提供者,页面展现的用户头像及昵称都会从此代理取 这里会跳到会话列表界面  就是我们平常QQ聊天都有一个
+                
+                //        会话的列表  如果想直接跳到聊天界面 下面再说
+                
+                //                [[RCIM sharedRCIM] setUserInfoDataSource:self];
+                
+                NSLog(@"Login successfully with userId: %@.", userId);
+                
+                
+            } error:^(RCConnectErrorCode status) {
+                
+                NSLog(@"login error status: %ld.", (long)status);
+                
+            } tokenIncorrect:^{
+                
+                NSLog(@"token 无效 ，请确保生成token 使用的appkey 和初始化时的appkey 一致");
+                
+            }];
+            
+        }
+        
+    } failure:^(NSString *error) {
+        
+    }];
+    
+}
 
 
 - (void)didReceiveMemoryWarning {
@@ -559,14 +506,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

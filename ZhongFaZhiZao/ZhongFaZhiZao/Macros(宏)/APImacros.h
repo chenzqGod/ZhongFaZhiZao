@@ -30,7 +30,7 @@
 
 //交互
 #define SERVER_LOGIN               @"http://cectest.cecb2b.com/waps/member/login"
-#define USER_CENTER                @"http://cectest.cecb2b.com/waps/member/home"
+#define USER_CENTER                @"/member/home"
 #define LoginURL                   @"/member/login"
 
 //融云  
@@ -67,9 +67,3 @@
 //采购料单
 #define PURCHASE_LIST              @"http://wap.cecb2b.com/cart/list"
 
-//#define HOST_URL                    @"http://test.neisha.cc"
-// 登录注册
-//#define LOGIN                       @"/api/login/dynamic"
-//#define FOGET_PW                    @"/app/user/checkmobcode"
-//#define SET_PW                      @"/app/user/findPwd"
-//#define SEND_VF                     @"/app/user/sendcode"

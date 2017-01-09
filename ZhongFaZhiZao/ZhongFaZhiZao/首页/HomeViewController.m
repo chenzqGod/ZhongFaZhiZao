@@ -613,7 +613,6 @@
  
     if (section == 0) {
         
-//        return 2;
         return 1;
         
     }
@@ -763,19 +762,13 @@ else if (indexPath.section == 0){
         [btn3 addTarget:section1 action:@selector(cellBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         [imageViewS addSubview:btn3];
         
-        
-        
     }
 
 
-
-    
     return cell;
-
 
 }
 else if (indexPath.section == 4){
-    
     
     
     static NSString * CellIdentifier = @"solveCell";
@@ -801,11 +794,8 @@ else if (indexPath.section == 5){
 
     cell.cityLabel.text = [NSString stringWithFormat:@"%@",_cityArray[indexPath.row][@"city"]];
     
+   
     return cell;
-
-
-    
-
 }
     
     static NSString * CellIdentifier = @"cell";
@@ -821,7 +811,6 @@ else if (indexPath.section == 5){
 {
     if (indexPath.section == 0) {
         
-//        return CGSizeMake(175*screenScale, 197*screenScale);
         return CGSizeMake(screenWidth, 197*screenScale);
     }
     else if (indexPath.section == 1){
@@ -831,12 +820,9 @@ else if (indexPath.section == 5){
     else if (indexPath.section == 2){
         
         if (indexPath.row <= 5){
-        
-//        return CGSizeMake(374/2.0*screenScale, 45*screenScale);
             
         return CGSizeMake((screenWidth-1)/2.0, 45*screenScale);
 
-        
         }
         
         return CGSizeMake((screenWidth-1)/2.0, 72*screenScale);
@@ -931,8 +917,6 @@ else if (indexPath.section == 5){
             
             WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/nicInfo/5644790?corpId="title:@"商品详情页"];
             
-//            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://www.cecb2b.com/solution/index.php?r=project-info%2Ftech&id=5644828"title:@"商品详情页"];
-            
             
             [self.navigationController pushViewController:vc animated:YES];
         }
@@ -958,7 +942,6 @@ else if (indexPath.section == 5){
             
         }
         
-    
     }
     else if (indexPath.section == 2 && indexPath.row <= 5) {
         
@@ -990,8 +973,6 @@ else if (indexPath.section == 5){
         if (indexPath.row == 0) {
             
             WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://wap.cecb2b.com/corp/nicInfo/5644276?corpId=444820"title:@"商品详情页"];
-            
-            //            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://www.cecb2b.com/solution/index.php?r=project-info%2Ftech&id=5644828"title:@"商品详情页"];
             
             
             [self.navigationController pushViewController:vc animated:YES];
@@ -1054,9 +1035,6 @@ else if (indexPath.section == 5){
     }
     
 }
-
-
-
 
 
 -(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -1240,8 +1218,6 @@ else if (indexPath.section == 5){
 
 //6个圆形按钮点击事件
 - (void)mainButtonClick:(UIButton *)button{
-
-    NSLog(@"%ld",button.tag);
     
     
     if (button.tag == Supply ) {
@@ -1284,9 +1260,6 @@ else if (indexPath.section == 5){
 
 - (void)mainButtonClick2:(UIButton *)button{
     
-    NSLog(@"%ld",button.tag);
-    
-    
     if (button.tag == 2001){
         
         WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,SCIENCE_LIST] title:@"供应链采购"];
@@ -1312,8 +1285,6 @@ else if (indexPath.section == 5){
         
     }
     else{
-        
-//        [WKProgressHUD popMessage:@"敬请期待" inView:self.view duration:HUD_DURATION animated:YES];
         
     }
     
@@ -1345,11 +1316,7 @@ else if (indexPath.section == 5){
 //    button.selected = YES;
 //    self.tmpbtn = button;
     
-    
-    
-
 }
-
 
 
 //供应链header点击事件
@@ -1450,24 +1417,11 @@ else if (indexPath.section == 5){
 }
 
 
-
-
-
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

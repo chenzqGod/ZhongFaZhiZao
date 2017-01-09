@@ -14,6 +14,9 @@
 #import "NSString+Mobile.h"
 #import "MineViewController.h"
 #import "WKWebViewViewController.h"
+#import <RongIMKit/RongIMKit.h>
+#import <RongIMKit/RCConversationViewController.h>
+
 
 @interface PwLoginViewController ()<UITextFieldDelegate>
 
@@ -176,14 +179,9 @@
 //                    [defaults setObject:_userInfo.uid forKey:@"uid"];
 //                    [defaults setObject:_userInfo.uname forKey:@"uname"];
 //                    [defaults synchronize];
-//                    
-                    NSLog(@"loginTOken====%@",[USER_DEFAULTS objectForKey:@"token"]);
-                     NSLog(@"loginUid====%@",[USER_DEFAULTS objectForKey:@"uid"]);
-                     NSLog(@"loginUname====%@",[USER_DEFAULTS objectForKey:@"uname"]);
-//                    
-//                    NSLog(@"loginTOken2====%@",[defaults objectForKey:@"token"]);
-//                    NSLog(@"loginUid2====%@",[defaults objectForKey:@"uid"]);
-//                    NSLog(@"loginUname2====%@",[defaults objectForKey:@"uname"]);
+//
+                    [self ssssss];
+                    
                     
                     if (_pwLoginView.rememberPwBtn.isSelected) {
                     [USER_DEFAULTS setObject:_userInfo.password forKey:@"password"];
@@ -249,6 +247,47 @@
         
     }
     
+    
+}
+
+-(void)ssssss{
+
+    [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,GETRONG_TOKEN] parameters:nil success:^(id response) {
+        
+//        _rongDic = [NSMutableDictionary dictionaryWithDictionary:response];
+        
+         [USER_DEFAULTS setObject:response[@"token"] forKey:@"rongtoken"];
+        
+        NSString *token = [USER_DEFAULTS objectForKey:@"rongtoken"];
+       
+        if ([USER_DEFAULTS objectForKey:@"token"]) {
+            
+            [[RCIM sharedRCIM] connectWithToken:token success:^(NSString *userId) {
+                
+                //设置用户信息提供者,页面展现的用户头像及昵称都会从此代理取 这里会跳到会话列表界面  就是我们平常QQ聊天都有一个
+                
+                //        会话的列表  如果想直接跳到聊天界面 下面再说
+                
+//                [[RCIM sharedRCIM] setUserInfoDataSource:self];
+                
+                NSLog(@"Login successfully with userId: %@.", userId);
+                
+                
+            } error:^(RCConnectErrorCode status) {
+                
+                NSLog(@"login error status: %ld.", (long)status);
+                
+            } tokenIncorrect:^{
+                
+                NSLog(@"token 无效 ，请确保生成token 使用的appkey 和初始化时的appkey 一致");
+                
+            }];
+            
+        }
+        
+    } failure:^(NSString *error) {
+        
+    }];
     
 }
 
