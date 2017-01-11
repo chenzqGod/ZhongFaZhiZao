@@ -275,17 +275,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-//    
-//        static NSString *hotCellID = @"hotCellID";
-//        KnowLedgeTableViewCell *hotCell = [tableView dequeueReusableCellWithIdentifier:hotCellID];
-//        
-//        if (!hotCell) {
-//            hotCell = [[KnowLedgeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:hotCellID];
-//            //            hotCell.backgroundColor = [UIColor cyanColor];
-//            hotCell.selectionStyle = UITableViewCellSelectionStyleNone;
-//            
-////                [self.tableView reloadData];
-//        }
+
     static NSString *hotCellID = @"hotCellID";
     KnowLedgeTableViewCell *hotCell = [tableView dequeueReusableCellWithIdentifier:hotCellID];
     
@@ -435,26 +425,19 @@
 - (void)getUserInfoWithUserId:(NSString *)userId completion:(void(^)(RCUserInfo* userInfo))completion
 
 {
-    
-    [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,GETRONG_TOKEN] parameters:nil success:^(id response) {
-        
-        _rongDic = [NSMutableDictionary dictionaryWithDictionary:response];
+    if ([userId isEqualToString:[USER_DEFAULTS objectForKey:@"uid"]]) {
         
         RCUserInfo *user = [[RCUserInfo alloc]init];
         
-        user.userId = _rongDic[@"uid"];
+        user.userId = [USER_DEFAULTS objectForKey:@"uid"];
         
-        user.name = _rongDic[@"uname"];
+        user.name = [USER_DEFAULTS objectForKey:@"uname"];
         
         user.portraitUri = @"https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=1756054607,4047938258&fm=96&s=94D712D20AA1875519EB37BE0300C008";
         
         return completion(user);
 
-        
-        
-    } failure:^(NSString *error) {
-        
-    }];
+    }
     
   
 }
