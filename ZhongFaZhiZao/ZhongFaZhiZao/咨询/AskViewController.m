@@ -181,24 +181,6 @@
 
 }
 
-//自定义footer
-//
-//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-//    
-//    if (section == 0) {
-//        
-//        UIView *view = [[UIView alloc]init];
-//        view.frame = CGRectMake(0 , 0, screenWidth, 14);
-//        view.backgroundColor = [UIColor cyanColor];
-//        
-//        return view;
-//        
-//    }
-//    
-//    return nil;
-//    
-//}
-
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     
@@ -215,8 +197,8 @@
 //
 //    [self.navigationController pushViewController:vc animated:YES];
     
-//    WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@",self.dataArr[indexPath.section][@"url"]] title:@"消息中心"];
-    WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://www.baidu.com" title:@"消息中心"];
+    WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@",self.dataArr[indexPath.section][@"url"]] title:@"消息中心"];
+//    WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://www.baidu.com" title:@"消息中心"];
     [self.navigationController pushViewController:wkvc animated:YES];
 
     

@@ -212,10 +212,5 @@
 }
 
 
-- (void)setDictionary:(NSMutableArray *)dataArr{
-
-    
-    
-}
 
 @end

@@ -63,7 +63,6 @@
     _lowbgdView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.sumLabel.frame)+6,screenWidth-2*Margin, 34)];
     
     
-//    _lowbgdView.backgroundColor = [UIColor colorWithHexString:@"#244356"];
     _lowbgdView.backgroundColor = [UIColor colorWithRed:36/255.0 green:67/255.0 blue:86/255.0 alpha:0.1];
 
     [backView addSubview:_lowbgdView];
@@ -83,66 +82,6 @@
     
 }
 
-//- (void)layoutSubviews {
-//
-//    [super layoutSubviews];
-//    
-//    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//       
-//        make.left.mas_equalTo(@14);
-//        make.width.mas_equalTo(@(self.frame.size.width-14*2));
-////        make.width.mas_equalTo(self.mas_width-14*2);
-//        make.height.mas_equalTo(@(24*screenH));
-//        make.top.mas_equalTo(@(8*screenH));
-//        
-//    }];
-//    
-//    [self.mainImgView mas_makeConstraints:^(MASConstraintMaker *make) {
-//       
-//        make.left.mas_equalTo(@10);
-//        make.width.mas_equalTo(@(self.frame.size.width-10*2));
-//        make.top.mas_equalTo(self.titleLabel.mas_bottom).offset(8*screenH);
-//        make.height.mas_equalTo(@100);
-//        
-//    }];
-//    
-//    [self.sumLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//       
-//        make.left.mas_equalTo(self.titleLabel.mas_left);
-//        make.width.mas_equalTo(self.titleLabel.mas_width);
-//        make.top.mas_equalTo(self.mainImgView.mas_bottom).offset(8*screenH);
-//        make.height.mas_equalTo(@(16.5*screenH));
-//        
-//    }];
-//    
-//    [_lowbgdView mas_makeConstraints:^(MASConstraintMaker *make) {
-//       
-//        make.bottom.mas_equalTo(self.mas_bottom);
-//        make.left.mas_equalTo(self.mas_left);
-//        make.right.mas_equalTo(self.mas_right);
-//        make.height.mas_equalTo(@(screenH*35));
-//        
-//    }];
-//
-//    [_yueLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//       
-//        make.left.mas_equalTo(self.sumLabel.mas_left);
-//        make.width.mas_equalTo(@50);
-//        make.height.mas_equalTo(screenH*16.5);
-//        make.centerY.mas_equalTo(_lowbgdView.mas_centerY);
-//        
-//    }];
-//
-//    [_pimageView mas_makeConstraints:^(MASConstraintMaker *make) {
-//       
-//        make.right.mas_equalTo(self.titleLabel.mas_right);
-//        make.width.mas_equalTo(@8);
-//        make.height.mas_equalTo(@15);
-//        make.centerY.mas_equalTo(_lowbgdView.mas_centerY);
-//        
-//    }];
-//    
-//}
 
 
 - (void)awakeFromNib {

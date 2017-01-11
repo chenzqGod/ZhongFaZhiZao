@@ -20,12 +20,10 @@
 
 @interface KnowLedgeViewController ()<UITableViewDelegate,UITableViewDataSource,RCIMUserInfoDataSource>{
 
-    
-    NSDictionary *_dataDic;
-    
     NSMutableArray *_dataArray;
     
-    NSMutableDictionary *_rongDic;
+    NSString *_rongNameStr;
+    NSMutableArray *_rongNameArr;
 }
 
 @property (nonatomic,strong) UITableView *tableView;
@@ -36,18 +34,16 @@
 @implementation KnowLedgeViewController
 
 
+- (NSMutableArray *)rongNameArr{
 
-- (NSDictionary *)dataDic{
-
-    if (!_dataDic) {
+    
+    if (!_rongNameArr) {
         
-        _dataDic = [NSDictionary dictionary];
+        _rongNameArr = [NSMutableArray array];
     }
     
-    return _dataDic;
-
+    return _rongNameArr;
 }
-
 
 - (void)viewWillAppear:(BOOL)animated{
     
@@ -64,7 +60,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _dataArray = [[NSMutableArray alloc]init];
-    _rongDic = [[NSMutableDictionary alloc]init];
     
     self.flag = 0;
     
@@ -119,8 +114,6 @@
 #pragma mark - loadData
 - (void)loadData{
     
-
-//    NSDictionary *parameters = @{@"pageIndex":[NSNumber numberWithInteger:self.pageIndex]};
     
 //    NSDictionary *parameters = [[NSDictionary alloc]initWithObjectsAndKeys:[NSNumber numberWithInteger:self.pageIndex],@"pageIndex", nil];
     
@@ -130,8 +123,6 @@
         
         if ([response[@"resultCode"]integerValue] == 1000) {
         
-//            _dataDic = [NSDictionary dictionaryWithDictionary:response[@"data"]];
-//            _dataArray = [NSMutableArray arrayWithArray:_dataDic[@"goodList"]];
 
             if (self.pageIndex == 1) {
                 [_dataArray removeAllObjects];
@@ -145,13 +136,13 @@
             
             [self.tableView reloadData];
             
-//            response[@"data"][@"goodList1"]
             
         }
         else if ([response[@"resultCode"]integerValue] == 1001){
         
             NSLog(@"知识产权页面请求失败");
         
+            
         }
         
     } failure:^(NSString *error) {
@@ -205,20 +196,6 @@
         
         for (NSInteger j = 0; j < 3; j++) {
             
-//            UILabel *buttonLbl = [[UILabel alloc]init];
-//            buttonLbl.frame = CGRectMake(i*1+(screenWidth-2)/3.0*i, 1*j+45*j, (screenWidth-2)/3.0, 45);
-//            buttonLbl.backgroundColor = [UIColor cyanColor];
-//            [buttonView addSubview:buttonLbl];
-//            
-//            UIImageView *buttonIcon = [[UILabel alloc]initWithFrame:CGRectMake(20*screenScale, (45-26)/2.0, 26, 26)];
-//            buttonIcon.backgroundColor = [UIColor redColor];
-//            [buttonLbl addSubview:buttonIcon];
-            
-//            UILabel *btnSumLabel = [[UILabel alloc]initWithFrame:CGRectMake(12*screenScale+CGRectGetMaxX(buttonIcon.frame), (90-16)/2.0, 62, 16)];
-//            btnSumLabel.text = @"数据库定制";
-//            btnSumLabel.font = [UIFont systemFontOfSize:12.0];
-//            [buttonLbl addSubview:buttonLbl];
-            
             CustomButton *button = [CustomButton buttonWithType:UIButtonTypeCustom];
             button.frame = CGRectMake(i*1+(screenWidth-2)/3.0*i, 1*j+45*j, (screenWidth-2)/3.0, 45);
             button.backgroundColor = [UIColor whiteColor];
@@ -236,10 +213,7 @@
             self.flag++;
         }
         
-  
     }
-    
-    
     
 }
 
@@ -247,7 +221,6 @@
 #pragma mark - 点击事件
 - (void)buttonClick:(UIButton *)button{
 
-    
     
     NSArray *typeID = @[@"80004010",@"80004040",@"80004070",@"80004020",@"80004050",@"80004080",@"80004030",@"80004060",@"80004090"];
     CommitKnowledgeViewController *vc = [[CommitKnowledgeViewController alloc]init];
@@ -393,6 +366,26 @@
     
 }
 
+//获取店铺名称接口
+- (void)getRongName:(NSString *)corid{
+
+
+    _rongNameStr = @"";
+    
+    [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@/corp/%@/getCorpName",HOST_URL,corid] parameters:nil success:^(id response) {
+        
+        if ([response[@"state"]isEqualToString:@"Y"]) {
+            
+            _rongNameStr = response[@"data"][@"name"];
+        }
+        
+        
+    } failure:^(NSString *error) {
+        
+        
+    }];
+    
+}
 
 - (void)IMbtnClick:(UIButton *)button{
     
@@ -412,7 +405,15 @@
         IMDetailViewController *chatViewController = [[IMDetailViewController alloc]init];
         chatViewController.targetId = [NSString stringWithFormat:@"%@",_dataArray[button.tag-500000][@"shopId"]];
         NSLog(@"targetId==%@",_dataArray[button.tag-500000][@"shopId"]);
-        chatViewController.title = @"在线咨询";
+        
+        if (_rongNameStr) {
+            
+            chatViewController.title = _rongNameStr;
+
+        }else{
+            chatViewController.title = @"在线咨询";
+        }
+        
         chatViewController.conversationType = ConversationType_PRIVATE;
         
         [self.navigationController pushViewController:chatViewController animated:YES];
@@ -446,7 +447,6 @@
     
     [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,GETRONG_TOKEN] parameters:nil success:^(id response) {
         
-        //        _rongDic = [NSMutableDictionary dictionaryWithDictionary:response];
         
         [USER_DEFAULTS setObject:response[@"token"] forKey:@"rongtoken"];
         

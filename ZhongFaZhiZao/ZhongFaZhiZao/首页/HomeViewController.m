@@ -69,17 +69,6 @@
 
 //    [self loadadData];
     
-//    NSLog(@"loginTOken====%@",[USER_DEFAULTS objectForKey:@"token"]);
-//    NSLog(@"loginUid====%@",[USER_DEFAULTS objectForKey:@"uid"]);
-//    NSLog(@"loginUname====%@",[USER_DEFAULTS objectForKey:@"uname"]);
-//
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//
-//    NSLog(@"loginTOken2====%@",[defaults objectForKey:@"token"]);
-//    NSLog(@"loginUid2====%@",[defaults objectForKey:@"uid"]);
-//    NSLog(@"loginUname2====%@",[defaults objectForKey:@"uname"]);
-
-    
     [super viewWillAppear:YES];
    self.tabBarController.tabBar.hidden=NO;
     
@@ -184,8 +173,6 @@
 
 - (void)loadCityData{
     
-//    NSLog(@"地址地址地址 %@",[NSString stringWithFormat:@"%@%@",HOST_URL,Electronic_API]);
-    
     [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,Electronic_API] parameters:nil success:^(id response) {
         
         if ([response[@"resultCode"]integerValue] == 1000) {
@@ -287,9 +274,6 @@
 
 //每个cell页头
 - (void)createCollectionHeader {
-
-//    self.collectionHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 80)];
-//    self.collectionHeaderView.backgroundColor = [UIColor blueColor];
     
 }
 
@@ -346,24 +330,6 @@
     hangyeLine.backgroundColor = TEXT_LINE_COLOR;
     [self.adView addSubview:hangyeLine];
     
-//    UILabel *hotLabel = [[UILabel alloc]initWithFrame:CGRectMake(7+CGRectGetMaxX(hangyeLine.frame), (40-12)/2.0, 20, 12)];
-//    hotLabel.backgroundColor = [UIColor blackColor];
-//    hotLabel.text = @"HOT";
-//    hotLabel.textAlignment = NSTextAlignmentCenter;
-//    hotLabel.font = [UIFont systemFontOfSize:8.0];
-//    hotLabel.textColor = [UIColor whiteColor];
-//    hotLabel.layer.cornerRadius = 1.5;
-//    hotLabel.layer.masksToBounds = YES;
-//    [self.adView addSubview:hotLabel];
-////
-//    UILabel *hotSumLabel = [[UILabel alloc]initWithFrame:CGRectMake(5+CGRectGetMaxX(hotLabel.frame), (40-15)/2.0, screenWidth-margins-(5+CGRectGetMaxX(hotLabel.frame)), 15)];
-//    hotSumLabel.numberOfLines = 1;
-//    hotSumLabel.text= @"想回到过去，试着让故事继续，至少不再让你离我而去，想看你看的世界,想在你梦的画面";
-//    hotSumLabel.textAlignment = NSTextAlignmentLeft;
-//    hotSumLabel.font = [UIFont systemFontOfSize:13.0];
-//    [self.adView addSubview:hotSumLabel];
-    
-    
     _TopLineView = [[ZYJHeadLineView alloc]initWithFrame:CGRectMake(7+CGRectGetMaxX(hangyeLine.frame), 0, screenWidth-margins-(7+CGRectGetMaxX(hangyeLine.frame)), 40)];
 //    _TopLineView.center = CGPointMake(ScreenWidth/2.0, ScreenHeight/2.0-150);
     _TopLineView.backgroundColor = [UIColor whiteColor];
@@ -371,6 +337,10 @@
     _TopLineView.clickBlock = ^(NSInteger index){
         ZYJHeadLineModel *model = weakSelf.dataArr[index];
         NSLog(@"%@,%@",model.type,model.title);
+        
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@",_adid44Arr[index][@"url"]] title:@"广告"];
+        
+        [self.navigationController pushViewController:vc animated:YES];
     };
     [self.adView addSubview:_TopLineView];
     
@@ -688,8 +658,6 @@
 
         
     }
-    
-    
     
   else  if (indexPath.section == 3) {
         
@@ -1327,43 +1295,6 @@ else if (indexPath.section == 5){
 
 }
 
-////其他header点击事件
-//- (void)buttonClick:(UIImageView *)i{
-//    
-//    if (i.tag == 1+50000) {
-//        
-//        WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,SCIENCE_LIST] title:@"供应链采购"];
-//        [self.navigationController pushViewController:wkvc animated:YES];
-//
-//    }
-//    else if (i.tag == 2+50000){
-//    
-//        KnowLedgeViewController *vc = [[KnowLedgeViewController alloc]init];
-//        [self.navigationController pushViewController:vc animated:YES];
-//
-//        
-//    }
-//    else if (i.tag == 3+50000){
-//        
-//        WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,Intelligence_LIST] title:@"供应链采购"];
-//        [self.navigationController pushViewController:wkvc animated:YES];
-//
-//        
-//    }
-//    else if (i.tag == 4+50000){
-//        
-//        WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,SOLVE_LIST] title:@"供应链采购"];
-//        [self.navigationController pushViewController:wkvc animated:YES];
-//
-//    
-//    }
-//    else{
-//    
-//    }
-//    
-//}
-
-
 
 //跳转到搜索页
 - (void)SearchButtonPush{
@@ -1378,8 +1309,6 @@ else if (indexPath.section == 5){
     [self.navigationController pushViewController:vc animated:YES];
     
 }
-
-
 
 
 #pragma mark - scrollView滑动
@@ -1408,7 +1337,6 @@ else if (indexPath.section == 5){
                
                
            } completion:^(BOOL finished) {
-               
                
                
            }];

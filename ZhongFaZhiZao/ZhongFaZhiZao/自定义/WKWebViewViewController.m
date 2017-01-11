@@ -46,10 +46,8 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
-    
     self.tabBarController.tabBar.hidden = YES;
-    //    [[self navigationController] setNavigationBarHidden:YES animated:NO];
-    
+    self.tabBarController.tabBar.frame = CGRectZero;
     
     NSLog(@"%@",_navigatorTitle);
     self.title=_navigatorTitle;
@@ -67,6 +65,12 @@
 }
 
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.tabBarController.tabBar.frame = CGRectMake(0, screenHeight-49, screenWidth, 49);
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

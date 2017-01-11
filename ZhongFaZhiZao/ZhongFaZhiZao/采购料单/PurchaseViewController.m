@@ -183,7 +183,6 @@
     
     //    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
-    //    _imageView.frame = CGRectZero;
 }
 
 //-(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {

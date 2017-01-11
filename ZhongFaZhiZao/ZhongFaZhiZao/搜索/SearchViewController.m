@@ -205,7 +205,6 @@
     [self.textField resignFirstResponder];
     if ([self.textField.text isEqualToString:@""] ) {
         
-//        WKProgressHUD
     }
 }
 
