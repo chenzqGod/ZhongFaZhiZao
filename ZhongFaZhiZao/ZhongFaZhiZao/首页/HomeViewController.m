@@ -30,7 +30,7 @@
 
 #import "ZYJHeadLineView.h"
 #import "ZYJHeadLineModel.h"
-
+#import "FinanceViewController.h"
 
 #define margins 8
 
@@ -353,7 +353,7 @@
     [self.headerView addSubview:self.mainBtnView];
 
   
-    NSArray *mainBtnImageArr = @[@"供应链icon",@"智能创新icon",@"科技成果icon",@"解决方案icon",@"产权专利icon",@"金融"];
+    NSArray *mainBtnImageArr = @[@"供应链icon",@"智能创新icon",@"科技成果icon",@"解决方案icon",@"产权专利icon",@"金融icon"];
     NSArray *mainBtnArr = @[@"供应链采购",@"智能创新",@"科技成果",@"解决方案",@"知识产权专利",@"金融服务"];
     
     int flag = 0;
@@ -1220,8 +1220,10 @@ else if (indexPath.section == 5){
     }
     else{
     
-        [WKProgressHUD popMessage:@"敬请期待" inView:self.view duration:HUD_DURATION animated:YES];
+//        [WKProgressHUD popMessage:@"敬请期待" inView:self.view duration:HUD_DURATION animated:YES];
         
+        FinanceViewController *vc = [[FinanceViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 
 }

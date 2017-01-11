@@ -28,7 +28,6 @@
 
 
 //交互
-#define SERVER_LOGIN               @"http://cectest.cecb2b.com/waps/member/login"
 #define USER_CENTER                @"/member/home"
 #define LoginURL                   @"/member/login"
 
@@ -37,7 +36,11 @@
 #define GETRONG_NAME               @"/corp/{corpId}/getCorpName"
 
 #define RongTextToken             @"yTXK4Qh7VoK62uCyTsv6RXCq3wKvv+SHceNoxR7WTCWBiseR6gmMY/sGMdQUSmrtniLnJLSgtDl91xYI2kTlmg=="
-//zfa_token为参数 放到header里面
+
+//金融服务
+#define FINANCE_INNOVATE           @"/api/innovateFinance/list"             //创新金融
+#define FINANCE_SUPPLY             @"/api/supplyChainFinance/list"          //供应链金融
+#define FINANCE_LOAN               @"/api/smallLoanFinance/list"            //小额贷金融
 
 //知识产权
 #define PATENT_LIST                @"/api/patent/list"
