@@ -212,17 +212,17 @@
 //                    }
 //                    else{
 //                        
-//                        MineViewController *vc = [[MineViewController alloc]init];
-//                        [self.navigationController pushViewController:vc animated:YES];
-//                        
+                        MineViewController *vc = [[MineViewController alloc]init];
+                        [self.navigationController pushViewController:vc animated:YES];
+//
 //                    }
 
 //                    跳转到上2级页面
 //                    UIViewController * viewVC = [self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count - 2];
 //                    [self.navigationController popToViewController:viewVC animated:YES];
                     
-                    NSArray *controllers = [self.navigationController viewControllers];
-                    [self.navigationController popToViewController:controllers[controllers.count - 2] animated:YES];
+//                    NSArray *controllers = [self.navigationController viewControllers];
+//                    [self.navigationController popToViewController:controllers[controllers.count - 2] animated:YES];
                     
                 });
             }else if ([response[@"resultCode"]integerValue] == 1003){

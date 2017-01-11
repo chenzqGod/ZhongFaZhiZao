@@ -9,7 +9,6 @@
 //测试环境
 #define HOST_URL    @"http://cectest.cecb2b.com/waps"
 
-
 //正式环境
 //#define HOST_URL  @"http://wap.cecb2b.com"
 
