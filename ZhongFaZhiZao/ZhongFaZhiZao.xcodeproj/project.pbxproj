@@ -403,6 +403,8 @@
 		56EC15501E2628AA004AE01A /* jinrongmain@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56EC154E1E2628AA004AE01A /* jinrongmain@3x.png */; };
 		56EC15531E263E0D004AE01A /* 金融icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56EC15511E263E0D004AE01A /* 金融icon@2x.png */; };
 		56EC15541E263E0D004AE01A /* 金融icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56EC15521E263E0D004AE01A /* 金融icon@3x.png */; };
+		56EC15581E2710EE004AE01A /* InnovateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EC15571E2710EE004AE01A /* InnovateTableViewCell.m */; };
+		56EC155B1E271100004AE01A /* SupplyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EC155A1E271100004AE01A /* SupplyTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -988,6 +990,10 @@
 		56EC154E1E2628AA004AE01A /* jinrongmain@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jinrongmain@3x.png"; sourceTree = "<group>"; };
 		56EC15511E263E0D004AE01A /* 金融icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "金融icon@2x.png"; sourceTree = "<group>"; };
 		56EC15521E263E0D004AE01A /* 金融icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "金融icon@3x.png"; sourceTree = "<group>"; };
+		56EC15561E2710EE004AE01A /* InnovateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InnovateTableViewCell.h; sourceTree = "<group>"; };
+		56EC15571E2710EE004AE01A /* InnovateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InnovateTableViewCell.m; sourceTree = "<group>"; };
+		56EC15591E271100004AE01A /* SupplyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplyTableViewCell.h; sourceTree = "<group>"; };
+		56EC155A1E271100004AE01A /* SupplyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplyTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2282,6 +2288,7 @@
 		56EC15481E232778004AE01A /* 金融服务 */ = {
 			isa = PBXGroup;
 			children = (
+				56EC15551E2710BA004AE01A /* view */,
 				56EC15491E232821004AE01A /* FinanceViewController.h */,
 				56EC154A1E232821004AE01A /* FinanceViewController.m */,
 			);
@@ -2295,6 +2302,17 @@
 				56EC154E1E2628AA004AE01A /* jinrongmain@3x.png */,
 			);
 			path = "金融服务";
+			sourceTree = "<group>";
+		};
+		56EC15551E2710BA004AE01A /* view */ = {
+			isa = PBXGroup;
+			children = (
+				56EC15561E2710EE004AE01A /* InnovateTableViewCell.h */,
+				56EC15571E2710EE004AE01A /* InnovateTableViewCell.m */,
+				56EC15591E271100004AE01A /* SupplyTableViewCell.h */,
+				56EC155A1E271100004AE01A /* SupplyTableViewCell.m */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2675,6 +2693,7 @@
 				567B621A1DD020A0004D1CFE /* MJRefreshFooter.m in Sources */,
 				56045FA81DF17B0500BB5EB9 /* SetMeViewController.m in Sources */,
 				567B62751DD08870004D1CFE /* MineViewController.m in Sources */,
+				56EC15581E2710EE004AE01A /* InnovateTableViewCell.m in Sources */,
 				561AC0171DE6B832009C8EC3 /* WKWebViewViewController.m in Sources */,
 				567B62261DD020A1004D1CFE /* MJRefreshConst.m in Sources */,
 				567B620D1DD020A0004D1CFE /* MASLayoutConstraint.m in Sources */,
@@ -2787,6 +2806,7 @@
 				5609559D1DF7F11F00DA0B72 /* ForgetPwView.m in Sources */,
 				567B62191DD020A0004D1CFE /* MJRefreshComponent.m in Sources */,
 				567B61141DCADFF9004D1CFE /* main.m in Sources */,
+				56EC155B1E271100004AE01A /* SupplyTableViewCell.m in Sources */,
 				567B61FD1DD020A0004D1CFE /* AFURLRequestSerialization.m in Sources */,
 				56EC154B1E232821004AE01A /* FinanceViewController.m in Sources */,
 				560955A21DF7F12C00DA0B72 /* RegisterView.m in Sources */,

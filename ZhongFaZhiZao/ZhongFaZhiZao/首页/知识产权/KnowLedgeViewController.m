@@ -128,7 +128,6 @@
                 [_dataArray removeAllObjects];
                 _dataArray = [response[@"data"][@"goodList"] mutableCopy];
             }else{
-                
                 [_dataArray addObjectsFromArray:response[@"data"][@"goodList"]];
             }
 
