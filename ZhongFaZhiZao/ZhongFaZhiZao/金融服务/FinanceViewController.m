@@ -9,6 +9,9 @@
 #import "FinanceViewController.h"
 #import "InnovateTableViewCell.h"
 #import "SupplyTableViewCell.h"
+#import "UIImageView+WebCache.h"
+#import "FinanceDetailOneViewController.h"
+#import "FinanceDetailTwoViewController.h"
 
 @interface FinanceViewController ()<UITableViewDelegate,UITableViewDataSource>{
 
@@ -204,6 +207,8 @@
 }
 
 #pragma mark - datasource
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
     return 5;
@@ -213,8 +218,8 @@
     
 
     
-    if (self.cityNumber == 0) {
-        
+//    if (self.cityNumber == 0) {
+    
         NSString *cellID = @"cell1";
         InnovateTableViewCell *cell1 = [tableView dequeueReusableCellWithIdentifier:cellID];
         
@@ -223,19 +228,25 @@
             
             cell1 = [[InnovateTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         }
-        
+    
+//    cell1.iconImgView sd_setImageWithURL:<#(NSURL *)#> placeholderImage:nil];
+    cell1.titleLabel.text =@"金融贷";
+    cell1.recommondLabel.text = @"软件科技";
+    cell1.suumaryLabel.text = @"测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据";
+    cell1.selectionStyle = UITableViewCellSelectionStyleNone;
+    
         return cell1;
-    }
+//    }
     
-    NSString *cellID2 = @"cell2";
-    SupplyTableViewCell *cell2 = [tableView dequeueReusableCellWithIdentifier:cellID2];
-    
-    if (!cellID2) {
-        
-        cell2 = [[SupplyTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID2];
-    }
-    
-    return cell2;
+//    NSString *cellID2 = @"cell2";
+//    SupplyTableViewCell *cell2 = [tableView dequeueReusableCellWithIdentifier:cellID2];
+//    
+//    if (!cellID2) {
+//        
+//        cell2 = [[SupplyTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID2];
+//    }
+//    
+//    return cell2;
     
 }
 
@@ -263,7 +274,9 @@
 //cell点击
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    FinanceDetailOneViewController *vc = [[FinanceDetailOneViewController alloc]init];
     
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
 

@@ -405,6 +405,13 @@
 		56EC15541E263E0D004AE01A /* 金融icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56EC15521E263E0D004AE01A /* 金融icon@3x.png */; };
 		56EC15581E2710EE004AE01A /* InnovateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EC15571E2710EE004AE01A /* InnovateTableViewCell.m */; };
 		56EC155B1E271100004AE01A /* SupplyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EC155A1E271100004AE01A /* SupplyTableViewCell.m */; };
+		56EC155F1E2DC07D004AE01A /* FinanceDetailOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EC155E1E2DC07D004AE01A /* FinanceDetailOneViewController.m */; };
+		56EC15621E2DC092004AE01A /* FinanceDetailTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EC15611E2DC092004AE01A /* FinanceDetailTwoViewController.m */; };
+		56EC15651E2DF430004AE01A /* CaculateLabelHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EC15641E2DF430004AE01A /* CaculateLabelHeight.m */; };
+		56EC15681E2E00B0004AE01A /* 申请流程@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56EC15661E2E00B0004AE01A /* 申请流程@2x.png */; };
+		56EC15691E2E00B0004AE01A /* 申请流程@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56EC15671E2E00B0004AE01A /* 申请流程@3x.png */; };
+		56EC156C1E2E00BE004AE01A /* 在线咨询@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56EC156A1E2E00BE004AE01A /* 在线咨询@2x.png */; };
+		56EC156D1E2E00BE004AE01A /* 在线咨询@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56EC156B1E2E00BE004AE01A /* 在线咨询@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -994,6 +1001,16 @@
 		56EC15571E2710EE004AE01A /* InnovateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InnovateTableViewCell.m; sourceTree = "<group>"; };
 		56EC15591E271100004AE01A /* SupplyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplyTableViewCell.h; sourceTree = "<group>"; };
 		56EC155A1E271100004AE01A /* SupplyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplyTableViewCell.m; sourceTree = "<group>"; };
+		56EC155D1E2DC07D004AE01A /* FinanceDetailOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinanceDetailOneViewController.h; sourceTree = "<group>"; };
+		56EC155E1E2DC07D004AE01A /* FinanceDetailOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinanceDetailOneViewController.m; sourceTree = "<group>"; };
+		56EC15601E2DC092004AE01A /* FinanceDetailTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinanceDetailTwoViewController.h; sourceTree = "<group>"; };
+		56EC15611E2DC092004AE01A /* FinanceDetailTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinanceDetailTwoViewController.m; sourceTree = "<group>"; };
+		56EC15631E2DF430004AE01A /* CaculateLabelHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaculateLabelHeight.h; sourceTree = "<group>"; };
+		56EC15641E2DF430004AE01A /* CaculateLabelHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaculateLabelHeight.m; sourceTree = "<group>"; };
+		56EC15661E2E00B0004AE01A /* 申请流程@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "申请流程@2x.png"; sourceTree = "<group>"; };
+		56EC15671E2E00B0004AE01A /* 申请流程@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "申请流程@3x.png"; sourceTree = "<group>"; };
+		56EC156A1E2E00BE004AE01A /* 在线咨询@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "在线咨询@2x.png"; sourceTree = "<group>"; };
+		56EC156B1E2E00BE004AE01A /* 在线咨询@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "在线咨询@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1887,6 +1904,8 @@
 		567B62971DD1A47E004D1CFE /* 自定义 */ = {
 			isa = PBXGroup;
 			children = (
+				56EC15631E2DF430004AE01A /* CaculateLabelHeight.h */,
+				56EC15641E2DF430004AE01A /* CaculateLabelHeight.m */,
 				56932B101E1429880010FC7E /* HeadLineView */,
 				5697C80D1E0A26ED008A1D98 /* imagecache */,
 				56CFD71C1E014E2A00D18340 /* scrollView */,
@@ -2288,6 +2307,7 @@
 		56EC15481E232778004AE01A /* 金融服务 */ = {
 			isa = PBXGroup;
 			children = (
+				56EC155C1E2DB363004AE01A /* 金融详情 */,
 				56EC15551E2710BA004AE01A /* view */,
 				56EC15491E232821004AE01A /* FinanceViewController.h */,
 				56EC154A1E232821004AE01A /* FinanceViewController.m */,
@@ -2300,6 +2320,10 @@
 			children = (
 				56EC154D1E2628AA004AE01A /* jinrongmain@2x.png */,
 				56EC154E1E2628AA004AE01A /* jinrongmain@3x.png */,
+				56EC15661E2E00B0004AE01A /* 申请流程@2x.png */,
+				56EC15671E2E00B0004AE01A /* 申请流程@3x.png */,
+				56EC156A1E2E00BE004AE01A /* 在线咨询@2x.png */,
+				56EC156B1E2E00BE004AE01A /* 在线咨询@3x.png */,
 			);
 			path = "金融服务";
 			sourceTree = "<group>";
@@ -2313,6 +2337,17 @@
 				56EC155A1E271100004AE01A /* SupplyTableViewCell.m */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		56EC155C1E2DB363004AE01A /* 金融详情 */ = {
+			isa = PBXGroup;
+			children = (
+				56EC155D1E2DC07D004AE01A /* FinanceDetailOneViewController.h */,
+				56EC155E1E2DC07D004AE01A /* FinanceDetailOneViewController.m */,
+				56EC15601E2DC092004AE01A /* FinanceDetailTwoViewController.h */,
+				56EC15611E2DC092004AE01A /* FinanceDetailTwoViewController.m */,
+			);
+			path = "金融详情";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2452,11 +2487,13 @@
 				56CFD7911E028FC700D18340 /* 申请icon@3x.png in Resources */,
 				560956161DFF998E00DA0B72 /* qq-press@3x.png in Resources */,
 				56CC47571E13A74600D8E42E /* 占位图200-188@2x.png in Resources */,
+				56EC156C1E2E00BE004AE01A /* 在线咨询@2x.png in Resources */,
 				5697C8591E0CF654008A1D98 /* RongCloud.bundle in Resources */,
 				5691B62C1E10FB4A00AC09DB /* Group 51@2x.png in Resources */,
 				56CFD77C1E028FC700D18340 /* 供应链icon@2x.png in Resources */,
 				56CFD7841E028FC700D18340 /* 解决方案icon@2x.png in Resources */,
 				56CFD7171E00E45700D18340 /* 咨询-2@3x.png in Resources */,
+				56EC156D1E2E00BE004AE01A /* 在线咨询@3x.png in Resources */,
 				560366341DDEA20000332DD2 /* 29@1x.png in Resources */,
 				5691B62E1E10FB4A00AC09DB /* Group 52@2x.png in Resources */,
 				561AC03B1DED7B0F009C8EC3 /* guid02.jpg in Resources */,
@@ -2577,6 +2614,7 @@
 				56CFD78B1E028FC700D18340 /* 科技bar@3x.png in Resources */,
 				56CFD7A61E028FC700D18340 /* bar@2x.png in Resources */,
 				5697C8941E0E6EF9008A1D98 /* 智能3@3x.png in Resources */,
+				56EC15691E2E00B0004AE01A /* 申请流程@3x.png in Resources */,
 				5697C8901E0E6EF9008A1D98 /* 智能1@3x.png in Resources */,
 				56CFD8241E0789FE00D18340 /* icon3@3x.png in Resources */,
 				56CFD79A1E028FC700D18340 /* 位置icon@2x.png in Resources */,
@@ -2586,6 +2624,7 @@
 				56CFD7A01E028FC700D18340 /* 预警icon@2x.png in Resources */,
 				56CFD77D1E028FC700D18340 /* 供应链icon@3x.png in Resources */,
 				56CFD7761E028FC700D18340 /* 产权专利icon@2x.png in Resources */,
+				56EC15681E2E00B0004AE01A /* 申请流程@2x.png in Resources */,
 				567B62251DD020A1004D1CFE /* MJRefresh.bundle in Resources */,
 				560366371DDEA20000332DD2 /* 58@2x.png in Resources */,
 				5609561B1DFF998E00DA0B72 /* wechat@2x.png in Resources */,
@@ -2753,6 +2792,7 @@
 				56CC475B1E13AF9A00D8E42E /* PlaceholderTextView.m in Sources */,
 				56045FA31DF16AC100BB5EB9 /* AskDetailsViewController.m in Sources */,
 				567B620A1DD020A0004D1CFE /* MASCompositeConstraint.m in Sources */,
+				56EC15621E2DC092004AE01A /* FinanceDetailTwoViewController.m in Sources */,
 				567B622D1DD020A1004D1CFE /* SDWebImageCompat.m in Sources */,
 				5697C8771E0E2DB3008A1D98 /* FMDatabaseQueue.m in Sources */,
 				567B623F1DD020A1004D1CFE /* UIImageView+AFNetworking.m in Sources */,
@@ -2774,6 +2814,7 @@
 				560955971DF6AF5E00DA0B72 /* PwLoginView.m in Sources */,
 				560955C11DF93AEE00DA0B72 /* SetMeTableViewCell.m in Sources */,
 				567B62071DD020A0004D1CFE /* JSONModel+networking.m in Sources */,
+				56EC15651E2DF430004AE01A /* CaculateLabelHeight.m in Sources */,
 				567B62221DD020A1004D1CFE /* MJRefreshGifHeader.m in Sources */,
 				567B624D1DD020EE004D1CFE /* NSString+Mobile.m in Sources */,
 				567B622F1DD020A1004D1CFE /* SDWebImageDownloader.m in Sources */,
@@ -2802,6 +2843,7 @@
 				567B62081DD020A0004D1CFE /* JSONKeyMapper.m in Sources */,
 				567B62501DD020EE004D1CFE /* UIImage+Scale.m in Sources */,
 				5609559A1DF7EDCD00DA0B72 /* VfLoginView.m in Sources */,
+				56EC155F1E2DC07D004AE01A /* FinanceDetailOneViewController.m in Sources */,
 				56932B151E1429880010FC7E /* ZYJHeadLineModel.m in Sources */,
 				5609559D1DF7F11F00DA0B72 /* ForgetPwView.m in Sources */,
 				567B62191DD020A0004D1CFE /* MJRefreshComponent.m in Sources */,
