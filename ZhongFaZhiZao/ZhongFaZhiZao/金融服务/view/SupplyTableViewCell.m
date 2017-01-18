@@ -40,9 +40,9 @@
     self.moneyLabel.font = [UIFont systemFontOfSize:12.0];
     [self.contentView addSubview:self.moneyLabel];
     
-    self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMinX(self.moneyLabel.frame), 2+CGRectGetMaxY(self.moneyLabel.frame)+2, CGRectGetWidth(self.moneyLabel.frame), CGRectGetHeight(self.moneyLabel.frame))];
-    self.titleLabel.font = [UIFont systemFontOfSize:12.0];
-    [self.contentView addSubview:self.titleLabel];
+    self.timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMinX(self.moneyLabel.frame), 2+CGRectGetMaxY(self.moneyLabel.frame)+2, CGRectGetWidth(self.moneyLabel.frame), CGRectGetHeight(self.moneyLabel.frame))];
+    self.timeLabel.font = [UIFont systemFontOfSize:12.0];
+    [self.contentView addSubview:self.timeLabel];
     
     self.rateLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.titleLabel.frame)+1, 36, 106*screenScale, 25)];
     self.rateLabel.font = [UIFont systemFontOfSize:18.0];

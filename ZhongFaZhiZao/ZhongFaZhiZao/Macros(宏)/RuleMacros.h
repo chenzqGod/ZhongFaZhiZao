@@ -49,6 +49,8 @@
 //灰字颜色
 #define TEXT_GREY_COLOR  [UIColor colorWithHexString:@"#9B9B9B"]
 
+#define TEXT_SUMMARY_COLOR [UIColor colorWithHexString:@"#4a4a4a"]
+
 //下划线颜色
 #define TEXT_LINE_COLOR  [UIColor colorWithHexString:@"#EBEBEB"]
 

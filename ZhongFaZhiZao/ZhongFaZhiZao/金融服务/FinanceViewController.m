@@ -27,6 +27,7 @@
 }
 
 @property (nonatomic,assign)NSInteger cityNumber;
+@property (nonatomic,assign)NSInteger pageIndex;
 
 @end
 
@@ -78,7 +79,8 @@
     self.view.backgroundColor = BACK_COLOR;
     
     self.cityNumber = 0;
-    
+    self.pageIndex = 1;
+
     NavigationControllerView *navView = [[NavigationControllerView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 64) andLeftBtn:@"金融服务"];
     navView.viewController = self;
     [self.view addSubview:navView];
@@ -86,19 +88,27 @@
     [self createHeadView];
     [self createTableView];
     
+    [self loadData];
+    
     
 }
 
 - (void)loadData{
     
-    
+    NSDictionary *parameters = @{@"pageIndex":[NSNumber numberWithInteger:self.pageIndex]};
 //    创新金融
-    [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,FINANCE_INNOVATE] parameters:nil success:^(id response) {
+    [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,FINANCE_INNOVATE] parameters:parameters success:^(id response) {
         
         if ([response[@"resultCode"]integerValue] == 1000) {
             
-            _dataArr1 = [response[@"data"][@"goodList"]mutableCopy];
             
+            if (self.pageIndex == 1) {
+                [_dataArr1 removeAllObjects];
+                _dataArr1 = [response[@"data"][@"goodList"]mutableCopy];
+            }else{
+            
+            [_dataArr1 addObjectsFromArray:response[@"data"][@"goodList"]];
+            }
             
             [_tableView reloadData];
         }
@@ -106,16 +116,25 @@
         
     } failure:^(NSString *error) {
         
-        
+        [WKProgressHUD popMessage:@"请检查网络连接" inView:self.view duration:HUD_DURATION animated:YES];
     }];
     
     
 //    供应链金融
-    [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,FINANCE_SUPPLY] parameters:nil success:^(id response) {
+    [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,FINANCE_SUPPLY] parameters:parameters success:^(id response) {
         
         if ([response[@"resultCode"]integerValue] == 1000) {
             
-            _dataArr2 = [response[@"data"][@"goodList"]mutableCopy];
+            if (self.pageIndex == 1) {
+                
+                [_dataArr2 removeAllObjects];
+                _dataArr2 = [response[@"data"][@"goodList"]mutableCopy];
+                
+            }else{
+            
+                [_dataArr2 addObjectsFromArray:response[@"data"][@"goodList"]];
+            }
+            
             
             [_tableView reloadData];
         }
@@ -129,12 +148,20 @@
     
     
 //    小额贷金融
-    [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,FINANCE_LOAN] parameters:nil success:^(id response) {
+    [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,FINANCE_LOAN] parameters:parameters success:^(id response) {
         
         
         if ([response[@"resultCode"]integerValue] == 1000) {
             
-            _dataArr3 = [response[@"data"][@"goodList"]mutableCopy];
+            if (self.pageIndex == 1) {
+                
+                [_dataArr3 removeAllObjects];
+                _dataArr3 = [response[@"data"][@"goodList"]mutableCopy];
+            }else{
+            
+                [_dataArr3 addObjectsFromArray:response[@"data"][@"goodList"]];
+            }
+            
             
             [_tableView reloadData];
         }
@@ -163,7 +190,7 @@
     
     for (int i = 0; i < 3; i++) {
         _titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _titleBtn.frame = CGRectMake((screenWidth-92*screenScale*3)/4.0*(i+1)+92*i*screenScale, CGRectGetMaxY(_mainImgView.frame)+14*screenScale, 92*screenScale, 25*screenScale);
+        _titleBtn.frame = CGRectMake((screenWidth-92*screenScale*3)/4.0*(i+1)+92*i*screenScale,(52-25*screenScale)/2.0+CGRectGetMaxY(_mainImgView.frame), 92*screenScale, 25*screenScale);
         _titleBtn.layer.masksToBounds = YES;
         _titleBtn.layer.cornerRadius = 10;
         [_titleBtn setTitle:btntitle[i] forState:UIControlStateNormal];
@@ -180,6 +207,7 @@
             _titleBtn.backgroundColor = BLUE_COLOR;
             _titleBtn.selected = YES;
             _titleBtn.layer.borderWidth = 0;
+            _titleBtn.layer.borderColor = TEXT_LINE_COLOR.CGColor;
             
         }else{
             
@@ -203,7 +231,34 @@
     _tableView.tableFooterView = [[UIView alloc]init];
     _tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     
+    //    下拉刷新、上拉加载
+    _tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        //Call this Block When enter the refresh status automatically
+        
+        self.pageIndex = 1;
+        [self loadData];
+        
+        [_tableView.header endRefreshing];
+        
+    }];
+    
+    _tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        //Call this Block When enter the refresh status automatically
+        
+        self.pageIndex++;
+        [self loadData];
+        
+        [_tableView.footer endRefreshing];
+        
+    }];
+
+    
+    
+    
     [self.view addSubview:_tableView];
+    
+    
+    
 }
 
 #pragma mark - datasource
@@ -211,14 +266,23 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
-    return 5;
+    
+    if (self.cityNumber == 0) {
+        return _dataArr1.count;
+
+    }else if (self.cityNumber == 1){
+        return _dataArr2.count;
+    }
+    else if (self.cityNumber == 2){
+    
+        return _dataArr3.count;
+    }
+    
+    return 0;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    
-
-    
-//    if (self.cityNumber == 0) {
+    if (self.cityNumber == 0) {
     
         NSString *cellID = @"cell1";
         InnovateTableViewCell *cell1 = [tableView dequeueReusableCellWithIdentifier:cellID];
@@ -229,25 +293,62 @@
             cell1 = [[InnovateTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         }
     
-//    cell1.iconImgView sd_setImageWithURL:<#(NSURL *)#> placeholderImage:nil];
-    cell1.titleLabel.text =@"金融贷";
-    cell1.recommondLabel.text = @"软件科技";
-    cell1.suumaryLabel.text = @"测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据";
+    [cell1.iconImgView sd_setImageWithURL:[NSURL URLWithString:[[_dataArr1 objectAtIndex:indexPath.row]objectForKey:@"logo"]] placeholderImage:[UIImage imageNamed:@"占位图200-188"]];
+    cell1.titleLabel.text = [NSString stringWithFormat:@"%@",[[_dataArr1 objectAtIndex:indexPath.row]objectForKey:@"name"]];
+    cell1.recommondLabel.text = [NSString stringWithFormat:@"%@",[[_dataArr1 objectAtIndex:indexPath.row]objectForKey:@"recommend"]];
+    cell1.suumaryLabel.text = [NSString stringWithFormat:@"%@",[[_dataArr1 objectAtIndex:indexPath.row]objectForKey:@"summary"]];
     cell1.selectionStyle = UITableViewCellSelectionStyleNone;
     
         return cell1;
-//    }
+    }
+
+    else if (self.cityNumber == 1){
     
-//    NSString *cellID2 = @"cell2";
-//    SupplyTableViewCell *cell2 = [tableView dequeueReusableCellWithIdentifier:cellID2];
-//    
-//    if (!cellID2) {
-//        
-//        cell2 = [[SupplyTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID2];
-//    }
-//    
-//    return cell2;
+    NSString *cellID2 = @"cell2";
+    SupplyTableViewCell *cell2 = [tableView dequeueReusableCellWithIdentifier:cellID2];
     
+    if (!cell2) {
+        
+        cell2 = [[SupplyTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID2];
+    }
+    [cell2.iconImgView sd_setImageWithURL:[NSURL URLWithString:[[_dataArr2 objectAtIndex:indexPath.row]objectForKey:@"logo"]] placeholderImage:[UIImage imageNamed:@"占位图200-188"]];
+    cell2.titleLabel.text = [NSString stringWithFormat:@"%@",[[_dataArr2 objectAtIndex:indexPath.row]objectForKey:@"name"]];
+    cell2.recommondLabel.text = [NSString stringWithFormat:@"%@",[[_dataArr2 objectAtIndex:indexPath.row]objectForKey:@"recommend"]];
+    cell2.moneyLabel.text = [NSString stringWithFormat:@"%@",[[_dataArr2 objectAtIndex:indexPath.row]objectForKey:@"moneyScope"]];
+    cell2.timeLabel.text = [NSString stringWithFormat:@"%@",[[_dataArr2 objectAtIndex:indexPath.row]objectForKey:@"timeScope"]];
+    cell2.rateLabel.text = [NSString stringWithFormat:@"%@",[[_dataArr2 objectAtIndex:indexPath.row]objectForKey:@"moneyRate"]];
+
+    
+    cell2.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    return cell2;
+}
+    else if (self.cityNumber == 2){
+        
+        NSString *cellID3 = @"cell3";
+        SupplyTableViewCell *cell3 = [tableView dequeueReusableCellWithIdentifier:cellID3];
+        
+        if (!cell3) {
+            
+            cell3 = [[SupplyTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID3];
+        }
+        [cell3.iconImgView sd_setImageWithURL:[NSURL URLWithString:[[_dataArr3 objectAtIndex:indexPath.row]objectForKey:@"logo"]] placeholderImage:[UIImage imageNamed:@"占位图200-188"]];
+        cell3.titleLabel.text = [NSString stringWithFormat:@"%@",[[_dataArr3 objectAtIndex:indexPath.row]objectForKey:@"name"]];
+        cell3.recommondLabel.text = [NSString stringWithFormat:@"%@",[[_dataArr3 objectAtIndex:indexPath.row]objectForKey:@"recommend"]];
+        cell3.moneyLabel.text = [NSString stringWithFormat:@"%@",[[_dataArr3 objectAtIndex:indexPath.row]objectForKey:@"moneyScope"]];
+        cell3.timeLabel.text = [NSString stringWithFormat:@"%@",[[_dataArr3 objectAtIndex:indexPath.row]objectForKey:@"timeScope"]];
+        cell3.rateLabel.text = [NSString stringWithFormat:@"%@",[[_dataArr3 objectAtIndex:indexPath.row]objectForKey:@"moneyRate"]];
+        
+        
+        cell3.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        return cell3;
+    }
+    
+    
+    return nil;
+    
+
 }
 
 #pragma mark - delegate
@@ -274,9 +375,27 @@
 //cell点击
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    FinanceDetailOneViewController *vc = [[FinanceDetailOneViewController alloc]init];
+    if (self.cityNumber == 0) {
+        
+        FinanceDetailTwoViewController *vc = [[FinanceDetailTwoViewController alloc]init];
+        vc.fid = [[_dataArr1 objectAtIndex:indexPath.row]objectForKey:@"id"];
+        [self.navigationController pushViewController:vc animated:YES];
+
+        
+    }
+    else if (self.cityNumber == 1){
     
-    [self.navigationController pushViewController:vc animated:YES];
+        FinanceDetailOneViewController *vc = [[FinanceDetailOneViewController alloc]init];
+        vc.fid = [[_dataArr2 objectAtIndex:indexPath.row]objectForKey:@"id"];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if (self.cityNumber == 2){
+    
+        FinanceDetailOneViewController *vc = [[FinanceDetailOneViewController alloc]init];
+        vc.fid = [[_dataArr3 objectAtIndex:indexPath.row]objectForKey:@"id"];
+        [self.navigationController pushViewController:vc animated:YES];
+
+    }
     
 }
 

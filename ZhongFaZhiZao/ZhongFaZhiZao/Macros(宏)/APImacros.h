@@ -41,7 +41,7 @@
 #define FINANCE_INNOVATE           @"/api/innovateFinance/list"             //创新金融
 #define FINANCE_SUPPLY             @"/api/supplyChainFinance/list"          //供应链金融
 #define FINANCE_LOAN               @"/api/smallLoanFinance/list"            //小额贷金融
-#define FINANCE_DETAIL             @"/api/finance/detail/{fId}"             //金融详情
+#define FINANCE_DETAIL             @"/api/finance/detail"             //金融详情
 #define FINANCE_APPLY              @"api/finance/apply"                     //金融申请
 
 //知识产权

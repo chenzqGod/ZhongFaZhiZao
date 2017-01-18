@@ -99,115 +99,115 @@
 
 - (void)cellBtnClick:(UIButton *)button{
     
-    
-    if (button.tag == 10) {
-        
-        
-    }
-   else if (button.tag == 20) {
-        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/icInfo/10498233?corpId=200890"title:@"商品详情页"];
-//        [self.navigationController pushViewController:vc animated:YES];
-       
-        
-    }
-    else if (button.tag == 30){
-        
-        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/icInfo/10498212?corpId=200890"title:@"商品详情页"];
-//        [self.navigationController pushViewController:vc animated:YES];
-        
-    }
-    else if (button.tag == 11){
-    
-        
-    }
-    
-    else if (button.tag == 21){
-        
-        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/4717332?corpId=204505"title:@"商品详情页"];
-//        [self.navigationController pushViewController:vc animated:YES];
-        
-        
-    }
-    else if (button.tag == 31){
-        
-        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/4717330?corpId=204505"title:@"商品详情页"];
-//        [self.navigationController pushViewController:vc animated:YES];
-        
-    }
-    else if (button.tag == 12){
-        
-        
-    }
-    
-    else if (button.tag == 22){
-        
-        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/4717332?corpId=204505"title:@"商品详情页"];
-        //        [self.navigationController pushViewController:vc animated:YES];
-        
-        
-    }
-    else if (button.tag == 32){
-        
-        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/4717330?corpId=204505"title:@"商品详情页"];
-        //        [self.navigationController pushViewController:vc animated:YES];
-        
-    }
-
-    else if (button.tag == 13){
-        
-        
-    }
-    
-    else if (button.tag == 23){
-        
-        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/4717332?corpId=204505"title:@"商品详情页"];
-        //        [self.navigationController pushViewController:vc animated:YES];
-        
-        
-    }
-    else if (button.tag == 33){
-        
-        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/4717330?corpId=204505"title:@"商品详情页"];
-        //        [self.navigationController pushViewController:vc animated:YES];
-        
-    }
-    else if (button.tag == 14){
-        
-        
-    }
-    
-    else if (button.tag == 24){
-        
-        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/4717332?corpId=204505"title:@"商品详情页"];
-        //        [self.navigationController pushViewController:vc animated:YES];
-        
-        
-    }
-    else if (button.tag == 34){
-        
-        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/4717330?corpId=204505"title:@"商品详情页"];
-        //        [self.navigationController pushViewController:vc animated:YES];
-        
-    }
-
-    else if (button.tag == 15){
-        
-        
-    }
-    
-    else if (button.tag == 25){
-        
-        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/4717332?corpId=204505"title:@"商品详情页"];
-        //        [self.navigationController pushViewController:vc animated:YES];
-        
-        
-    }
-    else if (button.tag == 35){
-        
-        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/4717330?corpId=204505"title:@"商品详情页"];
-        //        [self.navigationController pushViewController:vc animated:YES];
-        
-    }
+//    
+//    if (button.tag == 10) {
+//        
+//        
+//    }
+//   else if (button.tag == 20) {
+//        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/icInfo/10498233?corpId=200890"title:@"商品详情页"];
+////        [self.navigationController pushViewController:vc animated:YES];
+//       
+//        
+//    }
+//    else if (button.tag == 30){
+//        
+//        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/icInfo/10498212?corpId=200890"title:@"商品详情页"];
+////        [self.navigationController pushViewController:vc animated:YES];
+//        
+//    }
+//    else if (button.tag == 11){
+//    
+//        
+//    }
+//    
+//    else if (button.tag == 21){
+//        
+//        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/4717332?corpId=204505"title:@"商品详情页"];
+////        [self.navigationController pushViewController:vc animated:YES];
+//        
+//        
+//    }
+//    else if (button.tag == 31){
+//        
+//        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/4717330?corpId=204505"title:@"商品详情页"];
+////        [self.navigationController pushViewController:vc animated:YES];
+//        
+//    }
+//    else if (button.tag == 12){
+//        
+//        
+//    }
+//    
+//    else if (button.tag == 22){
+//        
+//        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/4717332?corpId=204505"title:@"商品详情页"];
+//        //        [self.navigationController pushViewController:vc animated:YES];
+//        
+//        
+//    }
+//    else if (button.tag == 32){
+//        
+//        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/4717330?corpId=204505"title:@"商品详情页"];
+//        //        [self.navigationController pushViewController:vc animated:YES];
+//        
+//    }
+//
+//    else if (button.tag == 13){
+//        
+//        
+//    }
+//    
+//    else if (button.tag == 23){
+//        
+//        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/4717332?corpId=204505"title:@"商品详情页"];
+//        //        [self.navigationController pushViewController:vc animated:YES];
+//        
+//        
+//    }
+//    else if (button.tag == 33){
+//        
+//        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/4717330?corpId=204505"title:@"商品详情页"];
+//        //        [self.navigationController pushViewController:vc animated:YES];
+//        
+//    }
+//    else if (button.tag == 14){
+//        
+//        
+//    }
+//    
+//    else if (button.tag == 24){
+//        
+//        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/4717332?corpId=204505"title:@"商品详情页"];
+//        //        [self.navigationController pushViewController:vc animated:YES];
+//        
+//        
+//    }
+//    else if (button.tag == 34){
+//        
+//        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/4717330?corpId=204505"title:@"商品详情页"];
+//        //        [self.navigationController pushViewController:vc animated:YES];
+//        
+//    }
+//
+//    else if (button.tag == 15){
+//        
+//        
+//    }
+//    
+//    else if (button.tag == 25){
+//        
+//        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/4717332?corpId=204505"title:@"商品详情页"];
+//        //        [self.navigationController pushViewController:vc animated:YES];
+//        
+//        
+//    }
+//    else if (button.tag == 35){
+//        
+//        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:@"http://cectest.cecb2b.com/waps/corp/nicInfo/4717330?corpId=204505"title:@"商品详情页"];
+//        //        [self.navigationController pushViewController:vc animated:YES];
+//        
+//    }
  
 }
 

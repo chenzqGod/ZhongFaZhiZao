@@ -10,4 +10,6 @@
 
 @interface FinanceDetailTwoViewController : UIViewController
 
+@property (nonatomic,strong)NSString *fid;
+
 @end

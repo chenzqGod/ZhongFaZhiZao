@@ -77,7 +77,7 @@
     }
 }
 #pragma marklistViewdataSource method and delegate method
--(NSInteger)tableView:(UITableView *)tablenumberOfRowsInSection:(NSInteger)section{
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return list.count;
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

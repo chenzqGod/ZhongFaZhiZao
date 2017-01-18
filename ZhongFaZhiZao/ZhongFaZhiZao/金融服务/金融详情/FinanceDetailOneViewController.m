@@ -8,6 +8,8 @@
 
 #import "FinanceDetailOneViewController.h"
 #import "CaculateLabelHeight.h"
+#import "FinanceapplyViewController.h"
+#import "UIImageView+WebCache.h"
 
 @interface FinanceDetailOneViewController (){
 
@@ -19,11 +21,23 @@
     UILabel *_sqtjLabel;
     UILabel *_clLabel;
     UILabel *_rateLabel;
+    
+    NSMutableDictionary *_dic;
 }
 
 @end
 
 @implementation FinanceDetailOneViewController
+
+- (NSMutableDictionary *)dic{
+
+    if (!_dic) {
+        
+        _dic = [NSMutableDictionary dictionary];
+    }
+ 
+    return _dic;
+}
 
 - (void)viewWillAppear:(BOOL)animated{
 
@@ -58,10 +72,46 @@
     
     [self createUI];
     
+    [self loadData];
 }
 
 - (void)loadData{
     
+    [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@/%@",HOST_URL,FINANCE_DETAIL,self.fid] parameters:nil success:^(id response) {
+        
+        if ([response[@"resultCode"]integerValue] == 1000) {
+        
+            _dic = [response[@"data"]mutableCopy];
+        
+            [_iconView sd_setImageWithURL:[NSURL URLWithString:_dic[@"cpLogo"]] placeholderImage:[UIImage imageNamed:@"占位图200-188"]];
+            _nameLabel.text = [NSString stringWithFormat:@"%@—%@",_dic[@"corpName"],_dic[@"name"]];
+            _tqhkLabel.text = [NSString stringWithFormat:@"%@",_dic[@"tqhk"]];
+            
+//            _sqtjLabel.text = [NSString stringWithFormat:@"%@",_dic[@"sqtj"]];
+            
+            _clLabel.text = [NSString stringWithFormat:@"%@",_dic[@"sxcl"]];
+        
+            
+            NSMutableAttributedString *renewAttributed = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"贷款利率：%@/月",_dic[@"ylv"]]];
+            [renewAttributed addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14.0] range:NSMakeRange(0, 5)];
+            [renewAttributed addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"#000000"] range:NSMakeRange(0, 5)];
+            
+            [renewAttributed addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:18.0] range:NSMakeRange(5, [_dic[@"ylv"] length])];
+            [renewAttributed addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"#F6A623"] range:NSMakeRange(5, [_dic[@"ylv"] length])];
+            
+            [renewAttributed addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14.0] range:NSMakeRange(5+[_dic[@"ylv"] length], 2)];
+            [renewAttributed addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"#000000"] range:NSMakeRange(5+[_dic[@"ylv"] length], 2)];
+            
+            _rateLabel.attributedText = renewAttributed;
+        }
+     
+    } failure:^(NSString *error) {
+       
+        
+        
+    }];
+        
+        
 }
 
 - (void)createUI{
@@ -72,7 +122,7 @@
    
     _iconView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 130*screenScale, 62*screenScale)];
     _iconView.center = headView.center;
-    _iconView.backgroundColor = [UIColor cyanColor];
+//    _iconView.backgroundColor = [UIColor cyanColor];
     [headView addSubview:_iconView];
     
     UIView *midView1 = [[UIView alloc]initWithFrame:CGRectMake(0, 7+CGRectGetMaxY(headView.frame), screenWidth, 90)];
@@ -80,7 +130,7 @@
     [_scrollView addSubview:midView1];
     
     _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(19*screenScale, 13, screenWidth-19*screenScale-Margin, 20)];
-    _nameLabel.backgroundColor = [UIColor cyanColor];
+//    _nameLabel.backgroundColor = [UIColor cyanColor];
     _nameLabel.font = [UIFont systemFontOfSize:14.0];
     [midView1 addSubview:_nameLabel];
     
@@ -94,8 +144,9 @@
     tiqianLabel.font = [UIFont boldSystemFontOfSize:12.0];
     [midView1 addSubview:tiqianLabel];
     
-    _tqhkLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(tiqianLabel.frame), CGRectGetMinY(tiqianLabel.frame), CGRectGetMaxY(_nameLabel.frame)-95, CGRectGetHeight(tiqianLabel.frame))];
+    _tqhkLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(tiqianLabel.frame), CGRectGetMinY(tiqianLabel.frame), screenWidth-CGRectGetMaxX(tiqianLabel.frame)-Margin, CGRectGetHeight(tiqianLabel.frame))];
     _tqhkLabel.font = [UIFont systemFontOfSize:12.0];
+//    _tqhkLabel.backgroundColor = [UIColor cyanColor];
     [midView1 addSubview:_tqhkLabel];
     
     UIView *applyLabel = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(midView1.frame)+1, screenWidth, 38)];
@@ -112,10 +163,10 @@
     _sqtjLabel = [[UILabel alloc]init];
     _sqtjLabel.numberOfLines = 0;
     _sqtjLabel.backgroundColor = [UIColor whiteColor];
-    NSString *addtext =  @"先帝创业未半而中道崩殂，今天下三分，益州疲弊，此诚危急存亡之秋也。然侍卫之臣不懈于内，忠志之士忘身于外者，先帝创业未半而中道崩殂，今天下三分，益州疲弊，此诚危急存亡之秋也。然侍卫之臣不懈于内，忠志之士忘身于外者";
+    NSString *addtext =  @"大家上课了大叔的按时打算叫老大是件大事了较大时激动爱神的箭按时打算大的撒打算打算骄傲的撒娇大搜滴啊上京东我按时到静安寺的旧爱的骄傲搜ID啊是奇偶打算";
     _sqtjLabel.text = addtext;
     _sqtjLabel.textColor = [UIColor colorWithHexString:@"#4a4a4a"];
-
+    _sqtjLabel.font = [UIFont systemFontOfSize:12.0];
     CGFloat tjlabelH = [CaculateLabelHeight getSpaceLabelHeight:addtext withWidth:CGRectGetWidth(_nameLabel.frame) andFont:12.0 andLines:4.0];
     
     _sqtjLabel.frame = CGRectMake(CGRectGetMinX(_nameLabel.frame), CGRectGetMaxY(applyLabel.frame)+1, CGRectGetWidth(_nameLabel.frame), tjlabelH);
@@ -133,7 +184,7 @@
 //    自动计算所需材料
     _clLabel = [[UILabel alloc]init];
     _clLabel.numberOfLines = 0;
-    NSString *addtext2 =  @"先帝创业未半而中道崩殂，今天下三分，益州疲弊，此诚危急存亡之秋也。然侍卫之臣不懈于内，忠志之士忘身于外者，先帝创业未半而中道崩殂，今天下三分，益州疲弊，此诚危急存亡之秋也。然侍卫之臣不懈于内，忠志之士忘身于外者";
+    NSString *addtext2 =  @"";
     _clLabel.text = addtext2;
     _clLabel.textColor = [UIColor colorWithHexString:@"#4a4a4a"];
     _clLabel.backgroundColor = [UIColor whiteColor];
@@ -162,7 +213,6 @@
     [self.view addSubview:downLeftView];
     
     _rateLabel = [[UILabel alloc]initWithFrame:CGRectMake(19*screenScale, 3, 477/2.0*screenScale-19*screenScale-2, 24)];
-    _rateLabel.text = @"贷款利率：1.0%/月";
     _rateLabel.font = [UIFont systemFontOfSize:14.0];
     [downLeftView addSubview:_rateLabel];
     
@@ -178,6 +228,7 @@
     [applyBtn setTitle:@"立即申请" forState:UIControlStateNormal];
     applyBtn.titleLabel.font = [UIFont systemFontOfSize:16.0];
     [applyBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [applyBtn addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:applyBtn];
     
 //    在线咨询
@@ -185,6 +236,13 @@
     askBtn.frame = CGRectMake(screenWidth-97*screenScale, screenHeight-53-24-32*screenScale, 97*screenScale, 32*screenScale);
     [askBtn setBackgroundImage:[UIImage imageNamed:@"在线咨询"] forState:UIControlStateNormal];
     [self.view addSubview:askBtn];
+}
+
+#pragma mark - 点击事件
+- (void)buttonClick{
+
+    FinanceapplyViewController *vc = [[FinanceapplyViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
