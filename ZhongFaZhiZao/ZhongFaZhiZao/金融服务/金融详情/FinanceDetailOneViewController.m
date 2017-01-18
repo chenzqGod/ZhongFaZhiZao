@@ -60,7 +60,9 @@
     
 }
 
-- (void)loadData{}
+- (void)loadData{
+    
+}
 
 - (void)createUI{
     

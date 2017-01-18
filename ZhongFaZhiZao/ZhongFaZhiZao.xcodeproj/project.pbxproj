@@ -412,6 +412,7 @@
 		56EC15691E2E00B0004AE01A /* 申请流程@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56EC15671E2E00B0004AE01A /* 申请流程@3x.png */; };
 		56EC156C1E2E00BE004AE01A /* 在线咨询@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56EC156A1E2E00BE004AE01A /* 在线咨询@2x.png */; };
 		56EC156D1E2E00BE004AE01A /* 在线咨询@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56EC156B1E2E00BE004AE01A /* 在线咨询@3x.png */; };
+		56EC15721E2E1B69004AE01A /* FinanceapplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EC15711E2E1B69004AE01A /* FinanceapplyViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1011,6 +1012,8 @@
 		56EC15671E2E00B0004AE01A /* 申请流程@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "申请流程@3x.png"; sourceTree = "<group>"; };
 		56EC156A1E2E00BE004AE01A /* 在线咨询@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "在线咨询@2x.png"; sourceTree = "<group>"; };
 		56EC156B1E2E00BE004AE01A /* 在线咨询@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "在线咨询@3x.png"; sourceTree = "<group>"; };
+		56EC15701E2E1B69004AE01A /* FinanceapplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinanceapplyViewController.h; sourceTree = "<group>"; };
+		56EC15711E2E1B69004AE01A /* FinanceapplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinanceapplyViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2307,6 +2310,8 @@
 		56EC15481E232778004AE01A /* 金融服务 */ = {
 			isa = PBXGroup;
 			children = (
+				56EC156F1E2E1B3F004AE01A /* 服务条款 */,
+				56EC156E1E2E1B37004AE01A /* 立即申请 */,
 				56EC155C1E2DB363004AE01A /* 金融详情 */,
 				56EC15551E2710BA004AE01A /* view */,
 				56EC15491E232821004AE01A /* FinanceViewController.h */,
@@ -2348,6 +2353,22 @@
 				56EC15611E2DC092004AE01A /* FinanceDetailTwoViewController.m */,
 			);
 			path = "金融详情";
+			sourceTree = "<group>";
+		};
+		56EC156E1E2E1B37004AE01A /* 立即申请 */ = {
+			isa = PBXGroup;
+			children = (
+				56EC15701E2E1B69004AE01A /* FinanceapplyViewController.h */,
+				56EC15711E2E1B69004AE01A /* FinanceapplyViewController.m */,
+			);
+			path = "立即申请";
+			sourceTree = "<group>";
+		};
+		56EC156F1E2E1B3F004AE01A /* 服务条款 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "服务条款";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2765,6 +2786,7 @@
 				56CFD7351E026ECB00D18340 /* KnowledgeCollectionViewCell.m in Sources */,
 				567B62351DD020A1004D1CFE /* UIImage+MultiFormat.m in Sources */,
 				560955CB1DF9469000DA0B72 /* FeedBackViewController.m in Sources */,
+				56EC15721E2E1B69004AE01A /* FinanceapplyViewController.m in Sources */,
 				567B62321DD020A1004D1CFE /* SDWebImagePrefetcher.m in Sources */,
 				567B62381DD020A1004D1CFE /* UIImageView+WebCache.m in Sources */,
 				567B62181DD020A0004D1CFE /* MJRefreshBackFooter.m in Sources */,
