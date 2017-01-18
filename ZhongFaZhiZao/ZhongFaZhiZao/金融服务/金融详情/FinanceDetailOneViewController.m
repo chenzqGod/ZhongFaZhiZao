@@ -18,10 +18,12 @@
     UILabel *_nameLabel;
     UILabel *_biaoqianLabel;
     UILabel *_tqhkLabel;
+    UIView *_sqtjView;
     UILabel *_sqtjLabel;
+    UIView *_clView;
     UILabel *_clLabel;
     UILabel *_rateLabel;
-    
+    UIView *_downView;
     NSMutableDictionary *_dic;
 }
 
@@ -87,10 +89,20 @@
             _nameLabel.text = [NSString stringWithFormat:@"%@—%@",_dic[@"corpName"],_dic[@"name"]];
             _tqhkLabel.text = [NSString stringWithFormat:@"%@",_dic[@"tqhk"]];
             
-//            _sqtjLabel.text = [NSString stringWithFormat:@"%@",_dic[@"sqtj"]];
+            
+               CGFloat LblW = screenWidth-20*screenScale-Margin;
+            
+            _sqtjLabel.text = [NSString stringWithFormat:@"%@",_dic[@"sqtj"]];
+            CGFloat sqtjLblH = [CaculateLabelHeight getSpaceLabelHeight:_sqtjLabel.text withWidth:LblW andFont:12.0 andLines:4.0];
+            _sqtjLabel.frame = CGRectMake(20*screenScale, 39, LblW, sqtjLblH);
+            _sqtjView.frame = CGRectMake(0,90+8+84*screenScale, screenWidth, 52+sqtjLblH);
             
             _clLabel.text = [NSString stringWithFormat:@"%@",_dic[@"sxcl"]];
-        
+            CGFloat clLblH = [CaculateLabelHeight getSpaceLabelHeight:_clLabel.text withWidth:LblW andFont:12.0 andLines:4.0];
+            _clLabel.frame = CGRectMake(20*screenScale, 39, LblW, clLblH);
+            _clView.frame = CGRectMake(0,1+CGRectGetMaxY(_sqtjView.frame), screenWidth, 52+clLblH);
+            
+            _downView.frame = CGRectMake(0, 1+CGRectGetMaxY(_clView.frame), screenWidth, 47*screenScale+56);
             
             NSMutableAttributedString *renewAttributed = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"贷款利率：%@/月",_dic[@"ylv"]]];
             [renewAttributed addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14.0] range:NSMakeRange(0, 5)];
@@ -122,7 +134,6 @@
    
     _iconView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 130*screenScale, 62*screenScale)];
     _iconView.center = headView.center;
-//    _iconView.backgroundColor = [UIColor cyanColor];
     [headView addSubview:_iconView];
     
     UIView *midView1 = [[UIView alloc]initWithFrame:CGRectMake(0, 7+CGRectGetMaxY(headView.frame), screenWidth, 90)];
@@ -131,7 +142,7 @@
     
     _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(19*screenScale, 13, screenWidth-19*screenScale-Margin, 20)];
 //    _nameLabel.backgroundColor = [UIColor cyanColor];
-    _nameLabel.font = [UIFont systemFontOfSize:14.0];
+    _nameLabel.font = [UIFont systemFontOfSize:15.0];
     [midView1 addSubview:_nameLabel];
     
     _biaoqianLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMinX(_nameLabel.frame), 2+CGRectGetMaxY(_nameLabel.frame), CGRectGetWidth(_nameLabel.frame), 14)];
@@ -149,63 +160,51 @@
 //    _tqhkLabel.backgroundColor = [UIColor cyanColor];
     [midView1 addSubview:_tqhkLabel];
     
-    UIView *applyLabel = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(midView1.frame)+1, screenWidth, 38)];
-    applyLabel.backgroundColor = [UIColor whiteColor];
-    [_scrollView addSubview:applyLabel];
+//    申请条件
+    _sqtjView = [[UIView alloc]init];
+    _sqtjView.backgroundColor = [UIColor whiteColor];
+    [_scrollView addSubview:_sqtjView];
     
-    UILabel *applynameLbl = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMinX(_nameLabel.frame), 9, 70, 20)];
-    applynameLbl.text = @"申请条件";
-    applynameLbl.textColor = [UIColor blackColor];
-    applynameLbl.font = [UIFont systemFontOfSize:14.0];
-    [applyLabel addSubview:applynameLbl];
+    UILabel *sqtjLbl = [[UILabel alloc]initWithFrame:CGRectMake(20*screenScale, 13, 150, 20)];
+    sqtjLbl.text = @"申请条件";
+    sqtjLbl.font = [UIFont systemFontOfSize:15.0];
+    [_sqtjView addSubview:sqtjLbl];
     
-    //自动计算申请条件
     _sqtjLabel = [[UILabel alloc]init];
     _sqtjLabel.numberOfLines = 0;
-    _sqtjLabel.backgroundColor = [UIColor whiteColor];
-    NSString *addtext =  @"大家上课了大叔的按时打算叫老大是件大事了较大时激动爱神的箭按时打算大的撒打算打算骄傲的撒娇大搜滴啊上京东我按时到静安寺的旧爱的骄傲搜ID啊是奇偶打算";
-    _sqtjLabel.text = addtext;
-    _sqtjLabel.textColor = [UIColor colorWithHexString:@"#4a4a4a"];
     _sqtjLabel.font = [UIFont systemFontOfSize:12.0];
-    CGFloat tjlabelH = [CaculateLabelHeight getSpaceLabelHeight:addtext withWidth:CGRectGetWidth(_nameLabel.frame) andFont:12.0 andLines:4.0];
+    _sqtjLabel.textColor = TEXT_SUMMARY_COLOR;
+    [_sqtjView addSubview:_sqtjLabel];
+  
+//    所需材料
+    _clView = [[UIView alloc]init];
+    _clView.backgroundColor = [UIColor whiteColor];
+    [_scrollView addSubview:_clView];
     
-    _sqtjLabel.frame = CGRectMake(CGRectGetMinX(_nameLabel.frame), CGRectGetMaxY(applyLabel.frame)+1, CGRectGetWidth(_nameLabel.frame), tjlabelH);
-    [_scrollView addSubview:_sqtjLabel];
-
-    UIView *needLabel = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_sqtjLabel.frame)+1, screenWidth, 38)];
-    needLabel.backgroundColor = [UIColor whiteColor];
-    [_scrollView addSubview:needLabel];
+    UILabel *clLbl = [[UILabel alloc]initWithFrame:CGRectMake(20*screenScale, 13, 150, 20)];
+    clLbl.text = @"所需材料";
+    clLbl.font = [UIFont systemFontOfSize:15.0];
+    [_clView addSubview:clLbl];
     
-    UILabel *neednameLbl = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMinX(_nameLabel.frame), 9, 70, 20)];
-    neednameLbl.text = @"所需材料";
-    neednameLbl.font = [UIFont systemFontOfSize:14.0];
-    [needLabel addSubview:neednameLbl];
-
-//    自动计算所需材料
     _clLabel = [[UILabel alloc]init];
     _clLabel.numberOfLines = 0;
-    NSString *addtext2 =  @"";
-    _clLabel.text = addtext2;
-    _clLabel.textColor = [UIColor colorWithHexString:@"#4a4a4a"];
-    _clLabel.backgroundColor = [UIColor whiteColor];
-    CGFloat cllabelH = [CaculateLabelHeight getSpaceLabelHeight:_sqtjLabel.text withWidth:CGRectGetWidth(_nameLabel.frame) andFont:12.0 andLines:4.0];
+    _clLabel.font = [UIFont systemFontOfSize:12.0];
+    _clLabel.textColor = TEXT_SUMMARY_COLOR;
+    [_clView addSubview:_clLabel];
     
-    _clLabel.frame = CGRectMake(CGRectGetMinX(_nameLabel.frame), CGRectGetMaxY(needLabel.frame)+1, CGRectGetWidth(_nameLabel.frame), cllabelH);
-    [_scrollView addSubview:_clLabel];
-
+//    申请流程
+    _downView = [[UIView alloc]init];
+    _downView.backgroundColor = [UIColor whiteColor];
+    [_scrollView addSubview:_downView];
     
-    UIView *downView = [[UIView alloc]initWithFrame:CGRectMake(0, 1+CGRectGetMaxY(_clLabel.frame), screenWidth, 110)];
-    downView.backgroundColor = [UIColor whiteColor];
-    [_scrollView addSubview:downView];
-    
-    UILabel *liuchengLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMinX(_nameLabel.frame), 13, 70, 20)];
+    UILabel *liuchengLabel = [[UILabel alloc]initWithFrame:CGRectMake(20*screenScale, 13, 150, 20)];
     liuchengLabel.text = @"申请流程";
-    liuchengLabel.font = [UIFont systemFontOfSize:14.0];
-    [downView addSubview:liuchengLabel];
+    liuchengLabel.font = [UIFont systemFontOfSize:15.0];
+    [_downView addSubview:liuchengLabel];
     
     UIImageView *liuchengImg = [[UIImageView alloc]initWithFrame:CGRectMake((screenWidth-327*screenScale)/2.0, CGRectGetMaxY(liuchengLabel.frame)+10, 327*screenScale, 47*screenScale)];
     liuchengImg.image = [UIImage imageNamed:@"申请流程"];
-    [downView addSubview:liuchengImg];
+    [_downView addSubview:liuchengImg];
     
 //    放在window层上
     UIView *downLeftView = [[UIView alloc]initWithFrame:CGRectMake(0, screenHeight-52, 477/2.0*screenScale, 52)];

@@ -88,7 +88,6 @@
              _nameLabel.text = [NSString stringWithFormat:@"%@—%@",_dic[@"corpName"],_dic[@"name"]];
             
             _produceLabel.text = [NSString stringWithFormat:@"%@",_dic[@"cpjs"]];
-//            _produceLabel.text = @"打算离开大声道打死都加上岛大厦大厦到达圣诞节阿萨德啊实打实大师后倒萨倒萨大师后大大姐说都按时大嫂大声叫偶打算打算到静安寺大神大神大大姐说";
             CGFloat LblW = screenWidth-20*screenScale-Margin;
             CGFloat cpjsH = [CaculateLabelHeight getSpaceLabelHeight:_produceLabel.text withWidth:LblW andFont:12.0 andLines:4.0];
             _produceLabel.frame = CGRectMake(20*screenScale, 39, LblW, cpjsH);
@@ -118,7 +117,7 @@
                 _otherView.frame = CGRectZero;
             }
             
-            _downView.frame = CGRectMake(0, 1+CGRectGetMaxY(_otherView.frame), screenWidth, 110);
+            _downView.frame = CGRectMake(0, 1+CGRectGetMaxY(_otherView.frame), screenWidth, 47*screenScale+56);
      
         }
         
@@ -141,6 +140,7 @@
     [headView addSubview:_iconView];
     
     _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(26*screenScale+CGRectGetMaxX(_iconView.frame), 13, screenWidth-(26*screenScale+CGRectGetMaxX(_iconView.frame))-Margin, 20)];
+    _nameLabel.font = [UIFont systemFontOfSize:15.0];
 //    _nameLabel.backgroundColor = [UIColor cyanColor];
     [headView addSubview:_nameLabel];
     
