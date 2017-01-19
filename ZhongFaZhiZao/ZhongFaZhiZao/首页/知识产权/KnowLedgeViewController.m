@@ -317,9 +317,6 @@
   
 }
 
-//- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section{
-//
-//}
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
 
@@ -365,26 +362,6 @@
     
 }
 
-//获取店铺名称接口
-- (void)getRongName:(NSString *)corid{
-
-
-    _rongNameStr = @"";
-    
-    [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@/corp/%@/getCorpName",HOST_URL,corid] parameters:nil success:^(id response) {
-        
-        if ([response[@"state"]isEqualToString:@"Y"]) {
-            
-            _rongNameStr = response[@"data"][@"name"];
-        }
-        
-        
-    } failure:^(NSString *error) {
-        
-        
-    }];
-    
-}
 
 - (void)IMbtnClick:(UIButton *)button{
     
@@ -403,15 +380,23 @@
         
         IMDetailViewController *chatViewController = [[IMDetailViewController alloc]init];
         chatViewController.targetId = [NSString stringWithFormat:@"%@",_dataArray[button.tag-500000][@"shopId"]];
-        NSLog(@"targetId==%@",_dataArray[button.tag-500000][@"shopId"]);
-        
-        if (_rongNameStr) {
-            
-            chatViewController.title = _rongNameStr;
 
-        }else{
+        
+        [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@/corp/%@/getCorpName",HOST_URL,_dataArray[button.tag-500000][@"shopId"]] parameters:nil success:^(id response) {
+            
+            if ([response[@"state"]isEqualToString:@"Y"]) {
+                
+//                _rongNameStr = response[@"data"][@"name"];
+                chatViewController.title = response[@"data"][@"name"];
+            }
+            
+            
+        } failure:^(NSString *error) {
+            
             chatViewController.title = @"在线咨询";
-        }
+        }];
+        
+
         
         chatViewController.conversationType = ConversationType_PRIVATE;
         

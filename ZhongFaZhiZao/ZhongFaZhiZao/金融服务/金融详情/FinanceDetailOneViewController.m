@@ -10,6 +10,11 @@
 #import "CaculateLabelHeight.h"
 #import "FinanceapplyViewController.h"
 #import "UIImageView+WebCache.h"
+#import <RongIMKit/RongIMKit.h>
+#import "IMViewController.h"
+#import <RongIMKit/RCConversationViewController.h>
+#import "IMDetailViewController.h"
+#import "PwLoginViewController.h"
 
 @interface FinanceDetailOneViewController (){
 
@@ -234,13 +239,128 @@
     UIButton *askBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     askBtn.frame = CGRectMake(screenWidth-97*screenScale, screenHeight-53-24-32*screenScale, 97*screenScale, 32*screenScale);
     [askBtn setBackgroundImage:[UIImage imageNamed:@"在线咨询"] forState:UIControlStateNormal];
+    [askBtn addTarget:self action:@selector(IMBtnClick2) forControlEvents:UIControlEventTouchUpInside];
+
     [self.view addSubview:askBtn];
 }
 
 #pragma mark - 点击事件
+- (void)IMBtnClick2{
+    
+    if ([USER_DEFAULTS objectForKey:@"token"] == nil) {
+        
+        PwLoginViewController *vc = [[PwLoginViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }else{
+        
+        if ([USER_DEFAULTS objectForKey:@"rongtoken"] == nil) {
+            
+            [self ssssss];
+        }
+        
+        IMDetailViewController *chatViewController = [[IMDetailViewController alloc]init];
+        chatViewController.targetId = [NSString stringWithFormat:@"%@",_dic[@"corpId"]];
+        
+        
+        [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@/corp/%@/getCorpName",HOST_URL,_dic[@"corpId"]] parameters:nil success:^(id response) {
+            
+            if ([response[@"state"]isEqualToString:@"Y"]) {
+                
+                //                _rongNameStr = response[@"data"][@"name"];
+                chatViewController.title = response[@"data"][@"name"];
+            }
+            
+            
+        } failure:^(NSString *error) {
+            
+            chatViewController.title = @"在线咨询";
+        }];
+        
+        
+        
+        chatViewController.conversationType = ConversationType_PRIVATE;
+        
+        [self.navigationController pushViewController:chatViewController animated:YES];
+        
+        
+    }
+    
+}
+
+- (void)getUserInfoWithUserId:(NSString *)userId completion:(void(^)(RCUserInfo* userInfo))completion
+
+{
+    if ([userId isEqualToString:[USER_DEFAULTS objectForKey:@"uid"]]) {
+        
+        RCUserInfo *user = [[RCUserInfo alloc]init];
+        
+        user.userId = [USER_DEFAULTS objectForKey:@"uid"];
+        
+        user.name = [USER_DEFAULTS objectForKey:@"uname"];
+        
+        //        user.portraitUri = @"https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=1756054607,4047938258&fm=96&s=94D712D20AA1875519EB37BE0300C008";
+        
+        return completion(user);
+        
+    }
+    
+    
+}
+
+-(void)ssssss{
+    
+    [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,GETRONG_TOKEN] parameters:nil success:^(id response) {
+        
+        
+        [USER_DEFAULTS setObject:response[@"token"] forKey:@"rongtoken"];
+        
+        NSString *token = [USER_DEFAULTS objectForKey:@"rongtoken"];
+        
+        if ([USER_DEFAULTS objectForKey:@"token"]) {
+            
+            [[RCIM sharedRCIM] connectWithToken:token success:^(NSString *userId) {
+                
+                //设置用户信息提供者,页面展现的用户头像及昵称都会从此代理取 这里会跳到会话列表界面  就是我们平常QQ聊天都有一个
+                
+                //        会话的列表  如果想直接跳到聊天界面 下面再说
+                
+                //                [[RCIM sharedRCIM] setUserInfoDataSource:self];
+                
+                NSLog(@"Login successfully with userId: %@.", userId);
+                
+                
+            } error:^(RCConnectErrorCode status) {
+                
+                NSLog(@"login error status: %ld.", (long)status);
+                
+            } tokenIncorrect:^{
+                
+                NSLog(@"token 无效 ，请确保生成token 使用的appkey 和初始化时的appkey 一致");
+                
+            }];
+            
+        }
+        
+    } failure:^(NSString *error) {
+        
+    }];
+    
+}
+
+
+
 - (void)buttonClick{
 
     FinanceapplyViewController *vc = [[FinanceapplyViewController alloc]init];
+    vc.iconImg = [NSString stringWithFormat:@"%@",_dic[@"cpLogo"]];
+    vc.name = [NSString stringWithFormat:@"%@—%@",_dic[@"corpName"],_dic[@"name"]];
+    vc.rate = [NSString stringWithFormat:@"%@",_dic[@"ylv"]];
+    vc.moneyMax = [NSString stringWithFormat:@"%@",_dic[@"moneyMax"]];
+    vc.moneyMin = [NSString stringWithFormat:@"%@",_dic[@"moneyMin"]];
+    vc.periodMax = [NSString stringWithFormat:@"%@",_dic[@"periodMax"]];
+    vc.periodMin = [NSString stringWithFormat:@"%@",_dic[@"periodMin"]];
+    vc.fid = self.fid;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

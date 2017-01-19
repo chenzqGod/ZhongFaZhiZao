@@ -22,5 +22,7 @@
 @property (nonatomic,assign) BOOL isLogin;       //判断是否已登录
 @property (nonatomic,copy) NSString *token;      //token
 @property (nonatomic,copy) NSString *uname;      //姓名
+@property (nonatomic,copy) NSString *contacts;   //联系人
+@property (nonatomic,copy) NSString *mobile;     //手机号码
 
 @end

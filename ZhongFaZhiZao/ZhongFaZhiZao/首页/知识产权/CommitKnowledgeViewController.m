@@ -390,9 +390,6 @@
     showList = NO;
     _tableView.hidden = YES;
     
-//    CGRect frame = _tableView.frame;
-//    frame.size.height = 0;
-//    _tableView.frame = frame;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

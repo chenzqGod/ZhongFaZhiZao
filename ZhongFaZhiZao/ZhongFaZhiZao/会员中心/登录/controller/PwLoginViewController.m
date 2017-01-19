@@ -147,39 +147,25 @@
             if ([response[@"resultCode"]integerValue] == 1000) {
             [WKProgressHUD popMessage:@"登录成功" inView:self.view duration:HUD_DURATION animated:YES];
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                    self.userInfo = [UserInfo sharedUserInfo];
-//                    self.userInfo.desId = response[@"desId"];
-//                    self.userInfo.mob = response[@"mob"];
-//                    self.userInfo.nickName = response[@"nick_name"];
-//                    self.userInfo.photo = response[@"photo"];
-//                    self.userInfo.createDate = response[@"create_date"];
-//                    self.userInfo.uid = response[@"uid"];
-//                    self.userInfo.isLogin = YES;
+
                     self.userInfo = [UserInfo sharedUserInfo];
                     self.userInfo.uid = response[@"data"][@"uid"];
                     self.userInfo.token = response[@"data"][@"token"];
                     self.userInfo.uname = response[@"data"][@"uname"];
+                    self.userInfo.contacts = response[@"data"][@"contacts"];
+                    self.userInfo.mobile = response[@"data"][@"mobile"];
                     self.userInfo.isLogin = YES;
                     
                     self.userInfo.password = self.passWd;
-//                    [USER_DEFAULTS setObject:_userInfo.desId forKey:@"desId"];
-//                    [USER_DEFAULTS setObject:_userInfo.mob forKey:@"mob"];
-//                    [USER_DEFAULTS setObject:_userInfo.nickName forKey:@"nick_name"];
-//                    [USER_DEFAULTS setObject:_userInfo.photo forKey:@"photo"];
-//                    [USER_DEFAULTS setObject:_userInfo.createDate forKey:@"create_date"];
-//                    [USER_DEFAULTS setObject:_userInfo.uid forKey:@"uid"];
+
                     [USER_DEFAULTS setObject:_userInfo.uid forKey:@"uid"];
                     [USER_DEFAULTS setObject:_userInfo.token forKey:@"token"];
                     [USER_DEFAULTS setObject:_userInfo.uname forKey:@"uname"];
-//                    [USER_DEFAULTS setObject:response[@"uname"] forKey:@"uname"];
+                    [USER_DEFAULTS setObject:_userInfo.contacts forKey:@"contacts"];
+                    [USER_DEFAULTS setObject:_userInfo.mobile forKey:@"mobile"];
+
                     [USER_DEFAULTS synchronize];
                     
-//                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//                    [defaults setObject:_userInfo.token forKey:@"token"];
-//                    [defaults setObject:_userInfo.uid forKey:@"uid"];
-//                    [defaults setObject:_userInfo.uname forKey:@"uname"];
-//                    [defaults synchronize];
-//
                     [self ssssss];
                     
                     
