@@ -74,6 +74,7 @@
     self.view.backgroundColor = BACK_COLOR;
     
     _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 64+11, screenWidth, screenHeight-64-11)];
+//    _scrollView.contentSize = CGSizeMake(screenWidth, 1500);
     [self.view addSubview:_scrollView];
     
     [self createUI];
@@ -115,14 +116,19 @@
                 CGFloat otherLblH = [CaculateLabelHeight getSpaceLabelHeight:_otherLabel.text withWidth:LblW andFont:12.0 andLines:4.0];
                 _otherLabel.frame = CGRectMake(20*screenScale, 39, LblW, otherLblH);
                 _otherView.frame = CGRectMake(0,1+CGRectGetMaxY(_sqtjView.frame), screenWidth, 52+otherLblH);
+                 _downView.frame = CGRectMake(0, 1+CGRectGetMaxY(_otherView.frame), screenWidth, 47*screenScale+56);
                 
             }
             else{
             
                 _otherView.frame = CGRectZero;
+                _otherView.hidden = YES;
+                 _downView.frame = CGRectMake(0, 1+CGRectGetMaxY(_sqtjView.frame), screenWidth, 47*screenScale+56);
             }
             
-            _downView.frame = CGRectMake(0, 1+CGRectGetMaxY(_otherView.frame), screenWidth, 47*screenScale+56);
+            _scrollView.contentSize = CGSizeMake(screenWidth, 80+CGRectGetMaxY(_downView.frame));
+            
+//            _downView.frame = CGRectMake(0, 1+CGRectGetMaxY(_otherView.frame), screenWidth, 47*screenScale+56);
      
         }
         

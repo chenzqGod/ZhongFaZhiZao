@@ -31,6 +31,9 @@
 #import "ZYJHeadLineView.h"
 #import "ZYJHeadLineModel.h"
 #import "FinanceViewController.h"
+#import "FinanceCollectionViewCell.h"
+#import "FinanceDetailOneViewController.h"
+#import "FinanceDetailTwoViewController.h"
 
 #define margins 8
 
@@ -193,7 +196,7 @@
                 _cityArray = [NSMutableArray arrayWithArray:_cityDict[@"全部"]];
             }
             
-            NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:5];
+            NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:6];
             
             [UIView performWithoutAnimation:^{
                 
@@ -272,27 +275,12 @@
     
 }
 
-//每个cell页头
-- (void)createCollectionHeader {
-    
-}
-
-
-- (void)setadData41:(NSMutableArray *)array{
-
-    
-
-}
-
 //collectionView最上面Header
 - (void)createHeaderView{
 
     self.headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 180*screenScale+8+40+164+80*screenScale+8)];
     self.headerView.backgroundColor = BACK_COLOR;
     [self.view addSubview:self.headerView];
-    
-//    NSArray *scrollImg = @[@"banner",@"banner",@"banner"];
-    
     
     
     _mainscrollView = [[CustomScrollView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 180*screenScale)];
@@ -303,8 +291,8 @@
         [weakself turntoWebView:index];
 
         
-        
     }];
+    
     _mainscrollView.placeImage = [UIImage imageNamed:@"banner"];
     _mainscrollView.AutoScrollDelay = 5.0f;
     _mainscrollView.style = PageControlAtCenter;
@@ -451,6 +439,7 @@
      [_collectionView registerClass:[IntelligenceCollectionViewCell class] forCellWithReuseIdentifier:@"intelligenceCell"];
      [_collectionView registerClass:[SolveCollectionViewCell class] forCellWithReuseIdentifier:@"solveCell"];
      [_collectionView registerClass:[ElectronicCollectionViewCell class] forCellWithReuseIdentifier:@"eletronicCell"];
+    [_collectionView registerClass:[FinanceCollectionViewCell class] forCellWithReuseIdentifier:@"financeCell"];
     
     [_flowLayout setHeaderReferenceSize:CGSizeMake(screenWidth, _headerView.frame.size.height)];
     
@@ -486,7 +475,7 @@
         return reusableview;
     }
     
-   else if (kind == UICollectionElementKindSectionHeader &&indexPath.section == 5 ) {
+   else if (kind == UICollectionElementKindSectionHeader &&indexPath.section == 6 ) {
        
        UIView *fifView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 80*screenScale+53)];
        fifView.backgroundColor = BACK_COLOR;
@@ -550,7 +539,7 @@
        
     }
     
-    NSArray *collecHeaderArr = @[@"科技bar",@"产权专利bar",@"智能bar",@"解决方案bar",@"电子市场bar"];
+    NSArray *collecHeaderArr = @[@"jrtitle",@"科技bar",@"产权专利bar",@"智能bar",@"解决方案bar",@"电子市场bar"];
     self.collectionHeaderView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 80*screenScale)];
     self.collectionHeaderView.image = [UIImage imageNamed:collecHeaderArr[indexPath.section-1]];
     self.collectionHeaderView.userInteractionEnabled = YES;
@@ -588,24 +577,28 @@
     }
     else if (section == 1){
     
-        return 4;
+        return 3;
     }
     else if (section == 2){
+    
+        return 4;
+    }
+    else if (section == 3){
         
         return 8;
     
     }
-    else if (section == 3){
+    else if (section == 4){
         
         return 4;
     
     }
-    else if (section == 4){
+    else if (section == 5){
     
         return 3;
         
     }
-    else if (section == 5){
+    else if (section == 6){
     
         return _cityArray.count;
         
@@ -616,14 +609,14 @@
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 6;
+    return 7;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
    
-    if (indexPath.section == 2 && indexPath.row < 6) {
+    if (indexPath.section == 3 && indexPath.row < 6) {
         
         NSArray *knowCustomIcon = @[@"申请icon",@"分析icon",@"挖掘icon",@"数据库icon",@"预警icon",@"交易icon"];
         NSArray *konwCustomLabel = @[@"专利申请",@"专利分析",@"专利挖掘",@"数据库定制",@"专利预警",@"专利交易"];
@@ -645,7 +638,7 @@
         
     }
     
-    else if (indexPath.section == 1){
+    else if (indexPath.section == 2){
     
         NSArray *section1Arr = @[@"Group 42",@"Group 43",@"Group 47",@"Group 46"];
         
@@ -659,7 +652,7 @@
         
     }
     
-  else  if (indexPath.section == 3) {
+  else  if (indexPath.section == 4) {
         
         static NSString * CellIdentifier = @"intelligenceCell";
         IntelligenceCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
@@ -672,7 +665,7 @@
         
     }
     
-else if (indexPath.section == 2 && indexPath.row >= 6){
+else if (indexPath.section == 3 && indexPath.row >= 6){
        
        static NSString * CellIdentifier = @"supplycell";
        SupplyCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
@@ -736,7 +729,7 @@ else if (indexPath.section == 0){
     return cell;
 
 }
-else if (indexPath.section == 4){
+else if (indexPath.section == 5){
     
     
     static NSString * CellIdentifier = @"solveCell";
@@ -751,7 +744,7 @@ else if (indexPath.section == 4){
 
 
 }
-else if (indexPath.section == 5){
+else if (indexPath.section == 6){
     
     static NSString * CellIdentifier = @"eletronicCell";
     ElectronicCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
@@ -764,6 +757,21 @@ else if (indexPath.section == 5){
     
    
     return cell;
+}
+    
+else if (indexPath.section == 1){
+
+    static NSString *CellIdentifier = @"financeCell";
+    FinanceCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    NSArray *section4Arr = @[@"jrsum1",@"jrsum2",@"jrsum3"];
+    
+    cell.FinanceImg.image = [UIImage imageNamed:section4Arr[indexPath.row]];
+    
+    
+    return cell;
+    
+
 }
     
     static NSString * CellIdentifier = @"cell";
@@ -782,10 +790,14 @@ else if (indexPath.section == 5){
         return CGSizeMake(screenWidth, 197*screenScale);
     }
     else if (indexPath.section == 1){
+        
+        return CGSizeMake(screenWidth, 89*screenScale);
+    }
+    else if (indexPath.section == 2){
     
         return CGSizeMake((screenWidth-1)/2.0, 175*screenScale);
     }
-    else if (indexPath.section == 2){
+    else if (indexPath.section == 3){
         
         if (indexPath.row <= 5){
             
@@ -795,16 +807,16 @@ else if (indexPath.section == 5){
         
         return CGSizeMake((screenWidth-1)/2.0, 72*screenScale);
     }
-    else if (indexPath.section == 3){
+    else if (indexPath.section == 4){
         
         return CGSizeMake((screenWidth-1)/2.0, 187*screenScale);
     }
-    else if (indexPath.section == 4){
+    else if (indexPath.section == 5){
         
         return CGSizeMake(screenWidth, 113*screenScale);
     
     }
-    else if (indexPath.section == 5){
+    else if (indexPath.section == 6){
         
         return CGSizeMake(screenWidth, 141*screenScale);
     
@@ -829,7 +841,6 @@ else if (indexPath.section == 5){
     else if (section == 2){
         
         return UIEdgeInsetsMake(0, 0, margins, 0);
-        
     }
     else if (section == 3){
         
@@ -842,6 +853,11 @@ else if (indexPath.section == 5){
         
     }
     else if (section == 5){
+        
+        return UIEdgeInsetsMake(0, 0, margins, 0);
+        
+    }
+    else if (section == 6){
         
         return UIEdgeInsetsMake(0, 0, margins, 0);
         
@@ -876,10 +892,34 @@ else if (indexPath.section == 5){
         
         }
         
-        
-        
     }
-    else if (indexPath.section == 1 ){
+    
+    else if (indexPath.section == 1){
+    
+        if (indexPath.row == 0) {
+            
+            FinanceDetailTwoViewController *vc = [[FinanceDetailTwoViewController alloc]init];
+            vc.fid = @"123456";
+            [self.navigationController pushViewController:vc animated:YES];
+
+        }
+        else if (indexPath.row == 1){
+        
+            FinanceDetailOneViewController *vc = [[FinanceDetailOneViewController alloc]init];
+            vc.fid = @"123456";
+            [self.navigationController pushViewController:vc animated:YES];
+
+        }
+        
+        else if (indexPath.row == 2){
+        
+            FinanceDetailOneViewController *vc = [[FinanceDetailOneViewController alloc]init];
+            vc.fid = @"123456";
+            [self.navigationController pushViewController:vc animated:YES];
+
+        }
+    }
+    else if (indexPath.section == 2){
         
         if (indexPath.row == 0) {
             
@@ -911,7 +951,7 @@ else if (indexPath.section == 5){
         }
         
     }
-    else if (indexPath.section == 2 && indexPath.row <= 5) {
+    else if (indexPath.section == 3 && indexPath.row <= 5) {
         
         NSArray *typeID = @[@"80004010",@"80004070",@"80004020",@"80004090",@"80004060",@"80004080"];
         
@@ -920,7 +960,7 @@ else if (indexPath.section == 5){
         [self.navigationController pushViewController:vc animated:YES];
     }
 
-    else if (indexPath.section == 2 && indexPath.row >5){
+    else if (indexPath.section == 3 && indexPath.row >5){
         
         if (indexPath.row == 6) {
             
@@ -936,7 +976,7 @@ else if (indexPath.section == 5){
         }
     
     }
-    else if (indexPath.section == 3){
+    else if (indexPath.section == 4){
         
         if (indexPath.row == 0) {
             
@@ -969,7 +1009,7 @@ else if (indexPath.section == 5){
 
     
     }
-    else if (indexPath.section == 4){
+    else if (indexPath.section == 5){
         
         if (indexPath.row == 0) {
             
@@ -994,7 +1034,7 @@ else if (indexPath.section == 5){
         }
     
     }
-    else if (indexPath.section == 5){
+    else if (indexPath.section == 6){
     
         WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@",_cityArray[indexPath.row][@"url"]] title:@"商品详情页"];
         [self.navigationController pushViewController:vc animated:YES];
@@ -1017,7 +1057,7 @@ else if (indexPath.section == 5){
         
         return CGSizeMake(screenWidth, 180*screenScale+8+40+164+80*screenScale+8);
     }
-    else if (section == 5){
+    else if (section == 6){
     
         return CGSizeMake(screenWidth, 80*screenScale+53);
     }
@@ -1230,25 +1270,31 @@ else if (indexPath.section == 5){
 
 - (void)mainButtonClick2:(UIButton *)button{
     
-    if (button.tag == 2001){
+    if (button.tag == 2001) {
+        
+        FinanceViewController *vc = [[FinanceViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if (button.tag == 2002){
         
         WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,SCIENCE_LIST] title:@"供应链采购"];
         [self.navigationController pushViewController:wkvc animated:YES];
         
     }
-    else if (button.tag == 2002){
+    
+    else if (button.tag == 2003){
         
         KnowLedgeViewController *vc = [[KnowLedgeViewController alloc]init];
         [self.navigationController pushViewController:vc animated:YES];
         
     }
-    else if (button.tag == 2003){
+    else if (button.tag == 2004){
         
         WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,Intelligence_LIST] title:@"供应链采购"];
         [self.navigationController pushViewController:wkvc animated:YES];
         
     }
-    else if (button.tag == 2004){
+    else if (button.tag == 2005){
         
         WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,SOLVE_LIST] title:@"供应链采购"];
         [self.navigationController pushViewController:wkvc animated:YES];

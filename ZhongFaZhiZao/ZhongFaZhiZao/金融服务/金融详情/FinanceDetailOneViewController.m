@@ -75,6 +75,7 @@
     self.view.backgroundColor = BACK_COLOR;
     
     _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 64, screenWidth, screenHeight-64)];
+//    _scrollView.contentSize = CGSizeMake(screenWidth, 1500);
     [self.view addSubview:_scrollView];
     
     [self createUI];
@@ -121,6 +122,9 @@
             
             _rateLabel.attributedText = renewAttributed;
         }
+        
+        
+        _scrollView.contentSize = CGSizeMake(screenWidth, 80+CGRectGetMaxY(_downView.frame));
      
     } failure:^(NSString *error) {
        
