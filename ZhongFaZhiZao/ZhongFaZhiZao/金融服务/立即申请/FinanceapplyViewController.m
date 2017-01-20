@@ -535,52 +535,40 @@
        [WKProgressHUD popMessage:@"请输入正确手机号码" inView:self.view duration:HUD_DURATION animated:YES];
        
    }
-   else if ([self.moneyMax isEqualToString:@"NOEXIST"] || [self.moneyMin isEqualToString:@"NOEXIST"]){
-       
-       if ([_text1.text compare:@"0"]<=0 || [self isPureInt:_text1.text]==NO) {
-           
-        [WKProgressHUD popMessage:@"请输入正确贷款金额" inView:self.view duration:HUD_DURATION animated:YES];
-           
-       }
+   else if ([_text1.text compare:@"0"]<=0 || [self isPureInt:_text1.text]==NO){
    
- 
-   }
-   else if (![self.moneyMax isEqualToString:@"NOEXIST"] && ![self.moneyMax isEqualToString:@"NOEXIST"]){
-   
-       if ([_text1.text compare:@"0"]<=0 || [self isPureInt:_text1.text]==NO) {
-           
-           [WKProgressHUD popMessage:@"请输入正确贷款金额" inView:self.view duration:HUD_DURATION animated:YES];
-       }
-       else if ([_text1.text compare:self.moneyMin]<0 || [_text1.text compare:self.moneyMax]>0){
-       
-           [WKProgressHUD popMessage:@"贷款金额超出范围" inView:self.view duration:HUD_DURATION animated:YES];
-       
-       }
-   }
-   else if ([self.periodMax isEqualToString:@"NOEXIST"] || [self.periodMin isEqualToString:@"NOEXIST"]){
-       
-       if ([_text2.text compare:@"0"]<=0 || [self isPureInt:_text2.text]==NO) {
-           
-           [WKProgressHUD popMessage:@"请输入正确贷款期限" inView:self.view duration:HUD_DURATION animated:YES];
-           
-       }
-       
-       
-   }
-   else if (![self.periodMax isEqualToString:@"NOEXIST"] && ![self.periodMin isEqualToString:@"NOEXIST"]){
-       
-       if ([_text2.text compare:@"0"]<=0 || [self isPureInt:_text2.text]==NO) {
-           
-           [WKProgressHUD popMessage:@"请输入正确贷款期限" inView:self.view duration:HUD_DURATION animated:YES];
-       }
-       else if ([_text2.text compare:self.periodMin]<0 || [_text2.text compare:self.periodMax]>0){
-           
-           [WKProgressHUD popMessage:@"贷款期限超出范围" inView:self.view duration:HUD_DURATION animated:YES];
-           
-       }
+       [WKProgressHUD popMessage:@"请输入正确贷款金额" inView:self.view duration:HUD_DURATION animated:YES];
    }
 
+   else if (![self.moneyMin isEqualToString:@"NOEXIST"]  && [_text1.text compare:self.moneyMin options:NSNumericSearch]<0){
+
+
+           [WKProgressHUD popMessage:@"贷款金额低于范围" inView:self.view duration:HUD_DURATION animated:YES];
+       
+   }
+   else if (![self.moneyMax isEqualToString:@"NOEXIST"] && [_text1.text compare:self.moneyMax options:NSNumericSearch]>0){
+       
+       [WKProgressHUD popMessage:@"贷款金额超出范围" inView:self.view duration:HUD_DURATION animated:YES];
+       
+   }
     
+       
+   else if ([_text2.text compare:@"0"]<=0 || [self isPureInt:_text2.text]==NO){
+       
+           [WKProgressHUD popMessage:@"请输入正确贷款期限" inView:self.view duration:HUD_DURATION animated:YES];
+       
+   }
+   else if (![self.periodMin isEqualToString:@"NOEXIST"] &&[_text2.text compare:self.periodMin options:NSNumericSearch]<0){
+
+           [WKProgressHUD popMessage:@"贷款期限小于范围" inView:self.view duration:HUD_DURATION animated:YES];
+       
+   }
+   else if (![self.periodMax isEqualToString:@"NOEXIST"] && [_text2.text compare:self.periodMax options:NSNumericSearch]>0){
+       
+           [WKProgressHUD popMessage:@"贷款期限超出范围" inView:self.view duration:HUD_DURATION animated:YES];
+       
+   }
+
 
     else{
         

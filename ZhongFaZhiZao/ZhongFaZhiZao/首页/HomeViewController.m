@@ -899,14 +899,14 @@ else if (indexPath.section == 1){
         if (indexPath.row == 0) {
             
             FinanceDetailTwoViewController *vc = [[FinanceDetailTwoViewController alloc]init];
-            vc.fid = @"123456";
+            vc.fid = @"5644085";
             [self.navigationController pushViewController:vc animated:YES];
 
         }
         else if (indexPath.row == 1){
         
             FinanceDetailOneViewController *vc = [[FinanceDetailOneViewController alloc]init];
-            vc.fid = @"123456";
+            vc.fid = @"5643684";
             [self.navigationController pushViewController:vc animated:YES];
 
         }
@@ -914,7 +914,7 @@ else if (indexPath.section == 1){
         else if (indexPath.row == 2){
         
             FinanceDetailOneViewController *vc = [[FinanceDetailOneViewController alloc]init];
-            vc.fid = @"123456";
+            vc.fid = @"5537071";
             [self.navigationController pushViewController:vc animated:YES];
 
         }
