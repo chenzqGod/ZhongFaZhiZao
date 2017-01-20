@@ -764,7 +764,7 @@ else if (indexPath.section == 1){
     static NSString *CellIdentifier = @"financeCell";
     FinanceCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    NSArray *section4Arr = @[@"jrsum1",@"jrsum2",@"jrsum3"];
+    NSArray *section4Arr = @[@"jrsumm1",@"jrsumm2",@"jrsumm3"];
     
     cell.FinanceImg.image = [UIImage imageNamed:section4Arr[indexPath.row]];
     
@@ -899,7 +899,7 @@ else if (indexPath.section == 1){
         if (indexPath.row == 0) {
             
             FinanceDetailTwoViewController *vc = [[FinanceDetailTwoViewController alloc]init];
-            vc.fid = @"5644085";
+            vc.fid = @"5644084";
             [self.navigationController pushViewController:vc animated:YES];
 
         }

@@ -50,7 +50,7 @@
     self.phoneNumTF.leftView = self.phoneNumLbl;
     self.phoneNumTF.leftViewMode = UITextFieldViewModeAlways;
     self.phoneNumTF.placeholder = @"请输入11位手机号";
-    self.phoneNumTF.font = [UIFont boldSystemFontOfSize:15];
+    self.phoneNumTF.font = [UIFont systemFontOfSize:15];
     self.phoneNumTF.textColor = TEXT_GREY_COLOR;
     self.phoneNumTF.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.phoneNumTF.keyboardType = UIKeyboardTypePhonePad;

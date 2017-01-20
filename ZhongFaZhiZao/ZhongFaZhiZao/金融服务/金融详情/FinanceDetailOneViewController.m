@@ -30,7 +30,13 @@
     UILabel *_rateLabel;
     UIView *_downView;
     NSMutableDictionary *_dic;
+    UILabel *_tiaozLabel;
+    
 }
+
+@property (nonatomic,strong)NSString *dyStr;
+@property (nonatomic,strong)NSString *sfStr;
+@property (nonatomic,strong)NSString *fdStr;
 
 @end
 
@@ -67,7 +73,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-
+    
     
     NavigationControllerView *nav = [[NavigationControllerView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 64) andLeftBtn:@"产品详情"];
     nav.viewController = self;
@@ -94,7 +100,27 @@
             [_iconView sd_setImageWithURL:[NSURL URLWithString:_dic[@"cpLogo"]] placeholderImage:[UIImage imageNamed:@"占位图200-188"]];
             _nameLabel.text = [NSString stringWithFormat:@"%@—%@",_dic[@"corpName"],_dic[@"name"]];
             _tqhkLabel.text = [NSString stringWithFormat:@"%@",_dic[@"tqhk"]];
+            _tiaozLabel.text = [NSString stringWithFormat:@"%@",_dic[@"llsm"]];
             
+            if ([_dic[@"dytype"] isEqualToString:@""]) {
+                
+                self.dyStr = @"无抵押";
+            }else{
+            
+                self.dyStr = _dic[@"dytype"];
+            }
+         
+            if ([_dic[@"user"] isEqualToString:@""]) {
+                
+                self.sfStr = @"无身份限制";
+            }else{
+                
+                self.sfStr = _dic[@"user"];
+            }
+
+                self.fdStr = _dic[@"fkqx"];
+
+            _biaoqianLabel.text = [NSString stringWithFormat:@"%@ %@ %@",self.dyStr,self.sfStr,self.fdStr];
             
                CGFloat LblW = screenWidth-20*screenScale-Margin;
             
@@ -124,7 +150,7 @@
         }
         
         
-        _scrollView.contentSize = CGSizeMake(screenWidth, 80+CGRectGetMaxY(_downView.frame));
+        _scrollView.contentSize = CGSizeMake(screenWidth, 140+CGRectGetMaxY(_downView.frame));
      
     } failure:^(NSString *error) {
        
@@ -154,12 +180,12 @@
     _nameLabel.font = [UIFont systemFontOfSize:15.0];
     [midView1 addSubview:_nameLabel];
     
-    _biaoqianLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMinX(_nameLabel.frame), 2+CGRectGetMaxY(_nameLabel.frame), CGRectGetWidth(_nameLabel.frame), 14)];
+    _biaoqianLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMinX(_nameLabel.frame), 3+CGRectGetMaxY(_nameLabel.frame), CGRectGetWidth(_nameLabel.frame), 14)];
     _biaoqianLabel.font = [UIFont systemFontOfSize:10.0];
     _biaoqianLabel.textColor = [UIColor colorWithHexString:@"#F6A623"];
     [midView1 addSubview:_biaoqianLabel];
     
-    UILabel *tiqianLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMinX(_nameLabel.frame), 8+CGRectGetMaxY(_biaoqianLabel.frame), 100, 17)];
+    UILabel *tiqianLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMinX(_nameLabel.frame)-6, 8+CGRectGetMaxY(_biaoqianLabel.frame), 100, 17)];
     tiqianLabel.text = @"【提前还款说明】";
     tiqianLabel.font = [UIFont boldSystemFontOfSize:12.0];
     [midView1 addSubview:tiqianLabel];
@@ -224,10 +250,10 @@
     _rateLabel.font = [UIFont systemFontOfSize:14.0];
     [downLeftView addSubview:_rateLabel];
     
-    UILabel *tiaozLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMinX(_rateLabel.frame), 2+CGRectGetMaxY(_rateLabel.frame)+2, CGRectGetWidth(_rateLabel.frame), 16)];
-    tiaozLabel.text = @"根据企业具体情况，利率会有所调整";
-    tiaozLabel.font = [UIFont systemFontOfSize:12.0];
-    [downLeftView addSubview:tiaozLabel];
+    _tiaozLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMinX(_rateLabel.frame), 2+CGRectGetMaxY(_rateLabel.frame)+2, CGRectGetWidth(_rateLabel.frame), 16)];
+    _tiaozLabel.text = @"根据企业具体情况，利率会有所调整";
+    _tiaozLabel.font = [UIFont systemFontOfSize:12.0];
+    [downLeftView addSubview:_tiaozLabel];
     
 //    申请按钮
     UIButton *applyBtn = [UIButton buttonWithType:UIButtonTypeCustom];

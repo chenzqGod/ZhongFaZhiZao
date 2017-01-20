@@ -111,7 +111,7 @@
             _sqtjView.frame = CGRectMake(0,1+CGRectGetMaxY(_goodView.frame), screenWidth, 52+sqtjLblH);
             
             
-            if (_dic[@"qtsm"]) {
+            if (![_dic[@"qtsm"] isEqualToString:@""]) {
                 _otherLabel.text = [NSString stringWithFormat:@"%@",_dic[@"qtsm"]];
                 CGFloat otherLblH = [CaculateLabelHeight getSpaceLabelHeight:_otherLabel.text withWidth:LblW andFont:12.0 andLines:4.0];
                 _otherLabel.frame = CGRectMake(20*screenScale, 39, LblW, otherLblH);
@@ -126,7 +126,7 @@
                  _downView.frame = CGRectMake(0, 1+CGRectGetMaxY(_sqtjView.frame), screenWidth, 47*screenScale+56);
             }
             
-            _scrollView.contentSize = CGSizeMake(screenWidth, 80+CGRectGetMaxY(_downView.frame));
+            _scrollView.contentSize = CGSizeMake(screenWidth, 140+CGRectGetMaxY(_downView.frame));
             
 //            _downView.frame = CGRectMake(0, 1+CGRectGetMaxY(_otherView.frame), screenWidth, 47*screenScale+56);
      

@@ -13,8 +13,6 @@
 @property (nonatomic,strong)NSString *name;
 @property (nonatomic,strong)NSString *rate;
 @property (nonatomic,strong)NSString *iconImg;
-//@property (nonatomic,strong)NSString *contact;
-//@property (nonatomic,strong)NSString *mobile;
 @property (nonatomic,strong)NSString *moneyMax;
 @property (nonatomic,strong)NSString *moneyMin;
 @property (nonatomic,strong)NSString *periodMax;

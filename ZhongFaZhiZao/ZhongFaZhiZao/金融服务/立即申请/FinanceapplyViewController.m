@@ -489,7 +489,7 @@
     _adminBtn.layer.cornerRadius = 18/2.0;
     _adminBtn.backgroundColor = [UIColor cyanColor];
     self.adminBtnFlag = 0;
-    [_adminBtn setBackgroundImage:[UIImage imageNamed:@"关闭jr"] forState:UIControlStateNormal];
+    [_adminBtn setBackgroundImage:[UIImage imageNamed:@"对jr"] forState:UIControlStateNormal];
     [_adminBtn addTarget:self action:@selector(adminBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [_scrollView addSubview:_adminBtn];
     
@@ -510,7 +510,7 @@
 
 - (void)applyjrBtnClick{
 
-    if (self.adminBtnFlag == 0) {
+    if (self.adminBtnFlag == 1) {
         
         [WKProgressHUD popMessage:@"请同意服务条款" inView:self.view duration:HUD_DURATION animated:YES];
     }
@@ -648,12 +648,12 @@
 
     if (self.adminBtnFlag == 0) {
         
-        [_adminBtn setBackgroundImage:[UIImage imageNamed:@"对jr"] forState:UIControlStateNormal];
+        [_adminBtn setBackgroundImage:[UIImage imageNamed:@"关闭jr"] forState:UIControlStateNormal];
         
         self.adminBtnFlag = 1;
     }else{
         
-       [_adminBtn setBackgroundImage:[UIImage imageNamed:@"关闭jr"] forState:UIControlStateNormal];
+       [_adminBtn setBackgroundImage:[UIImage imageNamed:@"对jr"] forState:UIControlStateNormal];
         self.adminBtnFlag = 0;
     }
 }
