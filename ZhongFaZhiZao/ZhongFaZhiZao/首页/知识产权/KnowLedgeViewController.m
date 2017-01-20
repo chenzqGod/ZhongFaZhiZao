@@ -277,7 +277,7 @@
 
     hotCell.sumLabel.text = [[_dataArray objectAtIndex:indexPath.row] objectForKey:@"name"];
     
-    hotCell.priceLabel.text = [NSString stringWithFormat:@"%.1f",[[[_dataArray objectAtIndex:indexPath.row] objectForKey:@"price"] floatValue]];
+    hotCell.priceLabel.text = [NSString stringWithFormat:@"¥：%.1f",[[[_dataArray objectAtIndex:indexPath.row] objectForKey:@"price"] floatValue]];
     
     [hotCell.iconImageView sd_setImageWithURL:[NSURL URLWithString:[[_dataArray objectAtIndex:indexPath.row] objectForKey:@"imgpath"]] placeholderImage:[UIImage imageNamed:@"占位图200-188"]];
     
@@ -386,7 +386,6 @@
             
             if ([response[@"state"]isEqualToString:@"Y"]) {
                 
-//                _rongNameStr = response[@"data"][@"name"];
                 chatViewController.title = response[@"data"][@"name"];
             }
             

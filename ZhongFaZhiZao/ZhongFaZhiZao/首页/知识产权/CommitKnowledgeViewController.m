@@ -108,13 +108,16 @@
     [backView addSubview:_styleLabel];
     
 //    申请领域
+    
+    
+    
     UILabel *label2 = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(label1.frame)+24, CGRectGetWidth(label1.frame), CGRectGetHeight(label1.frame))];
     label2.text = @"* 申请领域";
     label2.textAlignment = NSTextAlignmentRight;
     label2.font = [UIFont systemFontOfSize:13.0];
     [backView addSubview:label2];
     
-    self.areasTF = [[UITextField alloc]initWithFrame:CGRectMake(13*screenScale+CGRectGetMaxX(label2.frame), CGRectGetMaxY(label1.frame)+17, 204*screenScale, 29)];
+    self.areasTF = [[PickViewTexttField alloc]initWithFrame:CGRectMake(13*screenScale+CGRectGetMaxX(label2.frame), CGRectGetMaxY(label1.frame)+17, 204*screenScale, 29)];
     self.areasTF.placeholder = @"请选择";
     self.areasTF.layer.borderWidth = 1;
     
@@ -125,8 +128,8 @@
     self.areasTF.leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 8, 0)];
     self.areasTF.leftViewMode = UITextFieldViewModeAlways;
     self.areasTF.delegate = self;
-    
-    [self.areasTF addTarget:self action:@selector(showtableBtnClick) forControlEvents:UIControlEventAllTouchEvents];
+    self.areasTF.dataArray = _areaArr;
+//    [self.areasTF addTarget:self action:@selector(showtableBtnClick) forControlEvents:UIControlEventAllTouchEvents];
 
     [backView addSubview:self.areasTF];
     
@@ -196,7 +199,7 @@
     self.issueTF.font = [UIFont systemFontOfSize:13.0];
     self.issueTF.delegate = self;
     self.issueTF.placeholder = @"请详细描述您的需求";
-    self.issueTF.placeholderColor = TEXT_GREY_COLOR;
+    self.issueTF.placeholderColor = [UIColor colorWithHexString:@"#cbcbcb"];
     [backView addSubview:self.issueTF];
 
     self.wordCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.issueTF.frame)-50,  CGRectGetMaxY(self.issueTF.frame)+6, 50, 12)];
@@ -217,32 +220,6 @@
     
 }
 
-- (void)showtableBtnClick{
-
-    [self.areasTF resignFirstResponder];
-    
-    if (showList) {//如果下拉框已显示，什么都不做
-        return;
-    }else {//如果下拉框尚未显示，则进行显示
-        
-       
-        
-        //把dropdownList放到前面，防止下拉框被别的控件遮住
-//        [self.view bringSubviewToFront:_tableView];
-        _tableView.hidden = NO;
-        showList = YES;//显示下拉框
-        
-//        CGRect frame = _tableView.frame;
-//        frame.size.height = 0;
-//        _tableView.frame = frame;
-////        frame.size.height = tabheight;
-//        [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];
-//        [UIView setAnimationCurve:UIViewAnimationCurveLinear];
-////        self.frame = sf;
-//        _tableView.frame = frame;
-//        [UIView commitAnimations];
-    }
-}
 
 //把回车键当做退出键盘的响应键  textView退出键盘的操作
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
@@ -265,7 +242,7 @@
 
     if (self.areasTF == textField) {
         
-        [self showtableBtnClick];
+//        [self showtableBtnClick];
         
         return NO;
     }
