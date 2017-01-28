@@ -478,6 +478,8 @@
     _applyBtn.frame = CGRectMake((screenWidth-340*screenScale)/2.0, 18*screenScale+CGRectGetMaxY(_mainView.frame), 340*screenScale, 35*screenScale);
     _applyBtn.backgroundColor = BLUE_COLOR;
     [_applyBtn setTitle:@"提交申请" forState:UIControlStateNormal];
+    _applyBtn.layer.masksToBounds = YES;
+    _applyBtn.layer.cornerRadius = 2;
     [_applyBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_applyBtn addTarget:self action:@selector(applyjrBtnClick) forControlEvents:UIControlEventTouchUpInside];
     _applyBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];

@@ -28,7 +28,7 @@
 //    self.iconImgView.backgroundColor = [UIColor cyanColor];
     [self.contentView addSubview:self.iconImgView];
     
-    self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(18*screenScale+CGRectGetMaxX(self.iconImgView.frame), 13, 100, 20)];
+    self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(18*screenScale+CGRectGetMaxX(self.iconImgView.frame), 13, 50, 20)];
     self.titleLabel.font = [UIFont systemFontOfSize:14.0];
 //    self.titleLabel.backgroundColor = [UIColor cyanColor];
     [self.contentView addSubview:self.titleLabel];
@@ -50,6 +50,19 @@
     UILabel *linelabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 100, screenWidth, 1)];
     linelabel.backgroundColor = BACK_COLOR;
     [self.contentView addSubview:linelabel];
+    
+    self.FirstImg = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.titleLabel.frame)+7, CGRectGetMinY(self.titleLabel.frame)+4, 28, 11)];
+    self.FirstImg.backgroundColor = [UIColor cyanColor];
+    [self.contentView addSubview:self.FirstImg];
+    
+    self.SecondImg = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.FirstImg.frame)+5, CGRectGetMinY(self.FirstImg.frame), CGRectGetWidth(self.FirstImg.frame), CGRectGetHeight(self.FirstImg.frame))];
+    self.SecondImg.backgroundColor = [UIColor cyanColor];
+    [self.contentView addSubview:self.SecondImg];
+    
+    self.ThirdImg = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.SecondImg.frame)+5, CGRectGetMinY(self.FirstImg.frame), CGRectGetWidth(self.FirstImg.frame), CGRectGetHeight(self.FirstImg.frame))];
+    self.ThirdImg.backgroundColor = [UIColor cyanColor];
+    [self.contentView addSubview:self.ThirdImg];
+    
 }
 
 

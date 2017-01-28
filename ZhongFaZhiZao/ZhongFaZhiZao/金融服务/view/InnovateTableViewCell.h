@@ -15,5 +15,10 @@
 @property (nonatomic,strong)UILabel *recommondLabel;
 @property (nonatomic,strong)UILabel *suumaryLabel;
 
+//标签（最多三个）
+@property (nonatomic,strong)UIImageView *FirstImg;
+@property (nonatomic,strong)UIImageView *SecondImg;
+@property (nonatomic,strong)UIImageView *ThirdImg;
+
 
 @end

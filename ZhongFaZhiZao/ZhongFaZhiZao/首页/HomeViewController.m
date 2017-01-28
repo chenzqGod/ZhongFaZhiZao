@@ -310,7 +310,7 @@
     [self.headerView addSubview:self.adView];
     
 //    行业热点logo
-    UIImageView *hotDianImg = [[UIImageView alloc]initWithFrame:CGRectMake(margins, (40-25)/2.0, 91, 25)];
+    UIImageView *hotDianImg = [[UIImageView alloc]initWithFrame:CGRectMake(margins, (40-25)/2.0+1, 91, 25)];
     hotDianImg.image = [UIImage imageNamed:@"行业热点logo"];
     [self.adView addSubview:hotDianImg];
    
@@ -318,7 +318,7 @@
     hangyeLine.backgroundColor = TEXT_LINE_COLOR;
     [self.adView addSubview:hangyeLine];
     
-    _TopLineView = [[ZYJHeadLineView alloc]initWithFrame:CGRectMake(7+CGRectGetMaxX(hangyeLine.frame), 0, screenWidth-margins-(7+CGRectGetMaxX(hangyeLine.frame)), 40)];
+    _TopLineView = [[ZYJHeadLineView alloc]initWithFrame:CGRectMake(2+CGRectGetMaxX(hangyeLine.frame), 0, screenWidth-margins-(7+CGRectGetMaxX(hangyeLine.frame)), 40)];
 //    _TopLineView.center = CGPointMake(ScreenWidth/2.0, ScreenHeight/2.0-150);
     _TopLineView.backgroundColor = [UIColor whiteColor];
     __weak __typeof(self)weakSelf = self;
@@ -505,7 +505,7 @@
 //           fifButton setBackgroundImage:[UIImage imwithco] forState:<#(UIControlState)#>
            _fifButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
            _fifButton.layer.masksToBounds = YES;
-           _fifButton.layer.cornerRadius = 10;
+           _fifButton.layer.cornerRadius = 12;
            _fifButton.tag = 3000+i;
            [_fifButton addTarget:self action:@selector(fifBtnClick:) forControlEvents:UIControlEventTouchUpInside];
            

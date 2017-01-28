@@ -192,7 +192,7 @@
         _titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _titleBtn.frame = CGRectMake((screenWidth-92*screenScale*3)/4.0*(i+1)+92*i*screenScale,(52-25*screenScale)/2.0+CGRectGetMaxY(_mainImgView.frame), 92*screenScale, 25*screenScale);
         _titleBtn.layer.masksToBounds = YES;
-        _titleBtn.layer.cornerRadius = 10;
+        _titleBtn.layer.cornerRadius = 12;
         [_titleBtn setTitle:btntitle[i] forState:UIControlStateNormal];
         [_titleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
         [_titleBtn setTitleColor:TEXT_GREY_COLOR forState:UIControlStateNormal];

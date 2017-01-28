@@ -107,6 +107,16 @@
 		561AC03D1DED7B0F009C8EC3 /* guid04.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 561AC0391DED7B0F009C8EC3 /* guid04.jpg */; };
 		561AC0401DED7D17009C8EC3 /* LaunchIntroductionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 561AC03F1DED7D17009C8EC3 /* LaunchIntroductionView.m */; };
 		561AC0431DEEDF95009C8EC3 /* MainWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 561AC0421DEEDF95009C8EC3 /* MainWebViewController.m */; };
+		561C80571E31FF3600CA46A4 /* 办理快@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 561C804D1E31FF3600CA46A4 /* 办理快@2x.png */; };
+		561C80581E31FF3600CA46A4 /* 办理快@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 561C804E1E31FF3600CA46A4 /* 办理快@3x.png */; };
+		561C80591E31FF3600CA46A4 /* 额度高@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 561C804F1E31FF3600CA46A4 /* 额度高@2x.png */; };
+		561C805A1E31FF3600CA46A4 /* 额度高@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 561C80501E31FF3600CA46A4 /* 额度高@3x.png */; };
+		561C805B1E31FF3600CA46A4 /* 利率低@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 561C80511E31FF3600CA46A4 /* 利率低@2x.png */; };
+		561C805C1E31FF3600CA46A4 /* 利率低@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 561C80521E31FF3600CA46A4 /* 利率低@3x.png */; };
+		561C805D1E31FF3600CA46A4 /* 门槛低@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 561C80531E31FF3600CA46A4 /* 门槛低@2x.png */; };
+		561C805E1E31FF3600CA46A4 /* 门槛低@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 561C80541E31FF3600CA46A4 /* 门槛低@3x.png */; };
+		561C805F1E31FF3600CA46A4 /* 压力小@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 561C80551E31FF3600CA46A4 /* 压力小@2x.png */; };
+		561C80601E31FF3600CA46A4 /* 压力小@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 561C80561E31FF3600CA46A4 /* 压力小@3x.png */; };
 		56541C061DD2B73D00E9225E /* ZFZZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56541C051DD2B73D00E9225E /* ZFZZViewController.m */; };
 		567B61141DCADFF9004D1CFE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 567B61131DCADFF9004D1CFE /* main.m */; };
 		567B61171DCADFF9004D1CFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 567B61161DCADFF9004D1CFE /* AppDelegate.m */; };
@@ -587,6 +597,16 @@
 		561AC03F1DED7D17009C8EC3 /* LaunchIntroductionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchIntroductionView.m; sourceTree = "<group>"; };
 		561AC0411DEEDF95009C8EC3 /* MainWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainWebViewController.h; path = "自定义/MainWebViewController.h"; sourceTree = "<group>"; };
 		561AC0421DEEDF95009C8EC3 /* MainWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainWebViewController.m; path = "自定义/MainWebViewController.m"; sourceTree = "<group>"; };
+		561C804D1E31FF3600CA46A4 /* 办理快@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "办理快@2x.png"; sourceTree = "<group>"; };
+		561C804E1E31FF3600CA46A4 /* 办理快@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "办理快@3x.png"; sourceTree = "<group>"; };
+		561C804F1E31FF3600CA46A4 /* 额度高@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "额度高@2x.png"; sourceTree = "<group>"; };
+		561C80501E31FF3600CA46A4 /* 额度高@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "额度高@3x.png"; sourceTree = "<group>"; };
+		561C80511E31FF3600CA46A4 /* 利率低@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "利率低@2x.png"; sourceTree = "<group>"; };
+		561C80521E31FF3600CA46A4 /* 利率低@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "利率低@3x.png"; sourceTree = "<group>"; };
+		561C80531E31FF3600CA46A4 /* 门槛低@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "门槛低@2x.png"; sourceTree = "<group>"; };
+		561C80541E31FF3600CA46A4 /* 门槛低@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "门槛低@3x.png"; sourceTree = "<group>"; };
+		561C80551E31FF3600CA46A4 /* 压力小@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "压力小@2x.png"; sourceTree = "<group>"; };
+		561C80561E31FF3600CA46A4 /* 压力小@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "压力小@3x.png"; sourceTree = "<group>"; };
 		56541C041DD2B73D00E9225E /* ZFZZViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFZZViewController.h; sourceTree = "<group>"; };
 		56541C051DD2B73D00E9225E /* ZFZZViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFZZViewController.m; sourceTree = "<group>"; };
 		567B610F1DCADFF9004D1CFE /* ZhongFaZhiZao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZhongFaZhiZao.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1436,6 +1456,23 @@
 			path = "引导页";
 			sourceTree = "<group>";
 		};
+		561C804C1E31FDD700CA46A4 /* 标签 */ = {
+			isa = PBXGroup;
+			children = (
+				561C804D1E31FF3600CA46A4 /* 办理快@2x.png */,
+				561C804E1E31FF3600CA46A4 /* 办理快@3x.png */,
+				561C804F1E31FF3600CA46A4 /* 额度高@2x.png */,
+				561C80501E31FF3600CA46A4 /* 额度高@3x.png */,
+				561C80511E31FF3600CA46A4 /* 利率低@2x.png */,
+				561C80521E31FF3600CA46A4 /* 利率低@3x.png */,
+				561C80531E31FF3600CA46A4 /* 门槛低@2x.png */,
+				561C80541E31FF3600CA46A4 /* 门槛低@3x.png */,
+				561C80551E31FF3600CA46A4 /* 压力小@2x.png */,
+				561C80561E31FF3600CA46A4 /* 压力小@3x.png */,
+			);
+			path = "标签";
+			sourceTree = "<group>";
+		};
 		567B61061DCADFF9004D1CFE = {
 			isa = PBXGroup;
 			children = (
@@ -1543,6 +1580,7 @@
 		567B61491DCAE489004D1CFE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				561C804C1E31FDD700CA46A4 /* 标签 */,
 				56EC154C1E26288F004AE01A /* 金融服务 */,
 				56CC47501E13A6AA00D8E42E /* 占位图 */,
 				5691B6451E111A3C00AC09DB /* 搜索页 */,
@@ -2568,6 +2606,7 @@
 				560956221DFF998E00DA0B72 /* 密码登录@3x.png in Resources */,
 				56EC15541E263E0D004AE01A /* 金融icon@3x.png in Resources */,
 				56CFD7751E028FC700D18340 /* 产权专利bar@3x.png in Resources */,
+				561C80581E31FF3600CA46A4 /* 办理快@3x.png in Resources */,
 				560956251DFF998E00DA0B72 /* 默认头像@2x.png in Resources */,
 				5691B62B1E10FB4A00AC09DB /* Group 50@3x.png in Resources */,
 				56CFD7AE1E03BCC500D18340 /* 搜素@2x.png in Resources */,
@@ -2593,6 +2632,7 @@
 				561AC03B1DED7B0F009C8EC3 /* guid02.jpg in Resources */,
 				5603662C1DDEA20000332DD2 /* Default@2x.png in Resources */,
 				5697C8961E0E6EF9008A1D98 /* 智能4@3x.png in Resources */,
+				561C805A1E31FF3600CA46A4 /* 额度高@3x.png in Resources */,
 				56CFD7091E00E45700D18340 /* 采购-1@3x.png in Resources */,
 				5691B6201E10F72500AC09DB /* Group 46@3x.png in Resources */,
 				56CFD7A21E028FC700D18340 /* 智能创新icon@2x.png in Resources */,
@@ -2611,6 +2651,7 @@
 				5697C85F1E0CF667008A1D98 /* RongCloudKit.strings in Resources */,
 				56CFD77F1E028FC700D18340 /* 供bar@3x.png in Resources */,
 				56CFD7821E028FC700D18340 /* 解决方案bar@2x.png in Resources */,
+				561C805C1E31FF3600CA46A4 /* 利率低@3x.png in Resources */,
 				56CFD77A1E028FC700D18340 /* 分析icon@2x.png in Resources */,
 				56DAB5D41E30B6B0003B71D5 /* yellowstar@2x.png in Resources */,
 				56CFD7A71E028FC700D18340 /* bar@3x.png in Resources */,
@@ -2657,6 +2698,7 @@
 				5697C8051E08DDEF008A1D98 /* Group 15@2x.png in Resources */,
 				560956261DFF998E00DA0B72 /* 默认头像@3x.png in Resources */,
 				56D8FF111E166158008661E2 /* 默认图750@2x.png in Resources */,
+				561C80601E31FF3600CA46A4 /* 压力小@3x.png in Resources */,
 				56CFD8251E0789FE00D18340 /* icon@2x.png in Resources */,
 				5603663D1DDEA7BC00332DD2 /* Images.xcassets in Resources */,
 				5691B63F1E11070700AC09DB /* Group 54@2x.png in Resources */,
@@ -2698,6 +2740,7 @@
 				56C9308F1E125636006DC3C2 /* BackNV@2x.png in Resources */,
 				56CFD7AF1E03BCC500D18340 /* 搜素@3x.png in Resources */,
 				5609561A1DFF998E00DA0B72 /* wechat-press@3x.png in Resources */,
+				561C805B1E31FF3600CA46A4 /* 利率低@2x.png in Resources */,
 				5691B61B1E10F72500AC09DB /* Group 42@2x.png in Resources */,
 				560366271DDEA20000332DD2 /* Default-375w-667h@2x.png in Resources */,
 				56D8FF0E1E14F90B008661E2 /* Group no@3x.png in Resources */,
@@ -2709,6 +2752,7 @@
 				56DAB5FA1E313EAD003B71D5 /* jrtitle@2x.png in Resources */,
 				56D8FF151E166D53008661E2 /* 搜素img@2x.png in Resources */,
 				56CC47561E13A74600D8E42E /* 占位图157-148@3x.png in Resources */,
+				561C805F1E31FF3600CA46A4 /* 压力小@2x.png in Resources */,
 				5603662A1DDEA20000332DD2 /* Default-667h@2x.png in Resources */,
 				56D8FF121E166158008661E2 /* 默认图750@3x.png in Resources */,
 				56CFD7981E028FC700D18340 /* 挖掘icon@2x.png in Resources */,
@@ -2738,6 +2782,7 @@
 				56CFD7891E028FC700D18340 /* 科技成果icon@3x.png in Resources */,
 				56CFD79F1E028FC700D18340 /* 行业热点logo@3x.png in Resources */,
 				56CFD7081E00E45700D18340 /* 采购-1@2x.png in Resources */,
+				561C805D1E31FF3600CA46A4 /* 门槛低@2x.png in Resources */,
 				56CFD81E1E0789FE00D18340 /* banner2@3x.png in Resources */,
 				5603663F1DDEAD3400332DD2 /* 40x40.png in Resources */,
 				56CFD7991E028FC700D18340 /* 挖掘icon@3x.png in Resources */,
@@ -2757,6 +2802,7 @@
 				5691B6481E111AB600AC09DB /* 清除@2x.png in Resources */,
 				560366381DDEA20000332DD2 /* 76@1x.png in Resources */,
 				5697C88D1E0E6EF9008A1D98 /* Group 41@2x.png in Resources */,
+				561C80591E31FF3600CA46A4 /* 额度高@2x.png in Resources */,
 				567B611D1DCADFF9004D1CFE /* Main.storyboard in Resources */,
 				56CFD7971E028FC700D18340 /* 推荐@3x.png in Resources */,
 				56CFD7801E028FC700D18340 /* 交易icon@2x.png in Resources */,
@@ -2784,7 +2830,9 @@
 				56CFD7101E00E45700D18340 /* 首页-1@2x.png in Resources */,
 				560366311DDEA20000332DD2 /* 152@2x.png in Resources */,
 				56CFD70A1E00E45700D18340 /* 采购-2@2x.png in Resources */,
+				561C80571E31FF3600CA46A4 /* 办理快@2x.png in Resources */,
 				56CFD8111E052CA100D18340 /* Shape@3x.png in Resources */,
+				561C805E1E31FF3600CA46A4 /* 门槛低@3x.png in Resources */,
 				56CC47551E13A74600D8E42E /* 占位图157-148@2x.png in Resources */,
 				560956241DFF998E00DA0B72 /* 账号登录@3x.png in Resources */,
 				56CFD78F1E028FC700D18340 /* 扫一扫@3x.png in Resources */,

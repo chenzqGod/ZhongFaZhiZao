@@ -31,6 +31,11 @@
     UILabel *_otherLabel;
     NSMutableDictionary *_dic;
     UIView *_downView;
+    
+//    添加标签（最多三个）
+    UIImageView *_FirstImg;
+    UIImageView *_SecondImg;
+    UIImageView *_ThirdImg;
 }
 
 @end
@@ -155,7 +160,20 @@
 //    _nameLabel.backgroundColor = [UIColor cyanColor];
     [headView addSubview:_nameLabel];
     
-
+//    添加标签
+    _FirstImg = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMinX(_nameLabel.frame), CGRectGetMaxY(_iconView.frame)-11, 28, 11)];
+    _FirstImg.backgroundColor = [UIColor cyanColor];
+    [headView addSubview:_FirstImg];
+    
+    _SecondImg = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_FirstImg.frame)+5, CGRectGetMinY(_FirstImg.frame), CGRectGetWidth(_FirstImg.frame), CGRectGetHeight(_FirstImg.frame))];
+    _SecondImg.backgroundColor = [UIColor cyanColor];
+    [headView addSubview:_SecondImg];
+    
+    _ThirdImg = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_SecondImg.frame)+5, CGRectGetMinY(_FirstImg.frame), CGRectGetWidth(_FirstImg.frame), CGRectGetHeight(_FirstImg.frame))];
+    _ThirdImg.backgroundColor = [UIColor cyanColor];
+    [headView addSubview:_ThirdImg];
+    
+    
 //    产品介绍
     _produceView = [[UIView alloc]init];
     _produceView.backgroundColor = [UIColor whiteColor];
