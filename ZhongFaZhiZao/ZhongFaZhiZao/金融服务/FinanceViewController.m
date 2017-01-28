@@ -299,6 +299,30 @@
     cell1.suumaryLabel.text = [NSString stringWithFormat:@"%@",[[_dataArr1 objectAtIndex:indexPath.row]objectForKey:@"summary"]];
     cell1.selectionStyle = UITableViewCellSelectionStyleNone;
     
+        if ([[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"] count] == 1) {
+            
+            cell1.FirstImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"][0]]];
+        }
+        
+        else if ([[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"] count] == 2){
+        
+            cell1.FirstImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"][0]]];
+            
+            cell1.SecondImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"][1]]];
+            
+        }
+        else if ([[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"] count] == 3){
+        
+            cell1.FirstImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"][0]]];
+            
+            cell1.SecondImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"][1]]];
+            
+            cell1.FirstImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"][2]]];
+            
+        }
+        
+        
+        
         return cell1;
     }
 
@@ -377,10 +401,43 @@
     
     if (self.cityNumber == 0) {
         
+        
+    
         FinanceDetailTwoViewController *vc = [[FinanceDetailTwoViewController alloc]init];
         vc.fid = [[_dataArr1 objectAtIndex:indexPath.row]objectForKey:@"id"];
-        [self.navigationController pushViewController:vc animated:YES];
+        
+        if ([[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"] count] == 1) {
+            
+            vc.firstStr = [NSString stringWithFormat:@"%@",[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"][0]];
+        }
+        
+        else if ([[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"] count] == 2){
+            
+            vc.firstStr = [NSString stringWithFormat:@"%@",[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"][0]];
+            
+            vc.secondStr = [NSString stringWithFormat:@"%@",[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"][1]];
+            
+                 }
+        else if ([[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"] count] == 3){
+            
+            vc.firstStr = [NSString stringWithFormat:@"%@",[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"][0]];
+            
+            vc.secondStr = [NSString stringWithFormat:@"%@",[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"][1]];
 
+            vc.thirdStr = [NSString stringWithFormat:@"%@",[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"][2]];
+            
+        }
+        else{
+        
+            
+            vc.firstStr = @"unfull";
+            vc.secondStr = @"unfull";
+            vc.thirdStr = @"unfull";
+        }
+
+        
+        [self.navigationController pushViewController:vc animated:YES];
+        
         
     }
     else if (self.cityNumber == 1){

@@ -12,4 +12,9 @@
 
 @property (nonatomic,strong)NSString *fid;
 
+//     自己接收数组
+@property (nonatomic,copy)NSString *firstStr;
+@property (nonatomic,copy)NSString *secondStr;
+@property (nonatomic,copy)NSString *thirdStr;
+
 @end

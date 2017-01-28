@@ -162,15 +162,18 @@
     
 //    添加标签
     _FirstImg = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMinX(_nameLabel.frame), CGRectGetMaxY(_iconView.frame)-11, 28, 11)];
-    _FirstImg.backgroundColor = [UIColor cyanColor];
+//    _FirstImg.backgroundColor = [UIColor cyanColor];
+    _FirstImg.image = [UIImage imageNamed:self.firstStr];
     [headView addSubview:_FirstImg];
     
     _SecondImg = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_FirstImg.frame)+5, CGRectGetMinY(_FirstImg.frame), CGRectGetWidth(_FirstImg.frame), CGRectGetHeight(_FirstImg.frame))];
-    _SecondImg.backgroundColor = [UIColor cyanColor];
+//    _SecondImg.backgroundColor = [UIColor cyanColor];
+    _SecondImg.image = [UIImage imageNamed:self.secondStr];
     [headView addSubview:_SecondImg];
     
     _ThirdImg = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_SecondImg.frame)+5, CGRectGetMinY(_FirstImg.frame), CGRectGetWidth(_FirstImg.frame), CGRectGetHeight(_FirstImg.frame))];
-    _ThirdImg.backgroundColor = [UIColor cyanColor];
+//    _ThirdImg.backgroundColor = [UIColor cyanColor];
+    _ThirdImg.image = [UIImage imageNamed:self.thirdStr];
     [headView addSubview:_ThirdImg];
     
     

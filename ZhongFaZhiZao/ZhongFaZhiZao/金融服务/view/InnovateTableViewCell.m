@@ -52,15 +52,15 @@
     [self.contentView addSubview:linelabel];
     
     self.FirstImg = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.titleLabel.frame)+7, CGRectGetMinY(self.titleLabel.frame)+4, 28, 11)];
-    self.FirstImg.backgroundColor = [UIColor cyanColor];
+//    self.FirstImg.backgroundColor = [UIColor cyanColor];
     [self.contentView addSubview:self.FirstImg];
     
     self.SecondImg = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.FirstImg.frame)+5, CGRectGetMinY(self.FirstImg.frame), CGRectGetWidth(self.FirstImg.frame), CGRectGetHeight(self.FirstImg.frame))];
-    self.SecondImg.backgroundColor = [UIColor cyanColor];
+//    self.SecondImg.backgroundColor = [UIColor cyanColor];
     [self.contentView addSubview:self.SecondImg];
     
     self.ThirdImg = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.SecondImg.frame)+5, CGRectGetMinY(self.FirstImg.frame), CGRectGetWidth(self.FirstImg.frame), CGRectGetHeight(self.FirstImg.frame))];
-    self.ThirdImg.backgroundColor = [UIColor cyanColor];
+//    self.ThirdImg.backgroundColor = [UIColor cyanColor];
     [self.contentView addSubview:self.ThirdImg];
     
 }
