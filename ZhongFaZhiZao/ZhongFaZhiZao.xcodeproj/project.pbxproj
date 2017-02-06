@@ -2548,7 +2548,7 @@
 					567B610E1DCADFF9004D1CFE = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 67CW5W5X73;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -3191,7 +3191,7 @@
 				CODE_SIGN_ENTITLEMENTS = ZhongFaZhiZao/ZhongFaZhiZao.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Push Services: com.cecbb.app";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 67CW5W5X73;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ZhongFaZhiZao/Others",
@@ -3199,7 +3199,7 @@
 					"$(PROJECT_DIR)/RongCloud",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "/Users/chenzhiqiang/Desktop/中发/ZhongFaZhiZao/ZhongFaZhiZao/ZhongFa.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/ZhongFaZhiZao/ZhongFa.pch";
 				INFOPLIST_FILE = ZhongFaZhiZao/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -3212,8 +3212,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cecbb.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bd53ae4f-0511-4499-9a56-c3ce70a06f8f";
-				PROVISIONING_PROFILE_SPECIFIER = ZhongFaText;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -3225,8 +3225,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = ZhongFaZhiZao/ZhongFaZhiZao.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Push Services: com.cecbb.app";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = 67CW5W5X73;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ZhongFaZhiZao/Others",
@@ -3234,7 +3234,7 @@
 					"$(PROJECT_DIR)/RongCloud",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "/Users/chenzhiqiang/Desktop/中发/ZhongFaZhiZao/ZhongFaZhiZao/ZhongFa.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/ZhongFaZhiZao/ZhongFa.pch";
 				INFOPLIST_FILE = ZhongFaZhiZao/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -3247,8 +3247,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cecbb.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2edff2d8-e6af-44aa-a8f5-e495d1ff2923";
-				PROVISIONING_PROFILE_SPECIFIER = ZhongFaDistApp;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
