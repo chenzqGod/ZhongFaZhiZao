@@ -49,7 +49,7 @@
     self.tabBarController.tabBar.hidden = YES;
     self.tabBarController.tabBar.frame = CGRectZero;
     
-    NSLog(@"%@",_navigatorTitle);
+//    NSLog(@"%@",_navigatorTitle);
     self.title=_navigatorTitle;
     //self.navigationController.navigationItem.title=_navigatorTitle;
     //self.navigationController.title=_navigatorTitle;
@@ -218,7 +218,7 @@
         [userContentController addUserScript:script];
         
         [request addValue:cookieValue forHTTPHeaderField:@"Cookie"];
-        NSLog(@"添加cookie");
+//        NSLog(@"添加cookie");
         [self.webView loadRequest:request];
 //        [self.webView loadFileURL:fileURL allowingReadAccessToURL:fileURL];
     }
@@ -284,7 +284,7 @@
         
         NSArray *separatedStr = [url componentsSeparatedByString:@"service="];
         
-        NSString *jumpStr = [separatedStr objectAtIndex:1];
+//        NSString *jumpStr = [separatedStr objectAtIndex:1];
         
         _jumpUrl = [separatedStr objectAtIndex:1];
         
@@ -302,7 +302,7 @@
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     // 类似 UIWebView 的 -webView: shouldStartLoadWithRequest: navigationType:
     
-    NSLog(@"4.%@",navigationAction.request);
+//    NSLog(@"4.%@",navigationAction.request);
     
     
 //    NSString *url = [navigationAction.request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -373,7 +373,7 @@
 
     if ([keyPath isEqualToString:@"title"])
     {
-        NSLog(@"webviewtitle :%@",self.webView.title);
+//        NSLog(@"webviewtitle :%@",self.webView.title);
         if (object == self.webView) {
             navView.title = self.webView.title;
         }

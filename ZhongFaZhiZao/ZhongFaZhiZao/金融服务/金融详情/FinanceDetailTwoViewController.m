@@ -160,6 +160,7 @@
 //    _nameLabel.backgroundColor = [UIColor cyanColor];
     [headView addSubview:_nameLabel];
     
+    
 //    添加标签
     _FirstImg = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMinX(_nameLabel.frame), CGRectGetMaxY(_iconView.frame)-11, 28, 11)];
 //    _FirstImg.backgroundColor = [UIColor cyanColor];

@@ -35,6 +35,8 @@
 #import "FinanceDetailOneViewController.h"
 #import "FinanceDetailTwoViewController.h"
 
+#import "QRcodeViewController.h"
+
 #define margins 8
 
 @interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>{
@@ -228,38 +230,38 @@
 
     [self.view addSubview:self.navigationView];
     
-    //    UIButton *QRcode = [UIButton buttonWithType:UIButtonTypeCustom];
-    //    QRcode.frame = CGRectMake(14, 24+(59/2.0-57/2.0)/2.0, 59/2.0, 57/2.0);
-    //    QRcode.backgroundColor = [UIColor clearColor];
-    //    [QRcode setBackgroundImage:[UIImage imageNamed:@"扫一扫"] forState:UIControlStateNormal];
-    //    QRcode.imageView.frame = QRcode.bounds;
-    //    QRcode.hidden = NO;
-    //    [QRcode addTarget:self action:@selector(scanning) forControlEvents:UIControlEventTouchUpInside];
-    //    [self.view addSubview:QRcode];
-    
-//    self.pushSerchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    self.pushSerchBtn.frame = CGRectMake(59*screenScale, 24, 539/2.0*screenScale, 59/2.0);
-//    self.pushSerchBtn.backgroundColor = [UIColor clearColor];
-//    [self.pushSerchBtn setBackgroundImage:[UIImage imageNamed:@"搜素"] forState:UIControlStateNormal];
-//
-//    self.pushSerchBtn.imageView.frame = self.pushSerchBtn.bounds;
-//    self.pushSerchBtn.hidden = NO;
-//    [self.pushSerchBtn setEnabled:YES];
-//    [self.pushSerchBtn addTarget:self action:@selector(SearchButtonPush) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    [self.view addSubview:self.pushSerchBtn];
+        UIButton *QRcode = [UIButton buttonWithType:UIButtonTypeCustom];
+        QRcode.frame = CGRectMake(14, 24+(59/2.0-57/2.0)/2.0, 59/2.0, 57/2.0);
+        QRcode.backgroundColor = [UIColor clearColor];
+        [QRcode setBackgroundImage:[UIImage imageNamed:@"扫一扫"] forState:UIControlStateNormal];
+        QRcode.imageView.frame = QRcode.bounds;
+        QRcode.hidden = NO;
+        [QRcode addTarget:self action:@selector(scanning) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:QRcode];
     
     self.pushSerchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.pushSerchBtn.frame = CGRectMake(13*screenScale, 24, 630/2.0*screenScale, 59/2.0);
+    self.pushSerchBtn.frame = CGRectMake(59*screenScale, 24, 539/2.0*screenScale, 59/2.0);
     self.pushSerchBtn.backgroundColor = [UIColor clearColor];
-    [self.pushSerchBtn setBackgroundImage:[UIImage imageNamed:@"搜素img"] forState:UIControlStateNormal];
-    
+    [self.pushSerchBtn setBackgroundImage:[UIImage imageNamed:@"搜素"] forState:UIControlStateNormal];
+
     self.pushSerchBtn.imageView.frame = self.pushSerchBtn.bounds;
     self.pushSerchBtn.hidden = NO;
     [self.pushSerchBtn setEnabled:YES];
     [self.pushSerchBtn addTarget:self action:@selector(SearchButtonPush) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:self.pushSerchBtn];
+    
+//    self.pushSerchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    self.pushSerchBtn.frame = CGRectMake(13*screenScale, 24, 630/2.0*screenScale, 59/2.0);
+//    self.pushSerchBtn.backgroundColor = [UIColor clearColor];
+//    [self.pushSerchBtn setBackgroundImage:[UIImage imageNamed:@"搜素img"] forState:UIControlStateNormal];
+//    
+//    self.pushSerchBtn.imageView.frame = self.pushSerchBtn.bounds;
+//    self.pushSerchBtn.hidden = NO;
+//    [self.pushSerchBtn setEnabled:YES];
+//    [self.pushSerchBtn addTarget:self action:@selector(SearchButtonPush) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    [self.view addSubview:self.pushSerchBtn];
     
     
     UIButton *pushBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -1210,11 +1212,14 @@ else if (indexPath.section == 1){
 }
 
 //扫一扫
-//- (void)scanning{
-//
+- (void)scanning{
+    
+    QRcodeViewController *QRvc = [[QRcodeViewController alloc]init];
+    [self.navigationController pushViewController:QRvc animated:YES];
+    
 //    [WKProgressHUD popMessage:@"敬请期待" inView:self.view duration:HUD_DURATION animated:YES];
-//
-//}
+
+}
 
 //jpush消息
 - (void)jPushButton{

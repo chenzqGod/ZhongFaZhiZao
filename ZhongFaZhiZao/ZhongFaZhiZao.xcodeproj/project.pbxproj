@@ -117,6 +117,7 @@
 		561C805E1E31FF3600CA46A4 /* 门槛低@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 561C80541E31FF3600CA46A4 /* 门槛低@3x.png */; };
 		561C805F1E31FF3600CA46A4 /* 压力小@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 561C80551E31FF3600CA46A4 /* 压力小@2x.png */; };
 		561C80601E31FF3600CA46A4 /* 压力小@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 561C80561E31FF3600CA46A4 /* 压力小@3x.png */; };
+		56363C8C1E49948C0064101E /* QRcodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56363C8B1E49948C0064101E /* QRcodeViewController.m */; };
 		56541C061DD2B73D00E9225E /* ZFZZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56541C051DD2B73D00E9225E /* ZFZZViewController.m */; };
 		567B61141DCADFF9004D1CFE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 567B61131DCADFF9004D1CFE /* main.m */; };
 		567B61171DCADFF9004D1CFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 567B61161DCADFF9004D1CFE /* AppDelegate.m */; };
@@ -607,6 +608,8 @@
 		561C80541E31FF3600CA46A4 /* 门槛低@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "门槛低@3x.png"; sourceTree = "<group>"; };
 		561C80551E31FF3600CA46A4 /* 压力小@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "压力小@2x.png"; sourceTree = "<group>"; };
 		561C80561E31FF3600CA46A4 /* 压力小@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "压力小@3x.png"; sourceTree = "<group>"; };
+		56363C8A1E49948C0064101E /* QRcodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRcodeViewController.h; sourceTree = "<group>"; };
+		56363C8B1E49948C0064101E /* QRcodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRcodeViewController.m; sourceTree = "<group>"; };
 		56541C041DD2B73D00E9225E /* ZFZZViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFZZViewController.h; sourceTree = "<group>"; };
 		56541C051DD2B73D00E9225E /* ZFZZViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFZZViewController.m; sourceTree = "<group>"; };
 		567B610F1DCADFF9004D1CFE /* ZhongFaZhiZao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZhongFaZhiZao.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1473,6 +1476,15 @@
 			path = "标签";
 			sourceTree = "<group>";
 		};
+		56363C891E4993C80064101E /* 扫一扫 */ = {
+			isa = PBXGroup;
+			children = (
+				56363C8A1E49948C0064101E /* QRcodeViewController.h */,
+				56363C8B1E49948C0064101E /* QRcodeViewController.m */,
+			);
+			path = "扫一扫";
+			sourceTree = "<group>";
+		};
 		567B61061DCADFF9004D1CFE = {
 			isa = PBXGroup;
 			children = (
@@ -1619,8 +1631,8 @@
 			isa = PBXGroup;
 			children = (
 				56B770831DD2D1BB00BA1D2B /* APImacros.h */,
-				56B770841DD2D2AB00BA1D2B /* RuleMacros.h */,
 				56B770851DD441AF00BA1D2B /* macros.h */,
+				56B770841DD2D2AB00BA1D2B /* RuleMacros.h */,
 			);
 			path = "Macros(宏)";
 			sourceTree = "<group>";
@@ -1963,6 +1975,7 @@
 		567B62681DD08753004D1CFE /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
+				56363C891E4993C80064101E /* 扫一扫 */,
 				56CFD7FC1E03ED7300D18340 /* 知识产权 */,
 				56CFD72C1E026E7800D18340 /* View */,
 				567B626A1DD087A6004D1CFE /* HomeViewController.h */,
@@ -2939,6 +2952,7 @@
 				567B623C1DD020A1004D1CFE /* AFNetworkActivityIndicatorManager.m in Sources */,
 				561AC0401DED7D17009C8EC3 /* LaunchIntroductionView.m in Sources */,
 				56932B161E1429880010FC7E /* ZYJHeadLineView.m in Sources */,
+				56363C8C1E49948C0064101E /* QRcodeViewController.m in Sources */,
 				567B622E1DD020A1004D1CFE /* SDWebImageDecoder.m in Sources */,
 				567B62121DD020A0004D1CFE /* View+MASAdditions.m in Sources */,
 				560955B21DF7FADF00DA0B72 /* PwLoginViewController.m in Sources */,

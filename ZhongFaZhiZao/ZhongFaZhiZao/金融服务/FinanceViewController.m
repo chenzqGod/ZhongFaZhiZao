@@ -311,13 +311,13 @@
             cell1.SecondImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"][1]]];
             
         }
-        else if ([[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"] count] == 3){
+        else if ([[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"] count] >= 3){
         
             cell1.FirstImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"][0]]];
             
             cell1.SecondImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"][1]]];
             
-            cell1.FirstImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"][2]]];
+            cell1.ThirdImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"][2]]];
             
         }
         
@@ -418,7 +418,7 @@
             vc.secondStr = [NSString stringWithFormat:@"%@",[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"][1]];
             
                  }
-        else if ([[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"] count] == 3){
+        else if ([[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"] count] >= 3){
             
             vc.firstStr = [NSString stringWithFormat:@"%@",[[_dataArr1 objectAtIndex:indexPath.row] objectForKey:@"advantage"][0]];
             

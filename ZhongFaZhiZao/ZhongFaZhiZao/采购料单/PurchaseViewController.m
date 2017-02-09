@@ -34,15 +34,8 @@
     
     [self.tabBarController.tabBar setHidden:NO];
     
-//    if(_jumpUrl) {
-//        _urlStr = _jumpUrl;
-//        _jumpUrl = nil;
-//        _isLoaing = NO;
-//        [self loadWebViewData];
-//        
-//    }
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:PURCHASE_LIST]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HOST_URL,PURCHASE_LIST]]];
     
     [request addValue:@"ios" forHTTPHeaderField:@"app"];
     
@@ -67,7 +60,6 @@
     [request addValue:cookieValue forHTTPHeaderField:@"Cookie"];
     NSLog(@"添加cookie");
     
-    //    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:PURCHASE_LIST]]];
     [self.webView loadRequest:request];
 }
 
@@ -103,7 +95,7 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:PURCHASE_LIST]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HOST_URL,PURCHASE_LIST]]];
     
     [request addValue:@"ios" forHTTPHeaderField:@"app"];
     
@@ -128,9 +120,7 @@
     [request addValue:cookieValue forHTTPHeaderField:@"Cookie"];
     NSLog(@"添加cookie");
     
-//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:PURCHASE_LIST]]];
     [self.webView loadRequest:request];
-
 
 }
 
@@ -194,6 +184,9 @@
 // 在收到响应后，决定是否跳转
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {
     NSString *url = webView.URL.absoluteString;
+    NSLog(@"收到响应url ===== %@",url);
+
+    
     if([url containsString:LoginURL]) {
         
         decisionHandler(WKNavigationResponsePolicyCancel);
@@ -306,7 +299,7 @@
 //}
 
 - (void)dealloc {
-    [_webView removeObserver:self forKeyPath:@"estimatedProgress"];
+//    [_webView removeObserver:self forKeyPath:@"estimatedProgress"];
     
     // if you have set either WKWebView delegate also set these to nil here
     [_webView setNavigationDelegate:nil];
