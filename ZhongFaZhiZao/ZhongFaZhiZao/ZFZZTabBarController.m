@@ -13,6 +13,7 @@
 #import "MineViewController.h"
 #import "PwLoginViewController.h"
 #import "IMViewController.h"
+#import "MemberCenterViewController.h"
 
 @interface ZFZZTabBarController ()
 
@@ -56,21 +57,13 @@
     [purchaseNav.tabBarItem setImage:[UIImage imageNamed:@"采购-1"]];
     [purchaseNav.tabBarItem setSelectedImage:[UIImage imageNamed:@"采购-1"]];
     
-    MineViewController *mineVC = [[MineViewController alloc]init];
+//    MineViewController *mineVC = [[MineViewController alloc]init];
+    MemberCenterViewController *mineVC = [[MemberCenterViewController alloc]init];
     UINavigationController *mineNav = [[UINavigationController alloc]initWithRootViewController:mineVC];
     mineNav.title = @"我的";
     mineNav.tabBarItem.title = @"我的";
     [mineNav.tabBarItem setImage:[UIImage imageNamed:@"会员-1"]];
     [mineNav.tabBarItem setSelectedImage:[UIImage imageNamed:@"会员-1"]];
-    
-    PwLoginViewController *pwVC = [[PwLoginViewController alloc]init];
-    UINavigationController *pwNav = [[UINavigationController alloc]initWithRootViewController:pwVC];
-    pwNav.title = @"我的";
-    pwNav.tabBarItem.title = @"我的";
-    [pwNav.tabBarItem setImage:[UIImage imageNamed:@"会员-1"]];
-    [pwNav.tabBarItem setSelectedImage:[UIImage imageNamed:@"会员-1"]];
-    
-//    self.viewControllers = @[homeVC,askVC,purchaseNav,mineNav];
     
     self.viewControllers = @[homeNav,askNav,purchaseNav,mineNav];
     

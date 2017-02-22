@@ -277,7 +277,14 @@
 
     hotCell.sumLabel.text = [[_dataArray objectAtIndex:indexPath.row] objectForKey:@"name"];
     
+    
+    
     hotCell.priceLabel.text = [NSString stringWithFormat:@"¥%.1f",[[[_dataArray objectAtIndex:indexPath.row] objectForKey:@"price"] floatValue]];
+    
+    if ([[[_dataArray objectAtIndex:indexPath.row ]objectForKey:@"price"]floatValue] == 0) {
+        
+        hotCell.priceLabel.text = @"面议";
+    }
     
     [hotCell.iconImageView sd_setImageWithURL:[NSURL URLWithString:[[_dataArray objectAtIndex:indexPath.row] objectForKey:@"imgpath"]] placeholderImage:[UIImage imageNamed:@"占位图200-188"]];
     

@@ -305,7 +305,7 @@
 		56ADBAC31E5585040041196C /* 头像@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56ADBAB71E5585040041196C /* 头像@2x.png */; };
 		56ADBAC41E5585040041196C /* 退款icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56ADBAB81E5585040041196C /* 退款icon@2x.png */; };
 		56ADBAC51E5585040041196C /* 我的订单icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56ADBAB91E5585040041196C /* 我的订单icon@2x.png */; };
-		56ADBAC61E5585040041196C /* 消息@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56ADBABA1E5585040041196C /* 消息@2x.png */; };
+		56ADBAC61E5585040041196C /* 消息1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56ADBABA1E5585040041196C /* 消息1@2x.png */; };
 		56ADBAC71E5585040041196C /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56ADBABB1E5585040041196C /* star@2x.png */; };
 		56ADBAD41E5585110041196C /* 安全@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56ADBAC81E5585110041196C /* 安全@3x.png */; };
 		56ADBAD51E5585110041196C /* 背景@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56ADBAC91E5585110041196C /* 背景@3x.png */; };
@@ -317,7 +317,7 @@
 		56ADBADB1E5585110041196C /* 头像@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56ADBACF1E5585110041196C /* 头像@3x.png */; };
 		56ADBADC1E5585110041196C /* 退款icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56ADBAD01E5585110041196C /* 退款icon@3x.png */; };
 		56ADBADD1E5585110041196C /* 我的订单icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56ADBAD11E5585110041196C /* 我的订单icon@3x.png */; };
-		56ADBADE1E5585110041196C /* 消息@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56ADBAD21E5585110041196C /* 消息@3x.png */; };
+		56ADBADE1E5585110041196C /* 消息1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56ADBAD21E5585110041196C /* 消息1@3x.png */; };
 		56ADBADF1E5585110041196C /* star@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56ADBAD31E5585110041196C /* star@3x.png */; };
 		56ADBAE11E5587850041196C /* 箭头@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56ADBAE01E5587850041196C /* 箭头@2x.png */; };
 		56ADBAE31E5587A00041196C /* 待付款@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56ADBAE21E5587A00041196C /* 待付款@2x.png */; };
@@ -941,7 +941,7 @@
 		56ADBAB71E5585040041196C /* 头像@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "头像@2x.png"; sourceTree = "<group>"; };
 		56ADBAB81E5585040041196C /* 退款icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "退款icon@2x.png"; sourceTree = "<group>"; };
 		56ADBAB91E5585040041196C /* 我的订单icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的订单icon@2x.png"; sourceTree = "<group>"; };
-		56ADBABA1E5585040041196C /* 消息@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "消息@2x.png"; sourceTree = "<group>"; };
+		56ADBABA1E5585040041196C /* 消息1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "消息1@2x.png"; sourceTree = "<group>"; };
 		56ADBABB1E5585040041196C /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star@2x.png"; sourceTree = "<group>"; };
 		56ADBAC81E5585110041196C /* 安全@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "安全@3x.png"; sourceTree = "<group>"; };
 		56ADBAC91E5585110041196C /* 背景@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "背景@3x.png"; sourceTree = "<group>"; };
@@ -953,7 +953,7 @@
 		56ADBACF1E5585110041196C /* 头像@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "头像@3x.png"; sourceTree = "<group>"; };
 		56ADBAD01E5585110041196C /* 退款icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "退款icon@3x.png"; sourceTree = "<group>"; };
 		56ADBAD11E5585110041196C /* 我的订单icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的订单icon@3x.png"; sourceTree = "<group>"; };
-		56ADBAD21E5585110041196C /* 消息@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "消息@3x.png"; sourceTree = "<group>"; };
+		56ADBAD21E5585110041196C /* 消息1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "消息1@3x.png"; sourceTree = "<group>"; };
 		56ADBAD31E5585110041196C /* star@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star@3x.png"; sourceTree = "<group>"; };
 		56ADBAE01E5587850041196C /* 箭头@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头@2x.png"; sourceTree = "<group>"; };
 		56ADBAE21E5587A00041196C /* 待付款@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "待付款@2x.png"; sourceTree = "<group>"; };
@@ -2269,7 +2269,7 @@
 				56ADBACF1E5585110041196C /* 头像@3x.png */,
 				56ADBAD01E5585110041196C /* 退款icon@3x.png */,
 				56ADBAD11E5585110041196C /* 我的订单icon@3x.png */,
-				56ADBAD21E5585110041196C /* 消息@3x.png */,
+				56ADBAD21E5585110041196C /* 消息1@3x.png */,
 				56ADBAD31E5585110041196C /* star@3x.png */,
 				56ADBAB01E5585040041196C /* 安全@2x.png */,
 				56ADBAB11E5585040041196C /* 背景@2x.png */,
@@ -2281,7 +2281,7 @@
 				56ADBAB71E5585040041196C /* 头像@2x.png */,
 				56ADBAB81E5585040041196C /* 退款icon@2x.png */,
 				56ADBAB91E5585040041196C /* 我的订单icon@2x.png */,
-				56ADBABA1E5585040041196C /* 消息@2x.png */,
+				56ADBABA1E5585040041196C /* 消息1@2x.png */,
 				56ADBABB1E5585040041196C /* star@2x.png */,
 			);
 			path = "会员中心";
@@ -2741,7 +2741,7 @@
 				56CFD77C1E028FC700D18340 /* 供应链icon@2x.png in Resources */,
 				56CFD7841E028FC700D18340 /* 解决方案icon@2x.png in Resources */,
 				56CFD7171E00E45700D18340 /* 咨询-2@3x.png in Resources */,
-				56ADBADE1E5585110041196C /* 消息@3x.png in Resources */,
+				56ADBADE1E5585110041196C /* 消息1@3x.png in Resources */,
 				56EC156D1E2E00BE004AE01A /* 在线咨询@3x.png in Resources */,
 				560366341DDEA20000332DD2 /* 29@1x.png in Resources */,
 				5691B62E1E10FB4A00AC09DB /* Group 52@2x.png in Resources */,
@@ -2973,7 +2973,7 @@
 				560956241DFF998E00DA0B72 /* 账号登录@3x.png in Resources */,
 				56CFD78F1E028FC700D18340 /* 扫一扫@3x.png in Resources */,
 				5697C8531E0CF642008A1D98 /* Emoji.plist in Resources */,
-				56ADBAC61E5585040041196C /* 消息@2x.png in Resources */,
+				56ADBAC61E5585040041196C /* 消息1@2x.png in Resources */,
 				560366321DDEA20000332DD2 /* 167@2x.png in Resources */,
 				56ADBAC21E5585040041196C /* 收藏@2x.png in Resources */,
 				56CFD7AA1E0392CF00D18340 /* banner@2x.png in Resources */,
