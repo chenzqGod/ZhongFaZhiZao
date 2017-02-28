@@ -26,6 +26,8 @@
 #define REGIST_VF                  @"/api/getDynamicCode"
 #define REGIST                     @"/api/register"
 
+//会员中心
+#define MEMBER_CENTER              @"/api/member"
 
 //交互
 #define USER_CENTER                @"/member/home"

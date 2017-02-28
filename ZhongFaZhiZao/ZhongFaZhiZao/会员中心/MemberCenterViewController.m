@@ -9,6 +9,7 @@
 #import "MemberCenterViewController.h"
 #import "PwLoginViewController.h"
 #import "AskViewController.h"
+#import "UMengShareViewController.h"
 
 @interface MemberCenterViewController (){
 
@@ -208,6 +209,7 @@
     //分享View
     UIView *shareView = [[UIView alloc]initWithFrame:CGRectMake(0, 1+CGRectGetMaxY(addressView.frame), screenWidth, 41)];
     shareView.backgroundColor = [UIColor whiteColor];
+    shareView.userInteractionEnabled = YES;
     [self.scrollView addSubview:shareView];
     
     UIImageView *shareImg = [[UIImageView alloc]initWithFrame:CGRectMake(20*screenScale, (41-17)/2.0, 17, 17)];
@@ -223,7 +225,12 @@
     JTImg4.image = [UIImage imageNamed:@"箭头"];
     [shareView addSubview:JTImg4];
     
-
+    
+    UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    shareBtn.frame = shareView.frame;
+    
+    [shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.scrollView addSubview:shareBtn];
     
     
     
@@ -249,14 +256,11 @@
     
     [self.navigationController pushViewController:vc animated:YES];
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)shareBtnClick{
+
+    UMengShareViewController *vc = [[UMengShareViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
-*/
 
 @end
