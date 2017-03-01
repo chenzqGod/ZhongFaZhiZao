@@ -10,6 +10,7 @@
 #import "PwLoginViewController.h"
 #import "AskViewController.h"
 #import "UMengShareViewController.h"
+#import "WKWebViewViewController.h"
 
 @interface MemberCenterViewController (){
 
@@ -19,6 +20,15 @@
     UIImageView *_bqlbl1;
     UIImageView *_bqlbl2;
     UIImageView *_bqlbl3;
+    UIButton *_exitBtn;
+    CustomButton *_informationBtn;
+    
+//    我的订单小红点
+    UILabel *_redLbl1;
+    UILabel *_redLbl2;
+    UILabel *_redLbl3;
+    UILabel *_redLbl4;
+    
 }
 
 @property (nonatomic,strong)UIScrollView *scrollView;
@@ -35,6 +45,7 @@
     
     [self.tabBarController.tabBar setHidden:NO];
     
+     [self loadData];
 }
 
 - (void)viewDidLoad {
@@ -48,6 +59,8 @@
     [self.view addSubview:self.scrollView];
     
     [self createUI];
+    
+    [self loadData];
 }
 
 - (void)createUI{
@@ -66,6 +79,7 @@
     _iconImg.image = [UIImage imageNamed:@"头像"];
     [self.scrollView addSubview:_iconImg];
     
+//    点击登录按钮
     _loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     CGFloat loginBtnH = 122*screenScale;
     _loginBtn.frame = CGRectMake((screenWidth-loginBtnH)/2.0, CGRectGetMaxY(_iconImg.frame)+12*screenScale, loginBtnH, 35*screenScale);
@@ -78,19 +92,37 @@
     _loginBtn.layer.cornerRadius = 15;
     _loginBtn.titleLabel.font = [UIFont systemFontOfSize:16.0];
     [_loginBtn addTarget:self action:@selector(loginBtn) forControlEvents:UIControlEventTouchUpInside];
+    _loginBtn.hidden = YES;
     [self.scrollView addSubview:_loginBtn];
     
-    CustomButton *informationBtn = [CustomButton buttonWithType:UIButtonTypeCustom];
-    informationBtn.frame = CGRectMake(screenWidth-15*screenScale-24, 12, 26, 32);
-    informationBtn.imageRect = CGRectMake(4, 0, 18, 14);
-    informationBtn.titleRect = CGRectMake(0, 16, 26, 14);
-    [informationBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [informationBtn setTitle:@"消息" forState:UIControlStateNormal];
-    informationBtn.titleLabel.font = [UIFont systemFontOfSize:10.0];
-    informationBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-    [informationBtn setImage:[UIImage imageNamed:@"消息1"] forState:UIControlStateNormal];
-    [informationBtn addTarget:self action:@selector(informationBtn) forControlEvents:UIControlEventTouchUpInside];
-    [self.scrollView addSubview:informationBtn];
+    
+//    公司名字
+    _iconLabel = [[UILabel alloc]initWithFrame:CGRectMake(40, CGRectGetMaxY(_iconImg.frame)+13*screenScale, screenWidth-40*2, 21)];
+    _iconLabel.font = [UIFont systemFontOfSize:17.0];
+    _iconLabel.textAlignment = NSTextAlignmentCenter;
+    _iconLabel.textColor = [UIColor whiteColor];
+    _iconLabel.text = @"中发智造";
+//    _iconLabel.hidden = YES;
+    [self.scrollView addSubview:_iconLabel];
+    
+//    最多三个标签
+//    _bqlbl1 = [[UILabel alloc]init];
+//    _bqlbl2 = [[UILabel alloc]init];
+//    _bqlbl3 = [[UILabel alloc]init];
+    
+    
+    
+    _informationBtn = [CustomButton buttonWithType:UIButtonTypeCustom];
+    _informationBtn.frame = CGRectMake(screenWidth-15*screenScale-24, 12, 26, 32);
+    _informationBtn.imageRect = CGRectMake(4, 0, 18, 14);
+    _informationBtn.titleRect = CGRectMake(0, 16, 26, 14);
+    [_informationBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_informationBtn setTitle:@"消息" forState:UIControlStateNormal];
+    _informationBtn.titleLabel.font = [UIFont systemFontOfSize:10.0];
+    _informationBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [_informationBtn setImage:[UIImage imageNamed:@"消息1"] forState:UIControlStateNormal];
+    [_informationBtn addTarget:self action:@selector(informationBtn) forControlEvents:UIControlEventTouchUpInside];
+    [self.scrollView addSubview:_informationBtn];
     
    
     
@@ -104,6 +136,7 @@
     collectBtn.imageRect = CGRectMake(53*screenScale, 14, 13, 13);
     collectBtn.titleRect = CGRectMake(75*screenScale, 15, 70*screenScale, 13);
     [collectBtn setImage:[UIImage imageNamed:@"star"] forState:UIControlStateNormal];
+    [collectBtn addTarget:self action:@selector(mycollectionClick) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:collectBtn];
     
     CustomButton *tenCDBtn = [CustomButton buttonWithType:UIButtonTypeCustom];
@@ -115,11 +148,13 @@
     [tenCDBtn setTitle:@"店铺收藏" forState:UIControlStateNormal];
     [tenCDBtn setTitleColor:TEXT_GREY_COLOR forState:UIControlStateNormal];
     tenCDBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];
+    [tenCDBtn addTarget:self action:@selector(mycollectionClick) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:tenCDBtn];
     
  //   我的订单
     UIView *orderView = [[UIView alloc]initWithFrame:CGRectMake(0, 10+CGRectGetMaxY(collectBtn.frame), screenWidth, 41)];
     orderView.backgroundColor = [UIColor whiteColor];
+    orderView.userInteractionEnabled = YES;
     [self.scrollView addSubview:orderView];
     
     UIImageView *orderImg = [[UIImageView alloc]initWithFrame:CGRectMake(20*screenScale, (41-17)/2.0, 17, 17)];
@@ -141,6 +176,13 @@
     JTlabel.font = [UIFont systemFontOfSize:13.0];
     JTlabel.textColor = TEXT_GREY_COLOR;
     [orderView addSubview:JTlabel];
+    
+    UIButton *orderBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    orderBtn.frame = orderView.frame;
+    
+    [orderBtn addTarget:self action:@selector(orderBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.scrollView addSubview:orderBtn];
+
     
     //订单下View
     UIView *underView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(orderView.frame)+1, screenWidth, 72)];
@@ -166,11 +208,56 @@
         buttonOrder.titleLabel.textAlignment = NSTextAlignmentCenter;
         
         [underView addSubview:buttonOrder];
+        
+  
     }
+    
+    
+//    小圆点
+    _redLbl1 = [[UILabel alloc]initWithFrame:CGRectMake((screenWidth/4.0-25)/2.0+20, 9*screenScale, 13, 13)];
+    _redLbl1.layer.masksToBounds = YES;
+    _redLbl1.layer.cornerRadius = 6.5;
+    _redLbl1.backgroundColor = RED_COLOR;
+    _redLbl1.text = @"5";
+    _redLbl1.textColor = [UIColor whiteColor];
+    _redLbl1.textAlignment = NSTextAlignmentCenter;
+    _redLbl1.font = [UIFont systemFontOfSize:10.0];
+    [underView addSubview:_redLbl1];
+    
+    _redLbl2 = [[UILabel alloc]initWithFrame:CGRectMake((screenWidth/4.0-25)/2.0+20+screenWidth/4.0, 9*screenScale, 13, 13)];
+    _redLbl2.layer.masksToBounds = YES;
+    _redLbl2.layer.cornerRadius = 6.5;
+    _redLbl2.backgroundColor = RED_COLOR;
+    _redLbl2.text = @"4";
+    _redLbl2.textColor = [UIColor whiteColor];
+    _redLbl2.textAlignment = NSTextAlignmentCenter;
+    _redLbl2.font = [UIFont systemFontOfSize:10.0];
+    [underView addSubview:_redLbl2];
+    
+    _redLbl3 = [[UILabel alloc]initWithFrame:CGRectMake((screenWidth/4.0-25)/2.0+20+screenWidth/4.0*2, 9*screenScale, 13, 13)];
+    _redLbl3.layer.masksToBounds = YES;
+    _redLbl3.layer.cornerRadius = 6.5;
+    _redLbl3.backgroundColor = RED_COLOR;
+    _redLbl3.text = @"3";
+    _redLbl3.textColor = [UIColor whiteColor];
+    _redLbl3.textAlignment = NSTextAlignmentCenter;
+    _redLbl3.font = [UIFont systemFontOfSize:10.0];
+    [underView addSubview:_redLbl3];
+    
+    _redLbl4 = [[UILabel alloc]initWithFrame:CGRectMake((screenWidth/4.0-25)/2.0+20+screenWidth/4.0*3, 9*screenScale, 13, 13)];
+    _redLbl4.layer.masksToBounds = YES;
+    _redLbl4.layer.cornerRadius = 6.5;
+    _redLbl4.backgroundColor = RED_COLOR;
+    _redLbl4.text = @"2";
+    _redLbl4.textColor = [UIColor whiteColor];
+    _redLbl4.textAlignment = NSTextAlignmentCenter;
+    _redLbl4.font = [UIFont systemFontOfSize:10.0];
+    [underView addSubview:_redLbl4];
     
     //账户安全View
     UIView *safeView = [[UIView alloc]initWithFrame:CGRectMake(0, 10+CGRectGetMaxY(underView.frame), screenWidth, 41)];
     safeView.backgroundColor = [UIColor whiteColor];
+    safeView.userInteractionEnabled = YES;
     [self.scrollView addSubview:safeView];
     
     UIImageView *safeImg = [[UIImageView alloc]initWithFrame:CGRectMake(20*screenScale, (41-17)/2.0, 17, 17)];
@@ -186,10 +273,17 @@
     JTImg2.image = [UIImage imageNamed:@"箭头"];
     [safeView addSubview:JTImg2];
 
+    UIButton *safeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    safeBtn.frame = safeView.frame;
+    
+    [safeBtn addTarget:self action:@selector(safeBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.scrollView addSubview:safeBtn];
+
     
     //收货地址View
     UIView *addressView = [[UIView alloc]initWithFrame:CGRectMake(0, 1+CGRectGetMaxY(safeView.frame), screenWidth, 41)];
     addressView.backgroundColor = [UIColor whiteColor];
+    addressView.userInteractionEnabled = YES;
     [self.scrollView addSubview:addressView];
     
     UIImageView *addressImg = [[UIImageView alloc]initWithFrame:CGRectMake(20*screenScale, (41-17)/2.0, 17, 17)];
@@ -204,6 +298,12 @@
     UIImageView *JTImg3 = [[UIImageView alloc]initWithFrame:CGRectMake(screenWidth-15*screenScale-8, (41-15)/2.0, 8, 15)];
     JTImg3.image = [UIImage imageNamed:@"箭头"];
     [addressView addSubview:JTImg3];
+    
+    UIButton *addressBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    addressBtn.frame = addressView.frame;
+    
+    [addressBtn addTarget:self action:@selector(addressBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.scrollView addSubview:addressBtn];
 
     
     //分享View
@@ -232,8 +332,93 @@
     [shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:shareBtn];
     
+//    退出按钮
+    _exitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _exitBtn.frame = CGRectMake(17.5*screenScale, CGRectGetMaxY(shareView.frame)+20*screenScale, 340*screenScale, 35*screenScale);
+    _exitBtn.backgroundColor = [UIColor whiteColor];
+    [_exitBtn setTitle:@"退出" forState:UIControlStateNormal];
+    [_exitBtn setTitleColor:BLUE_COLOR forState:UIControlStateNormal];
+    _exitBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+    _exitBtn.titleLabel.text = @"退出";
+    _exitBtn.titleLabel.font = [UIFont boldSystemFontOfSize:17.0];
+    [_exitBtn addTarget:self action:@selector(exitBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.scrollView addSubview:_exitBtn];
     
     
+}
+
+- (void)loadData{
+
+    
+    [[NSNetworking sharedManager]get:[NSString stringWithFormat:@"%@%@",HOST_URL,MEMBER_CENTER] parameters:nil success:^(id response) {
+        
+        if ([response[@"resultCode"]integerValue] == 1000) {
+            
+            _iconLabel.hidden = NO;
+            _loginBtn.hidden = YES;
+            _exitBtn.hidden = NO;
+            _informationBtn.hidden = NO;
+            _iconLabel.text = response[@"data"][@"corpName"];
+            
+            if ([response[@"data"][@"orderCount"][@"waitpayCount"]integerValue] > 0) {
+                
+                _redLbl1.hidden = NO;
+                _redLbl1.text = [NSString stringWithFormat:@"%@",response[@"data"][@"orderCount"][@"waitpayCount"]];
+                
+            }
+            
+            if ([response[@"data"][@"orderCount"][@"waitSippingCount"]integerValue] > 0) {
+                
+                _redLbl2.hidden = NO;
+                _redLbl2.text = [NSString stringWithFormat:@"%@",response[@"data"][@"orderCount"][@"waitSippingCount"]];
+                
+            }
+
+            if ([response[@"data"][@"orderCount"][@"waitReceiptCount"]integerValue] > 0) {
+                
+                _redLbl3.hidden = NO;
+                _redLbl3.text = [NSString stringWithFormat:@"%@",response[@"data"][@"orderCount"][@"waitReceiptCount"]];
+                
+            }
+
+            if ([response[@"data"][@"orderCount"][@"refundCount"]integerValue] > 0) {
+                
+                _redLbl4.hidden = NO;
+                _redLbl4.text = [NSString stringWithFormat:@"%@",response[@"data"][@"orderCount"][@"refundCount"]];
+                
+            }
+
+            
+        }
+        else if ([response[@"resultCode"]integerValue] == 1001){
+            
+            NSLog(@"会员中心请求失败");
+            
+            
+        }
+        
+        else if ([response[@"resultCode"]integerValue] == 1002){
+        
+            NSLog(@"未登录");
+            _loginBtn.hidden = NO;
+            _iconLabel.hidden = YES;
+            _exitBtn.hidden = YES;
+            _informationBtn.hidden = YES;
+            
+            _redLbl1.hidden = YES;
+            _redLbl2.hidden = YES;
+            _redLbl3.hidden = YES;
+            _redLbl4.hidden = YES;
+        }
+        
+    } failure:^(NSString *error) {
+        
+        NSLog(@"%@",error);
+        
+        [WKProgressHUD popMessage:@"请检查网络连接" inView:self.view duration:HUD_DURATION animated:YES];
+        
+    }];
+
 }
 
 #pragma mark - 点击事件
@@ -260,6 +445,37 @@
 - (void)shareBtnClick{
 
     UMengShareViewController *vc = [[UMengShareViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)exitBtnClick{
+
+    NSLog(@"退出当前账号");
+}
+
+- (void)mycollectionClick{
+
+    WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:nil title:@"我的收藏"];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)addressBtnClick{
+
+    WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:nil title:@"收货地址"];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)safeBtnClick{
+
+    NSLog(@"期待");
+}
+
+- (void)orderBtnClick{
+
+    WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:nil title:@"我的订单"];
+    
     [self.navigationController pushViewController:vc animated:YES];
 }
 

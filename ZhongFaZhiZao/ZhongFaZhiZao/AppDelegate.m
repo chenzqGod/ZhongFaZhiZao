@@ -30,6 +30,9 @@
 
 #import "ZhongFaDataBase.h"
 
+//友盟分享
+#import <UMSocialCore/UMSocialCore.h>
+
 //Bugly
 #import <Bugly/Bugly.h>
 
@@ -215,7 +218,63 @@
    
     [Bugly startWithAppId:@"cbecd6df67"];
     
+    
+    
+#pragma mark - umeng分享
+    
+    /* 打开调试日志 */
+    [[UMSocialManager defaultManager] openLog:YES];
+    
+    /* 设置友盟appkey */
+    [[UMSocialManager defaultManager] setUmSocialAppkey:@"583920d2f43e480ef6000267"];
+    
+    [self configUSharePlatforms];
+    
+    [self confitUShareSettings];
+    
     return YES;
+
+}
+
+
+- (void)confitUShareSettings
+{
+    /*
+     * 打开图片水印
+     */
+    //[UMSocialGlobal shareInstance].isUsingWaterMark = YES;
+    
+    /*
+     * 关闭强制验证https，可允许http图片分享，但需要在info.plist设置安全域名
+     <key>NSAppTransportSecurity</key>
+     <dict>
+     <key>NSAllowsArbitraryLoads</key>
+     <true/>
+     </dict>
+     */
+    //[UMSocialGlobal shareInstance].isUsingHttpsWhenShareContent = NO;
+    
+}
+
+
+- (void)configUSharePlatforms
+{
+    /* 设置微信的appKey和appSecret */
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wx12e7a4deae04bf2f" appSecret:@"7a2b375d76d3a27e751ac0d46cc780c0" redirectURL:@"http://mobile.umeng.com/social"];
+    /*
+     * 移除相应平台的分享，如微信收藏
+     */
+    //[[UMSocialManager defaultManager] removePlatformProviderWithPlatformTypes:@[@(UMSocialPlatformType_WechatFavorite)]];
+    
+    /* 设置分享到QQ互联的appID
+     * U-Share SDK为了兼容大部分平台命名，统一用appKey和appSecret进行参数设置，而QQ平台仅需将appID作为U-Share的appKey参数传进即可。
+     */
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1177867297"/*设置QQ平台的appID*/  appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
+    
+    /* 设置新浪的appKey和appSecret */
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"3445863821"  appSecret:@"6bf6c33751681230e0a3f0d8c67ddf54" redirectURL:@"https://sns.whalecloud.com/sina2/callback"];
+    
+    
 }
 
 
