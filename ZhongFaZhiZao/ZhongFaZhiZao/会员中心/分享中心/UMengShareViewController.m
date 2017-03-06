@@ -7,10 +7,12 @@
 //
 
 #import "UMengShareViewController.h"
+#import <UMSocialCore/UMSocialCore.h>
 
 @interface UMengShareViewController ()
 
 @property (nonatomic,strong)UIScrollView *scrollView;
+@property (nonatomic,assign)NSInteger btnFlag;
 
 @end
 
@@ -36,6 +38,8 @@
     NavigationControllerView *view = [[NavigationControllerView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 64) andLeftBtn:@"分享"];
     view.viewController = self;
     [self.view addSubview:view];
+    
+    self.btnFlag = 0;
     
     self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 64, screenWidth, screenHeight)];
     self.scrollView.backgroundColor = BACK_COLOR;
@@ -95,6 +99,8 @@
             
             shareBtn.layer.cornerRadius = 35/2.0;
             shareBtn.layer.masksToBounds = YES;
+            shareBtn.tag = 5000+self.btnFlag;
+            [shareBtn addTarget:self action:@selector(shareBtnClick:) forControlEvents:UIControlEventTouchUpInside];
             
             UILabel *sumLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMinX(shareBtn.frame)-12.5, CGRectGetMaxY(shareBtn.frame)+8*screenScale, 60, 10)];
             
@@ -107,10 +113,40 @@
             
             [self.scrollView addSubview:sumLabel];
             
+            self.btnFlag++;
+            
             
         }
     }
     
+}
+
+- (void)shareBtnClick:(UIButton *)btn{
+
+   // 朋友圈
+    if (btn.tag == 5000) {
+        
+    }
+    else if (btn.tag == 5001){
+    
+    }
+    else if (btn.tag == 5002){
+    
+    }
+    else if (btn.tag == 5003){
+    
+    }
+    else if (btn.tag == 5004){
+    
+    }
+    else if (btn.tag == 5005){
+    
+    }
+    else{
+    
+        NSLog(@"umeng不分享");
+    }
+
 }
 
 

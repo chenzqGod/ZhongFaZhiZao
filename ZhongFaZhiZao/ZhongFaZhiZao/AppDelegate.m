@@ -74,6 +74,23 @@
 //
 
     [ZhongFaDataBase createDataBase];
+    
+    
+#pragma mark - umeng分享
+    
+    /* 打开调试日志 */
+    [[UMSocialManager defaultManager] openLog:YES];
+    
+    // 打开图片水印
+    //[UMSocialGlobal shareInstance].isUsingWaterMark = YES;
+    [UMSocialGlobal shareInstance].isClearCacheWhenGetUserInfo = NO;
+    
+    /* 设置友盟appkey */
+    [[UMSocialManager defaultManager] setUmSocialAppkey:@"583920d2f43e480ef6000267"];
+    
+    [self configUSharePlatforms];
+    
+    [self confitUShareSettings];
 
     
     
@@ -220,18 +237,6 @@
     
     
     
-#pragma mark - umeng分享
-    
-    /* 打开调试日志 */
-    [[UMSocialManager defaultManager] openLog:YES];
-    
-    /* 设置友盟appkey */
-    [[UMSocialManager defaultManager] setUmSocialAppkey:@"583920d2f43e480ef6000267"];
-    
-    [self configUSharePlatforms];
-    
-    [self confitUShareSettings];
-    
     return YES;
 
 }
@@ -275,6 +280,41 @@
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"3445863821"  appSecret:@"6bf6c33751681230e0a3f0d8c67ddf54" redirectURL:@"https://sns.whalecloud.com/sina2/callback"];
     
     
+}
+
+
+#pragma mark - umeng分享
+//#define __IPHONE_10_0    100000
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > 100000
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options
+{
+    //6.3的新的API调用，是为了兼容国外平台(例如:新版facebookSDK,VK等)的调用[如果用6.2的api调用会没有回调],对国内平台没有影响。
+    BOOL result = [[UMSocialManager defaultManager]  handleOpenURL:url options:options];
+    if (!result) {
+        // 其他如支付等SDK的回调
+    }
+    return result;
+}
+
+#endif
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    //6.3的新的API调用，是为了兼容国外平台(例如:新版facebookSDK,VK等)的调用[如果用6.2的api调用会没有回调],对国内平台没有影响
+    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url sourceApplication:sourceApplication annotation:annotation];
+    if (!result) {
+        // 其他如支付等SDK的回调
+    }
+    return result;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
+    if (!result) {
+        // 其他如支付等SDK的回调
+    }
+    return result;
 }
 
 
@@ -525,7 +565,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 
 #pragma mark - to do Alipay
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+/*- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     
     //如果极简开发包不可用，会跳转支付宝钱包进行支付，需要将支付宝钱包的支付结果回传给开发包
@@ -543,9 +583,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         }];
     }
     return YES;
-}
+}*/
 
 #pragma mark - to do 与上面二选一
+/*
 // NOTE: 9.0以后使用新API接口
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options
 {
@@ -575,7 +616,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     }
     return YES;
 }
-
+*/
 
 #pragma mark - 网络状态变化 RongClond
 
