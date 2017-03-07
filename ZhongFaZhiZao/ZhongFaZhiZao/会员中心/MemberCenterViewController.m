@@ -92,7 +92,7 @@
     _loginBtn.layer.cornerRadius = 15;
     _loginBtn.titleLabel.font = [UIFont systemFontOfSize:16.0];
     [_loginBtn addTarget:self action:@selector(loginBtn) forControlEvents:UIControlEventTouchUpInside];
-    _loginBtn.hidden = YES;
+    _loginBtn.hidden = NO;
     [self.scrollView addSubview:_loginBtn];
     
     
@@ -102,7 +102,7 @@
     _iconLabel.textAlignment = NSTextAlignmentCenter;
     _iconLabel.textColor = [UIColor whiteColor];
     _iconLabel.text = @"中发智造";
-//    _iconLabel.hidden = YES;
+    _iconLabel.hidden = YES;
     [self.scrollView addSubview:_iconLabel];
     
 //    最多三个标签
@@ -120,6 +120,7 @@
     [_informationBtn setTitle:@"消息" forState:UIControlStateNormal];
     _informationBtn.titleLabel.font = [UIFont systemFontOfSize:10.0];
     _informationBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+    _informationBtn.hidden = YES;
     [_informationBtn setImage:[UIImage imageNamed:@"消息1"] forState:UIControlStateNormal];
     [_informationBtn addTarget:self action:@selector(informationBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:_informationBtn];
@@ -222,6 +223,7 @@
     _redLbl1.textColor = [UIColor whiteColor];
     _redLbl1.textAlignment = NSTextAlignmentCenter;
     _redLbl1.font = [UIFont systemFontOfSize:10.0];
+    _redLbl1.hidden = YES;
     [underView addSubview:_redLbl1];
     
     _redLbl2 = [[UILabel alloc]initWithFrame:CGRectMake((screenWidth/4.0-25)/2.0+20+screenWidth/4.0, 9*screenScale, 13, 13)];
@@ -232,6 +234,7 @@
     _redLbl2.textColor = [UIColor whiteColor];
     _redLbl2.textAlignment = NSTextAlignmentCenter;
     _redLbl2.font = [UIFont systemFontOfSize:10.0];
+    _redLbl2.hidden = YES;
     [underView addSubview:_redLbl2];
     
     _redLbl3 = [[UILabel alloc]initWithFrame:CGRectMake((screenWidth/4.0-25)/2.0+20+screenWidth/4.0*2, 9*screenScale, 13, 13)];
@@ -242,6 +245,7 @@
     _redLbl3.textColor = [UIColor whiteColor];
     _redLbl3.textAlignment = NSTextAlignmentCenter;
     _redLbl3.font = [UIFont systemFontOfSize:10.0];
+    _redLbl3.hidden = YES;
     [underView addSubview:_redLbl3];
     
     _redLbl4 = [[UILabel alloc]initWithFrame:CGRectMake((screenWidth/4.0-25)/2.0+20+screenWidth/4.0*3, 9*screenScale, 13, 13)];
@@ -252,6 +256,7 @@
     _redLbl4.textColor = [UIColor whiteColor];
     _redLbl4.textAlignment = NSTextAlignmentCenter;
     _redLbl4.font = [UIFont systemFontOfSize:10.0];
+    _redLbl4.hidden = YES;
     [underView addSubview:_redLbl4];
     
     //账户安全View

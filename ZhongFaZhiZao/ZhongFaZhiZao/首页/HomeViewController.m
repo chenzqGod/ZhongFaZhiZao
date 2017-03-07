@@ -1236,12 +1236,14 @@ else if (indexPath.section == 1){
     if (button.tag == Supply ) {
         
         WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,SUPPLY_LIST] title:@"供应链采购"];
+        wkvc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:wkvc animated:YES];
         
     }
     else if (button.tag == Science){
         
-        WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,SCIENCE_LIST] title:@"供应链采购"];
+        WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,SCIENCE_LIST] title:@"科技成果"];
+        wkvc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:wkvc animated:YES];
     
     }
@@ -1253,13 +1255,16 @@ else if (indexPath.section == 1){
     }
     else if (button.tag == Intelligence){
     
-        WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,Intelligence_LIST] title:@"供应链采购"];
+        WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,Intelligence_LIST] title:@"智能创新"];
+        wkvc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:wkvc animated:YES];
         
     }
     else if (button.tag == Solve){
         
-        WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,SOLVE_LIST] title:@"供应链采购"];
+        WKWebViewViewController *wkvc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,SOLVE_LIST] title:@"解决方案"];
+        
+        wkvc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:wkvc animated:YES];
     
     }
