@@ -79,7 +79,6 @@
     self.view.backgroundColor = BACK_COLOR;
     
     _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 64+11, screenWidth, screenHeight-64-11)];
-//    _scrollView.contentSize = CGSizeMake(screenWidth, 1500);
     [self.view addSubview:_scrollView];
     
     [self createUI];
@@ -133,8 +132,6 @@
             
             _scrollView.contentSize = CGSizeMake(screenWidth, 140+CGRectGetMaxY(_downView.frame));
             
-//            _downView.frame = CGRectMake(0, 1+CGRectGetMaxY(_otherView.frame), screenWidth, 47*screenScale+56);
-     
         }
         
     } failure:^(NSString *error) {
@@ -152,28 +149,23 @@
     [_scrollView addSubview:headView];
     
     _iconView = [[UIImageView alloc]initWithFrame:CGRectMake(25*screenScale, 17, 80*screenScale, 32*screenScale)];
-//    _iconView.backgroundColor = [UIColor cyanColor];
     [headView addSubview:_iconView];
     
     _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(16*screenScale+CGRectGetMaxX(_iconView.frame), 13, screenWidth-(16*screenScale+CGRectGetMaxX(_iconView.frame))-Margin, 20)];
     _nameLabel.font = [UIFont systemFontOfSize:15.0];
-//    _nameLabel.backgroundColor = [UIColor cyanColor];
     [headView addSubview:_nameLabel];
     
     
 //    添加标签
     _FirstImg = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMinX(_nameLabel.frame), CGRectGetMaxY(_iconView.frame)-11, 28, 11)];
-//    _FirstImg.backgroundColor = [UIColor cyanColor];
     _FirstImg.image = [UIImage imageNamed:self.firstStr];
     [headView addSubview:_FirstImg];
     
     _SecondImg = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_FirstImg.frame)+5, CGRectGetMinY(_FirstImg.frame), CGRectGetWidth(_FirstImg.frame), CGRectGetHeight(_FirstImg.frame))];
-//    _SecondImg.backgroundColor = [UIColor cyanColor];
     _SecondImg.image = [UIImage imageNamed:self.secondStr];
     [headView addSubview:_SecondImg];
     
     _ThirdImg = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_SecondImg.frame)+5, CGRectGetMinY(_FirstImg.frame), CGRectGetWidth(_FirstImg.frame), CGRectGetHeight(_FirstImg.frame))];
-//    _ThirdImg.backgroundColor = [UIColor cyanColor];
     _ThirdImg.image = [UIImage imageNamed:self.thirdStr];
     [headView addSubview:_ThirdImg];
     

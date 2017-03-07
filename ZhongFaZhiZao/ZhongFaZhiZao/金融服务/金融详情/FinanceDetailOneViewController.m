@@ -176,7 +176,6 @@
     [_scrollView addSubview:midView1];
     
     _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(19*screenScale, 13, screenWidth-19*screenScale-Margin, 20)];
-//    _nameLabel.backgroundColor = [UIColor cyanColor];
     _nameLabel.font = [UIFont systemFontOfSize:15.0];
     [midView1 addSubview:_nameLabel];
     
@@ -192,7 +191,6 @@
     
     _tqhkLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(tiqianLabel.frame), CGRectGetMinY(tiqianLabel.frame), screenWidth-CGRectGetMaxX(tiqianLabel.frame)-Margin, CGRectGetHeight(tiqianLabel.frame))];
     _tqhkLabel.font = [UIFont systemFontOfSize:12.0];
-//    _tqhkLabel.backgroundColor = [UIColor cyanColor];
     [midView1 addSubview:_tqhkLabel];
     
 //    申请条件

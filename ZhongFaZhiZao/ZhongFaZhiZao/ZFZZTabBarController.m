@@ -28,11 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-//    [[UITabBar appearance]setBarTintColor:[UIColor colorWithRed:0.97 green:0.97 blue:0.97 alpha:1]];
-    
-
-    self.tabBar.selectedImageTintColor = BLUE_COLOR;
-    
+    self.tabBar.tintColor = BLUE_COLOR;
     
     HomeViewController *homeVC = [[HomeViewController alloc]init];
     UINavigationController *homeNav = [[UINavigationController alloc]initWithRootViewController:homeVC];

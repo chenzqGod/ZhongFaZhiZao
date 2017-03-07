@@ -87,8 +87,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//    [self.navigationController setNavigationBarHidden:YES];
-     _dataArr=[[NSMutableArray alloc]init];
+
+    _dataArr=[[NSMutableArray alloc]init];
     self.cityNumber = 0;
     
     self.view.backgroundColor = BACK_COLOR;

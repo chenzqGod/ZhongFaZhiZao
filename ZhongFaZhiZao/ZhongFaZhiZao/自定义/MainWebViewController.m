@@ -8,7 +8,6 @@
 
 #import "MainWebViewController.h"
 
-#define URLStr     @"http://wap.cecb2b.com"
 
 @interface MainWebViewController ()<WKNavigationDelegate,WKUIDelegate>
 
@@ -45,7 +44,7 @@
 //    允许右滑退出
     [_webView setAllowsBackForwardNavigationGestures:true];
     
-//    [_webView loadRequest:[NSMutableURLRequest requestWithURL:[NSURL URLWithString:URLStr]]];
+//    [_webView loadRequest:[NSMutableURLRequest requestWithURL:[NSURL URLWithString:HOST_URL]]];
     
     _progressView = [[UIProgressView alloc]initWithFrame:CGRectMake(0, 21, CGRectGetWidth(self.view.frame),2)];
     [self.view addSubview:_progressView];
@@ -277,7 +276,6 @@
 }
 
 
-
 - (void)dealloc {
     
     [_webView removeObserver:self forKeyPath:@"estimatedProgress"];
@@ -291,20 +289,11 @@
 }
 
 
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -224,9 +224,6 @@
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     // 类似 UIWebView 的 -webView: shouldStartLoadWithRequest: navigationType:
     
-//    NSLog(@"4.%@",navigationAction.request);
-    
-    
     //    NSString *url = [navigationAction.request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     // 解决WKWebView替换UIWebView无法拨打电话
