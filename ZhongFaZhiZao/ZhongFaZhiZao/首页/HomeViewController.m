@@ -36,10 +36,12 @@
 #import "FinanceDetailTwoViewController.h"
 
 #import "QRcodeViewController.h"
+#import "ZBarcodeViewController.h"
+#import "QRCodeReaderViewController.h"
 
 #define margins 8
 
-@interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>{
+@interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate,QRCodeReaderDelegate>{
 
     UICollectionViewFlowLayout *_flowLayout;
     
@@ -1214,11 +1216,38 @@ else if (indexPath.section == 1){
 //扫一扫
 - (void)scanning{
     
-    QRcodeViewController *QRvc = [[QRcodeViewController alloc]init];
-    [self.navigationController pushViewController:QRvc animated:YES];
+//    QRcodeViewController *QRvc = [[QRcodeViewController alloc]init];
+//    [self.navigationController pushViewController:QRvc animated:YES];
     
 //    [WKProgressHUD popMessage:@"敬请期待" inView:self.view duration:HUD_DURATION animated:YES];
 
+    QRCodeReaderViewController *reader = [QRCodeReaderViewController new];\
+    reader.modalPresentationStyle = UIModalPresentationFormSheet;
+    reader.delegate = self;
+    
+    __weak typeof (self) wSelf = self;
+    [reader setCompletionWithBlock:^(NSString *resultAsString) {
+        [wSelf.navigationController popViewControllerAnimated:YES];
+        [[[UIAlertView alloc] initWithTitle:@"" message:resultAsString delegate:self cancelButtonTitle:@"好的" otherButtonTitles: nil] show];
+    }];
+    
+    //[self presentViewController:reader animated:YES completion:NULL];
+    [self.navigationController pushViewController:reader animated:YES];
+}
+
+#pragma mark - QRCodeReader Delegate Methods
+
+- (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"QRCodeReader" message:result delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }];
+}
+
+- (void)readerDidCancel:(QRCodeReaderViewController *)reader
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 //jpush消息

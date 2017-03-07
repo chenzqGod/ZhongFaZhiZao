@@ -8,6 +8,7 @@
 
 #import "WKWebViewViewController.h"
 #import "PwLoginViewController.h"
+#import "HomeViewController.h"
 
 @interface WKWebViewViewController ()<WKNavigationDelegate,WKUIDelegate,UIWebViewDelegate,WKScriptMessageHandler>{
 
@@ -290,6 +291,13 @@
         
         PwLoginViewController *vc = [[PwLoginViewController alloc]init];
         
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
+    else if ([url containsString:HOME_WAPS]){
+    
+        decisionHandler(WKNavigationResponsePolicyCancel);
+        HomeViewController *vc = [[HomeViewController alloc]init];
         [self.navigationController pushViewController:vc animated:YES];
     }
     

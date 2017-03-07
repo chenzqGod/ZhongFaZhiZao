@@ -9,6 +9,7 @@
 #import "MineViewController.h"
 #import "WKWebViewViewController.h"
 #import "PwLoginViewController.h"
+#import "HomeViewController.h"
 
 @interface MineViewController ()<WKNavigationDelegate,WKUIDelegate,UIWebViewDelegate>{
 
@@ -207,6 +208,15 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
 
+    else if ([url containsString:HOME_WAPS]){
+        
+        decisionHandler(WKNavigationResponsePolicyCancel);
+        HomeViewController *vc = [[HomeViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
+
+    
     decisionHandler(WKNavigationResponsePolicyAllow);
 }
 

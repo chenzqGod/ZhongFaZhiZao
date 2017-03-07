@@ -28,10 +28,21 @@
 
 //会员中心
 #define MEMBER_CENTER              @"/api/member"
+#define MY_ORDER                   @"/order/myOrder"
+#define MEMBER_PENDING             @"/order/myOrder?orderDataType=10"
+#define MEMBER_DELIVERY            @"/order/myOrder?orderDataType=30"
+#define MEMBER_RECEIVING           @"/order/myOrder?orderDataType=50"
+#define MEMBER_REFUND              @"/order/myOrder?orderDataType=40"
+
+#define MEMBER_SAFECOUNT           @"/user/safe"
+#define MEMBER_RECEIVEADDRESS      @"/express/list"
+#define MEMBER_COLLECT_JAN         @"/favorites/good/myFavorites"
+#define MEMBER_COLLECT_TEN         @"/favorites/shop/myFavorites"
 
 //交互
 #define USER_CENTER                @"/member/home"
 #define LoginURL                   @"/member/login"
+#define HOME_WAPS                  @"/made/index"
 
 //融云  
 #define GETRONG_TOKEN              @"/api/getRongToken"

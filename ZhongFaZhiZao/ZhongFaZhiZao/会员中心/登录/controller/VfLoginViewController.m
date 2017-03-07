@@ -13,6 +13,7 @@
 #import "ForgetPwViewController.h"
 #import "NSString+Mobile.h"
 #import "MineViewController.h"
+#import "MemberCenterViewController.h"
 #import "WKWebViewViewController.h"
 #import <RongIMKit/RongIMKit.h>
 #import <RongIMKit/RCConversationViewController.h>
@@ -58,8 +59,12 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     
     [textField resignFirstResponder];
+    textField.returnKeyType = UIReturnKeyNext;
+    
     return YES;
 }
+
+
 
 - (void)pwLogin{
 //    PwLoginViewController *pwLogin = [[PwLoginViewController alloc]init];
@@ -204,7 +209,7 @@
 //                    }
 //                    else{
 //                        
-                        MineViewController *vc = [[MineViewController alloc]init];
+                        MemberCenterViewController *vc = [[MemberCenterViewController alloc]init];
                         [self.navigationController pushViewController:vc animated:YES];
 //
 //                    }

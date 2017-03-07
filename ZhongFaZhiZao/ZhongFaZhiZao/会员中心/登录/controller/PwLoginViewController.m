@@ -13,6 +13,7 @@
 #import "ForgetPwViewController.h"
 #import "NSString+Mobile.h"
 #import "MineViewController.h"
+#import "MemberCenterViewController.h"
 #import "WKWebViewViewController.h"
 #import <RongIMKit/RongIMKit.h>
 #import <RongIMKit/RCConversationViewController.h>
@@ -200,7 +201,9 @@
 //                    
 //                    }
              
-                    [self.navigationController popViewControllerAnimated:YES];
+//                    [self.navigationController popViewControllerAnimated:YES];
+                    MemberCenterViewController *vc = [[MemberCenterViewController alloc]init];
+                    [self.navigationController pushViewController:vc animated:YES];
                     
                     
                 });

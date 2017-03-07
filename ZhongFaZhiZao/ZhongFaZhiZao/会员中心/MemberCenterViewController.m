@@ -137,7 +137,7 @@
     collectBtn.imageRect = CGRectMake(53*screenScale, 14, 13, 13);
     collectBtn.titleRect = CGRectMake(75*screenScale, 15, 70*screenScale, 13);
     [collectBtn setImage:[UIImage imageNamed:@"star"] forState:UIControlStateNormal];
-    [collectBtn addTarget:self action:@selector(mycollectionClick) forControlEvents:UIControlEventTouchUpInside];
+    [collectBtn addTarget:self action:@selector(mycollectionClickjan) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:collectBtn];
     
     CustomButton *tenCDBtn = [CustomButton buttonWithType:UIButtonTypeCustom];
@@ -149,7 +149,7 @@
     [tenCDBtn setTitle:@"店铺收藏" forState:UIControlStateNormal];
     [tenCDBtn setTitleColor:TEXT_GREY_COLOR forState:UIControlStateNormal];
     tenCDBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];
-    [tenCDBtn addTarget:self action:@selector(mycollectionClick) forControlEvents:UIControlEventTouchUpInside];
+    [tenCDBtn addTarget:self action:@selector(mycollectionClickten) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:tenCDBtn];
     
  //   我的订单
@@ -205,7 +205,7 @@
         buttonOrder.imageRect = CGRectMake((screenWidth/4.0-25)/2.0, 14, 25, 25);
         buttonOrder.titleRect = CGRectMake(0, 14+25+8, screenWidth/4.0, 17);
         buttonOrder.tag = 60+i;
-        
+        [buttonOrder addTarget:self action:@selector(buttonOrderClick:) forControlEvents:UIControlEventTouchUpInside];
         buttonOrder.titleLabel.textAlignment = NSTextAlignmentCenter;
         
         [underView addSubview:buttonOrder];
@@ -346,8 +346,12 @@
     _exitBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
     _exitBtn.titleLabel.text = @"退出";
     _exitBtn.titleLabel.font = [UIFont boldSystemFontOfSize:17.0];
+    _exitBtn.hidden = YES;
     [_exitBtn addTarget:self action:@selector(exitBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:_exitBtn];
+    
+    
+    self.scrollView.contentSize = CGSizeMake(screenWidth,55+CGRectGetMaxY(shareBtn.frame)+30);
     
     
 }
@@ -458,16 +462,24 @@
     NSLog(@"退出当前账号");
 }
 
-- (void)mycollectionClick{
+- (void)mycollectionClickjan{
 
-    WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:nil title:@"我的收藏"];
+    WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,MEMBER_COLLECT_JAN] title:@"我的收藏"];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
+- (void)mycollectionClickten{
+    
+    WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,MEMBER_COLLECT_TEN] title:@"我的收藏"];
     
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)addressBtnClick{
 
-    WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:nil title:@"收货地址"];
+    WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,MEMBER_RECEIVEADDRESS] title:@"收货地址"];
     
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -479,9 +491,50 @@
 
 - (void)orderBtnClick{
 
-    WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:nil title:@"我的订单"];
+    WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,MY_ORDER] title:@"我的订单"];
     
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+//四个状态按钮
+- (void)buttonOrderClick:(UIButton *)btn{
+    
+    if (btn.tag == 60) {
+        
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,MEMBER_PENDING] title:@"待付款"];
+        
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }
+    else if (btn.tag == 61){
+        
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,MEMBER_DELIVERY] title:@"待发货"];
+        
+        [self.navigationController pushViewController:vc animated:YES];
+    
+    }
+    else if (btn.tag == 62){
+        
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,MEMBER_RECEIVING] title:@"待收货"];
+        
+        [self.navigationController pushViewController:vc animated:YES];
+    
+    }
+    else if (btn.tag == 63){
+        
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,MEMBER_REFUND] title:@"退款中"];
+        
+        [self.navigationController pushViewController:vc animated:YES];
+    
+    }
+    
+    else{
+    
+        NSLog(@"不是四种订单状态");
+    }
+    
+
+    
 }
 
 @end

@@ -30,7 +30,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _areaArr = @[@"智能穿戴",@"智能家居",@"智能家电",@"智能安防",@"智能医疗",@"智慧城市",@"物联网",@"车联网"];
+    _areaArr = @[@"请选择",@"智能穿戴",@"智能家居",@"智能家电",@"智能安防",@"智能医疗",@"智慧城市",@"物联网",@"车联网"];
     
     NavigationControllerView *navView = [[NavigationControllerView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 64) andLeftBtn:@"提交申请"];
     navView.viewController = self;

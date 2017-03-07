@@ -9,6 +9,7 @@
 #import "PurchaseViewController.h"
 #import "PwLoginViewController.h"
 #import "WKWebViewViewController.h"
+#import "HomeViewController.h"
 
 @interface PurchaseViewController ()<WKNavigationDelegate,WKUIDelegate,UIWebViewDelegate>{
 
@@ -203,6 +204,15 @@
         
                 [self.navigationController pushViewController:vc animated:YES];
     }
+    
+    else if ([url containsString:HOME_WAPS]){
+        
+        decisionHandler(WKNavigationResponsePolicyCancel);
+        HomeViewController *vc = [[HomeViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
+
     
     decisionHandler(WKNavigationResponsePolicyAllow);
 }
