@@ -23,7 +23,7 @@
 
 //缓存
 #define USER_DEFAULTS        [NSUserDefaults standardUserDefaults]
-
+#define isTemp               ![USER_DEFAULTS objectForKey:@"token"]
 //屏幕尺寸
 #define screenWidth [UIScreen mainScreen].bounds.size.width
 #define screenHeight [UIScreen mainScreen].bounds.size.height

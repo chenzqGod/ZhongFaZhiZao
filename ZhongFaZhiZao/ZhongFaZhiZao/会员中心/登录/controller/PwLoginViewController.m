@@ -249,6 +249,7 @@
         
         NSString *token = [USER_DEFAULTS objectForKey:@"rongtoken"];
        
+        
         if ([USER_DEFAULTS objectForKey:@"token"]) {
             
             [[RCIM sharedRCIM] connectWithToken:token success:^(NSString *userId) {

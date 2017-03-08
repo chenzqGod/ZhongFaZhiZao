@@ -137,11 +137,11 @@
    // 朋友圈
     if (btn.tag == 5000) {
         
-        NSLog(@"朋友圈");
+        if ([WXApi isWXAppInstalled]) {
+            
+            [self shareWebPageToPlatformType:UMSocialPlatformType_WechatTimeLine];
+        }
         
-        [self runShareWithType:UMSocialPlatformType_WechatTimeLine];
-        
-        [self shareWebPageToPlatformType:UMSocialPlatformType_WechatTimeLine];
         
     }
 //    微信
@@ -149,15 +149,17 @@
     
         NSLog(@"微信");
         
-//        [self runShareWithType:UMSocialPlatformType_WechatSession];
+        if ([WXApi isWXAppInstalled]) {
+            
+            [self shareWebPageToPlatformType:UMSocialPlatformType_WechatSession];
+        }
         
-        [self shareWebPageToPlatformType:UMSocialPlatformType_WechatSession];
+        
     }
 //    微博
     else if (btn.tag == 5002){
     
         NSLog(@"微博");
-//        [self runShareWithType:UMSocialPlatformType_Sina];
         
         [self shareWebPageToPlatformType:UMSocialPlatformType_Sina];
         
@@ -165,20 +167,22 @@
 //    空间
     else if (btn.tag == 5003){
     
-        NSLog(@"空间");
-//        [self runShareWithType:UMSocialPlatformType_Qzone];
-        
-        [self shareWebPageToPlatformType:UMSocialPlatformType_Qzone];
+        if ([QQApiInterface isQQInstalled]) {
+            
+            [self shareWebPageToPlatformType:UMSocialPlatformType_Qzone];
+        }
         
     }
 //    QQ
     else if (btn.tag == 5004){
         
-        NSLog(@"QQ");
-//        [self runShareWithType:UMSocialPlatformType_QQ];
+        if ([QQApiInterface isQQInstalled]) {
+            
+            [self shareWebPageToPlatformType:UMSocialPlatformType_QQ];
+
+        }
         
-        [self shareWebPageToPlatformType:UMSocialPlatformType_QQ];
-    }
+           }
 //    短信
     else if (btn.tag == 5005){
     
@@ -325,60 +329,6 @@
                                           otherButtonTitles:nil];
     
     [alert show];
-    
-}
-
--(void)systemUI{
-    
-    /**友盟自带界面*/
-    
-    [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_Sina),@(UMSocialPlatformType_QQ),@( UMSocialPlatformType_WechatTimeLine ),@(UMSocialPlatformType_WechatSession)]];
-    
-    
-    
-    //    //设置用户自定义的平台
-    
-    //
-    
-    //        [UMSocialUIManager addCustomPlatformWithoutFilted:UMSocialPlatformType_UserDefine_Begin+2
-    
-    //
-    
-    //                                         withPlatformIcon:[UIImage imageNamed:@"zhongjianggonggao_xyzj"]
-    
-    //
-    
-    //                                         withPlatformName:@"复制链接"];
-    
-    
-    
-    [UMSocialShareUIConfig shareInstance].sharePageGroupViewConfig.sharePageGroupViewPostionType = UMSocialSharePageGroupViewPositionType_Bottom;/**显示位置底部*/
-    
-    [UMSocialShareUIConfig shareInstance].sharePageScrollViewConfig.shareScrollViewPageItemStyleType = UMSocialPlatformItemViewBackgroudType_IconAndBGRadius;/**分享按钮显示样式*/
-    
-    
-    
-    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
-        
-        //在回调里面获得点击的
-        
-        if (platformType == UMSocialPlatformType_UserDefine_Begin+2)
-            
-        {
-            
-            NSLog(@"你点击了复制链接按钮");
-            
-        }
-        
-        else
-            
-        {
-            
-            [self runShareWithType:platformType];
-            
-        }
-        
-    }];
     
 }
 

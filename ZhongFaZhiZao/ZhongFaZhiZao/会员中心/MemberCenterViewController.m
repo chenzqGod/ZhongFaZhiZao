@@ -45,7 +45,7 @@
     
     [self.tabBarController.tabBar setHidden:NO];
     
-     [self loadData];
+//     [self loadData];
 }
 
 - (void)viewDidLoad {
@@ -60,7 +60,12 @@
     
     [self createUI];
     
-    [self loadData];
+    if ([USER_DEFAULTS objectForKey:@"token"]) {
+        
+        [self loadData];
+    }
+    
+    
 }
 
 - (void)createUI{
@@ -91,8 +96,14 @@
     _loginBtn.layer.masksToBounds = YES;
     _loginBtn.layer.cornerRadius = 15;
     _loginBtn.titleLabel.font = [UIFont systemFontOfSize:16.0];
-    [_loginBtn addTarget:self action:@selector(loginBtn) forControlEvents:UIControlEventTouchUpInside];
+    [_loginBtn addTarget:self action:@selector(loginBtnClick) forControlEvents:UIControlEventTouchUpInside];
+   
+    if ([USER_DEFAULTS objectForKey:@"token"]) {
+        
+        _loginBtn.hidden = YES;
+    }else{
     _loginBtn.hidden = NO;
+    }
     [self.scrollView addSubview:_loginBtn];
     
     
@@ -102,14 +113,19 @@
     _iconLabel.textAlignment = NSTextAlignmentCenter;
     _iconLabel.textColor = [UIColor whiteColor];
     _iconLabel.text = @"中发智造";
-    _iconLabel.hidden = YES;
+    
+    if ([USER_DEFAULTS objectForKey:@"token"]) {
+        
+        _iconLabel.hidden = NO;
+    }else{
+        _iconLabel.hidden = YES;
+    }
     [self.scrollView addSubview:_iconLabel];
     
 //    最多三个标签
 //    _bqlbl1 = [[UILabel alloc]init];
 //    _bqlbl2 = [[UILabel alloc]init];
 //    _bqlbl3 = [[UILabel alloc]init];
-    
     
     
     _informationBtn = [CustomButton buttonWithType:UIButtonTypeCustom];
@@ -120,7 +136,15 @@
     [_informationBtn setTitle:@"消息" forState:UIControlStateNormal];
     _informationBtn.titleLabel.font = [UIFont systemFontOfSize:10.0];
     _informationBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+    
+    if ([USER_DEFAULTS objectForKey:@"token"]) {
+        
+    _informationBtn.hidden = NO;
+
+    }else{
     _informationBtn.hidden = YES;
+    }
+    
     [_informationBtn setImage:[UIImage imageNamed:@"消息1"] forState:UIControlStateNormal];
     [_informationBtn addTarget:self action:@selector(informationBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:_informationBtn];
@@ -223,7 +247,15 @@
     _redLbl1.textColor = [UIColor whiteColor];
     _redLbl1.textAlignment = NSTextAlignmentCenter;
     _redLbl1.font = [UIFont systemFontOfSize:10.0];
-    _redLbl1.hidden = YES;
+    
+    if ([USER_DEFAULTS objectForKey:@"token"]) {
+        
+        _redLbl1.hidden = NO;
+        
+    }else{
+         _redLbl1.hidden = YES;
+    }
+    
     [underView addSubview:_redLbl1];
     
     _redLbl2 = [[UILabel alloc]initWithFrame:CGRectMake((screenWidth/4.0-25)/2.0+20+screenWidth/4.0, 9*screenScale, 13, 13)];
@@ -234,7 +266,14 @@
     _redLbl2.textColor = [UIColor whiteColor];
     _redLbl2.textAlignment = NSTextAlignmentCenter;
     _redLbl2.font = [UIFont systemFontOfSize:10.0];
-    _redLbl2.hidden = YES;
+    
+    if ([USER_DEFAULTS objectForKey:@"token"]) {
+        
+        _redLbl2.hidden = NO;
+        
+    }else{
+        _redLbl2.hidden = YES;
+    }
     [underView addSubview:_redLbl2];
     
     _redLbl3 = [[UILabel alloc]initWithFrame:CGRectMake((screenWidth/4.0-25)/2.0+20+screenWidth/4.0*2, 9*screenScale, 13, 13)];
@@ -245,7 +284,13 @@
     _redLbl3.textColor = [UIColor whiteColor];
     _redLbl3.textAlignment = NSTextAlignmentCenter;
     _redLbl3.font = [UIFont systemFontOfSize:10.0];
-    _redLbl3.hidden = YES;
+    if ([USER_DEFAULTS objectForKey:@"token"]) {
+        
+        _redLbl3.hidden = NO;
+        
+    }else{
+        _redLbl3.hidden = YES;
+    }
     [underView addSubview:_redLbl3];
     
     _redLbl4 = [[UILabel alloc]initWithFrame:CGRectMake((screenWidth/4.0-25)/2.0+20+screenWidth/4.0*3, 9*screenScale, 13, 13)];
@@ -256,7 +301,14 @@
     _redLbl4.textColor = [UIColor whiteColor];
     _redLbl4.textAlignment = NSTextAlignmentCenter;
     _redLbl4.font = [UIFont systemFontOfSize:10.0];
-    _redLbl4.hidden = YES;
+
+    if ([USER_DEFAULTS objectForKey:@"token"]) {
+        
+        _redLbl4.hidden = NO;
+        
+    }else{
+        _redLbl4.hidden = YES;
+    }
     [underView addSubview:_redLbl4];
     
     //账户安全View
@@ -346,7 +398,14 @@
     _exitBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
     _exitBtn.titleLabel.text = @"退出";
     _exitBtn.titleLabel.font = [UIFont boldSystemFontOfSize:17.0];
-    _exitBtn.hidden = YES;
+    
+    if ([USER_DEFAULTS objectForKey:@"token"]) {
+        
+      _exitBtn.hidden = NO;
+    }else{
+        _exitBtn.hidden = YES;
+    }
+
     [_exitBtn addTarget:self action:@selector(exitBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:_exitBtn];
     
@@ -363,8 +422,8 @@
         
         if ([response[@"resultCode"]integerValue] == 1000) {
             
-            _iconLabel.hidden = NO;
             _loginBtn.hidden = YES;
+            _iconLabel.hidden = NO;
             _exitBtn.hidden = NO;
             _informationBtn.hidden = NO;
             _iconLabel.text = response[@"data"][@"corpName"];
@@ -431,7 +490,7 @@
 }
 
 #pragma mark - 点击事件
-- (void)loginBtn{
+- (void)loginBtnClick{
 
     PwLoginViewController *vc = [[PwLoginViewController alloc]init];
     
@@ -462,42 +521,53 @@
     NSLog(@"退出当前账号");
     
 //    [self.navigationController popToRootViewControllerAnimated:YES];
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     //移除UserDefaults中存储的用户信息
-    [userDefaults removeObjectForKey:@"uid"];
-    [userDefaults removeObjectForKey:@"token"];
-    [userDefaults removeObjectForKey:@"uname"];
-    [userDefaults removeObjectForKey:@"contacts"];
-    [userDefaults removeObjectForKey:@"mobile"];
+    [USER_DEFAULTS removeObjectForKey:@"uid"];
+    [USER_DEFAULTS removeObjectForKey:@"token"];
+    [USER_DEFAULTS removeObjectForKey:@"uname"];
+    [USER_DEFAULTS removeObjectForKey:@"contacts"];
+    [USER_DEFAULTS removeObjectForKey:@"mobile"];
+
+    [USER_DEFAULTS synchronize];
+    
+    NSLog(@"%@",[USER_DEFAULTS objectForKey:@"token"]);
+    
+    _loginBtn.hidden = NO;
+    _iconLabel.hidden = YES;
+    _exitBtn.hidden = YES;
+    _informationBtn.hidden = YES;
+    
+    _redLbl1.hidden = YES;
+    _redLbl2.hidden = YES;
+    _redLbl3.hidden = YES;
+    _redLbl4.hidden = YES;
 
     
-    [userDefaults synchronize];
+    
 }
 
 - (void)mycollectionClickjan{
-    
 
-    if ([USER_DEFAULTS objectForKey:@"token"] == nil) {
+    if (![USER_DEFAULTS objectForKey:@"token"]) {
         
         PwLoginViewController *vc = [[PwLoginViewController alloc]init];
+        
         [self.navigationController pushViewController:vc animated:YES];
         
     }else{
-    
     WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,MEMBER_COLLECT_JAN] title:@"我的收藏"];
     
     [self.navigationController pushViewController:vc animated:YES];
-        
     }
 }
 
 
 - (void)mycollectionClickten{
-    
-    if ([USER_DEFAULTS objectForKey:@"token"] == nil) {
+    if (![USER_DEFAULTS objectForKey:@"token"]) {
         
         PwLoginViewController *vc = [[PwLoginViewController alloc]init];
+        
         [self.navigationController pushViewController:vc animated:YES];
         
     }else{
@@ -505,69 +575,65 @@
     WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,MEMBER_COLLECT_TEN] title:@"我的收藏"];
     
     [self.navigationController pushViewController:vc animated:YES];
-        
     }
 }
 
 - (void)addressBtnClick{
-    
-    if ([USER_DEFAULTS objectForKey:@"token"] == nil) {
+
+    if (![USER_DEFAULTS objectForKey:@"token"]) {
         
         PwLoginViewController *vc = [[PwLoginViewController alloc]init];
+        
         [self.navigationController pushViewController:vc animated:YES];
         
     }else{
-
     WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,MEMBER_RECEIVEADDRESS] title:@"收货地址"];
     
     [self.navigationController pushViewController:vc animated:YES];
-        
     }
 }
 
 - (void)safeBtnClick{
 
-    if ([USER_DEFAULTS objectForKey:@"token"] == nil) {
+    if (![USER_DEFAULTS objectForKey:@"token"]) {
         
         PwLoginViewController *vc = [[PwLoginViewController alloc]init];
+        
         [self.navigationController pushViewController:vc animated:YES];
         
     }else{
-        
-        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,MEMBER_SAFECOUNT] title:@"安全"];
-        
-        [self.navigationController pushViewController:vc animated:YES];
-        
-    }
     NSLog(@"期待");
+    }
 }
 
 - (void)orderBtnClick{
-    
-    if ([USER_DEFAULTS objectForKey:@"token"] == nil) {
+
+    if (![USER_DEFAULTS objectForKey:@"token"]) {
         
         PwLoginViewController *vc = [[PwLoginViewController alloc]init];
+        
         [self.navigationController pushViewController:vc animated:YES];
         
     }else{
-
     WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,MY_ORDER] title:@"我的订单"];
     
     [self.navigationController pushViewController:vc animated:YES];
-    
     }
 }
 
 //四个状态按钮
 - (void)buttonOrderClick:(UIButton *)btn{
     
-  if ([USER_DEFAULTS objectForKey:@"token"] == nil) {
+    if (![USER_DEFAULTS objectForKey:@"token"]) {
         
         PwLoginViewController *vc = [[PwLoginViewController alloc]init];
+        
         [self.navigationController pushViewController:vc animated:YES];
         
     }else{
-        
+    
+
+    
     if (btn.tag == 60) {
         
         WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,MEMBER_PENDING] title:@"待付款"];

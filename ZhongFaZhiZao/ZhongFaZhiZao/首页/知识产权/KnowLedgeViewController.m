@@ -128,14 +128,21 @@
                 [_dataArray removeAllObjects];
                 _dataArray = [response[@"data"][@"goodList"] mutableCopy];
             }else{
+                
+                if ([response[@"data"][@"goodList"] count] == 0) {
+                    
+                    [WKProgressHUD popMessage:@"没有更多了" inView:self.view duration:HUD_DURATION animated:YES];
+                    
+                    return ;
+                }
                 [_dataArray addObjectsFromArray:response[@"data"][@"goodList"]];
             }
 
-            
+            NSLog(@"%@",_dataArray);
             
             [self.tableView reloadData];
             
-            
+            NSLog(@"count = %lu",(unsigned long)_dataArray.count);
         }
         else if ([response[@"resultCode"]integerValue] == 1001){
         

@@ -50,7 +50,11 @@
         [cookieDic setObject:[USER_DEFAULTS objectForKey:@"token"] forKey:@"zfa_token"];
         
     }
-    
+    else{
+        
+        [cookieDic setObject:@"" forKey:@"zfa_token"];
+        
+    }
     
     // cookie重复，先放到字典进行去重，再进行拼接
     for (NSString *key in cookieDic) {
@@ -107,7 +111,11 @@
         [cookieDic setObject:[USER_DEFAULTS objectForKey:@"token"] forKey:@"zfa_token"];
 
     }
-    
+    else{
+        
+        [cookieDic setObject:@"" forKey:@"zfa_token"];
+        
+    }
     
     // cookie重复，先放到字典进行去重，再进行拼接
     for (NSString *key in cookieDic) {
