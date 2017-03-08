@@ -460,45 +460,114 @@
 - (void)exitBtnClick{
 
     NSLog(@"退出当前账号");
+    
+//    [self.navigationController popToRootViewControllerAnimated:YES];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    //移除UserDefaults中存储的用户信息
+    [userDefaults removeObjectForKey:@"uid"];
+    [userDefaults removeObjectForKey:@"token"];
+    [userDefaults removeObjectForKey:@"uname"];
+    [userDefaults removeObjectForKey:@"contacts"];
+    [userDefaults removeObjectForKey:@"mobile"];
+
+    
+    [userDefaults synchronize];
 }
 
 - (void)mycollectionClickjan{
+    
 
+    if ([USER_DEFAULTS objectForKey:@"token"] == nil) {
+        
+        PwLoginViewController *vc = [[PwLoginViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }else{
+    
     WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,MEMBER_COLLECT_JAN] title:@"我的收藏"];
     
     [self.navigationController pushViewController:vc animated:YES];
+        
+    }
 }
 
 
 - (void)mycollectionClickten{
     
+    if ([USER_DEFAULTS objectForKey:@"token"] == nil) {
+        
+        PwLoginViewController *vc = [[PwLoginViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }else{
+    
     WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,MEMBER_COLLECT_TEN] title:@"我的收藏"];
     
     [self.navigationController pushViewController:vc animated:YES];
+        
+    }
 }
 
 - (void)addressBtnClick{
+    
+    if ([USER_DEFAULTS objectForKey:@"token"] == nil) {
+        
+        PwLoginViewController *vc = [[PwLoginViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }else{
 
     WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,MEMBER_RECEIVEADDRESS] title:@"收货地址"];
     
     [self.navigationController pushViewController:vc animated:YES];
+        
+    }
 }
 
 - (void)safeBtnClick{
 
+    if ([USER_DEFAULTS objectForKey:@"token"] == nil) {
+        
+        PwLoginViewController *vc = [[PwLoginViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }else{
+        
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,MEMBER_SAFECOUNT] title:@"安全"];
+        
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }
     NSLog(@"期待");
 }
 
 - (void)orderBtnClick{
+    
+    if ([USER_DEFAULTS objectForKey:@"token"] == nil) {
+        
+        PwLoginViewController *vc = [[PwLoginViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }else{
 
     WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,MY_ORDER] title:@"我的订单"];
     
     [self.navigationController pushViewController:vc animated:YES];
+    
+    }
 }
 
 //四个状态按钮
 - (void)buttonOrderClick:(UIButton *)btn{
     
+  if ([USER_DEFAULTS objectForKey:@"token"] == nil) {
+        
+        PwLoginViewController *vc = [[PwLoginViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }else{
+        
     if (btn.tag == 60) {
         
         WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,MEMBER_PENDING] title:@"待付款"];
@@ -533,7 +602,7 @@
         NSLog(@"不是四种订单状态");
     }
     
-
+    }
     
 }
 
