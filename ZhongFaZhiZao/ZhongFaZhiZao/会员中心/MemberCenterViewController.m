@@ -254,7 +254,6 @@
     _redLbl1.layer.masksToBounds = YES;
     _redLbl1.layer.cornerRadius = 6.5;
     _redLbl1.backgroundColor = RED_COLOR;
-    _redLbl1.text = @"5";
     _redLbl1.textColor = [UIColor whiteColor];
     _redLbl1.textAlignment = NSTextAlignmentCenter;
     _redLbl1.font = [UIFont systemFontOfSize:10.0];
@@ -273,7 +272,6 @@
     _redLbl2.layer.masksToBounds = YES;
     _redLbl2.layer.cornerRadius = 6.5;
     _redLbl2.backgroundColor = RED_COLOR;
-    _redLbl2.text = @"4";
     _redLbl2.textColor = [UIColor whiteColor];
     _redLbl2.textAlignment = NSTextAlignmentCenter;
     _redLbl2.font = [UIFont systemFontOfSize:10.0];
@@ -291,7 +289,6 @@
     _redLbl3.layer.masksToBounds = YES;
     _redLbl3.layer.cornerRadius = 6.5;
     _redLbl3.backgroundColor = RED_COLOR;
-    _redLbl3.text = @"3";
     _redLbl3.textColor = [UIColor whiteColor];
     _redLbl3.textAlignment = NSTextAlignmentCenter;
     _redLbl3.font = [UIFont systemFontOfSize:10.0];
@@ -308,7 +305,6 @@
     _redLbl4.layer.masksToBounds = YES;
     _redLbl4.layer.cornerRadius = 6.5;
     _redLbl4.backgroundColor = RED_COLOR;
-    _redLbl4.text = @"2";
     _redLbl4.textColor = [UIColor whiteColor];
     _redLbl4.textAlignment = NSTextAlignmentCenter;
     _redLbl4.font = [UIFont systemFontOfSize:10.0];
@@ -469,6 +465,10 @@
                 _redLbl1.hidden = NO;
                 _redLbl1.text = [NSString stringWithFormat:@"%@",response[@"data"][@"orderCount"][@"waitpayCount"]];
                 
+            }else{
+            
+                _redLbl1.hidden = YES;
+
             }
             
             if ([response[@"data"][@"orderCount"][@"waitSippingCount"]integerValue] > 0) {
@@ -476,7 +476,12 @@
                 _redLbl2.hidden = NO;
                 _redLbl2.text = [NSString stringWithFormat:@"%@",response[@"data"][@"orderCount"][@"waitSippingCount"]];
                 
+            }else{
+            
+                _redLbl2.hidden =YES;
             }
+            
+            
 
             if ([response[@"data"][@"orderCount"][@"waitReceiptCount"]integerValue] > 0) {
                 
@@ -484,12 +489,19 @@
                 _redLbl3.text = [NSString stringWithFormat:@"%@",response[@"data"][@"orderCount"][@"waitReceiptCount"]];
                 
             }
+            else{
+            
+                _redLbl3.hidden = YES;
+            }
 
             if ([response[@"data"][@"orderCount"][@"refundCount"]integerValue] > 0) {
                 
                 _redLbl4.hidden = NO;
                 _redLbl4.text = [NSString stringWithFormat:@"%@",response[@"data"][@"orderCount"][@"refundCount"]];
                 
+            }else{
+            
+                _redLbl4.hidden = YES;
             }
 
             

@@ -12,6 +12,7 @@
 //正式环境
 //#define HOST_URL  @"http://wap.cecb2b.com"
 
+
 #define ALIPAY_URL  @"/apppay/toAli?orderIds=201312291707559XMZ"
 
 #define SOURCE_URL  @"/cart/doSubmitOrde"
