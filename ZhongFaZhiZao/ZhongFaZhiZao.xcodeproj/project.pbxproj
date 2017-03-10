@@ -281,6 +281,22 @@
 		5691B64C1E11671300AC09DB /* ZhongFaDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5691B64B1E11671300AC09DB /* ZhongFaDataBase.m */; };
 		56932B151E1429880010FC7E /* ZYJHeadLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56932B121E1429880010FC7E /* ZYJHeadLineModel.m */; };
 		56932B161E1429880010FC7E /* ZYJHeadLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56932B141E1429880010FC7E /* ZYJHeadLineView.m */; };
+		5695FF8E1E72746A00E750A5 /* 50强会员@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5695FF7E1E72746A00E750A5 /* 50强会员@2x.png */; };
+		5695FF8F1E72746A00E750A5 /* 50强会员@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5695FF7F1E72746A00E750A5 /* 50强会员@3x.png */; };
+		5695FF901E72746A00E750A5 /* 实体会员@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5695FF801E72746A00E750A5 /* 实体会员@2x.png */; };
+		5695FF911E72746A00E750A5 /* 实体会员@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5695FF811E72746A00E750A5 /* 实体会员@3x.png */; };
+		5695FF921E72746A00E750A5 /* 智创通@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5695FF821E72746A00E750A5 /* 智创通@2x.png */; };
+		5695FF931E72746A00E750A5 /* 智创通@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5695FF831E72746A00E750A5 /* 智创通@3x.png */; };
+		5695FF941E72746A00E750A5 /* 智服通@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5695FF841E72746A00E750A5 /* 智服通@2x.png */; };
+		5695FF951E72746A00E750A5 /* 智服通@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5695FF851E72746A00E750A5 /* 智服通@3x.png */; };
+		5695FF961E72746A00E750A5 /* 智融通@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5695FF861E72746A00E750A5 /* 智融通@2x.png */; };
+		5695FF971E72746A00E750A5 /* 智融通@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5695FF871E72746A00E750A5 /* 智融通@3x.png */; };
+		5695FF981E72746A00E750A5 /* 智贸通@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5695FF881E72746A00E750A5 /* 智贸通@2x.png */; };
+		5695FF991E72746A00E750A5 /* 智贸通@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5695FF891E72746A00E750A5 /* 智贸通@3x.png */; };
+		5695FF9A1E72746A00E750A5 /* 智造通@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5695FF8A1E72746A00E750A5 /* 智造通@2x.png */; };
+		5695FF9B1E72746A00E750A5 /* 智造通@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5695FF8B1E72746A00E750A5 /* 智造通@3x.png */; };
+		5695FF9C1E72746A00E750A5 /* 标准会员@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5695FF8C1E72746A00E750A5 /* 标准会员@2x.png */; };
+		5695FF9D1E72746A00E750A5 /* 标准会员@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5695FF8D1E72746A00E750A5 /* 标准会员@3x.png */; };
 		5697C7FE1E07E9F6008A1D98 /* 占位图-消息@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5697C7FC1E07E9F6008A1D98 /* 占位图-消息@2x.png */; };
 		5697C7FF1E07E9F6008A1D98 /* 占位图-消息@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5697C7FD1E07E9F6008A1D98 /* 占位图-消息@3x.png */; };
 		5697C8021E08D0DF008A1D98 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5697C8011E08D0DF008A1D98 /* CustomButton.m */; };
@@ -965,6 +981,22 @@
 		56932B121E1429880010FC7E /* ZYJHeadLineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYJHeadLineModel.m; sourceTree = "<group>"; };
 		56932B131E1429880010FC7E /* ZYJHeadLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYJHeadLineView.h; sourceTree = "<group>"; };
 		56932B141E1429880010FC7E /* ZYJHeadLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYJHeadLineView.m; sourceTree = "<group>"; };
+		5695FF7E1E72746A00E750A5 /* 50强会员@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "50强会员@2x.png"; sourceTree = "<group>"; };
+		5695FF7F1E72746A00E750A5 /* 50强会员@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "50强会员@3x.png"; sourceTree = "<group>"; };
+		5695FF801E72746A00E750A5 /* 实体会员@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "实体会员@2x.png"; sourceTree = "<group>"; };
+		5695FF811E72746A00E750A5 /* 实体会员@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "实体会员@3x.png"; sourceTree = "<group>"; };
+		5695FF821E72746A00E750A5 /* 智创通@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "智创通@2x.png"; sourceTree = "<group>"; };
+		5695FF831E72746A00E750A5 /* 智创通@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "智创通@3x.png"; sourceTree = "<group>"; };
+		5695FF841E72746A00E750A5 /* 智服通@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "智服通@2x.png"; sourceTree = "<group>"; };
+		5695FF851E72746A00E750A5 /* 智服通@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "智服通@3x.png"; sourceTree = "<group>"; };
+		5695FF861E72746A00E750A5 /* 智融通@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "智融通@2x.png"; sourceTree = "<group>"; };
+		5695FF871E72746A00E750A5 /* 智融通@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "智融通@3x.png"; sourceTree = "<group>"; };
+		5695FF881E72746A00E750A5 /* 智贸通@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "智贸通@2x.png"; sourceTree = "<group>"; };
+		5695FF891E72746A00E750A5 /* 智贸通@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "智贸通@3x.png"; sourceTree = "<group>"; };
+		5695FF8A1E72746A00E750A5 /* 智造通@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "智造通@2x.png"; sourceTree = "<group>"; };
+		5695FF8B1E72746A00E750A5 /* 智造通@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "智造通@3x.png"; sourceTree = "<group>"; };
+		5695FF8C1E72746A00E750A5 /* 标准会员@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "标准会员@2x.png"; sourceTree = "<group>"; };
+		5695FF8D1E72746A00E750A5 /* 标准会员@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "标准会员@3x.png"; sourceTree = "<group>"; };
 		5697C7FC1E07E9F6008A1D98 /* 占位图-消息@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "占位图-消息@2x.png"; sourceTree = "<group>"; };
 		5697C7FD1E07E9F6008A1D98 /* 占位图-消息@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "占位图-消息@3x.png"; sourceTree = "<group>"; };
 		5697C8001E08D0DF008A1D98 /* CustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
@@ -1872,6 +1904,7 @@
 		567B61491DCAE489004D1CFE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5695FF7D1E72746A00E750A5 /* 个人中心页标签 */,
 				56886BCC1E65182100463761 /* 分享 */,
 				56ADBAAF1E5584F10041196C /* 会员中心 */,
 				561C804C1E31FDD700CA46A4 /* 标签 */,
@@ -2410,6 +2443,29 @@
 				56932B141E1429880010FC7E /* ZYJHeadLineView.m */,
 			);
 			path = HeadLineView;
+			sourceTree = "<group>";
+		};
+		5695FF7D1E72746A00E750A5 /* 个人中心页标签 */ = {
+			isa = PBXGroup;
+			children = (
+				5695FF7E1E72746A00E750A5 /* 50强会员@2x.png */,
+				5695FF7F1E72746A00E750A5 /* 50强会员@3x.png */,
+				5695FF801E72746A00E750A5 /* 实体会员@2x.png */,
+				5695FF811E72746A00E750A5 /* 实体会员@3x.png */,
+				5695FF821E72746A00E750A5 /* 智创通@2x.png */,
+				5695FF831E72746A00E750A5 /* 智创通@3x.png */,
+				5695FF841E72746A00E750A5 /* 智服通@2x.png */,
+				5695FF851E72746A00E750A5 /* 智服通@3x.png */,
+				5695FF861E72746A00E750A5 /* 智融通@2x.png */,
+				5695FF871E72746A00E750A5 /* 智融通@3x.png */,
+				5695FF881E72746A00E750A5 /* 智贸通@2x.png */,
+				5695FF891E72746A00E750A5 /* 智贸通@3x.png */,
+				5695FF8A1E72746A00E750A5 /* 智造通@2x.png */,
+				5695FF8B1E72746A00E750A5 /* 智造通@3x.png */,
+				5695FF8C1E72746A00E750A5 /* 标准会员@2x.png */,
+				5695FF8D1E72746A00E750A5 /* 标准会员@3x.png */,
+			);
+			path = "个人中心页标签";
 			sourceTree = "<group>";
 		};
 		5697C80D1E0A26ED008A1D98 /* imagecache */ = {
@@ -3001,10 +3057,12 @@
 				56CC47581E13A74600D8E42E /* 占位图200-188@3x.png in Resources */,
 				56CFD7AB1E0392CF00D18340 /* banner@3x.png in Resources */,
 				560956141DFF998E00DA0B72 /* eye@3x.png in Resources */,
+				5695FF931E72746A00E750A5 /* 智创通@3x.png in Resources */,
 				56CFD7A11E028FC700D18340 /* 预警icon@3x.png in Resources */,
 				56886BE21E65182F00463761 /* 共用二维码@3x.png in Resources */,
 				56CFD81D1E0789FE00D18340 /* banner2@2x.png in Resources */,
 				560956181DFF998E00DA0B72 /* qq@3x.png in Resources */,
+				5695FF981E72746A00E750A5 /* 智贸通@2x.png in Resources */,
 				56CFD7911E028FC700D18340 /* 申请icon@3x.png in Resources */,
 				56DAB5FB1E313EAD003B71D5 /* jrtitle@3x.png in Resources */,
 				560956161DFF998E00DA0B72 /* qq-press@3x.png in Resources */,
@@ -3036,6 +3094,7 @@
 				568EE1FC1E31DFC4000488AA /* jrsumm1@3x.png in Resources */,
 				56ADBAC31E5585040041196C /* 头像@2x.png in Resources */,
 				56CFD7851E028FC700D18340 /* 解决方案icon@3x.png in Resources */,
+				5695FF951E72746A00E750A5 /* 智服通@3x.png in Resources */,
 				56CFD7901E028FC700D18340 /* 申请icon@2x.png in Resources */,
 				56CFD80C1E0528D800D18340 /* 消息-默认图@2x.png in Resources */,
 				560366411DDEAD3E00332DD2 /* 60x60.png in Resources */,
@@ -3053,6 +3112,7 @@
 				56CFD7A71E028FC700D18340 /* bar@3x.png in Resources */,
 				560366331DDEA20000332DD2 /* 180@2x.png in Resources */,
 				560366301DDEA20000332DD2 /* 120@3x.png in Resources */,
+				5695FF8F1E72746A00E750A5 /* 50强会员@3x.png in Resources */,
 				5691B6421E11070700AC09DB /* Group 55@3x.png in Resources */,
 				56886BE41E65182F00463761 /* 空间分享@3x.png in Resources */,
 				5691B62F1E10FB4A00AC09DB /* Group 52@3x.png in Resources */,
@@ -3094,7 +3154,9 @@
 				56CFD7121E00E45700D18340 /* 首页-2@2x.png in Resources */,
 				5691B61F1E10F72500AC09DB /* Group 46@2x.png in Resources */,
 				56CFD7741E028FC700D18340 /* 产权专利bar@2x.png in Resources */,
+				5695FF9B1E72746A00E750A5 /* 智造通@3x.png in Resources */,
 				560956191DFF998E00DA0B72 /* wechat-press@2x.png in Resources */,
+				5695FF9C1E72746A00E750A5 /* 标准会员@2x.png in Resources */,
 				56886BED1E65182F00463761 /* 微信分享@2x.png in Resources */,
 				56C930931E125761006DC3C2 /* NavBG@2x.png in Resources */,
 				5603662D1DDEA20000332DD2 /* Default@3x.png in Resources */,
@@ -3170,11 +3232,13 @@
 				56ADBAE31E5587A00041196C /* 待付款@2x.png in Resources */,
 				5603662A1DDEA20000332DD2 /* Default-667h@2x.png in Resources */,
 				56D8FF121E166158008661E2 /* 默认图750@3x.png in Resources */,
+				5695FF9A1E72746A00E750A5 /* 智造通@2x.png in Resources */,
 				56CFD7981E028FC700D18340 /* 挖掘icon@2x.png in Resources */,
 				5691B6221E10F72500AC09DB /* Group 47@3x.png in Resources */,
 				560366391DDEA20000332DD2 /* 80@2x-1.png in Resources */,
 				56ADBAD61E5585110041196C /* 待发货icon@3x.png in Resources */,
 				56CFD7781E028FC700D18340 /* 电子市场bar@2x.png in Resources */,
+				5695FF961E72746A00E750A5 /* 智融通@2x.png in Resources */,
 				56CFD7A31E028FC700D18340 /* 智能创新icon@3x.png in Resources */,
 				56CFD7131E00E45700D18340 /* 首页-2@3x.png in Resources */,
 				56CFD78B1E028FC700D18340 /* 科技bar@3x.png in Resources */,
@@ -3207,6 +3271,7 @@
 				56ADBAC41E5585040041196C /* 退款icon@2x.png in Resources */,
 				56CFD7991E028FC700D18340 /* 挖掘icon@3x.png in Resources */,
 				56CFD71A1E01265900D18340 /* 验证icon@2x.png in Resources */,
+				5695FF911E72746A00E750A5 /* 实体会员@3x.png in Resources */,
 				5691B61C1E10F72500AC09DB /* Group 42@3x.png in Resources */,
 				568EE1FE1E31DFC4000488AA /* jrsumm2@3x.png in Resources */,
 				56CFD7791E028FC700D18340 /* 电子市场bar@3x.png in Resources */,
@@ -3220,15 +3285,19 @@
 				56D8FF161E166D53008661E2 /* 搜素img@3x.png in Resources */,
 				56CC475E1E13C06F00D8E42E /* Fill 1@2x.png in Resources */,
 				5691B6481E111AB600AC09DB /* 清除@2x.png in Resources */,
+				5695FF921E72746A00E750A5 /* 智创通@2x.png in Resources */,
 				56886BEB1E65182F00463761 /* 微博分享@2x.png in Resources */,
 				560366381DDEA20000332DD2 /* 76@1x.png in Resources */,
 				5697C88D1E0E6EF9008A1D98 /* Group 41@2x.png in Resources */,
 				561C80591E31FF3600CA46A4 /* 额度高@2x.png in Resources */,
 				565EA7B11E6D02FF00EF778D /* UMSocialSDKPromptResources.bundle in Resources */,
+				5695FF901E72746A00E750A5 /* 实体会员@2x.png in Resources */,
+				5695FF8E1E72746A00E750A5 /* 50强会员@2x.png in Resources */,
 				567B611D1DCADFF9004D1CFE /* Main.storyboard in Resources */,
 				56CFD7971E028FC700D18340 /* 推荐@3x.png in Resources */,
 				56886BE91E65182F00463761 /* 闪电白@2x.png in Resources */,
 				56CFD7801E028FC700D18340 /* 交易icon@2x.png in Resources */,
+				5695FF991E72746A00E750A5 /* 智贸通@3x.png in Resources */,
 				5609561F1DFF998E00DA0B72 /* 关闭@2x.png in Resources */,
 				56886BEF1E65182F00463761 /* QQ分享@2x.png in Resources */,
 				56ADBAD81E5585110041196C /* 地址@3x.png in Resources */,
@@ -3248,8 +3317,10 @@
 				56886BE81E65182F00463761 /* 闪电@3x.png in Resources */,
 				56886BE01E65182F00463761 /* 短信分享@3x.png in Resources */,
 				5691B63D1E11070700AC09DB /* Group 4@2x.png in Resources */,
+				5695FF941E72746A00E750A5 /* 智服通@2x.png in Resources */,
 				56C930941E125761006DC3C2 /* NavBG@3x.png in Resources */,
 				56886BE71E65182F00463761 /* 闪电@2x.png in Resources */,
+				5695FF971E72746A00E750A5 /* 智融通@3x.png in Resources */,
 				5697C88F1E0E6EF9008A1D98 /* 智能1@2x.png in Resources */,
 				5691B61E1E10F72500AC09DB /* Group 43@3x.png in Resources */,
 				565EA7AC1E6D02FF00EF778D /* read_me.txt in Resources */,
@@ -3267,6 +3338,7 @@
 				56CC47551E13A74600D8E42E /* 占位图157-148@2x.png in Resources */,
 				560956241DFF998E00DA0B72 /* 账号登录@3x.png in Resources */,
 				56CFD78F1E028FC700D18340 /* 扫一扫@3x.png in Resources */,
+				5695FF9D1E72746A00E750A5 /* 标准会员@3x.png in Resources */,
 				5697C8531E0CF642008A1D98 /* Emoji.plist in Resources */,
 				56ADBAC61E5585040041196C /* 消息1@2x.png in Resources */,
 				560366321DDEA20000332DD2 /* 167@2x.png in Resources */,

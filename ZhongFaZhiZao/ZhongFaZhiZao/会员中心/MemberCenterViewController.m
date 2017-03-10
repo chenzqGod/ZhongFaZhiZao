@@ -11,6 +11,7 @@
 #import "AskViewController.h"
 #import "UMengShareViewController.h"
 #import "WKWebViewViewController.h"
+#import "UIImageView+WebCache.h"
 
 @interface MemberCenterViewController (){
 
@@ -18,8 +19,7 @@
     UIButton *_loginBtn;
     UILabel *_iconLabel;
     UIImageView *_bqlbl1;
-    UIImageView *_bqlbl2;
-    UIImageView *_bqlbl3;
+    UILabel *_bqLbl;
     UIButton *_exitBtn;
     CustomButton *_informationBtn;
     
@@ -80,7 +80,6 @@
     _iconImg = [[UIImageView alloc]initWithFrame:CGRectMake((screenWidth-iconImgH)/2.0-1, 55*screenScale,iconImgH, iconImgH)];
     _iconImg.layer.cornerRadius = iconImgH/2.0;
     _iconImg.layer.masksToBounds = YES;
-    _iconImg.backgroundColor = [UIColor cyanColor];
     _iconImg.image = [UIImage imageNamed:@"头像"];
     [self.scrollView addSubview:_iconImg];
     
@@ -123,10 +122,22 @@
     [self.scrollView addSubview:_iconLabel];
     
 //    最多三个标签
-//    _bqlbl1 = [[UILabel alloc]init];
-//    _bqlbl2 = [[UILabel alloc]init];
-//    _bqlbl3 = [[UILabel alloc]init];
+    _bqLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 5*screenScale+CGRectGetMaxY(_iconImg.frame)+13*screenScale+21, screenWidth, 14)];
+    if ([USER_DEFAULTS objectForKey:@"token"]) {
+        _bqLbl.hidden = NO;
+    }else{
+        _bqLbl.hidden = YES;
+    }
+    [self.scrollView addSubview:_bqLbl];
+
     
+    _bqlbl1 = [[UIImageView alloc]init];
+    if ([USER_DEFAULTS objectForKey:@"token"]) {
+        _bqlbl1.hidden = NO;
+    }else{
+         _bqlbl1.hidden = YES;
+    }
+    [self.scrollView addSubview:_bqlbl1];
     
     _informationBtn = [CustomButton buttonWithType:UIButtonTypeCustom];
     _informationBtn.frame = CGRectMake(screenWidth-15*screenScale-24, 12, 26, 32);
@@ -428,6 +439,31 @@
             _informationBtn.hidden = NO;
             _iconLabel.text = response[@"data"][@"corpName"];
             
+            
+            NSUInteger flagcount = [response[@"data"][@"membership"] count];
+            
+            if ([response[@"data"][@"membership"] count] > 0) {
+                
+                for (NSInteger i = 0; i < flagcount; i++) {
+                    
+                    _bqLbl.hidden = NO;
+                    
+                    UIImageView *img = [[UIImageView alloc]init];
+                    img.frame = CGRectMake((screenWidth -2*(flagcount-1)-28*flagcount)/2.0+2*i+28*i, 0, 28, 14);
+//                    img.backgroundColor = [UIColor cyanColor];
+//                    img.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",response[@"data"][@"membership"][i][@"role_name"]]];
+                    
+                    [img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://images.cecb2b.com/images/common-service/icon/%@.png", response[@"data"][@"membership"][i][@"Role_id"]]] placeholderImage:nil];
+                    
+                    [_bqLbl addSubview:img];
+                }
+            }
+            else {
+            
+                _bqlbl1.hidden = YES;
+            }
+
+            
             if ([response[@"data"][@"orderCount"][@"waitpayCount"]integerValue] > 0) {
                 
                 _redLbl1.hidden = NO;
@@ -477,6 +513,8 @@
             _redLbl2.hidden = YES;
             _redLbl3.hidden = YES;
             _redLbl4.hidden = YES;
+            
+            _bqLbl.hidden =YES;
         }
         
     } failure:^(NSString *error) {
@@ -543,7 +581,7 @@
     _redLbl3.hidden = YES;
     _redLbl4.hidden = YES;
 
-    
+    _bqLbl.hidden = YES;
     
 }
 
@@ -602,7 +640,15 @@
         [self.navigationController pushViewController:vc animated:YES];
         
     }else{
+        
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:[NSString stringWithFormat:@"%@%@",HOST_URL,MEMBER_SAFECOUNT] title:@"账号安全"];
+        
+        [self.navigationController pushViewController:vc animated:YES];
+
+        
     NSLog(@"期待");
+        
+        
     }
 }
 
