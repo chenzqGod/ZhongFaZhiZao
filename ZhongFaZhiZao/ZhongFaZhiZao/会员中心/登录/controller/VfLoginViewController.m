@@ -209,8 +209,15 @@
 //                    }
 //                    else{
 //                        
-                        MemberCenterViewController *vc = [[MemberCenterViewController alloc]init];
-                        [self.navigationController pushViewController:vc animated:YES];
+//                        MemberCenterViewController *vc = [[MemberCenterViewController alloc]init];
+//                        [self.navigationController pushViewController:vc animated:YES];
+                    
+                    [self.navigationController popToRootViewControllerAnimated:NO];
+                    self.tabBarController.selectedIndex = 3;
+                    
+                    //                调用通知
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"sucess" object:self];
+
 //
 //                    }
 

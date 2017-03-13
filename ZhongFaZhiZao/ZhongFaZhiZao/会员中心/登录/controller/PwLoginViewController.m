@@ -32,6 +32,8 @@
     [super viewWillAppear:YES];
     
     [self.navigationController setNavigationBarHidden:YES];
+    
+//    self.tabBarCo
 }
 
 - (void)viewDidLoad {
@@ -147,7 +149,7 @@
 
             if ([response[@"resultCode"]integerValue] == 1000) {
             [WKProgressHUD popMessage:@"登录成功" inView:self.view duration:HUD_DURATION animated:YES];
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 
                     self.userInfo = [UserInfo sharedUserInfo];
                     self.userInfo.uid = response[@"data"][@"uid"];
@@ -202,11 +204,22 @@
 //                    }
              
 //                    [self.navigationController popViewControllerAnimated:YES];
-                    MemberCenterViewController *vc = [[MemberCenterViewController alloc]init];
-                    [self.navigationController pushViewController:vc animated:YES];
+                  
+//                   MemberCenterViewController *vc = [[MemberCenterViewController alloc]init];
+
+//                    [self.navigationController popToViewController:vc animated:YES];
+//             self.navigationController.viewControllers
+                
+
+                
+                [self.navigationController popToRootViewControllerAnimated:NO];
+                    self.tabBarController.selectedIndex = 3;
+                
+//                发出通知
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"sucess" object:self];
                     
                     
-                });
+//                });
 
             }else if ([response[@"resultCode"]integerValue] == 1003){
                 

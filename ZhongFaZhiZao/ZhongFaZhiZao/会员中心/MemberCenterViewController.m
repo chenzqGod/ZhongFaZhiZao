@@ -45,7 +45,9 @@
     
     [self.tabBarController.tabBar setHidden:NO];
     
-//     [self loadData];
+    
+
+    
 }
 
 - (void)viewDidLoad {
@@ -66,7 +68,17 @@
     }
     
     
+//    定义通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:@"sucess" object:nil];
+
 }
+
+//定义将要调用的方法
+- (void)loginSuccess{
+
+    [self loadData];
+}
+
 
 - (void)createUI{
 
@@ -111,7 +123,7 @@
     _iconLabel.font = [UIFont systemFontOfSize:17.0];
     _iconLabel.textAlignment = NSTextAlignmentCenter;
     _iconLabel.textColor = [UIColor whiteColor];
-    _iconLabel.text = @"中发智造";
+//    _iconLabel.text = @"中发智造";
     
     if ([USER_DEFAULTS objectForKey:@"token"]) {
         
@@ -541,9 +553,7 @@
 
 #pragma mark - 点击事件
 - (void)loginBtnClick{
-
     PwLoginViewController *vc = [[PwLoginViewController alloc]init];
-    
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -727,6 +737,17 @@
     }
     
     }
+    
+}
+
+
+-(void)dealloc{
+
+    //    移除通知
+    [[NSNotificationCenter
+      defaultCenter] removeObserver:self name:@"sucess"
+     
+     object:nil];
     
 }
 
