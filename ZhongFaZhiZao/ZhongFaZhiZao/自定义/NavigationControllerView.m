@@ -121,8 +121,6 @@
 }
 
 
-
-
 #pragma mark - 点击事件
 - (void)leftBarButtonItemClick{
     
@@ -138,11 +136,6 @@
 - (void)rightButtonClick{
 
     if (self.viewController) {
-        
-//        [self.viewController.navigationController popToRootViewControllerAnimated:YES];
-        
-        
-//        [self.viewController.navigationController popToViewController:vc animated:YES];
         
         [self.viewController.navigationController popToRootViewControllerAnimated:YES];
     }

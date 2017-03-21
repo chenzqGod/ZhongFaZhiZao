@@ -62,7 +62,6 @@
     [self.scrollView addSubview:commitKnowBtn];
     
 //    服务类型
-//    UILabel *label1 = [[UILabel alloc]initWithFrame:CGRectMake(0, 24, 96*screenScale, 17)];
     UILabel *label1 = [[UILabel alloc]initWithFrame:CGRectMake(2*screenScale+30*screenScale+6, 24, 48+6, 17)];
     label1.text = @"服务类型";
     label1.textAlignment = NSTextAlignmentRight;
@@ -114,7 +113,6 @@
     img1.image = [UIImage imageNamed:@"yellowstar"];
     [backView addSubview:img1];
     
-//    UILabel *label2 = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(label1.frame)+24, CGRectGetWidth(label1.frame), CGRectGetHeight(label1.frame))];
     UILabel *label2 = [[UILabel alloc]initWithFrame:CGRectMake(2*screenScale+CGRectGetMaxX(img1.frame), 24+CGRectGetMaxY(label1.frame), 48+6, 16)];
 //    label2.text = @"* 申请领域";
     label2.text = @"申请领域";
@@ -138,18 +136,9 @@
 
     [backView addSubview:self.areasTF];
     
-//    self.areasTF = [[DropDown alloc]initWithFrame:CGRectMake(13*screenScale+CGRectGetMaxX(label2.frame), CGRectGetMaxY(label1.frame)+17, 204*screenScale, 29)];
-//    self.areasTF.textField.placeholder = @"请输入联系方式";
-//    NSArray* arr=[[NSArray alloc]initWithObjects:@"电话",@"email",@"手机",@"aaa",@"bbb",@"ccc",nil];
-//    self.areasTF.list = arr;
-//    self.areasTF.textField.delegate = self;
-//
-//    [backView addSubview:self.areasTF];
-    
     //    联系人
     UIImageView *img2 = [[UIImageView alloc]initWithFrame:CGRectMake(30*screenScale, 28+CGRectGetMaxY(label2.frame), 6, 6)];
     img2.image = [UIImage imageNamed:@"yellowstar"];
-//    img2.backgroundColor = [UIColor cyanColor];
     [backView addSubview:img2];
     
     UILabel *label3 = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMinX(label2.frame), CGRectGetMaxY(label2.frame)+24, CGRectGetWidth(label1.frame), CGRectGetHeight(label1.frame))];

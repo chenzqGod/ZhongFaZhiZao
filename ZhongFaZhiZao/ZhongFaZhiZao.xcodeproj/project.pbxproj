@@ -226,7 +226,6 @@
 		567B626F1DD087E1004D1CFE /* AskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 567B626E1DD087E1004D1CFE /* AskViewController.m */; };
 		567B62721DD08842004D1CFE /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 567B62711DD08842004D1CFE /* PurchaseViewController.m */; };
 		567B62751DD08870004D1CFE /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 567B62741DD08870004D1CFE /* MineViewController.m */; };
-		567B629A1DD1A4A4004D1CFE /* ABWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 567B62991DD1A4A3004D1CFE /* ABWebViewViewController.m */; };
 		56886BDF1E65182F00463761 /* 短信分享@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56886BCD1E65182F00463761 /* 短信分享@2x.png */; };
 		56886BE01E65182F00463761 /* 短信分享@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56886BCE1E65182F00463761 /* 短信分享@3x.png */; };
 		56886BE11E65182F00463761 /* 共用二维码@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56886BCF1E65182F00463761 /* 共用二维码@2x.png */; };
@@ -387,7 +386,6 @@
 		56CC475B1E13AF9A00D8E42E /* PlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CC475A1E13AF9A00D8E42E /* PlaceholderTextView.m */; };
 		56CC475E1E13C06F00D8E42E /* Fill 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CC475C1E13C06F00D8E42E /* Fill 1@2x.png */; };
 		56CC475F1E13C06F00D8E42E /* Fill 1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CC475D1E13C06F00D8E42E /* Fill 1@3x.png */; };
-		56CC47621E13C41E00D8E42E /* DropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CC47611E13C41E00D8E42E /* DropDown.m */; };
 		56CFD7081E00E45700D18340 /* 采购-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD6F81E00E45700D18340 /* 采购-1@2x.png */; };
 		56CFD7091E00E45700D18340 /* 采购-1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD6F91E00E45700D18340 /* 采购-1@3x.png */; };
 		56CFD70A1E00E45700D18340 /* 采购-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CFD6FA1E00E45700D18340 /* 采购-2@2x.png */; };
@@ -498,7 +496,6 @@
 		56D8FF161E166D53008661E2 /* 搜素img@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D8FF141E166D53008661E2 /* 搜素img@3x.png */; };
 		56DAB5D41E30B6B0003B71D5 /* yellowstar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56DAB5D21E30B6B0003B71D5 /* yellowstar@2x.png */; };
 		56DAB5D51E30B6B0003B71D5 /* yellowstar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56DAB5D31E30B6B0003B71D5 /* yellowstar@3x.png */; };
-		56DAB5D81E30D3EF003B71D5 /* TiaoKuanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56DAB5D71E30D3EF003B71D5 /* TiaoKuanViewController.m */; };
 		56DAB5DF1E30D6BA003B71D5 /* 对jr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56DAB5D91E30D6BA003B71D5 /* 对jr@2x.png */; };
 		56DAB5E01E30D6BA003B71D5 /* 对jr@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56DAB5DA1E30D6BA003B71D5 /* 对jr@3x.png */; };
 		56DAB5E11E30D6BA003B71D5 /* 关闭jr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56DAB5DB1E30D6BA003B71D5 /* 关闭jr@2x.png */; };
@@ -921,8 +918,6 @@
 		567B62711DD08842004D1CFE /* PurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseViewController.m; sourceTree = "<group>"; };
 		567B62731DD08870004D1CFE /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
 		567B62741DD08870004D1CFE /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
-		567B62981DD1A4A3004D1CFE /* ABWebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABWebViewViewController.h; sourceTree = "<group>"; };
-		567B62991DD1A4A3004D1CFE /* ABWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABWebViewViewController.m; sourceTree = "<group>"; };
 		56886BCD1E65182F00463761 /* 短信分享@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "短信分享@2x.png"; sourceTree = "<group>"; };
 		56886BCE1E65182F00463761 /* 短信分享@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "短信分享@3x.png"; sourceTree = "<group>"; };
 		56886BCF1E65182F00463761 /* 共用二维码@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "共用二维码@2x.png"; sourceTree = "<group>"; };
@@ -1104,8 +1099,6 @@
 		56CC475A1E13AF9A00D8E42E /* PlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceholderTextView.m; sourceTree = "<group>"; };
 		56CC475C1E13C06F00D8E42E /* Fill 1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Fill 1@2x.png"; sourceTree = "<group>"; };
 		56CC475D1E13C06F00D8E42E /* Fill 1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Fill 1@3x.png"; sourceTree = "<group>"; };
-		56CC47601E13C41E00D8E42E /* DropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDown.h; sourceTree = "<group>"; };
-		56CC47611E13C41E00D8E42E /* DropDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDown.m; sourceTree = "<group>"; };
 		56CFD6F81E00E45700D18340 /* 采购-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "采购-1@2x.png"; sourceTree = "<group>"; };
 		56CFD6F91E00E45700D18340 /* 采购-1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "采购-1@3x.png"; sourceTree = "<group>"; };
 		56CFD6FA1E00E45700D18340 /* 采购-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "采购-2@2x.png"; sourceTree = "<group>"; };
@@ -1228,8 +1221,6 @@
 		56D8FF141E166D53008661E2 /* 搜素img@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "搜素img@3x.png"; sourceTree = "<group>"; };
 		56DAB5D21E30B6B0003B71D5 /* yellowstar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellowstar@2x.png"; sourceTree = "<group>"; };
 		56DAB5D31E30B6B0003B71D5 /* yellowstar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellowstar@3x.png"; sourceTree = "<group>"; };
-		56DAB5D61E30D3EF003B71D5 /* TiaoKuanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiaoKuanViewController.h; sourceTree = "<group>"; };
-		56DAB5D71E30D3EF003B71D5 /* TiaoKuanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiaoKuanViewController.m; sourceTree = "<group>"; };
 		56DAB5D91E30D6BA003B71D5 /* 对jr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "对jr@2x.png"; sourceTree = "<group>"; };
 		56DAB5DA1E30D6BA003B71D5 /* 对jr@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "对jr@3x.png"; sourceTree = "<group>"; };
 		56DAB5DB1E30D6BA003B71D5 /* 关闭jr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "关闭jr@2x.png"; sourceTree = "<group>"; };
@@ -2328,8 +2319,6 @@
 				56045FDB1DF180A500BB5EB9 /* UIColor+Hex.m */,
 				561AC03E1DED7D17009C8EC3 /* LaunchIntroductionView.h */,
 				561AC03F1DED7D17009C8EC3 /* LaunchIntroductionView.m */,
-				567B62981DD1A4A3004D1CFE /* ABWebViewViewController.h */,
-				567B62991DD1A4A3004D1CFE /* ABWebViewViewController.m */,
 				561AC0151DE6B832009C8EC3 /* WKWebViewViewController.h */,
 				561AC0161DE6B832009C8EC3 /* WKWebViewViewController.m */,
 				561AC0181DE812F1009C8EC3 /* StartDiagmView.h */,
@@ -2772,8 +2761,6 @@
 				56CFD82C1E07B6C200D18340 /* KnowLedgeTableViewCell.m */,
 				56CFD82E1E07BBC000D18340 /* CommitKnowledgeViewController.h */,
 				56CFD82F1E07BBC000D18340 /* CommitKnowledgeViewController.m */,
-				56CC47601E13C41E00D8E42E /* DropDown.h */,
-				56CC47611E13C41E00D8E42E /* DropDown.m */,
 			);
 			path = "知识产权";
 			sourceTree = "<group>";
@@ -2844,7 +2831,6 @@
 		56EC15481E232778004AE01A /* 金融服务 */ = {
 			isa = PBXGroup;
 			children = (
-				56EC156F1E2E1B3F004AE01A /* 服务条款 */,
 				56EC156E1E2E1B37004AE01A /* 立即申请 */,
 				56EC155C1E2DB363004AE01A /* 金融详情 */,
 				56EC15551E2710BA004AE01A /* view */,
@@ -2906,15 +2892,6 @@
 				56EC15711E2E1B69004AE01A /* FinanceapplyViewController.m */,
 			);
 			path = "立即申请";
-			sourceTree = "<group>";
-		};
-		56EC156F1E2E1B3F004AE01A /* 服务条款 */ = {
-			isa = PBXGroup;
-			children = (
-				56DAB5D61E30D3EF003B71D5 /* TiaoKuanViewController.h */,
-				56DAB5D71E30D3EF003B71D5 /* TiaoKuanViewController.m */,
-			);
-			path = "服务条款";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3396,7 +3373,6 @@
 				567B62751DD08870004D1CFE /* MineViewController.m in Sources */,
 				56EC15581E2710EE004AE01A /* InnovateTableViewCell.m in Sources */,
 				56E7D9A11E6E9B7F0080E727 /* QRCodeReaderView.m in Sources */,
-				56DAB5D81E30D3EF003B71D5 /* TiaoKuanViewController.m in Sources */,
 				561AC0171DE6B832009C8EC3 /* WKWebViewViewController.m in Sources */,
 				567B62261DD020A1004D1CFE /* MJRefreshConst.m in Sources */,
 				567B620D1DD020A0004D1CFE /* MASLayoutConstraint.m in Sources */,
@@ -3455,7 +3431,6 @@
 				567B62161DD020A0004D1CFE /* MBProgressHUD.m in Sources */,
 				56DAB5FE1E313F75003B71D5 /* FinanceCollectionViewCell.m in Sources */,
 				567B620F1DD020A0004D1CFE /* MASViewConstraint.m in Sources */,
-				56CC47621E13C41E00D8E42E /* DropDown.m in Sources */,
 				5697C8741E0E2DB3008A1D98 /* FMDatabase.m in Sources */,
 				56CC475B1E13AF9A00D8E42E /* PlaceholderTextView.m in Sources */,
 				56045FA31DF16AC100BB5EB9 /* AskDetailsViewController.m in Sources */,
@@ -3469,7 +3444,6 @@
 				567B61171DCADFF9004D1CFE /* AppDelegate.m in Sources */,
 				56045FE91DF1827000BB5EB9 /* WKWaitingProgressHUD.m in Sources */,
 				567B62331DD020A1004D1CFE /* UIButton+WebCache.m in Sources */,
-				567B629A1DD1A4A4004D1CFE /* ABWebViewViewController.m in Sources */,
 				567B62421DD020A1004D1CFE /* UIWebView+AFNetworking.m in Sources */,
 				567B621C1DD020A0004D1CFE /* MJRefreshAutoGifFooter.m in Sources */,
 				56045FEC1DF1850800BB5EB9 /* UIView+CPView.m in Sources */,

@@ -107,6 +107,16 @@
                 _dataArr1 = [response[@"data"][@"goodList"]mutableCopy];
             }else{
             
+//                if ([response[@"data"][@"goodList"] count] == 0) {
+//                    
+////                    [_tableView.footer endRefreshing];
+////                    
+////                    _tableView.footer.state = MJRefreshStateNoMoreData;
+//                    
+//                    return ;
+//                }
+                
+//                [_tableView.footer endRefreshing];
             [_dataArr1 addObjectsFromArray:response[@"data"][@"goodList"]];
             }
             
@@ -132,6 +142,16 @@
                 
             }else{
             
+//                if ([response[@"data"][@"goodList"] count] == 0) {
+//                    
+////                    [_tableView.footer endRefreshing];
+////                    
+////                    _tableView.footer.state = MJRefreshStateNoMoreData;
+//                    
+//                    return ;
+//                }
+                
+//                [_tableView.footer endRefreshing];
                 [_dataArr2 addObjectsFromArray:response[@"data"][@"goodList"]];
             }
             
@@ -158,7 +178,17 @@
                 [_dataArr3 removeAllObjects];
                 _dataArr3 = [response[@"data"][@"goodList"]mutableCopy];
             }else{
+                
+//                if ([response[@"data"][@"goodList"] count] == 0) {
+//                    
+////                    [_tableView.footer endRefreshing];
+////                    
+////                    _tableView.footer.state = MJRefreshStateNoMoreData;
+//                    
+//                    return ;
+//                }
             
+//                [_tableView.footer endRefreshing];
                 [_dataArr3 addObjectsFromArray:response[@"data"][@"goodList"]];
             }
             
@@ -234,7 +264,7 @@
     //    下拉刷新、上拉加载
     _tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         //Call this Block When enter the refresh status automatically
-        
+        [_tableView.footer resetNoMoreData];
         self.pageIndex = 1;
         [self loadData];
         
@@ -244,11 +274,12 @@
     
     _tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         //Call this Block When enter the refresh status automatically
-        
+        [_tableView.footer resetNoMoreData];
         self.pageIndex++;
         [self loadData];
         
         [_tableView.footer endRefreshing];
+        [_tableView.footer noticeNoMoreData];
         
     }];
 

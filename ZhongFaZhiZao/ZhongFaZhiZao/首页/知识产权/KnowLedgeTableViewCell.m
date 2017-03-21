@@ -43,18 +43,6 @@
     self.priceLabel.font = [UIFont systemFontOfSize:12.0];
     [self.contentView addSubview:self.priceLabel];
     
-    
-//    CustomButton *button = [CustomButton buttonWithType:UIButtonTypeCustom];
-//    button.frame = CGRectMake(screenWidth-16-60, CGRectGetMinY(self.priceLabel.frame)+1.5, 60, 14);
-//    
-//    button.imageRect = CGRectMake(0, 1.25, 13, 11.5);
-//    button.titleRect = CGRectMake(13+3, 0, 44, 14);
-//    [button setTitle:@"在线咨询" forState:UIControlStateNormal];
-//    [button setTitleColor:BLUE_COLOR forState:UIControlStateNormal];
-//    button.titleLabel.font = [UIFont systemFontOfSize:10.0];
-//    [button setImage:[UIImage imageNamed:@"chat"] forState:UIControlStateNormal];
-//    [self.contentView addSubview:button];
-    
     UILabel *linelabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 100, screenWidth, 1)];
     linelabel.backgroundColor = BACK_COLOR;
     [self.contentView addSubview:linelabel];

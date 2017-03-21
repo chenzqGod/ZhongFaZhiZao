@@ -10,7 +10,6 @@
 #import "HomeViewController.h"
 #import "UIImageView+WebCache.h"
 
-#import "ABWebViewViewController.h"
 #import "WKWebViewViewController.h"
 
 #import "SearchViewController.h"
@@ -45,8 +44,8 @@
 
     UICollectionViewFlowLayout *_flowLayout;
     
-    NSMutableArray *_adid41Arr;
-    NSMutableArray *_adid44Arr;
+    NSMutableArray *_adid41Arr;  //广告位41
+    NSMutableArray *_adid44Arr;  //广告位44
     NSMutableArray *_scrollImg;
     NSMutableArray *_scrollTxt;
     NSMutableArray *_cityArray;
@@ -58,7 +57,6 @@
     
     UIScrollView *_scrollView;
     
-
 }
 
 @property (nonatomic,assign) NSInteger cityNumber;
@@ -66,22 +64,19 @@
 @property (nonatomic,strong) ZYJHeadLineView *TopLineView;
 @property(nonatomic,strong)NSMutableArray*dataArr;
 
-
 @end
 
 @implementation HomeViewController
 
 
 - (void)viewWillAppear:(BOOL)animated{
-
-//    [self loadadData];
     
     [super viewWillAppear:YES];
+    
    self.tabBarController.tabBar.hidden=NO;
     
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 
-   
 }
 
 - (void)viewDidLoad {
@@ -99,6 +94,7 @@
     _adid44Arr = [[NSMutableArray alloc]init];
     _cityArray = [[NSMutableArray alloc]init];
     _cityDict = [[NSMutableDictionary alloc]init];
+    
     [self createHeaderView];
 
     [self loadadData];
@@ -116,8 +112,7 @@
 
     [self loadCityData];
 
-  
-   }
+}
 
 #pragma mark-获取数据
 - (void)getHotData
@@ -144,8 +139,6 @@
             _adid44Arr = [NSMutableArray arrayWithArray:response[@"data"][@"ad_id_44"]];
             
             for (int i = 0; i < _adid41Arr.count; i++) {
-                
-                //        [scrollImg addObjectsFromArray:_adid41Arr[i][@"img_path"]];
                 
                 [_scrollImg addObject:[NSString stringWithFormat:@"%@",_adid41Arr[i][@"img_path"]]];
                 
@@ -1436,7 +1429,6 @@ else if (indexPath.section == 1){
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 
 @end

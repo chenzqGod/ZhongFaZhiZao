@@ -88,7 +88,7 @@
 //    下拉刷新、上拉加载
     self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         //Call this Block When enter the refresh status automatically
-        
+        [_tableView.footer resetNoMoreData];
         self.pageIndex = 1;
         [self loadData];
         
@@ -98,11 +98,12 @@
     
     self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         //Call this Block When enter the refresh status automatically
-        
+        [_tableView.footer resetNoMoreData];
         self.pageIndex++;
         [self loadData];
 
         [_tableView.footer endRefreshing];
+        
         
     }];
 
@@ -131,14 +132,20 @@
                 
                 if ([response[@"data"][@"goodList"] count] == 0) {
                     
-                    [WKProgressHUD popMessage:@"没有更多了" inView:self.view duration:HUD_DURATION animated:YES];
+                    [_tableView.footer endRefreshing];
+                    
+//                    效果等同
+//                    _tableView.footer.state = MJRefreshStateNoMoreData;
+                    
+                    [_tableView.footer noticeNoMoreData];
                     
                     return ;
                 }
+                
+                [_tableView.footer endRefreshing];
+                
                 [_dataArray addObjectsFromArray:response[@"data"][@"goodList"]];
             }
-
-            NSLog(@"%@",_dataArray);
             
             [self.tableView reloadData];
             
