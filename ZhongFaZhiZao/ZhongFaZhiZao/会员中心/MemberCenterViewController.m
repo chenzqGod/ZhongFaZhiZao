@@ -12,6 +12,7 @@
 #import "UMengShareViewController.h"
 #import "WKWebViewViewController.h"
 #import "UIImageView+WebCache.h"
+#import "RCDCustomerServiceViewController.h"
 
 @interface MemberCenterViewController (){
 
@@ -409,6 +410,7 @@
     [self.scrollView addSubview:shareBtn];
     
 //    退出按钮
+  /*
     _exitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _exitBtn.frame = CGRectMake(17.5*screenScale, CGRectGetMaxY(shareView.frame)+20*screenScale, 340*screenScale, 35*screenScale);
     _exitBtn.backgroundColor = [UIColor whiteColor];
@@ -430,8 +432,59 @@
     
     
     self.scrollView.contentSize = CGSizeMake(screenWidth,55+CGRectGetMaxY(shareBtn.frame)+30);
+    */
+    
+    //客服测试
+    UIView *serviceView = [[UIView alloc]initWithFrame:CGRectMake(0, 1+CGRectGetMaxY(shareView.frame), screenWidth, 41)];
+    serviceView.backgroundColor = [UIColor whiteColor];
+    serviceView.userInteractionEnabled = YES;
+    [self.scrollView addSubview:serviceView];
+    
+    UIImageView *serviceimg = [[UIImageView alloc]initWithFrame:CGRectMake(20*screenScale, (41-17)/2.0, 17, 17)];
+    serviceimg.image = [UIImage imageNamed:@"分享"];
+    [serviceView addSubview:serviceimg];
+    
+    UILabel *serviceLbl = [[UILabel alloc]initWithFrame:CGRectMake(9+CGRectGetMaxX(serviceimg.frame), 20/2.0, 66, 21)];
+    serviceLbl.text = @"联系我们";
+    serviceLbl.font = [UIFont systemFontOfSize:16.0];
+    [serviceView addSubview:serviceLbl];
+    
+    UIImageView *svImg4 = [[UIImageView alloc]initWithFrame:CGRectMake(screenWidth-15*screenScale-8, (41-15)/2.0, 8, 15)];
+    svImg4.image = [UIImage imageNamed:@"箭头"];
+    [serviceView addSubview:svImg4];
     
     
+    UIButton *serviceBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    serviceBtn.frame = serviceView.frame;
+    
+    [serviceBtn addTarget:self action:@selector(serviceBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.scrollView addSubview:serviceBtn];
+    
+    
+    
+    //    退出按钮
+    _exitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _exitBtn.frame = CGRectMake(17.5*screenScale, CGRectGetMaxY(serviceView.frame)+20*screenScale, 340*screenScale, 35*screenScale);
+    _exitBtn.backgroundColor = [UIColor whiteColor];
+    [_exitBtn setTitle:@"退出" forState:UIControlStateNormal];
+    [_exitBtn setTitleColor:BLUE_COLOR forState:UIControlStateNormal];
+    _exitBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+    _exitBtn.titleLabel.text = @"退出";
+    _exitBtn.titleLabel.font = [UIFont boldSystemFontOfSize:17.0];
+    
+    if ([USER_DEFAULTS objectForKey:@"token"]) {
+        
+        _exitBtn.hidden = NO;
+    }else{
+        _exitBtn.hidden = YES;
+    }
+    
+    [_exitBtn addTarget:self action:@selector(exitBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.scrollView addSubview:_exitBtn];
+    
+    
+    self.scrollView.contentSize = CGSizeMake(screenWidth,55+CGRectGetMaxY(shareBtn.frame)+30);
+
 }
 
 - (void)loadData{
@@ -738,6 +791,19 @@
     
     }
     
+}
+
+- (void)serviceBtnClick{
+
+    RCDCustomerServiceViewController *chatService =
+    [[RCDCustomerServiceViewController alloc] init];
+    //#define SERVICE_ID @"KEFU145801184889727"
+#define SERVICE_ID @"KEFU149092142970554"
+    chatService.conversationType = ConversationType_CUSTOMERSERVICE;
+    chatService.targetId = SERVICE_ID;
+    chatService.title = @"客服";
+    
+    [self.navigationController pushViewController:chatService animated:YES];
 }
 
 

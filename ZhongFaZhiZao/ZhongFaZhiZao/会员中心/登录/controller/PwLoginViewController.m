@@ -168,7 +168,9 @@
                     [USER_DEFAULTS setObject:_userInfo.mobile forKey:@"mobile"];
 
                     [USER_DEFAULTS synchronize];
-                    
+                
+                    [self passregisterid];
+                
                     [self ssssss];
                     
                     
@@ -293,6 +295,50 @@
     }];
     
 }
+
+
+//登录成功后传registerid给服务端
+- (void)passregisterid{
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *registrationID = [defaults objectForKey:@"registerid"];
+    if (registrationID) {
+        
+        //            传给服务器
+        NSDictionary *parameters = @{@"xiaomiToken":@"",@"jiguangToken":registrationID,@"huaweiToken":@""};
+        
+        
+        [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,JPUSH_SAVE] parameters:parameters success:^(id response) {
+            
+            if ([response[@"resultCode"]integerValue] == 1000) {
+                
+                NSLog(@"PW推送token成功");
+                
+                NSLog(@"regit ID ======%@",registrationID);
+            }else if ([response[@"resultCode"]integerValue] == 1001){
+                
+                NSLog(@"PW推送token1001");
+                
+            }else if ([response[@"resultCode"]integerValue] == 1008){
+                
+                NSLog(@"PW推送token1008");
+            }
+            
+        } failure:^(NSString *error) {
+            NSLog(@"%@",error);
+            NSLog(@"PW推送token error");
+            
+        }];
+        
+        
+    }
+    else{
+        
+        NSLog(@"registrationID获取失败");
+    }
+    
+}
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
 

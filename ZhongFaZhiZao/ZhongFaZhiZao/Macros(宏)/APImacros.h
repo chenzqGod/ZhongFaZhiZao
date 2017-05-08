@@ -7,10 +7,10 @@
 //
 
 //测试环境
-//#define HOST_URL    @"http://cectest.cecb2b.com/waps" 
+#define HOST_URL    @"http://cectest.cecb2b.com/waps"
 
 //正式环境
-#define HOST_URL  @"http://wap.cecb2b.com"
+//#define HOST_URL  @"http://wap.cecb2b.com"
 
 
 #define ALIPAY_URL  @"/apppay/toAli?orderIds=201312291707559XMZ"
@@ -18,7 +18,9 @@
 #define SOURCE_URL  @"/cart/doSubmitOrde"
 
 
-
+//推送
+//保存消息推送用户token
+#define JPUSH_SAVE                @"/api/pushUserToken/save"
 
 //登录注册
 #define LOGIN_PW                   @"/api/login/member"

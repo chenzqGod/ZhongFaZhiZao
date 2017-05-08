@@ -212,11 +212,57 @@
             advertisingIdentifier:advertisingId];
     
     
+//    创建通知 证明jpush已经连接成功
+    NSNotificationCenter *jpushdefaultCenter = [NSNotificationCenter defaultCenter];
+    [jpushdefaultCenter addObserver:self selector:@selector(networkDidLogin:)  name:kJPFNetworkDidLoginNotification object:nil];
+    
+////    获取registrationID
+//    
+//    [JPUSHService registrationIDCompletionHandler:^(int resCode, NSString *registrationID) {
+//        
+//        if (resCode == 0) {
+//            
+//            
+////            传给服务器
+//            NSDictionary *parameters = @{@"xiaomiToken":@"",@"jiguangToken":registrationID,@"huaweiToken":@""};
+//            
+//            
+//            [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,JPUSH_SAVE] parameters:parameters success:^(id response) {
+//                
+//                if ([response[@"resultCode"]integerValue] == 1000) {
+//                    
+//                    NSLog(@"推送token成功");
+//                    
+//                    NSLog(@"regit ID ======%@",registrationID);
+//                }else if ([response[@"resultCode"]integerValue] == 1001){
+//                    
+//                    NSLog(@"推送token1001");
+//                    
+//                }else if ([response[@"resultCode"]integerValue] == 1008){
+//                    
+//                    NSLog(@"推送token1008");
+//                }
+//                
+//            } failure:^(NSString *error) {
+//                NSLog(@"%@",error);
+//                NSLog(@"推送token error");
+//                
+//            }];
+//  
+//            
+//        }
+//        else{
+//        
+//            NSLog(@"registrationID获取失败，code：%d",resCode);
+//        }
+//        
+//    }];
+    
     
 //    设置别名和标签
 //    JPUSHService setTags:<#(NSSet *)#> alias:<#(NSString *)#> callbackSelector:<#(SEL)#> object:<#(id)#>
     
-    
+   
     
 #pragma mark - umeng统计设置
 /**************************umeng统计*************************/
@@ -239,6 +285,56 @@
     
     return YES;
 
+}
+
+//获取registrationID
+- (void)networkDidLogin:(NSNotification *)notification {
+
+    [JPUSHService registrationIDCompletionHandler:^(int resCode, NSString *registrationID) {
+        
+        if (resCode == 0) {
+            
+//            保存本地
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:registrationID forKey:@"registerid"];
+            
+            //            传给服务器
+            NSDictionary *parameters = @{@"xiaomiToken":@"",@"jiguangToken":registrationID,@"huaweiToken":@""};
+            
+            
+            [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,JPUSH_SAVE] parameters:parameters success:^(id response) {
+                
+                if ([response[@"resultCode"]integerValue] == 1000) {
+                    
+                    NSLog(@"推送token成功");
+                    
+                    NSLog(@"regit ID ======%@",registrationID);
+                }else if ([response[@"resultCode"]integerValue] == 1001){
+                    
+                    NSLog(@"推送token1001");
+                    
+                }else if ([response[@"resultCode"]integerValue] == 1008){
+                    
+                    NSLog(@"推送token1008");
+                }
+                
+            } failure:^(NSString *error) {
+                NSLog(@"%@",error);
+                NSLog(@"推送token error");
+                
+            }];
+            
+            
+        }
+        else{
+            
+            NSLog(@"registrationID获取失败，code：%d",resCode);
+        }
+        
+    }];
+
+    
+    
 }
 
 
@@ -370,7 +466,37 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     // Required - 注册 DeviceToken
     [JPUSHService registerDeviceToken:deviceToken];
+    
+    NSLog(@"devicetoken = %@",deviceToken);
+//    将token传给后台
+    
+//    NSDictionary *parameters = @{@"xiaomiToken":@"",@"jiguangToken":deviceToken,@"huaweiToken":@""};
+//    
+//    
+//    [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,JPUSH_SAVE] parameters:parameters success:^(id response) {
+//        
+//        if ([response[@"resultCode"]integerValue] == 1000) {
+//           
+//            NSLog(@"推送token成功");
+//            
+//            
+//        }else if ([response[@"resultCode"]integerValue] == 1001){
+//            
+//            NSLog(@"推送token1001");
+//            
+//        }else if ([response[@"resultCode"]integerValue] == 1008){
+//            
+//            NSLog(@"推送token1008");
+//        }
+//        
+//    } failure:^(NSString *error) {
+//        NSLog(@"%@",error);
+//        NSLog(@"推送token error");
+//        
+//    }];
 }
+
+
 
 #pragma mark - to do实现注册APNs失败接口（可选）
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
@@ -651,6 +777,9 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 //    [UIApplication sharedApplication].applicationIconBadgeNumber + 1;
 }
 
+- (void)dealloc{
 
+    
+}
 
 @end
