@@ -189,7 +189,7 @@
                     [USER_DEFAULTS synchronize];
                     
                     [self passregisterid];
-                    [self ssssss];
+                    [self getRongToken];
                     
                     
 
@@ -258,7 +258,7 @@
 }
 
 
--(void)ssssss{
+-(void)getRongToken{
     
     [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,GETRONG_TOKEN] parameters:nil success:^(id response) {
         

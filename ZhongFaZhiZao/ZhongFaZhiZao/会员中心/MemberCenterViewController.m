@@ -410,7 +410,7 @@
     [self.scrollView addSubview:shareBtn];
     
 //    退出按钮
-  /*
+  
     _exitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _exitBtn.frame = CGRectMake(17.5*screenScale, CGRectGetMaxY(shareView.frame)+20*screenScale, 340*screenScale, 35*screenScale);
     _exitBtn.backgroundColor = [UIColor whiteColor];
@@ -432,8 +432,10 @@
     
     
     self.scrollView.contentSize = CGSizeMake(screenWidth,55+CGRectGetMaxY(shareBtn.frame)+30);
-    */
-    
+
+
+  
+/*
     //客服测试
     UIView *serviceView = [[UIView alloc]initWithFrame:CGRectMake(0, 1+CGRectGetMaxY(shareView.frame), screenWidth, 41)];
     serviceView.backgroundColor = [UIColor whiteColor];
@@ -484,6 +486,7 @@
     
     
     self.scrollView.contentSize = CGSizeMake(screenWidth,55+CGRectGetMaxY(shareBtn.frame)+30);
+ */
 
 }
 

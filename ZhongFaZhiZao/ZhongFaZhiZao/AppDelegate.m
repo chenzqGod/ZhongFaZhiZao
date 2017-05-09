@@ -208,7 +208,7 @@
     // 如需继续使用pushConfig.plist文件声明appKey等配置内容，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化。
     [JPUSHService setupWithOption:launchOptions appKey:@"cc8b5670fefb1a425851c61d"
                           channel:@"App Store"
-                 apsForProduction:0
+                 apsForProduction:1
             advertisingIdentifier:advertisingId];
     
     
@@ -777,9 +777,5 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 //    [UIApplication sharedApplication].applicationIconBadgeNumber + 1;
 }
 
-- (void)dealloc{
-
-    
-}
 
 @end

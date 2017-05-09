@@ -171,7 +171,7 @@
                 
                     [self passregisterid];
                 
-                    [self ssssss];
+                    [self getRongToken];
                     
                     
                     if (_pwLoginView.rememberPwBtn.isSelected) {
@@ -254,7 +254,7 @@
     
 }
 
--(void)ssssss{
+-(void)getRongToken{
 
     [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,GETRONG_TOKEN] parameters:nil success:^(id response) {
         

@@ -284,7 +284,7 @@
         
         if ([USER_DEFAULTS objectForKey:@"rongtoken"] == nil) {
             
-            [self ssssss];
+            [self getRongToken];
         }
         
         IMDetailViewController *chatViewController = [[IMDetailViewController alloc]init];
@@ -336,7 +336,7 @@
     
 }
 
--(void)ssssss{
+-(void)getRongToken{
     
     [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,GETRONG_TOKEN] parameters:nil success:^(id response) {
         
