@@ -30,5 +30,18 @@
 @property (nonatomic,strong) UIButton *closeBtn;         //关闭按钮
 @property (nonatomic,strong) UIView *userView;
 @property (nonatomic,strong) UIView *pwdView;
+//第三方登录按钮
+@property (nonatomic,strong)UIButton *QQbutton;           //QQ按钮
+@property (nonatomic,strong)UIButton *WXbutton;           //微信按钮
+@property (nonatomic,strong)UIButton *sinaButton;         //新浪微博按钮
+
+
+@property (nonatomic,strong)UILabel *QQLbl;
+@property (nonatomic,strong)UILabel *WXLbl;
+@property (nonatomic,strong)UILabel *sinaLbl;
+
+@property (nonatomic,strong)UILabel *leftThirdLbl;
+@property (nonatomic,strong)UILabel *rightThirdLbl;
+@property (nonatomic,strong)UILabel *titleThirdLbl;
 
 @end

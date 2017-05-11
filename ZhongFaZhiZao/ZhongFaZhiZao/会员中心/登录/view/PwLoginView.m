@@ -142,10 +142,67 @@
 //    self.bottomImage.image = [UIImage imageNamed:@"bottom"];
 //    [self.scrollView addSubview:self.bottomImage];
     
+ 
+//右上角关闭按钮
     self.closeBtn = [[UIButton alloc]init];
     [self.closeBtn setBackgroundImage:[UIImage imageNamed:@"chahao_"] forState:UIControlStateNormal];
     [self.scrollView addSubview:self.closeBtn];
+    
+//  第三方 登录
+    self.QQbutton = [[UIButton alloc]init];
+    [self.QQbutton setBackgroundImage:[UIImage imageNamed:@"QQ分享"] forState:UIControlStateNormal];
+    self.QQbutton.layer.masksToBounds = YES;
+    self.QQbutton.layer.cornerRadius = 35/2.0;
+    [self.scrollView addSubview:self.QQbutton];
+    
+    self.WXbutton = [[UIButton alloc]init];
+    [self.WXbutton setBackgroundImage:[UIImage imageNamed:@"微信分享"] forState:UIControlStateNormal];
+    self.WXbutton.layer.masksToBounds = YES;
+    self.WXbutton.layer.cornerRadius = 35/2.0;
+    [self.scrollView addSubview:self.WXbutton];
+    
+    self.sinaButton = [[UIButton alloc]init];
+    [self.sinaButton setBackgroundImage:[UIImage imageNamed:@"微博分享"] forState:UIControlStateNormal];
+    self.sinaButton.layer.masksToBounds = YES;
+    self.sinaButton.layer.cornerRadius = 35/2.0;
+    [self.scrollView addSubview:self.sinaButton];
 
+    self.leftThirdLbl = [[UILabel alloc]init];
+    self.leftThirdLbl.backgroundColor = TEXT_GREY_COLOR;
+    [self.scrollView addSubview:self.leftThirdLbl];
+    
+    self.rightThirdLbl = [[UILabel alloc]init];
+    self.rightThirdLbl.backgroundColor = TEXT_GREY_COLOR;
+    [self.scrollView addSubview:self.rightThirdLbl];
+    
+    self.titleThirdLbl = [[UILabel alloc]init];
+    self.titleThirdLbl.text = @"第三方登录";
+    self.titleThirdLbl.textAlignment = NSTextAlignmentCenter;
+    self.titleThirdLbl.font = [UIFont systemFontOfSize:11.0];
+    self.titleThirdLbl.textColor = TEXT_GREY_COLOR;
+    [self.scrollView addSubview:self.titleThirdLbl];
+    
+    self.QQLbl = [[UILabel alloc]init];
+    self.QQLbl.text = @"QQ登录";
+    self.QQLbl.textColor = TEXT_GREY_COLOR;
+    self.QQLbl.textAlignment = NSTextAlignmentCenter;
+    self.QQLbl.font = [UIFont systemFontOfSize:11.0];
+    [self.scrollView addSubview:self.QQLbl];
+    
+    self.WXLbl = [[UILabel alloc]init];
+    self.WXLbl.text = @"微信登录";
+    self.WXLbl.textColor = TEXT_GREY_COLOR;
+    self.WXLbl.textAlignment = NSTextAlignmentCenter;
+    self.WXLbl.font = [UIFont systemFontOfSize:11.0];
+    [self.scrollView addSubview:self.WXLbl];
+    
+    self.sinaLbl = [[UILabel alloc]init];
+    self.sinaLbl.text = @"微博登录";
+    self.sinaLbl.font = [UIFont systemFontOfSize:11.0];
+    self.sinaLbl.textColor = TEXT_GREY_COLOR;
+    self.sinaLbl.textAlignment = NSTextAlignmentCenter;
+    [self.scrollView addSubview:self.sinaLbl];
+    
     
 }
 
@@ -271,6 +328,87 @@
         make.size.mas_equalTo(CGSizeMake(12, 12));
         make.top.equalTo(self.scrollView.mas_top).offset(10*HEIGHT);
         make.right.equalTo(@(screenWidth-10));
+        
+    }];
+    
+    [self.leftThirdLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.top.equalTo(self.quickRegisterBtn.mas_bottom).offset(68*HEIGHT);
+        make.left.equalTo(self.loginBtn.mas_left);
+        make.height.equalTo(@1);
+        make.width.equalTo(@(screenWidth/2.0-18-46));
+        
+    }];
+    
+    [self.rightThirdLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.top.equalTo(self.leftThirdLbl.mas_top);
+        make.right.equalTo(self.loginBtn.mas_right);
+        make.height.equalTo(@1);
+        make.width.equalTo(self.leftThirdLbl.mas_width);
+        
+    }];
+    
+    [self.titleThirdLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.top.equalTo(self.quickRegisterBtn.mas_bottom).offset(62*HEIGHT);
+        make.left.equalTo(self.leftThirdLbl.mas_right);
+        make.right.equalTo(self.rightThirdLbl.mas_left);
+        make.height.equalTo(@13);
+        
+    }];
+    
+    [self.QQbutton mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.top.equalTo(self.rightThirdLbl.mas_bottom).offset(32);
+        make.width.equalTo(@35);
+        make.height.equalTo(@35);
+        make.left.equalTo(@((screenWidth-35*3.0)/4.0));
+        
+    }];
+    
+    [self.WXbutton mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.top.equalTo(self.QQbutton.mas_top);
+        make.width.equalTo(@35);
+        make.height.equalTo(@35);
+        make.left.equalTo(self.QQbutton.mas_right).offset((screenWidth-35*3.0)/4.0);
+    }];
+    
+    [self.sinaButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.top.equalTo(self.QQbutton.mas_top);
+        make.width.equalTo(@35);
+        make.height.equalTo(@35);
+        make.left.equalTo(self.WXbutton.mas_right).offset((screenWidth-35*3.0)/4.0);
+
+    }];
+    
+    [self.QQLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.top.equalTo(self.QQbutton.mas_bottom).offset(HEIGHT*6);
+        make.width.equalTo(@50);
+        make.height.equalTo(@12);
+        make.centerX.equalTo(self.QQbutton.mas_centerX);
+        
+    }];
+    
+    [self.WXLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.top.equalTo(self.QQbutton.mas_bottom).offset(HEIGHT*6);
+        make.width.equalTo(@50);
+        make.height.equalTo(@12);
+        make.centerX.equalTo(self.WXbutton.mas_centerX);
+
+    }];
+    
+    [self.sinaLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.top.equalTo(self.QQbutton.mas_bottom).offset(HEIGHT*6);
+        make.width.equalTo(@50);
+        make.height.equalTo(@12);
+        make.centerX.equalTo(self.sinaButton.mas_centerX);
+
     }];
 }
 
