@@ -210,7 +210,7 @@
 //微信授权并获取用户信息(获取uid、access token及用户名等)
 - (void)getAuthWithUserInfoFromWechat
 {
-    [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_WechatSession currentViewController:nil completion:^(id result, NSError *error) {
+    [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_WechatSession currentViewController:self completion:^(id result, NSError *error) {
         if (error) {
             
         } else {
