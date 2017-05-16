@@ -33,6 +33,11 @@
 //友盟分享
 #import <UMSocialCore/UMSocialCore.h>
 
+//第三方登录
+#import "UMSocialQQHandler.h"
+#import "UMSocialWechatHandler.h"
+#import "UMSocialSinaHandler.h"
+
 //Bugly
 #import <Bugly/Bugly.h>
 
@@ -131,7 +136,7 @@
    [LaunchIntroductionView sharedWithImages:@[@"引导页1.jpg",@"guid02.jpg",@"guid03.jpg",@"guid04.jpg"] buttonImage:@"login" buttonFrame:CGRectMake(0,  0, screenWidth, screenHeight)];
 //    launch.currentColor = [UIColor redColor];
 //    launch.nomalColor = [UIColor greenColor];
-    
+
     
 #pragma mark - Rongcloud
     [[RCIM sharedRCIM]initWithAppKey:RONGCLOUD_IM_APPKEY];
@@ -215,49 +220,7 @@
 //    创建通知 证明jpush已经连接成功
     NSNotificationCenter *jpushdefaultCenter = [NSNotificationCenter defaultCenter];
     [jpushdefaultCenter addObserver:self selector:@selector(networkDidLogin:)  name:kJPFNetworkDidLoginNotification object:nil];
-    
-////    获取registrationID
-//    
-//    [JPUSHService registrationIDCompletionHandler:^(int resCode, NSString *registrationID) {
-//        
-//        if (resCode == 0) {
-//            
-//            
-////            传给服务器
-//            NSDictionary *parameters = @{@"xiaomiToken":@"",@"jiguangToken":registrationID,@"huaweiToken":@""};
-//            
-//            
-//            [[NSNetworking sharedManager]post:[NSString stringWithFormat:@"%@%@",HOST_URL,JPUSH_SAVE] parameters:parameters success:^(id response) {
-//                
-//                if ([response[@"resultCode"]integerValue] == 1000) {
-//                    
-//                    NSLog(@"推送token成功");
-//                    
-//                    NSLog(@"regit ID ======%@",registrationID);
-//                }else if ([response[@"resultCode"]integerValue] == 1001){
-//                    
-//                    NSLog(@"推送token1001");
-//                    
-//                }else if ([response[@"resultCode"]integerValue] == 1008){
-//                    
-//                    NSLog(@"推送token1008");
-//                }
-//                
-//            } failure:^(NSString *error) {
-//                NSLog(@"%@",error);
-//                NSLog(@"推送token error");
-//                
-//            }];
-//  
-//            
-//        }
-//        else{
-//        
-//            NSLog(@"registrationID获取失败，code：%d",resCode);
-//        }
-//        
-//    }];
-    
+
     
 //    设置别名和标签
 //    JPUSHService setTags:<#(NSSet *)#> alias:<#(NSString *)#> callbackSelector:<#(SEL)#> object:<#(id)#>

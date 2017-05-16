@@ -18,6 +18,9 @@
 #import <RongIMKit/RongIMKit.h>
 #import <RongIMKit/RCConversationViewController.h>
 #import <UMSocialCore/UMSocialCore.h>
+#import "WXApi.h"
+#import "UMSocialQQHandler.h"
+#import <TencentOpenAPI/QQApiInterface.h>
 
 
 @interface PwLoginViewController ()<UITextFieldDelegate>
@@ -100,16 +103,28 @@
 - (void)QQlogin{
 
     NSLog(@"进行QQ第三方登录操作");
+    
+    if ([QQApiInterface isQQInstalled]) {
+        
+        [self getAuthWithUserInfoFromQQ];
+    }
 }
 
 - (void)WXlogin{
 
     NSLog(@"进行微信第三方登录操作");
+    
+    if ([WXApi isWXAppInstalled]) {
+        
+        [self getAuthWithUserInfoFromWechat];
+    }
 }
 
 - (void)sinaLogin{
 
     NSLog(@"进行微博第三方登录操作");
+    
+    [self getAuthWithUserInfoFromSina];
 }
 
 
