@@ -19,7 +19,7 @@
 @property (nonatomic,strong) WKWebView *webView;
 @property (nonatomic,copy) NSString *urlStr;
 @property (nonatomic,copy) NSString *navigatorTitle;
-@property(nonatomic,assign) BOOL isLoaing;
+@property (nonatomic,assign) BOOL isLoaing;
 @property (nonatomic,strong) UIProgressView *progressView;
 @property (nonatomic,strong) UIImageView *imageView;
 

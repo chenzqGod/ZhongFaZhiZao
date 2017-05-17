@@ -12,7 +12,6 @@
 #import "RegisterViewController.h"
 #import "ForgetPwViewController.h"
 #import "NSString+Mobile.h"
-#import "MineViewController.h"
 #import "MemberCenterViewController.h"
 #import "WKWebViewViewController.h"
 #import <RongIMKit/RongIMKit.h>
@@ -191,27 +190,6 @@
                     [self passregisterid];
                     [self getRongToken];
                     
-                    
-
-//                    if (self.jumpURL) {
-//                        
-//                        if ([self.jumpURL hasPrefix:@"http"]) {
-//                            
-//                            WKWebViewViewController *vc = [[WKWebViewViewController alloc]initWithUrlStr:self.jumpURL title:@""];
-//                            [self.navigationController pushViewController:vc animated:YES];
-//                            
-//                            
-//                        }else{
-//                            
-//                            MineViewController *vc = [[MineViewController alloc]init];
-//                            [self.navigationController pushViewController:vc animated:YES];
-//                            
-//                        }
-//                    }
-//                    else{
-//                        
-//                        MemberCenterViewController *vc = [[MemberCenterViewController alloc]init];
-//                        [self.navigationController pushViewController:vc animated:YES];
                     
                     [self.navigationController popToRootViewControllerAnimated:NO];
                     self.tabBarController.selectedIndex = 3;

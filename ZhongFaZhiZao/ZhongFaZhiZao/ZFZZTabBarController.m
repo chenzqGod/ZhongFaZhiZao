@@ -10,7 +10,6 @@
 #import "HomeViewController.h"
 #import "AskViewController.h"
 #import "PurchaseViewController.h"
-#import "MineViewController.h"
 #import "PwLoginViewController.h"
 #import "IMViewController.h"
 #import "MemberCenterViewController.h"
@@ -53,7 +52,6 @@
     [purchaseNav.tabBarItem setImage:[UIImage imageNamed:@"采购-1"]];
     [purchaseNav.tabBarItem setSelectedImage:[UIImage imageNamed:@"采购-1"]];
     
-//    MineViewController *mineVC = [[MineViewController alloc]init];
     MemberCenterViewController *mineVC = [[MemberCenterViewController alloc]init];
     UINavigationController *mineNav = [[UINavigationController alloc]initWithRootViewController:mineVC];
     mineNav.title = @"我的";

@@ -73,7 +73,6 @@
     WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc]init];
     self.userContentroller = [[WKUserContentController alloc]init];
     
-    
 
 //    创建webView,大小从20开始
     _webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 20, screenWidth, screenHeight-20)];

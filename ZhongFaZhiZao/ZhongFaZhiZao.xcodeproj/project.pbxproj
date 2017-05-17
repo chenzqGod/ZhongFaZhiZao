@@ -225,7 +225,6 @@
 		567B626C1DD087A6004D1CFE /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 567B626B1DD087A6004D1CFE /* HomeViewController.m */; };
 		567B626F1DD087E1004D1CFE /* AskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 567B626E1DD087E1004D1CFE /* AskViewController.m */; };
 		567B62721DD08842004D1CFE /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 567B62711DD08842004D1CFE /* PurchaseViewController.m */; };
-		567B62751DD08870004D1CFE /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 567B62741DD08870004D1CFE /* MineViewController.m */; };
 		56886BDF1E65182F00463761 /* 短信分享@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56886BCD1E65182F00463761 /* 短信分享@2x.png */; };
 		56886BE01E65182F00463761 /* 短信分享@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56886BCE1E65182F00463761 /* 短信分享@3x.png */; };
 		56886BE11E65182F00463761 /* 共用二维码@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56886BCF1E65182F00463761 /* 共用二维码@2x.png */; };
@@ -917,8 +916,6 @@
 		567B626E1DD087E1004D1CFE /* AskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AskViewController.m; sourceTree = "<group>"; };
 		567B62701DD08842004D1CFE /* PurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseViewController.h; sourceTree = "<group>"; };
 		567B62711DD08842004D1CFE /* PurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseViewController.m; sourceTree = "<group>"; };
-		567B62731DD08870004D1CFE /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
-		567B62741DD08870004D1CFE /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
 		56886BCD1E65182F00463761 /* 短信分享@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "短信分享@2x.png"; sourceTree = "<group>"; };
 		56886BCE1E65182F00463761 /* 短信分享@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "短信分享@3x.png"; sourceTree = "<group>"; };
 		56886BCF1E65182F00463761 /* 共用二维码@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "共用二维码@2x.png"; sourceTree = "<group>"; };
@@ -2275,8 +2272,6 @@
 			isa = PBXGroup;
 			children = (
 				56886BF11E65188600463761 /* 分享中心 */,
-				567B62731DD08870004D1CFE /* MineViewController.h */,
-				567B62741DD08870004D1CFE /* MineViewController.m */,
 				56DE88051E54560C002BFDFC /* MemberCenterViewController.h */,
 				56DE88061E54560C002BFDFC /* MemberCenterViewController.m */,
 				5609558B1DF6A15400DA0B72 /* 登录 */,
@@ -3383,7 +3378,6 @@
 				560955B51DF7FB2D00DA0B72 /* VfLoginViewController.m in Sources */,
 				567B621A1DD020A0004D1CFE /* MJRefreshFooter.m in Sources */,
 				56045FA81DF17B0500BB5EB9 /* SetMeViewController.m in Sources */,
-				567B62751DD08870004D1CFE /* MineViewController.m in Sources */,
 				56EC15581E2710EE004AE01A /* InnovateTableViewCell.m in Sources */,
 				56E7D9A11E6E9B7F0080E727 /* QRCodeReaderView.m in Sources */,
 				561AC0171DE6B832009C8EC3 /* WKWebViewViewController.m in Sources */,

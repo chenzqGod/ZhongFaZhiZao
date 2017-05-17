@@ -7,7 +7,6 @@
 //
 
 #import "NavigationControllerView.h"
-#import "MineViewController.h"
 
 @implementation NavigationControllerView
 {
