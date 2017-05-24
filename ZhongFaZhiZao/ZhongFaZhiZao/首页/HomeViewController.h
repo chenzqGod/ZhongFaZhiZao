@@ -38,7 +38,6 @@ typedef NS_ENUM(int,ZF){
 @property (nonatomic,strong) UIButton *mainBtn;
 @property (nonatomic,strong) UIView *mainBtnView;
 
-
 @property (nonatomic,strong) UIButton *tmpbtn;
 
 @end

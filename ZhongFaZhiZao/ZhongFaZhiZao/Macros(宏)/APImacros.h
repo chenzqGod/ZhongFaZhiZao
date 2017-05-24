@@ -7,10 +7,10 @@
 //
 
 //测试环境
-//#define HOST_URL    @"http://cectest.cecb2b.com/waps"
+#define HOST_URL    @"http://cectest.cecb2b.com/waps"
 
 //正式环境
-#define HOST_URL  @"http://wap.cecb2b.com"
+//#define HOST_URL  @"http://wap.cecb2b.com"
 
 
 #define ALIPAY_URL  @"/apppay/toAli?orderIds=201312291707559XMZ"
